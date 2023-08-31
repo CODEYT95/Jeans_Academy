@@ -1,10 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.project.jeans.domain.question.dao.QuestionDAO">
+    <!-- 목록조회-->
     <select id="selectQuestionAll" resultType="com.project.jeans.domain.question.dto.QuestionDTO">
-        <![CDATA[
+    <![CDATA[
     SELECT question_no, question_title, question_content,
-           question_regdate, member_name, member_class FROM QUESTION;
+           question_regdate, member_name, member_class FROM QUESTION
+           order by question_no desc;
     ]]>
     </select>
+
+    <insert id="insertQuestion" parameterType="com.project.jeans.domain.question.dto.QuestionDTO">
+    <![CDATA[
+    INSERT INTO question (question_title, question_content)
+    VALUES (#{question_title}, #{question_content});
+    ]]>
+    </insert>
 </mapper>

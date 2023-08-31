@@ -8,6 +8,7 @@ pageEncoding="UTF-8"%>
     <title>메인</title>
     <link rel="stylesheet" type="text/css" href="../../../resources/css/plan/plan.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
     <script src="http://cdn.jsdelivr.net/mojs/latest/mo.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -118,9 +119,9 @@ pageEncoding="UTF-8"%>
                 <div class="calendar">
                     <div class="c-outer-gird">
                         <div class="calendar-header">
-                            <button id="prev-month">이전</button>
+                            <button id="prev-month"><i class="fa-solid fa-angle-left fa-lg"></i></button>
                             <h2 id="month-year">2023년 8월</h2>
-                            <button id="next-month">다음</button>
+                            <button id="next-month"><i class="fa-solid fa-angle-left fa-rotate-180 fa-lg"></i></button>
                         </div>
                         <div class="calendar-board">
                             <div class="calendar-grid" id="calendar-grid">
@@ -137,16 +138,21 @@ pageEncoding="UTF-8"%>
                 <!-- 모달과 관련된 코드는 그대로 둡니다 -->
 
                 <div class="event-form">
-                    <h3>일정 추가</h3>
-                    <div class="c-title">
-                        <input type="date" name="date" id="event-date">
-                        <input type="text" name="title" id="event-title" placeholder="일정 제목">
+                    <div class="outer-grid3">
+                        <div class="event-title">일정 추가</div>
+                    </div>
+                    <div class="event-box">
+                        <input type="date" id="event-date">
+                        <input type="text" id="event-title" placeholder="일정 제목">
                         <button id="add-event-button">일정 추가</button>
                     </div>
-                    <!-- 일정 목록 추가 -->
+                    <div class="event-listboxtitle">일정 목록</div>
                     <div class="event-list">
-                        <h4>일정 목록</h4>
-                        <ul id="event-list"></ul>
+                        <ul>
+                            <li>일정1</li>
+                            <li>일정2</li>
+                            <li>일정3</li>
+                        </ul>
                     </div>
                 </div>
             </div>

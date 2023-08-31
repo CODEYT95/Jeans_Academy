@@ -2,14 +2,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <html lang="ko" xmlns:c="http://java.sun.com/JSP/Page">
 <head>
     <meta charset="UTF-8">
     <title>메인</title>
-    <link rel="stylesheet" type="text/css" href="../../../resources/css/question/list.css">
+    <link rel="stylesheet" type="text/css" href="../../../resources/css/question/questionlist.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
-    <script src="http://cdn.jsdelivr.net/mojs/latest/mo.min.js"></script>
+    <script type="text/javascript" src="../../../resources/js/question/question.js"></script>
 </head>
 <body>
 <section class="header">
@@ -102,7 +103,7 @@ pageEncoding="UTF-8"%>
             <input type="text" class="search-input" placeholder="검색어를 입력하세요">
             <button class="search-button"><i class="ri-search-line"></i></button>
             <div>
-                <button class="write-button">글작성</button>
+                <a href="/question/write" class="write-button">글작성</a>
             </div>
         </div>
         <div class="box-list">
@@ -111,80 +112,16 @@ pageEncoding="UTF-8"%>
                     <h2>
                         <c:out value="${question.question_title}"/>
                     </h2>
-                    <p>
+                    <span class="clear">
                         <c:out value="${question.question_content}"/>
-                    </p>
-                </div>
-
+                    </span>
                 <c:if test="${status.index % 4 == 3 or status.last}">
                     <div style="clear: both;"></div>
                 </c:if>
+                </div>
             </c:forEach>
         </div>
-        <!----------box-list정렬-------------->
-        <script>
-            var boxCount = 0;
-            var boxes = document.querySelectorAll('.box1');
-
-            if (boxes.length > 0) {
-                if (${status.index} % 4 === 3 || ${status.last}) {
-                    boxes[boxCount].parentNode.classList.add('box-row');
-                    boxCount++;
-                }
-            }
-        </script>
-        <!-----------box-list정렬 끝----------->
     </div>
 </section>
-<!------------------검색기능--------------->
-<script>
-    $(document).ready(function() {
-        let originalBoxes = $('.box-list .box').clone(); // 처음 로드된 박스들을 복사하여 저장
-
-        $('.search-button').click(function() {
-            performSearch();
-        });
-
-        $('.search-input').keyup(function(event) {
-            if (event.keyCode === 13) { // Enter 키를 눌렀을 때
-                performSearch();
-            }
-        });
-
-        // 박스 클릭 이벤트 리스너 추가
-        $('.box-list .box').click(function() {
-            let boxTitle = $(this).find('h2').text();
-            let boxContent = $(this).find('p').text();
-            let detailURL = '상세페이지URL?title=' + encodeURIComponent(boxTitle) + '&content=' + encodeURIComponent(boxContent);
-            window.location.href = detailURL;
-        });
-
-        function performSearch() {
-            let searchKeyword = $('.search-input').val().toLowerCase();
-            let matchingBoxes = [];
-
-            originalBoxes.each(function() {
-                let boxTitle = $(this).find('h2').text().toLowerCase();
-                if (boxTitle.includes(searchKeyword)) {
-                    matchingBoxes.push($(this));
-                }
-            });
-
-            $('.box-list').empty(); // 이전 검색 결과를 제거
-
-            matchingBoxes.forEach(function(box) {
-                $('.box-list').append(box);
-            });
-                   // 필터링된 결과에 대한 박스 클릭 이벤트 리스너 추가
-        $('.box-list .box').click(function() {
-            let boxTitle = $(this).find('h2').text();
-            let boxContent = $(this).find('p').text();
-            let detailURL = '상세페이지URL?title=' + encodeURIComponent(boxTitle) + '&content=' + encodeURIComponent(boxContent);
-            window.location.href = detailURL;
-        });
-    }
-});
-</script>
-<!------------------검색기능 끝--------------->
 </body>
 </html>
