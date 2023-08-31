@@ -92,22 +92,24 @@ pageEncoding="UTF-8"%>
     </div>
     <div class="main--content">
         <div class="main-container">
-            <button class="save">저장</button>
-    <div class="title-container">
-        <div class="write-title">
-            <label>
-                <span>제목</span>
-                <textarea name="title"></textarea>
-            </label>
-        </div>
-    </div>
-        <div class="content-container">
-            <div class="write-content">
-                <span class="content-label">내용</span>
-                <div class="content" contenteditable="true"></div>
-                <input type="button" class="content-file" value="사진추가">
+            <div class="container">
+                <button class="save">저장</button>
+                <div class="title-container">
+                    <div class="write-title">
+                        <label>
+                            <span>제목</span>
+                            <textarea name="title"></textarea>
+                        </label>
+                    </div>
+                </div>
             </div>
-        </div>
+            <div class="content-container">
+                <div class="write-content">
+                    <span class="content-label">내용</span>
+                    <div class="content" contenteditable="true"></div>
+                    <input type="button" class="content-file" value="사진추가">
+                </div>
+            </div>
         </div>
     </div>
 </section>
