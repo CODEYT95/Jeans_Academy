@@ -111,12 +111,19 @@ pageEncoding="UTF-8"%>
             </div>
             <div class="reply-container">
                 <div>
-            <textarea class="reply-insert" maxlength="300"></textarea>
+                    <textarea class="reply-insert" maxlength="300"></textarea>
                 </div>
                 <div class="reply-content-container">
                     <ul>
                         <li>
-                    <p class="reply-content"></p>
+                            <div class="reply-info">
+                                <span>1반</span>
+                                <span>홍길동</span>
+                                <span>2023-08-30</span>
+                                <input type="button" class="reply-edit" value="수정">
+                                <input type="button" class="reply-delete" value="삭제">
+                            </div>
+                            <p class="reply-content">안녕하세요 댓글 테스트 중입니다 ㅎㅎㅎㅎㅎㅎㅎ</p>
                         </li>
                         <li>
                             <p class="reply-content"></p>

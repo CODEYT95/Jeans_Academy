@@ -4,6 +4,7 @@ import com.project.jeans.domain.admin.notice.dto.NoticeDTO;
 import com.project.jeans.service.admin.notice.NoticeService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -33,6 +34,14 @@ public class NoticeController {
     public ModelAndView noticeDetail(){
         return new ModelAndView("notice/noticeDetail");
     }
+
+    /*
+    @PostMapping("/notice_insert")
+    public NoticeDTO notice_insert(){
+        return NoticeDTO;
+    }
+
+     */
 
     @GetMapping("/test")
     public ModelAndView test(){

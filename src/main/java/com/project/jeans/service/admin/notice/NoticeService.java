@@ -6,4 +6,7 @@ import java.util.List;
 
 public interface NoticeService {
     public List<NoticeDTO> selectAll();
+
+    //공지사항 INSERT
+    public NoticeDTO insertNotice();
 }
