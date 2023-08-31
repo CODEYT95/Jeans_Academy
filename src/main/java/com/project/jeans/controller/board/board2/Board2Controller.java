@@ -15,7 +15,7 @@ public class Board2Controller {
 
     @GetMapping("/list")
     public String board1List(){
-        System.out.println("수정중");
+        System.out.println("수정중(git에서 수정)");
         return "/board2/board2List";
     }
 
