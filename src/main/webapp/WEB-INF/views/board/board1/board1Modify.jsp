@@ -7,7 +7,7 @@
 </head>
 <body>
 <div class="layout">
-    <form th:action="@{/board1/modify/{no}(no=${~~.no}" method="post">
+    <form th:action="@{/board/board1/modify/{no}(no=${~~.no}" method="post">
         <input name="title" type="text" th:value="#{~~~.title}">
         <textarea name="content" th:text="${~~~.content}"></textarea>
         <button type="submit">수정</button>

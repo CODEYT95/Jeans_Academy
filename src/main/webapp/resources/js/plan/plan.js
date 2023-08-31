@@ -40,6 +40,7 @@ function renderCalendar() {
         const dateCell = document.createElement("div");
         dateCell.textContent = day;
         dateCell.classList.add("date-cell");
+
 //------출석체크 기능-------------
 
 dateCell.addEventListener("click", () => {
@@ -66,24 +67,47 @@ dateCell.addEventListener("click", () => {
 //------출석체크 기능 끝----------
 
 //------이전달/다음달----------
-prevMonthButton.addEventListener("click", () => {
-    currentMonth--;
-    if (currentMonth < 0) {
-        currentMonth = 11;
-        currentYear--;
+function slideCalendar(direction) {
+    const outerGrid = document.querySelector(".calendar-board");
+
+    if (direction === "left") {
+        outerGrid.style.transform = `translateX(-10%)`;
+    } else if (direction === "right") {
+        outerGrid.style.transform = `translateX(10%)`;
     }
-    renderCalendar();
+
+    setTimeout(() => {
+        outerGrid.style.transition = "transform 0.8s ease";
+        outerGrid.style.transform = "translateX(0)";
+    }, 0);
+
+    setTimeout(() => {
+        outerGrid.style.transition = ""; // 트랜지션을 초기화하여 다음 슬라이드를 위해 준비
+    }, 500);
+}
+prevMonthButton.addEventListener("click", () => {
+    if (!prevMonthButton.disabled) {
+        currentMonth--;
+        if (currentMonth < 0) {
+            currentMonth = 11;
+            currentYear--;
+        }
+        slideCalendar("left"); // 슬라이드 방향을 오른쪽으로 설정하여 넘어가도록 함
+        renderCalendar();
+    }
 });
 
 nextMonthButton.addEventListener("click", () => {
-    currentMonth++;
-    if (currentMonth > 11) {
-        currentMonth = 0;
-        currentYear++;
+    if (!nextMonthButton.disabled) {
+        currentMonth++;
+        if (currentMonth > 11) {
+            currentMonth = 0;
+            currentYear++;
+        }
+        slideCalendar("right"); // 슬라이드 방향을 왼쪽으로 설정하여 넘어가도록 함
+        renderCalendar();
     }
-    renderCalendar();
 });
-
 renderCalendar();
 //------이전달/다음달 끝----------
 
@@ -155,7 +179,6 @@ function updateEventList() {
           eventListElement.appendChild(listItem);  
       }
   }
-
 }
 });
 $(document).ready(function() {
