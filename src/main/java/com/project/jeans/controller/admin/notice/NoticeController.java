@@ -1,12 +1,10 @@
 package com.project.jeans.controller.admin.notice;
 
-import com.project.jeans.domain.admin.notice.dao.NoticeDAO;
 import com.project.jeans.domain.admin.notice.dto.NoticeDTO;
 import com.project.jeans.service.admin.notice.NoticeService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -16,7 +14,6 @@ import java.util.List;
 @RequiredArgsConstructor
 public class NoticeController {
     private final NoticeService noticeService;
-    private final NoticeDAO noticeDAO;
 
     @GetMapping("/noticeList")
     public ModelAndView noticeList() {
@@ -38,19 +35,13 @@ public class NoticeController {
         return new ModelAndView("notice/noticeDetail");
     }
 
-
+    /*
     @PostMapping("/notice_insert")
-    public NoticeDTO notice_insert(@RequestParam("title") String title, @RequestParam("content") String content){
-        NoticeDTO noticeDTO = new NoticeDTO();
-        noticeDTO.setNotice_title(title);
-        noticeDTO.setNotice_content(content);
-        noticeDTO.setMember_name("Test");
-        noticeDTO.setMember_class("1반");
-
-        noticeDAO.insertNotice(noticeDTO);
-
-        return noticeDTO;
+    public NoticeDTO notice_insert(){
+        return NoticeDTO;
     }
+
+     */
 
     @GetMapping("/test")
     public ModelAndView test(){
