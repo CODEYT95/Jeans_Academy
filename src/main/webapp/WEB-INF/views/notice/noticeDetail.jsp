@@ -98,7 +98,7 @@ pageEncoding="UTF-8"%>
               <div id="myModal" class="modal">
                 <div class="modal-content">
                     <span class="close">&times;</span>
-                    <p>정말 삭제하시겠습니까?</p>
+                    <p>정말 삭제하시겠습니까???</p>
                     <!-- 삭제 확인 및 취소 버튼 -->
                     <div class="confirm-container">
                       <button id="confirmDelete">확인</button>
