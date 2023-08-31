@@ -2,10 +2,18 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.project.jeans.domain.admin.notice.dao.NoticeDAO">
-    <select id="selectAll" resultType="com.project.jeans.domain.admin.notice.dto.NoticeDTO">
+    <!--공지사항 목록 모두 조회-->
+    <select id="selectAll" resultType="NoticeDTO">
         <![CDATA[
         SELECT *
         FROM notice
         ]]>
     </select>
+    <!--공지사항 INSERT-->
+    <insert id="insertNotice" parameterType="NoticeDTO">
+        <![CDATA[
+        INSERT INTO notice (notice_title, notice_content, member_class)
+        VALUES (#{notice_title}, #{notice_content}, #{member_class});
+        ]]>
+    </insert>
 </mapper>
