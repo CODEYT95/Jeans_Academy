@@ -3,7 +3,6 @@ package com.project.jeans.controller.board.board1;
 import com.project.jeans.domain.board.board1.dto.Board1DTO;
 import com.project.jeans.domain.board.board1.dto.Comment1DTO;
 import com.project.jeans.service.board.board1.Board1Service;
-import com.project.jeans.service.board.board1.Board1ServiceImpl;
 import com.project.jeans.service.board.board1.Comment1ServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
