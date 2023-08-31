@@ -91,25 +91,29 @@ pageEncoding="UTF-8"%>
         </ul>
     </div>
     <div class="main--content">
+      <span class="category-label">내용</span>
         <div class="main-container">
+          <form method="post" action="/notice_insert">
             <div class="container">
                 <button class="save">저장</button>
                 <div class="title-container">
                     <div class="write-title">
                         <label>
                             <span>제목</span>
-                            <textarea name="title"></textarea>
+                            <textarea name="title" required></textarea>
                         </label>
                     </div>
                 </div>
             </div>
-            <div class="content-container">
-                <div class="write-content">
-                    <span class="content-label">내용</span>
-                    <div class="content" contenteditable="true"></div>
-                    <input type="button" class="content-file" value="사진추가">
-                </div>
-            </div>
+              <div class="content-container">
+                  <div class="write-content">
+                      <span class="content-label">내용</span>
+                      <input type="file" id="photo-input" accept="image/gif, image/jpeg, image/png, image/webp" multiple style="display: none;">
+                      <div class="content" name="content" contenteditable="true"></div>
+                      <input type="button" class="content-file" value="사진추가">
+                  </div>
+              </div>
+          </form>
         </div>
     </div>
 </section>

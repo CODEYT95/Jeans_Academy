@@ -18,7 +18,8 @@ public class NoticeServiceImpl implements NoticeService {
 
     //공지사항 INSERT
     @Override
-    public NoticeDTO insertNotice() {
-        return noticeDAO.insertNotice();
+    public int insertNotice(NoticeDTO noticeDTO) {
+        return noticeDAO.insertNotice(noticeDTO);
     }
+
 }

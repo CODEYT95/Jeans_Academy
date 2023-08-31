@@ -111,7 +111,7 @@ pageEncoding="UTF-8"%>
                         <li>
                             <span class="no">${notice.notice_no}</span>
                             <a class="view-link">
-                                <span class="title">${notice.notice_title}</span>
+                                <span class="title">${notice.notice_content}</span>
                             </a>
                             <div class="writer-container">
                                 <span class="writer">${notice.member_name}</span>
