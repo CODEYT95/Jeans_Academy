@@ -17,30 +17,16 @@ public class MessageController {
 
     private final MessageService messageService;
 
-    /* 메시지 목록 조회(수신함) */
-    @GetMapping("/messageReceiveList")
+    /* 메시지 목록 조회(수신함) 및 목록 조회(발신함)*/
+    @GetMapping("/messageList")
     public String selectReceiveMessage(Model model){
         //파라미터 : 로그인한 회원 넘기기 <mapper에서 바꿔주기>
-        List<MessageDTO> messageDTOs = messageService.selectReceiveMessage();
-        model.addAttribute("messageDTO",messageDTOs);
-        return "/message/messageReceiveList";
+        List<MessageDTO> messageRecDTO = messageService.selectReceiveMessage();
+        model.addAttribute("messageRecDTO",messageRecDTO);
+        List<MessageDTO> messageSendDTO = messageService.selectSendMessage();
+        model.addAttribute("messageSendDTO",messageSendDTO);
+        return "/message/messageList";
     }
-
-    /* 메시지 목록 조회(발신함)*/
-    @GetMapping("/messageSendList")
-    public String selectSendMessage(Model model){
-        //파라미터 : 로그인한 회원 넘기기 <mapper에서 바꿔주기>
-        List<MessageDTO> messageDTOs = messageService.selectSendMessage();
-        model.addAttribute("messageDTO",messageDTOs);
-        return "/message/messageSendList";
-    }
-
-
-
-
-
-
-
 
 
 }

@@ -106,15 +106,29 @@
         </div>
 
     <div class="main--content">
-        <h2>메시지 수신함</h2>
 
-        <div class="boxes">
-            <c:forEach var="messageDTO" items="${messageDTO}">
-                <div class="box">
-                    <a href="/message/messageReceiveList/${messageDTO.message_title}">${messageDTO.message_title}</a>
-                    <p>${board1List.board1_content}</p>
-                </div>
-            </c:forEach>
+        <div class="messageRec--content">
+            <h2>메시지 수신함</h2>
+            <div class="boxes">
+                <c:forEach var="messageRecDTO" items="${messageRecDTO}">
+                    <div class="box">
+                        <a href="/message/messageList/${messageRecDTO.message_title}">${messageRecDTO.message_title}</a>
+                        <p>${messageRecDTO.message_content}</p>
+                    </div>
+                </c:forEach>
+            </div>
+        </div>
+
+        <div class="messageSend--content">
+            <h2>메시지 발신함</h2>
+            <div class="boxes">
+                <c:forEach var="messageSendDTO" items="${messageSendDTO}">
+                    <div class="box">
+                        <a href="/message/messageList/${messageSendDTO.message_title}">${messageSendDTO.message_title}</a>
+                        <p>${messageSendDTO.message_content}</p>
+                    </div>
+                </c:forEach>
+            </div>
         </div>
 
     </div>
