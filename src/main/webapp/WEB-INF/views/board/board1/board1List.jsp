@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html xmlns:c="http://java.sun.com/JSP/Page">
 <head>
     <meta charset="UTF-8">
@@ -135,14 +136,14 @@
 
         <div class = "image-container">
             <div class="image">
-                <img src="" alt="이미지">
+                <img src="#" alt="이미지">
             </div>
         </div>
 
         <div class = "carousel-container">
             <div class="carousel">
                 <div class="carousel-inner">
-                    <button class="carousel-btn prev-btn" onclick="moveSlide(-1)">&lt;</button>
+                    <button class="carousel-btn prev-btn" onclick="moveSlide(-1)"></button>
                     <c:forEach var="board" items="${board1List}">
                         <div class="carousel-item">
                             <a href="/board1/detail/${board.board1_no}">${board.board1_title}</a>
@@ -154,7 +155,7 @@
             </div>
         </div>
 
-        <div class = "class--conatiner">
+        <div class = "class--container">
             <div class="boxes">
                 <c:forEach var="board1List" items="${board1List}">
                     <div class="box">

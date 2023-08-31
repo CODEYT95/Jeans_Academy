@@ -10,5 +10,7 @@ import java.util.List;
 @Repository
 public interface QuestionDAO {
     List<QuestionDTO> selectQuestionAll();
+
+    public int insertQuestion(QuestionDTO questionDTO);
 }
 
