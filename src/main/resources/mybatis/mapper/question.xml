@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.project.jeans.domain.question.dao.QuestionDAO">
+    <select id="selectQuestionAll" resultType="com.project.jeans.domain.question.dto.QuestionDTO">
+        <![CDATA[
+    SELECT question_no, question_title, question_content,
+           question_regdate, member_name, member_class FROM QUESTION;
+    ]]>
+    </select>
+</mapper>

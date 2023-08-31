@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.project.jeans.domain.plan.dao.PlanDAO">
+    <select id="selectPlanAll" resultType="com.project.jeans.domain.plan.dto.PlanDTO">
+        <![CDATA[
+    select plan_no, plan_title, plan_content, plan_regdate from plan;
+    ]]>
+    </select>
+</mapper>

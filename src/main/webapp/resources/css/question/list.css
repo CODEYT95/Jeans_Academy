@@ -1,0 +1,351 @@
+   @import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap');
+   @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Roboto', sans-serif;
+        }
+        body {
+            position: relative;
+            width: 100%;
+        }
+        .header {
+            height: 60px;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            border-bottom: 2px solid #F1F1F1;
+            background-color: #FDF9EE;
+            border: none;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            width: 300px;
+            padding-left: 40px;
+        }
+        .logo span {
+            color: #5073FB;
+        }
+        .search--notification--profile {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            width: calc(100% - 300px);
+            padding: 0 40px;
+        }
+        .notification--profile {
+            display: flex;
+            align-items: center;
+        }
+        .picon {
+            margin-left: 20px;
+            font-size: 1.1rem;
+            padding: 5px;
+            border-radius: 5px;
+        }
+        .bell {
+            color: #F1D243;
+            background-color: rgba(241, 210, 67, .2);
+        }
+        .chat {
+            color: #70D7A5;
+            background-color: rgba(112, 215, 165, .2);
+        }
+        .profile {
+            position: relative;
+            width: 100%;
+            overflow: auto;
+        }
+        .profile span{
+        font-family: 'Do Hyeon', sans-serif;
+        }
+        img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .main {
+            position: relative;
+            width: 100%;
+            min-height: calc(100vh - 60px);
+        }
+        /* sidebar */
+        .sidebar--item{
+        font-family: 'Do Hyeon', sans-serif;
+        }
+        .sidebar {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 300px;
+            background-color: #FDF9EE;
+            border: none;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: .5s;
+        }
+        .sidebar.active {
+            width: 103px;
+            overflow: hidden;
+        }
+        .sidebar.active .sidebar--item {
+            display: none;
+        }
+        li {
+            list-style: none;
+        }
+        a {
+            text-decoration: none;
+        }
+        .sidebar--items a,
+        .sidebar--bottom-items a {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+            color: #000;
+            padding: 10px;
+            border-radius: 10px;
+        }
+        .sidebar--items a:hover,
+        .sidebar--bottom-items a:hover {
+            background-color: #5073FB;
+            color: #fff;
+        }
+        #active--link {
+            background-color: #5073FB;
+            color: #fff;
+        }
+        .sidebar--bottom-items li:last-child a {
+            margin-bottom: 0;
+        }
+        .icon {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 20px;
+            font-size: 1.3rem;
+        }
+        .icon-0 {
+            color: #5073FB;
+        }
+        .icon-1 {
+            color: #C5BC58;
+        }
+        .icon-2 {
+            color: #A280E9;
+        }
+        .icon-3 {
+            color: #85ADE3;
+        }
+        .icon-4 {
+            color: #E36AC8;
+        }
+        .icon-5 {
+            color: #70D7A5;
+        }
+        .icon-6 {
+            color: #5F5CE0;
+        }
+        .icon-7 {
+            color: #E86786;
+        }
+        .icon-8 {
+            color: #F1D243;
+        }
+        .icon-9 {
+                color: #585858;
+        }
+        /* main--content */
+        .main--content {
+            position: absolute;
+            top: 0;
+            right: 0;
+            height: 100%;
+            width: calc(100% - 300px);
+            padding: 0 40px;
+            overflow-y: auto;
+            transition: .1s;
+        }
+        .main--content.active {
+            width: calc(100% - 103px);
+        }
+        @media screen and (max-width:1024px) {
+            table {
+                min-width: 600px;
+            }
+        }
+        @media screen and (max-width:768px) {
+            .logo {
+                padding-left: 30px;
+                width: fit-content;
+            }
+            .search--notification--profile {
+                padding: 0 20px;
+                margin-left: auto;
+            }
+            .main--content {
+                padding: 0 20px;
+            }
+            .sidebar {
+                padding: 20px;
+            }
+            .sidebar.active {
+                width: 85px;
+            }
+            .main--content.active {
+                width: calc(100% - 85px);
+            }
+        }
+        @media screen and (max-width:590px) {
+            .lock,
+            .chat {
+                display: none;
+            }
+            .notification--profile {
+                margin-left: auto;
+            }
+            .search--notification--profile {
+                width: fit-content;
+            }
+            .sidebar {
+                transform: translateX(-100%);
+                z-index: 10;
+                background-color: #fff;
+            }
+            .sidebar.active {
+                transform: translateX(0);
+                width: 300px;
+            }
+            .sidebar.active .sidebar--item {
+                display: block;
+            }
+            .main--content {
+                width: calc(100% - 0px);
+            }
+            .main--content.active {
+                width: calc(100% - 0px);
+            }
+        }
+        @media screen and (max-width:450px) {
+            .main--content {
+                padding: 0 10px;
+            }
+            .logo {
+                padding-left: 10px;
+            }
+            .search--notification--profile {
+                padding: 0 10px;
+            }
+            .sidebar {
+                padding: 10px;
+            }
+        }
+        .main--content{
+  border-color:#FDF9EE;
+}
+.title-box{
+    display: flex;
+    padding: 10px;
+    margin-right: auto;
+    margin-top:30px;
+    justify-content: center;
+}
+.title{
+  font-size:50px;
+}
+.box-list {
+  display: flex;
+      justify-content: space-around;
+      margin-top: 50px;
+      height: auto;
+      width: 90%;
+      margin-right: auto;
+      margin-left: auto;
+      flex-wrap: wrap;
+      gap: 10px;
+}
+.box {
+    padding: 10px;
+    width: calc(25% - 20px);
+    margin: 10px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+    border-radius: 8px;
+    transition: background-color 0.3s, border 0.3s;
+}
+.box:hover {
+  background-color:rgb(130,205,237)
+
+  border: 1px solid #ffcc00;
+  box-shadow: 0px 4px 8px rgba(255, 204, 0, 0.5);
+  transform: scale(1.1);
+}
+
+.box-list::after {
+    content: "";
+    flex: auto;
+}
+.box1, .box2, .box3, .box4{
+    padding: 10px;
+    margin-right: auto;
+    height:auto;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+    border-radius:8px;
+    background-color:rgba(211, 248, 245, 1);
+}
+.box1{
+  background-color:rgba(211, 248, 245, 1);
+}
+.box2{
+  background-color:rgba(235, 233, 251, 1);
+}
+.box3{
+  background-color:rgba(233, 251, 233, 1);
+}
+.box4{
+  background-color:rgba(243, 249, 216, 1);
+}
+  .search-box {
+    padding: initial;
+    display: flex;
+    align-items: center;
+    margin-top: 40px;
+    width: 600px;
+    margin-left:auto;
+    margin-right:auto;
+}
+.search-input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+}
+.search-button {
+    background-color: #5073FB;
+    border: none;
+    color: #fff;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+.write-button{
+    width:100px;
+    background-color: #5073FB;
+    border: none;
+    color: #fff;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
