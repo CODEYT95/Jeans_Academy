@@ -13,5 +13,5 @@ public interface NoticeDAO {
     List<NoticeDTO> selectAll();
 
     //공지사항 INSERT
-    NoticeDTO insertNotice();
+    int insertNotice(NoticeDTO noticeDTO);
 }
