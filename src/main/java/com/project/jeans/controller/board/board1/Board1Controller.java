@@ -29,7 +29,7 @@ public class Board1Controller {
     public String getBoard1List(Model model){
         List<Board1DTO> board1DTOList = board1ServiceImpl.getBoard1List();
         model.addAttribute("board1List", board1DTOList);
-        return "/board1/board1List";
+        return "/board/board1/board1List";
     }
 
     //반별 게시글 상세 조회 및 게시글 관련 댓글 조회
@@ -39,14 +39,14 @@ public class Board1Controller {
         Board1DTO board1DTO = board1ServiceImpl.getBoard1Detail(board1_no);
         model.addAttribute("board1DTO", board1DTO);
         List<Comment1DTO> comment1DTO = comment1ServiceImpl.getComment1List(board1_no);
-        model.addAttribute("commentDTOs",comment1DTO);
-        return "/board1/board1Detail";
+        model.addAttribute("comment1DTO",comment1DTO);
+        return "/board/board1/board1Detail";
     }
 
     //반별 게시글 작성(폼)
     @RequestMapping(value="/write", method=RequestMethod.GET)
     public String writeBoard1Form(){
-        return "/board1/board1Write";
+        return "/board/board1/board1Write";
     }
 
     /* member_name, member_class 연동되면 삭제할 예정*/
@@ -67,7 +67,7 @@ public class Board1Controller {
     public String modifyBoard1Form(@RequestParam int board1_no, Model model){
         Board1DTO board1DTO = board1ServiceImpl.getBoard1Detail(board1_no);
         model.addAttribute("board1DTO", board1DTO);
-        return "/board1/board1ModifySub";
+        return "/board/board1/board1ModifySub";
     }
 
     //반별 게시글 수정

@@ -4,12 +4,10 @@ import lombok.*;
 
 import java.sql.Timestamp;
 
-@Getter
-@Setter
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-
 public class Comment1DTO {
     private int board1_no;
     private String comment1_content;
@@ -18,5 +16,4 @@ public class Comment1DTO {
     private Timestamp comment1_regdate;
     private String member_class;
     private String member_name;
-
 }
