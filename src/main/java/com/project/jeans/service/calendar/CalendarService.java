@@ -1,15 +1,10 @@
-package com.project.jeans.domain.calendar.dao;
+package com.project.jeans.service.calendar;
 
 import com.project.jeans.domain.calendar.dto.CalendarDTO;
-import org.apache.ibatis.annotations.Mapper;
-import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-@Mapper
-@Repository
-public interface CalendarDAO {
-
+public interface CalendarService {
     public List<CalendarDTO> selectCalendar(String member_id);
     public int insertEvent(CalendarDTO calendarDTO);
 }

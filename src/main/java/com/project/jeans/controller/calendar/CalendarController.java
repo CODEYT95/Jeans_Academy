@@ -1,6 +1,8 @@
 package com.project.jeans.controller.calendar;
 
 import com.project.jeans.domain.calendar.dto.CalendarDTO;
+import com.project.jeans.service.calendar.CalendarService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -10,25 +12,23 @@ import java.util.List;
 @Controller
 @RequestMapping("/calendar")
 public class CalendarController {
-    private List<CalendarDTO> events = new ArrayList<>();
 
-    @GetMapping
-    public String showCalendarPage() {
-        return "calendar"; // 웹 페이지 이름 (calendar.html) 리턴
+    @Autowired
+    private final CalendarService calendarService;
+
+
+    public CalendarController(CalendarService calendarService) {
+        this.calendarService = calendarService;
+    }
+    @GetMapping("/{member_id}")
+    public List<CalendarDTO> getEventsByUserId(@PathVariable String member_id) {
+        return calendarService.selectCalendar(member_id);
     }
 
-    @GetMapping("/events")
-    @ResponseBody
-    public List<CalendarDTO> getAllEvents() {
-        return events;
-    }
+    @PostMapping("/inertCalendar")
+    public int insertEvent(
+            CalendarDTO calendarDTO){
 
-    @PostMapping("/events")
-    @ResponseBody
-    public CalendarDTO createEvent(@RequestBody CalendarDTO event) {
-
-        CalendarDTO Calendar = null;
-        events.add(Calendar);
-        return Calendar;
+        return calendarService.insertEvent(calendarDTO);
     }
 }

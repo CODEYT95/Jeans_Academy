@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<html lang="ko" xmlns:c="http://java.sun.com/JSP/Page" xmlns:th="http://www.w3.org/1999/xhtml">
+<html xmlns:c="">
 <head>
     <meta charset='utf-8'/>
     <title>메인</title>
@@ -22,795 +21,15 @@ pageEncoding="UTF-8"%>
             rel="stylesheet"
             href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"
     />
-
     <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap');
-        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Roboto', sans-serif;
-        }
-        body {
-            position: relative;
-            width: 100%;
-        }
-        .header {
-            position: fixed;
-            z-index: 9999;
-            height: 60px;
-            width: 100%;
-            display: flex;
-            align-items: center;
-            border-bottom: 2px solid #F1F1F1;
-            background-color: #ebf3ff;
-            border: none;
-            box-shadow: 11px 3px 16px #0000000d;
-        }
-        .logo {
-            display: flex;
-            align-items: center;
-            width: 300px;
-            padding-left: 40px;
-        }
-        .logo span {
-            color: #5073FB;
-        }
-        .search--notification--profile {
-            display: flex;
-            align-items: center;
-            justify-content: flex-end;
-            width: calc(100% - 300px);
-            padding: 0 40px;
-        }
-        .notification--profile {
-            display: flex;
-            align-items: center;
-        }
-        .picon {
-            margin-left: 20px;
-            font-size: 1.1rem;
-            padding: 5px;
-            border-radius: 5px;
-        }
-        .bell {
-            color: #F1D243;
-            background-color: rgba(241, 210, 67, .2);
-        }
-        .chat {
-            color: #70D7A5;
-            background-color: rgba(112, 215, 165, .2);
-        }
-        .profile {
-            position: relative;
-            width: 100%;
-            overflow: auto;
-        }
-        .profile span{
-        font-family: 'Do Hyeon', sans-serif;
-        }
-        img {
+    <link rel="stylesheet" type="text/css" href="../../../resources/css/main/main.css">
 
-            width: 100%;
-            height: 100%;
-            border-radius:24px;
-        }
-        .main {
-            position: relative;
-            width: 100%;
-            min-height: calc(100vh - 60px);
-        }
-        /* sidebar */
-        .sidebar--item{
-        font-family: 'Do Hyeon', sans-serif;
-        }
-        .sidebar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            height: 100%;
-            width: 300px;
-            background-color: #f2f7fb;
-            border: none;
-            padding: 30px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            transition: .5s;
-            overflow-y: scroll;
-            box-shadow: 11px 3px 16px #0000000d;
-        }
-	    .sidebar--items{
-            margin-top: 60px;
-        }
-        .sidebar::-webkit-scrollbar {
-            display: none;
-        }
-        .sidebar.active {
-            width: 103px;
-            overflow-y: scroll;
-        }
-        .sidebar.active::-webkit-scrollbar{
-            display: none;
-        }
-        .sidebar.active .sidebar--item {
-            display: none;
-        }
-        li {
-            list-style: none;
-        }
-        a {
-            text-decoration: none;
-        }
-        .sidebar--items a,
-        .sidebar--bottom-items a {
-            display: flex;
-            align-items: center;
-            margin-bottom: 10px;
-            font-size: 1.1rem;
-            color: #000;
-            padding: 10px;
-            border-radius: 10px;
-        }
-        .sidebar--items a:hover,
-        .sidebar--bottom-items a:hover {
-            background-color: #5073FB;
-            color: #fff;
-        }
-        #active--link {
-            background-color: #5073FB;
-            color: #fff;
-        }
-        .sidebar--bottom-items li:last-child a {
-            margin-bottom: 0;
-        }
-        .icon {
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: 20px;
-            font-size: 1.3rem;
-        }
-        .icon-0 {
-            color: #5073FB;
-        }
-        .icon-1 {
-            color: #C5BC58;
-        }
-        .icon-2 {
-            color: #A280E9;
-        }
-        .icon-3 {
-            color: #85ADE3;
-        }
-        .icon-4 {
-            color: #E36AC8;
-        }
-        .icon-5 {
-            color: #70D7A5;
-        }
-        .icon-6 {
-            color: #5F5CE0;
-        }
-        .icon-7 {
-            color: #E86786;
-        }
-        .icon-8 {
-            color: #F1D243;
-        }
-        .icon-9 {
-                color: #585858;
-        }
-        /* main--content */
-        .main--content {
-            position: absolute;
-            top: 0;
-            right: 0;
-            height: 100%;
-            width: calc(100% - 300px);
-            padding: 14px 50px;
-            overflow-y: auto;
-            transition: .1s;
-	    margin-top: 60px;
-        }
-        .main--content.active {
-            width: calc(100% - 103px);
-        }
-        @media screen and (max-width:1024px) {
-            table {
-                min-width: 600px;
-            }
-        }
-        @media screen and (max-width:768px) {
-            .logo {
-                padding-left: 30px;
-                width: fit-content;
-            }
-            .search--notification--profile {
-                padding: 0 20px;
-                margin-left: auto;
-            }
-            .main--content {
-                padding: 0 20px;
-            }
-            .sidebar {
-                padding: 20px;
-            }
-            .sidebar.active {
-                width: 85px;
-            }
-            .main--content.active {
-                width: calc(100% - 85px);
-            }
-        }
-        @media screen and (max-width:590px) {
-            .lock,
-            .chat {
-                display: none;
-            }
-            .notification--profile {
-                margin-left: auto;
-            }
-            .search--notification--profile {
-                width: fit-content;
-            }
-            .sidebar {
-                transform: translateX(-100%);
-                z-index: 10;
-                background-color: #fff;
-            }
-            .sidebar.active {
-                transform: translateX(0);
-                width: 300px;
-            }
-            .sidebar.active .sidebar--item {
-                display: block;
-            }
-            .main--content {
-                width: calc(100% - 0px);
-            }
-            .main--content.active {
-                width: calc(100% - 0px);
-            }
-        }
-        @media screen and (max-width:450px) {
-            .main--content {
-                padding: 0 10px;
-            }
-            .logo {
-                padding-left: 10px;
-            }
-            .search--notification--profile {
-                padding: 0 10px;
-            }
-            .sidebar {
-                padding: 10px;
-            }
-        }
     </style>
-    <!-- 절취선-->
-    <style>
+    <script>
 
-        .main-container{
-              display: flex;
-              width: 100%;
-              height: 100%;
-          }
-          .contents{
-              width: 100%;
-              height: 100%;
-              display: flex;
-          }
-          .img-notice{
-              width: 40%;
-              display: flex;
-              height: 100%;
-              flex-direction: column;
-              left:50px;
 
-          }
-          .box-img{
-              width: 95%;
-              height: 83%;
-              margin-bottom: 24px;
-              border: 1px solid;
-              border-radius: 24px;
+    </script>
 
-            border: 0px solid rgba(0, 0, 0, 0.125);
-            border-radius: 1rem;
-            box-shadow: rgba(0, 0, 0, 0.05) 0rem 1.25rem 1.6875rem 0rem;
-            overflow-wrap: break-word;
-            min-width: 0px;
-            color: rgba(0, 0, 0, 0.87);
-            transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-            overflow: hidden;
-          justify-content: center;
-          }
-
-          .box-notice{
-              width: 100%;
-              height: 100%;
-              border: 1px solid;
-              border-radius: 24px;
-                 text-align: left;
-
-
-           border: 0px solid rgba(0, 0, 0, 0.125);
-            border-radius: 1rem;
-            box-shadow: rgba(0, 0, 0, 0.05) 0rem 1.25rem 1.6875rem 0rem;
-            overflow-wrap: break-word;
-            min-width: 0px;
-            color: rgba(0, 0, 0, 0.87);
-            transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-            overflow: hidden;
-          justify-content: center;
-          }
-          .title {
-          color: white; /* 원하는 폰트 컬러 값으로 변경 */
-          text-align: left; /* 왼쪽 정렬 스타일 적용 */
-      }
-
-.olcards * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-.olcards {
-  list-style: none;
-  counter-reset: cardCount;
-  font-family: sans-serif;
-  display: flex;
-  flex-direction: column;
-  --cardsGap: 1rem;
-  gap: var(--cardsGap);
-  padding-bottom: var(--cardsGap);
-  max-width: 100%;
-   margin: 0 auto;
-}
- .olcards li {
-  counter-increment: cardCount;
-    display: flex;
-    color: white;
-    --labelOffset: 1rem;
-    --arrowClipSize: 1.5rem;
-    margin-top: var(--labelOffset);
-    height: 50px;
-    width: 100%;
-    flex-direction: row;
-    justify-content: center;
-}
- .olcards li::before {
-  content: counter(cardCount, decimal-leading-zero);
-  background: white;
-  color: var(--cardColor);
-  font-size: 2em;
-  font-weight: 700;
-  transform: translateY(calc(-1 * var(--labelOffset)));
-  margin-right: calc(-1 * var(--labelOffset));
-  z-index: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding-inline: 0.5em;
-}
-.olcards li .content {
-
-  background-color: var(--cardColor);
-  --inlinePadding: 9em;
-  --boxPadding: 0.5em;
-  display: grid;
-  padding: var(--boxPadding) calc(var(--inlinePadding) + var(--arrowClipSize))
-    var(--boxPadding) calc(var(--inlinePadding) + var(--labelOffset));
-  grid-template-areas:
-    "icon title"
-    "icon text";
-  gap: 0.25em 1em;
-  clip-path: polygon(
-    0 0,
-    calc(100% - var(--arrowClipSize)) 0,
-    100% 50%,
-    calc(100% - var(--arrowClipSize)) 100%,
-    calc(100% - var(--arrowClipSize)) calc(100% + var(--cardsGap)),
-    0 calc(100% + var(--cardsGap))
-  );
-  position: relative;
-}
-
-
-.olcards li .content::before {
-  content: "";
-  position: absolute;
-  width: var(--labelOffset);
-  height: var(--labelOffset);
-  background: var(--cardColor);
-  left: 0;
-  bottom: 0;
-  clip-path: polygon(0 0, 100% 0, 0 100%);
-  filter: brightness(0.75);
-}
-        .olcards li .content::after {
-  content: "";
-  position: absolute;
-  height: var(--cardsGap);
-  width: var(--cardsGap);
-  background: linear-gradient(to right, rgba(0, 0, 0, 0.25), transparent 50%);
-  left: 0;
-  top: 100%;
-}
-        .olcards li .icon {
-  grid-area: icon;
-  align-self: center;
-}
-.olcards li .content .title {
-  grid-area: title;
-  font-size: 1.25em;
-  font-weight: 600;
-
-}
-.olcards li .content .text {
-  grid-area: text;
-
-}
-
-
-          .board-class{
-              padding: 0px 19px;
-              width: 32%;
-              height: 100%;
-
-
-          }
-
-
-          .class-1{
-              width: 100%;
-              height: 23%;
-              margin-bottom: 21px;
-              border: 1px solid;
-              border-radius: 24px;
-              background-color : rgba(211, 248, 245, 1);
-
-
-
-            border: 0px solid rgba(0, 0, 0, 0.125);
-            border-radius: 1rem;
-            box-shadow: rgba(0, 0, 0, 0.05) 0rem 1.25rem 1.6875rem 0rem;
-            overflow-wrap: break-word;
-            min-width: 0px;
-            color: rgba(0, 0, 0, 0.87);
-            transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-            overflow: hidden;
-            justify-content: center;
-          }
-
- .class-1 h2 {
-       font-family: "Poppins", sans-serif;
-        color: #4A148C;
-
-    }
-
-
-          .class-2{
-              width: 100%;
-              height: 23%;
-              margin-bottom: 21px;
-              border: 1px solid;
-              border-radius: 24px;
-              background-color : rgba(235, 233, 251, 1);
-
-            border: 0px solid rgba(0, 0, 0, 0.125);
-            border-radius: 1rem;
-            box-shadow: rgba(0, 0, 0, 0.05) 0rem 1.25rem 1.6875rem 0rem;
-            overflow-wrap: break-word;
-            min-width: 0px;
-            color: rgba(0, 0, 0, 0.87);
-            transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-            overflow: hidden;
-            justify-content: center;
-          }
-
-          .class-2 h2 {
-       font-family: "Poppins", sans-serif;
-        color: #EC407A;
-
-    }
-
-         .class-3{
-              width: 100%;
-              height: 23%;
-              margin-bottom: 21px;
-              border: 1px solid;
-              border-radius: 24px;
-              background-color : rgba(233, 251, 233, 1);
-
-            border: 0px solid rgba(0, 0, 0, 0.125);
-            border-radius: 1rem;
-            box-shadow: rgba(0, 0, 0, 0.05) 0rem 1.25rem 1.6875rem 0rem;
-            overflow-wrap: break-word;
-            min-width: 0px;
-            color: rgba(0, 0, 0, 0.87);
-            transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-            overflow: hidden;
-            justify-content: center;
-          }
-
-          .class-3 h2 {
-       font-family: "Poppins", sans-serif;
-        color: #64B5F6;
-
-    }
-
-         .class-4{
-              width: 100%;
-              height: 23%;
-              margin-bottom: 21px;
-              border: 1px solid;
-              border-radius: 24px;
-              background-color : rgba(243, 249, 216, 1);
-
-            border: 0px solid rgba(0, 0, 0, 0.125);
-            border-radius: 1rem;
-            box-shadow: rgba(0, 0, 0, 0.05) 0rem 1.25rem 1.6875rem 0rem;
-            overflow-wrap: break-word;
-            min-width: 0px;
-            color: rgba(0, 0, 0, 0.87);
-            transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-            overflow: hidden;
-            justify-content: center;
-          }
-
-          .class-4 h2 {
-       font-family: "Poppins", sans-serif;
-color: #4A148C;
-
-    }
-
-          .plan-game{
-              width: 28%;
-              height: 100%;
-          }
-
-          .plan-container{
-              width: 100%;
-              height: 50%;
-              border: 1px solid;
-              border-radius: 24px;
-              margin-bottom: 10px;
-
-    border: 0px solid rgba(0, 0, 0, 0.125);
-    border-radius: 1rem;
-    box-shadow: rgba(0, 0, 0, 0.05) 0rem 1.25rem 1.6875rem 0rem;
-    overflow-wrap: break-word;
-    min-width: 0px; /* 최대 너비 제한 */
-    color: rgba(0, 0, 0, 0.87);
-    transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-    overflow: hidden;
-
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-
-    background-color: rgb(255, 255, 255);
-    background-clip: border-box;
-    justify-content: flex-start;
-          }
-
-          .fc .fc-toolbar.fc-header-toolbar {
-          margin-top: 10px;
-          margin-bottom: 10px;
-          margin-right: 10px;
-          margin-left: 10px;
-          }
-          .fc .fc-toolbar {
-          display: flex;
-              justify-content: space-between;
-              align-items: center;
-              font-size: 12px;
-          }
-
-
-          .game-container{
-              width: 100%;
-              height: 48%;
-              border: 1px solid;
-          }
-
-
-    /* body 스타일 */
-    .calendar {
-      overflow: hidden;
-      font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
-      font-size: 3px;
-       height: 50%;
-    }
-    /* 캘린더 위의 해더 스타일(날짜가 있는 부분) */
-    .fc-header-toolbar {
-      padding-top: 1em;
-      padding-left: 1em;
-      padding-right: 1em;
-
-    }
-
-        #calendar {
-            margin: 0 auto;
-          }
-      .fc .fc-toolbar.fc-header-toolbar {
-          margin-top: 10px;
-          margin-bottom: 10px;
-          margin-right: 10px;
-          margin-left: 10px;
-          }
-          .fc .fc-toolbar {
-          display: flex;
-              justify-content: space-between;
-              align-items: center;
-              font-size: 12px;
-          }
-
-    .fc .fc-button {
-
-      line-height: 0.5;
-
-  }
-        .img-slider{
-  position: relative;
-  width: 100%;
-  height: 100%;
-  background: #5679d026;
-}
-
-.img-slider .slide {
-  z-index: 1;
-  position: absolute;
-  width: 100%;
-  transform: translateX(100%);
-}
-
-.img-slider .slide.active {
-  width: 100%;
-  height: 100%;
-  transform: translateX(0);
-  transition: 2s;
-  transition-property: transform;
-}
-
-.img-slider .slide img{
-  z-index: 1;
-  width: 100%;
-  border-radius: 5px;
-}
-
-.img-slider .slide .info{
-  position: absolute;
-  top: 0;
-  padding: 15px 30px;
-}
-
-.img-slider .slide{
-  color: #fff;
-  font-size: 45px;
-  text-transform: uppercase;
-  font-weight: 800;
-  letter-spacing: 2px;
-}
-
-.img-slider .slide{
-  color: #fff;
-  background: rgba(0, 0, 0, 0.1);
-  font-size: 16px;
-  border-radius: 4px;
-}
-
-.img-slider .navigation{
-  z-index: 2;
-  position: absolute;
-  display: flex;
-  bottom: 30px;
-  left: 50%;
-  transform: translateX(-50%);
-}
-
-.img-slider .navigation .btn{
-  background: rgba(255, 255, 255, 0.5);
-  width: 12px;
-  height: 12px;
-  margin: 10px;
-  border-radius: 50%;
-  cursor: pointer;
-}
-
-.img-slider .navigation .btn.active{
-  background: #2696E9;
-  box-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
-}
-
-@media (max-width: 820px){
-  .img-slider{
-    width: 600px;
-    height: 375px;
-  }
-
-  .img-slider .slide .info{
-    padding: 10px 25px;
-  }
-
-  .img-slider .slide{
-    font-size: 35px;
-  }
-
-  .img-slider .slide{
-    width: 70%;
-    font-size: 15px;
-  }
-
-  .img-slider .navigation{
-    bottom: 25px;
-  }
-
-  .img-slider .navigation .btn{
-    width: 10px;
-    height: 10px;
-    margin: 8px;
-  }
-}
-
-@media (max-width: 620px){
-  .img-slider{
-    width: 400px;
-    height: 250px;
-  }
-
-  .img-slider .slide .info{
-    padding: 10px 20px;
-  }
-
-  .img-slider .slide{
-    font-size: 30px;
-  }
-
-  .img-slider .slide{
-    width: 80%;
-    font-size: 13px;
-  }
-
-  .img-slider .navigation{
-    bottom: 15px;
-  }
-
-  .img-slider .navigation .btn{
-    width: 8px;
-    height: 8px;
-    margin: 6px;
-  }
-}
-
-@media (max-width: 420px){
-  .img-slider{
-    width: 320px;
-    height: 200px;
-  }
-
-  .img-slider .slide .info{
-    padding: 5px 10px;
-  }
-
-  .img-slider .slide{
-    font-size: 25px;
-  }
-
-  .img-slider .slide{
-    width: 90%;
-    font-size: 11px;
-  }
-
-  .img-slider .navigation{
-    bottom: 10px;
-  }
-    </style>
 
     <script>
         $(document).ready(function() {
@@ -860,11 +79,12 @@ color: #4A148C;
               select: function(info) { // 캘린더에서 드래그로 이벤트를 생성할 수 있다.
                 var title = prompt('Event Title:');
                 if (title) {
-                  calendar.addEvent({
-                    title: title,
+                  caleyndar.addEvent({
+                    title2222: title,
                     start: info.startStr,
                     end: info.endStr,
                     allDay: info.allDay
+
                   });
                 }
                 calendar.unselect();
@@ -989,10 +209,208 @@ color: #4A148C;
         });
     </script>
 
+    <script type="text/javascript">
+        // <![CDATA[
+        var colour="random"; // in addition to "random" can be set to any valid colour eg "#f0f" or "red"
+        var sparkles=50;
 
+        /****************************
+        *  Tinkerbell Magic Sparkle *
+        *(c)2005-13 mf2fm web-design*
+        *  http://www.mf2fm.com/rv  *
+        * DON'T EDIT BELOW THIS BOX *
+        ****************************/
+        var x=ox=400;
+        var y=oy=300;
+        var swide=800;
+        var shigh=600;
+        var sleft=sdown=0;
+        var tiny=new Array();
+        var star=new Array();
+        var starv=new Array();
+        var starx=new Array();
+        var stary=new Array();
+        var tinyx=new Array();
+        var tinyy=new Array();
+        var tinyv=new Array();
+
+        window.onload=function() { if (document.getElementById) {
+          var i, rats, rlef, rdow;
+          for (var i=0; i<sparkles; i++) {
+            var rats=createDiv(3, 3);
+            rats.style.visibility="hidden";
+            rats.style.zIndex="999";
+            document.body.appendChild(tiny[i]=rats);
+            starv[i]=0;
+            tinyv[i]=0;
+            var rats=createDiv(5, 5);
+            rats.style.backgroundColor="transparent";
+            rats.style.visibility="hidden";
+            rats.style.zIndex="999";
+            var rlef=createDiv(1, 5);
+            var rdow=createDiv(5, 1);
+            rats.appendChild(rlef);
+            rats.appendChild(rdow);
+            rlef.style.top="2px";
+            rlef.style.left="0px";
+            rdow.style.top="0px";
+            rdow.style.left="2px";
+            document.body.appendChild(star[i]=rats);
+          }
+          set_width();
+          sparkle();
+        }}
+
+        function sparkle() {
+          var c;
+          if (Math.abs(x-ox)>1 || Math.abs(y-oy)>1) {
+            ox=x;
+            oy=y;
+            for (c=0; c<sparkles; c++) if (!starv[c]) {
+              star[c].style.left=(starx[c]=x)+"px";
+              star[c].style.top=(stary[c]=y+1)+"px";
+              star[c].style.clip="rect(0px, 5px, 5px, 0px)";
+              star[c].childNodes[0].style.backgroundColor=star[c].childNodes[1].style.backgroundColor=(colour=="random")?newColour():colour;
+              star[c].style.visibility="visible";
+              starv[c]=50;
+              break;
+            }
+          }
+          for (c=0; c<sparkles; c++) {
+            if (starv[c]) update_star(c);
+            if (tinyv[c]) update_tiny(c);
+          }
+          setTimeout("sparkle()", 40);
+        }
+
+        function update_star(i) {
+          if (--starv[i]==25) star[i].style.clip="rect(1px, 4px, 4px, 1px)";
+          if (starv[i]) {
+            stary[i]+=1+Math.random()*3;
+            starx[i]+=(i%5-2)/5;
+            if (stary[i]<shigh+sdown) {
+              star[i].style.top=stary[i]+"px";
+              star[i].style.left=starx[i]+"px";
+            }
+            else {
+              star[i].style.visibility="hidden";
+              starv[i]=0;
+              return;
+            }
+          }
+          else {
+            tinyv[i]=50;
+            tiny[i].style.top=(tinyy[i]=stary[i])+"px";
+            tiny[i].style.left=(tinyx[i]=starx[i])+"px";
+            tiny[i].style.width="2px";
+            tiny[i].style.height="2px";
+            tiny[i].style.backgroundColor=star[i].childNodes[0].style.backgroundColor;
+            star[i].style.visibility="hidden";
+            tiny[i].style.visibility="visible"
+          }
+        }
+
+        function update_tiny(i) {
+          if (--tinyv[i]==25) {
+            tiny[i].style.width="1px";
+            tiny[i].style.height="1px";
+          }
+          if (tinyv[i]) {
+            tinyy[i]+=1+Math.random()*3;
+            tinyx[i]+=(i%5-2)/5;
+            if (tinyy[i]<shigh+sdown) {
+              tiny[i].style.top=tinyy[i]+"px";
+              tiny[i].style.left=tinyx[i]+"px";
+            }
+            else {
+              tiny[i].style.visibility="hidden";
+              tinyv[i]=0;
+              return;
+            }
+          }
+          else tiny[i].style.visibility="hidden";
+        }
+
+        document.onmousemove=mouse;
+        function mouse(e) {
+          if (e) {
+            y=e.pageY;
+            x=e.pageX;
+          }
+          else {
+            set_scroll();
+            y=event.y+sdown;
+            x=event.x+sleft;
+          }
+        }
+
+        window.onscroll=set_scroll;
+        function set_scroll() {
+          if (typeof(self.pageYOffset)=='number') {
+            sdown=self.pageYOffset;
+            sleft=self.pageXOffset;
+          }
+          else if (document.body && (document.body.scrollTop || document.body.scrollLeft)) {
+            sdown=document.body.scrollTop;
+            sleft=document.body.scrollLeft;
+          }
+          else if (document.documentElement && (document.documentElement.scrollTop || document.documentElement.scrollLeft)) {
+            sleft=document.documentElement.scrollLeft;
+            sdown=document.documentElement.scrollTop;
+          }
+          else {
+            sdown=0;
+            sleft=0;
+          }
+        }
+
+        window.onresize=set_width;
+        function set_width() {
+          var sw_min=999999;
+          var sh_min=999999;
+          if (document.documentElement && document.documentElement.clientWidth) {
+            if (document.documentElement.clientWidth>0) sw_min=document.documentElement.clientWidth;
+            if (document.documentElement.clientHeight>0) sh_min=document.documentElement.clientHeight;
+          }
+          if (typeof(self.innerWidth)=='number' && self.innerWidth) {
+            if (self.innerWidth>0 && self.innerWidth<sw_min) sw_min=self.innerWidth;
+            if (self.innerHeight>0 && self.innerHeight<sh_min) sh_min=self.innerHeight;
+          }
+          if (document.body.clientWidth) {
+            if (document.body.clientWidth>0 && document.body.clientWidth<sw_min) sw_min=document.body.clientWidth;
+            if (document.body.clientHeight>0 && document.body.clientHeight<sh_min) sh_min=document.body.clientHeight;
+          }
+          if (sw_min==999999 || sh_min==999999) {
+            sw_min=800;
+            sh_min=600;
+          }
+          swide=sw_min;
+          shigh=sh_min;
+        }
+
+        function createDiv(height, width) {
+          var div=document.createElement("div");
+          div.style.position="absolute";
+          div.style.height=height+"px";
+          div.style.width=width+"px";
+          div.style.overflow="hidden";
+          return (div);
+        }
+
+        function newColour() {
+          var c=new Array();
+          c[0]=255;
+          c[1]=Math.floor(Math.random()*256);
+          c[2]=Math.floor(Math.random()*(256-c[1]/2));
+          c.sort(function(){return (0.5 - Math.random());});
+          return ("rgb("+c[0]+", "+c[1]+", "+c[2]+")");
+        }
+        // ]]>
+    </script>
 
 </head>
 <body>
+
 <section class="header">
     <div class="logo">
         <i class="ri-menu-line icon icon-0 menu"></i>
@@ -1121,26 +539,23 @@ color: #4A148C;
                     <div class="box-notice">
                         <ul>
                             <ol class="olcards">
-                                <c:if test="${not empty notice1}">
-                                    <li style="--cardColor:#7E57C2">
-                                        <a href="/notice/list">
-                                            <div class="content">
-                                                <div class="icon">🌏</div>
-                                                <div class="title">Notice 1: <span th:text="${notice1.title}"></span></div>
-                                            </div>
-                                        </a>
-                                    </li>
-                                </c:if>
+                                <li style="--cardColor:#7E57C2">
+                                    <a href="/notice/list">
+                                        <div class="content">
+                                            <div class="icon">🌏</div>
+                                            <div class="title"><a href="/notice/list"></a></div>
+                                        </div>
+                                    </a>
+                                </li>
 
 
 
                                 <li style="--cardColor: #1A237E">
-                                    <a href="/notice/list">
+
                                         <div class="content">
                                             <div class="icon">🚀</div>
-                                            <div class="title">공지리스트2</div>
+                                            <div class="title"><a href="/notice/list"></a></div>
                                         </div>
-                                    </a>
                                 </li>
 
 
@@ -1149,7 +564,7 @@ color: #4A148C;
                                     <a href="/notice/list">
                                         <div class="content">
                                             <div class="icon">🍧</div>
-                                            <div class="title">공지리스트3</div>
+                                            <div class="title"><a href="/notice/list"></a></div>
                                         </div>
                                     </a>
                                 </li>
@@ -1160,7 +575,7 @@ color: #4A148C;
                                     <a href="/notice">
                                         <div class="content">
                                             <div class="icon">🛸</div>
-                                            <div class="title">공지리스트4</div>
+                                            <div class="title"><a href="/notice/list"></a></div>
                                         </div>
                                     </a>
                                 </li>
@@ -1171,7 +586,7 @@ color: #4A148C;
                                     <a href="/notice">
                                         <div class="content">
                                             <div class="icon">🐧</div>
-                                            <div class="title">공지리스트5</div>
+                                            <div class="title"><a href="/notice/list"></a></div>
                                         </div>
                                     </a>
                                 </li>
@@ -1183,56 +598,47 @@ color: #4A148C;
 
                 <div class="board-class">
                     <div class="class-1">
-                        <a href="/board1/list">
                         <h1>1반</h1>
-                        </a>
+                        <h3><a href="/board1/list"></a></h3>
                     </div>
                     <div class="notice-list">
-                        <h3>게시글</h3>
                         <ul>
                             <li><a href=""></a></li>
-
                         </ul>
                     </div>
 
                     <div class="class-2">
-                        <a href="/board2/list">
                         <h1>2반</h1>
-                        </a>
+                        <h3><a href="/board1/list"></a></h3>
                     </div>
                     <div class="notice-list">
-                        <h3>게시글</h3>
                         <ul>
                             <li><a href=""></a></li>
                         </ul>
                     </div>
 
                     <div class="class-3">
-                        <a href="/board3/list">
                         <h1>3반</h1>
-                        </a>
+                        <ul>
+                            <c:forEach items="${boards}" var="board">
+                                <li><a href="#"><c:out value="${board.title}" /></a></li>
+                            </c:forEach>
+                        </ul>
                     </div>
                     <div class="notice-list">
-                        <h3>게시글</h3>
                         <ul>
-
                             <li><a href=""></a></li>
-
                         </ul>
                     </div>
 
                     <div class="class-4">
-                        <a href="/board4/list">
                         <h1>4반</h1>
-                        </a>
+                        <h3><a href="/board1/list"></a></h3>
                     </div>
                 </div>
                 <div class="notice-list">
-                    <h3>게시글</h3>
                     <ul>
-
                         <li><a href=""></a></li>
-
                     </ul>
                 </div>
 
