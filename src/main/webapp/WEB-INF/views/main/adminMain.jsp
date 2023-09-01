@@ -17,8 +17,12 @@ pageEncoding="UTF-8"%>
     <!-- fullcalendar 언어 CDN -->
     <script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.8.0/locales-all.min.js'></script>
     <!-- 슬라이드-->
+    <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"
+    />
 
-
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap');
         @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
@@ -321,7 +325,7 @@ pageEncoding="UTF-8"%>
             min-width: 0px;
             color: rgba(0, 0, 0, 0.87);
             transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-       overflow: hidden;
+            overflow: hidden;
           justify-content: center;
           }
 
@@ -330,7 +334,7 @@ pageEncoding="UTF-8"%>
               height: 100%;
               border: 1px solid;
               border-radius: 24px;
-
+                 text-align: left;
 
 
            border: 0px solid rgba(0, 0, 0, 0.125);
@@ -345,8 +349,9 @@ pageEncoding="UTF-8"%>
           }
           .title {
           color: white; /* 원하는 폰트 컬러 값으로 변경 */
+          text-align: left; /* 왼쪽 정렬 스타일 적용 */
       }
-          .olcards,
+
 .olcards * {
   margin: 0;
   padding: 0;
@@ -391,8 +396,9 @@ pageEncoding="UTF-8"%>
   padding-inline: 0.5em;
 }
 .olcards li .content {
+
   background-color: var(--cardColor);
-  --inlinePadding: 7em;
+  --inlinePadding: 9em;
   --boxPadding: 0.5em;
   display: grid;
   padding: var(--boxPadding) calc(var(--inlinePadding) + var(--arrowClipSize))
@@ -411,6 +417,8 @@ pageEncoding="UTF-8"%>
   );
   position: relative;
 }
+
+
 .olcards li .content::before {
   content: "";
   position: absolute;
@@ -438,10 +446,12 @@ pageEncoding="UTF-8"%>
 .olcards li .content .title {
   grid-area: title;
   font-size: 1.25em;
-  /* font-weight: 700; */
+  font-weight: 600;
+
 }
 .olcards li .content .text {
   grid-area: text;
+
 }
 
 
@@ -462,6 +472,8 @@ pageEncoding="UTF-8"%>
               border-radius: 24px;
               background-color : rgba(211, 248, 245, 1);
 
+
+
             border: 0px solid rgba(0, 0, 0, 0.125);
             border-radius: 1rem;
             box-shadow: rgba(0, 0, 0, 0.05) 0rem 1.25rem 1.6875rem 0rem;
@@ -472,6 +484,13 @@ pageEncoding="UTF-8"%>
             overflow: hidden;
             justify-content: center;
           }
+
+ .class-1 h2 {
+       font-family: "Poppins", sans-serif;
+        color: #4A148C;
+
+    }
+
 
           .class-2{
               width: 100%;
@@ -492,6 +511,12 @@ pageEncoding="UTF-8"%>
             justify-content: center;
           }
 
+          .class-2 h2 {
+       font-family: "Poppins", sans-serif;
+        color: #EC407A;
+
+    }
+
          .class-3{
               width: 100%;
               height: 23%;
@@ -511,6 +536,12 @@ pageEncoding="UTF-8"%>
             justify-content: center;
           }
 
+          .class-3 h2 {
+       font-family: "Poppins", sans-serif;
+        color: #64B5F6;
+
+    }
+
          .class-4{
               width: 100%;
               height: 23%;
@@ -529,6 +560,12 @@ pageEncoding="UTF-8"%>
             overflow: hidden;
             justify-content: center;
           }
+
+          .class-4 h2 {
+       font-family: "Poppins", sans-serif;
+color: #4A148C;
+
+    }
 
           .plan-game{
               width: 28%;
@@ -618,25 +655,26 @@ pageEncoding="UTF-8"%>
       line-height: 0.5;
 
   }
-   .img-slider{
+        .img-slider{
   position: relative;
   width: 100%;
   height: 100%;
   background: #5679d026;
-  overflow: hidden; /* 추가: 내부 내용이 넘칠 경우 숨김 처리 */
 }
 
-.img-slider .slide{
+.img-slider .slide {
   z-index: 1;
   position: absolute;
   width: 100%;
-  transform: translateX(-100%); /* 추가: 초기에 왼쪽으로 이동되어 안 보이게 설정 */
+  transform: translateX(100%);
 }
 
-.img-slider .slide.active{
+.img-slider .slide.active {
   width: 100%;
   height: 100%;
-  transform: translateX(0); /* 추가: 활성 슬라이드가 보이도록 이동됨 */
+  transform: translateX(0);
+  transition: 2s;
+  transition-property: transform;
 }
 
 .img-slider .slide img{
@@ -892,6 +930,21 @@ pageEncoding="UTF-8"%>
             calendar.render();
                 });
         })();
+
+        document.getElementById("event-form").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    const form = new FormData(this);
+
+    fetch("server_script.php", {
+        method: "POST",
+        body: form
+    })
+    .then(response => response.text())
+    .then(data => {
+        console.log(data); // 응답 확인 (필요한 경우 알림 메시지 표시)
+    });
+});
     </script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -940,7 +993,7 @@ pageEncoding="UTF-8"%>
                             return;
                         }
                         repeater();
-                    }, 1000);
+                    }, 3000);
                 }
                 repeater();
             }
@@ -1017,6 +1070,13 @@ pageEncoding="UTF-8"%>
                     <span class="sidebar--item">QnA</span>
                 </a>
             </li>
+
+            <li>
+                <a href="#">
+                    <span class="icon icon-7"><i class="ri-questionnaire-line"></i></span>
+                    <span class="sidebar--item">가입처리</span>
+                </a>
+            </li>
         </ul>
         <ul class="sidebar--bottom-items">
             <li>
@@ -1082,7 +1142,7 @@ pageEncoding="UTF-8"%>
                         <ul>
                             <ol class="olcards">
                                 <li style="--cardColor:#7E57C2">
-                                    <a href="/notice.do">
+                                    <a href="/notice/list">
                                         <div class="content">
                                             <div class="icon">🌏</div>
                                             <div class="title">공지리스트1</div>
@@ -1093,7 +1153,7 @@ pageEncoding="UTF-8"%>
 
 
                                 <li style="--cardColor: #1A237E">
-                                    <a href="/notice.do">
+                                    <a href="/notice/list">
                                         <div class="content">
                                             <div class="icon">🚀</div>
                                             <div class="title">공지리스트2</div>
@@ -1104,7 +1164,7 @@ pageEncoding="UTF-8"%>
 
 
                                 <li style="--cardColor: #3F51B5 ">
-                                    <a href="/notice.do">
+                                    <a href="/notice/list">
                                         <div class="content">
                                             <div class="icon">🍧</div>
                                             <div class="title">공지리스트3</div>
@@ -1115,7 +1175,7 @@ pageEncoding="UTF-8"%>
 
 
                                 <li style="--cardColor: #1976D2">
-                                    <a href="/notice.do">
+                                    <a href="/notice">
                                         <div class="content">
                                             <div class="icon">🛸</div>
                                             <div class="title">공지리스트4</div>
@@ -1126,7 +1186,7 @@ pageEncoding="UTF-8"%>
 
 
                                 <li style="--cardColor:	#00ACC1">
-                                    <a href="/notice.do">
+                                    <a href="/notice">
                                         <div class="content">
                                             <div class="icon">🐧</div>
                                             <div class="title">공지리스트5</div>
@@ -1141,20 +1201,25 @@ pageEncoding="UTF-8"%>
 
                 <div class="board-class">
                     <div class="class-1">
-                        <h2>1반</h2>
-
+                        <a href="/board1/list">
+                            <h2>1반</h2>
+                        </a>
                     </div>
-                    <div class="class-2">
-                        <h2>2반</h2>
 
+                    <div class="class-2">
+                        <a href="/board2/list">
+                            <h2>2반</h2>
+                        </a>
                     </div>
                     <div class="class-3">
-                        <h2>3반</h2>
-
+                        <a href="/board3/list">
+                            <h2>3반</h2>
+                        </a>
                     </div>
                     <div class="class-4">
-                        <h2>4반</h2>
-
+                        <a href="/board4/list">
+                            <h2>4반</h2>
+                        </a>
                     </div>
                 </div>
 
@@ -1164,6 +1229,13 @@ pageEncoding="UTF-8"%>
                         <!-- calendar 태그 -->
                         <div id='calendar-container'>
                             <div id='calendar'></div>
+
+                            <form id="event-form">
+                                <input type="text" name="title" placeholder="Event Title">
+                                <input type="datetime-local" name="start_date">
+                                <input type="datetime-local" name="end_date">
+                                <button type="submit">Save Event</button>
+                            </form>
                         </div>
                     </div>
                     <div class="game-container">

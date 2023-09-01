@@ -29,8 +29,9 @@ public class Board1Controller {
     public String getBoard1List(Model model){
         List<Board1DTO> board1DTOList = board1ServiceImpl.getBoard1List();
         model.addAttribute("board1List", board1DTOList);
-        return "/board1/board1List";
+        return "/board/board1/board1List";
     }
+
 
     //반별 게시글 상세 조회 및 게시글 관련 댓글 조회
     //페이지 연결할 때 수정 가능성 있음

@@ -15,7 +15,7 @@ public class Board2Controller {
 
     @GetMapping("/list")
     public String board1List(){
-        return "/board2/board2List";
+        return "/board/board2/board2List";
     }
 
 

@@ -43,7 +43,7 @@
        ]]>
      </update>
 
-    <select id="findBoard1All" resultType="com.project.jeans.domain.board1.dto.Board1DTO">
+    <select id="findBoard1All" resultType="com.project.jeans.domain.board.board1.dto.Board1DTO">
         <![CDATA[
         SELECT board1_no, board1_title, board1_content, board1_regdate, board1_isshow, member_name, member_class
         FROM board1
