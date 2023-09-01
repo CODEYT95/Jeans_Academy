@@ -840,7 +840,7 @@ color: #4A148C;
                 right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
               },
               initialView: 'dayGridMonth', // 초기 로드 될때 보이는 캘린더 화면(기본 설정: 달)
-              initialDate: '2023-09-01', // 초기 날짜 설정 (설정하지 않으면 오늘 날짜가 보인다.)
+              initialDate: '2023-08-31', // 초기 날짜 설정 (설정하지 않으면 오늘 날짜가 보인다.)
               navLinks: true, // 날짜를 선택하면 Day 캘린더나 Week 캘린더로 링크
               editable: true, // 수정 가능?
               selectable: true, // 달력 일자 드래그 설정가능
@@ -909,7 +909,7 @@ color: #4A148C;
                 },
                 {
                   title: 'Happy Hour',
-                  start: '2023-09-23T17:30:00'
+                  start: '2023-09-25T17:30:00'
                 },
                 {
                   title: 'Dinner',
@@ -931,6 +931,20 @@ color: #4A148C;
                 });
         })();
 
+        document.getElementById("event-form").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    const form = new FormData(this);
+
+    fetch("server_script.php", {
+        method: "POST",
+        body: form
+    })
+    .then(response => response.text())
+    .then(data => {
+        console.log(data); // 응답 확인 (필요한 경우 알림 메시지 표시)
+    });
+});
     </script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -1054,6 +1068,13 @@ color: #4A148C;
                 <a href="#">
                     <span class="icon icon-7"><i class="ri-questionnaire-line"></i></span>
                     <span class="sidebar--item">QnA</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="#">
+                    <span class="icon icon-7"><i class="ri-questionnaire-line"></i></span>
+                    <span class="sidebar--item">가입처리</span>
                 </a>
             </li>
         </ul>
@@ -1181,56 +1202,25 @@ color: #4A148C;
                 <div class="board-class">
                     <div class="class-1">
                         <a href="/board1/list">
-                        <h1>1반</h1>
+                            <h2>1반</h2>
                         </a>
-                    </div>
-                    <div class="notice-list">
-                        <h3>게시글</h3>
-                        <ul>
-                            <li><a href="/board1/notice/?=<%= notice.getId() %>"></a></li>
-
-                        </ul>
                     </div>
 
                     <div class="class-2">
                         <a href="/board2/list">
-                        <h1>2반</h1>
+                            <h2>2반</h2>
                         </a>
                     </div>
-                    <div class="notice-list">
-                        <h3>게시글</h3>
-                        <ul>
-                            <li><a href="/board2/notice/?=<%= notice.getId() %>"></a></li>
-                        </ul>
-                    </div>
-
                     <div class="class-3">
                         <a href="/board3/list">
-                        <h1>3반</h1>
+                            <h2>3반</h2>
                         </a>
                     </div>
-                    <div class="notice-list">
-                        <h3>게시글</h3>
-                        <ul>
-
-                            <li><a href="/board3/notice/?=<%= notice.getId() %>"></a></li>
-
-                        </ul>
-                    </div>
-
                     <div class="class-4">
                         <a href="/board4/list">
-                        <h1>4반</h1>
+                            <h2>4반</h2>
                         </a>
                     </div>
-                </div>
-                <div class="notice-list">
-                    <h3>게시글</h3>
-                    <ul>
-
-                        <li><a href="/board4/notice/?=<%= notice.getId() %>"></a></li>
-
-                    </ul>
                 </div>
 
                 <div class="plan-game">
@@ -1239,6 +1229,13 @@ color: #4A148C;
                         <!-- calendar 태그 -->
                         <div id='calendar-container'>
                             <div id='calendar'></div>
+
+                            <form id="event-form">
+                                <input type="text" name="title" placeholder="Event Title">
+                                <input type="datetime-local" name="start_date">
+                                <input type="datetime-local" name="end_date">
+                                <button type="submit">Save Event</button>
+                            </form>
                         </div>
                     </div>
                     <div class="game-container">

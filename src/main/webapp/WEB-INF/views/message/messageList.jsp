@@ -5,8 +5,8 @@
 <head>
     <meta charset="UTF-8">
     <title>메시지 수신함</title>
-    <link rel="stylesheet" type="text/css" href="../../../resources/css/board/board1List.css">
-    <script type="text/javascript" src="../../../resources/js/board/board1.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../../resources/css/board/boardList.css">
+    <script type="text/javascript" src="../../../resources/js/board/boardWrite.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
 
