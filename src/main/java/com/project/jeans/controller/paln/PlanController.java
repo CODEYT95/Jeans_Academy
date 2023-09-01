@@ -40,7 +40,7 @@ public class PlanController {
             planDTO.setPlan_regdate(date);
             planDTO.setPlan_title(title);
 
-            int result = planService.insertPlan(planDTO);
+            int result = planService.insrtPlan(planDTO);
 
             if (result > 0) {
                 return "redirect:/plan/planlist";

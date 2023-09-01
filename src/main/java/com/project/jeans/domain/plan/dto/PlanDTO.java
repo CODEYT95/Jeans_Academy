@@ -5,7 +5,7 @@ import lombok.Data;
 import java.util.Date;
 
 @Data
-public class PlanListDTO {
+public class PlanDTO {
     private int plan_no;
     private String plan_title;
     private String plan_content;
