@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 performSearch();
             }
         });
-/*
+
         // 박스 클릭 이벤트 리스너 추가
         $('.box-list .box').click(function() {
             let boxTitle = $(this).find('h2').text();
@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", function() {
             let detailURL = '상세페이지URL?title=' + encodeURIComponent(boxTitle) + '&content=' + encodeURIComponent(boxContent);
             window.location.href = detailURL;
         });
-*/
+
         function performSearch() {
             let searchKeyword = $('.search-input').val().toLowerCase();
             let matchingBoxes = [];
@@ -51,7 +51,7 @@ document.addEventListener("DOMContentLoaded", function() {
             matchingBoxes.forEach(function(box) {
                 $('.box-list').append(box);
             });
-/*
+
             // 필터링된 결과에 대한 박스 클릭 이벤트 리스너 추가
             $('.box-list .box').click(function() {
                 let boxTitle = $(this).find('h2').text();
@@ -59,7 +59,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 let detailURL = '상세페이지URL?title=' + encodeURIComponent(boxTitle) + '&content=' + encodeURIComponent(boxContent);
                 window.location.href = detailURL;
             });
-            */
+
              document.getElementById("write-button").addEventListener("click", function() {
                     // 글작성 페이지의 URL로 이동
                     window.location.href = "글작성페이지URL";

@@ -10,7 +10,6 @@ pageEncoding="UTF-8"%>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
-    <script src="http://cdn.jsdelivr.net/mojs/latest/mo.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="../../../resources/js/plan/plan.js"></script>
 </head>
@@ -137,22 +136,30 @@ pageEncoding="UTF-8"%>
                 </div>
                 <!-- 모달과 관련된 코드는 그대로 둡니다 -->
 
-                <div class="event-form">
-                    <div class="outer-grid3">
-                        <div class="event-title">일정 추가</div>
+                <div class="todo-listbox">
+                    <div class="todo_titlebox">
+                        <div class="todo-title">나의 일정</div>
                     </div>
-                    <div class="event-box">
-                        <input type="date" id="event-date">
-                        <input type="text" id="event-title" placeholder="일정 제목">
-                        <button id="add-event-button">일정 추가</button>
-                    </div>
-                    <div class="event-listboxtitle">일정 목록</div>
-                    <div class="event-list">
-                        <ul>
-                            <li>일정1</li>
-                            <li>일정2</li>
-                            <li>일정3</li>
+                    <div class="todo-box">
+                        <div class="todo-input-box">
+                            <button class="complete-all-btn">✔</button>
+                            <input type="text" class="todo-input" placeholder="해야 할 일을 입력해주세요.">
+                        </div>
+                        <ul class="todo-list">
+                            <!-- 할 일 목록이 여기에 들어갈 예정 -->
                         </ul>
+                    </div>
+                    <div class="todo-bottom">
+                        <div class="left-items">3 items left</div>
+                        <div class="button-grouplist">
+                            <div class="button-group">
+                                <button class="show-all-btn selected" data-type="all">All</button>
+                                <button class="show-active-btn" data-type="active">Active</button>
+                                <button class="show-completed-btn" data-type="completed">Completed</button>
+                            </div>
+                            <button class="clear-completed-btn">Clear Completed</button>
+                        </div>
+                        <p class='info'>더블클릭 시 수정 가능!</p>
                     </div>
                 </div>
             </div>

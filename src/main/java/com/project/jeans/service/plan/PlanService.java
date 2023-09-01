@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface PlanService {
    List<PlanDTO> selectPlanAll();
+
+   public int insertPlan(PlanDTO planDTO);
 }

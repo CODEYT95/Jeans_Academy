@@ -10,4 +10,6 @@ import java.util.List;
 @Repository
 public interface PlanDAO {
     List<PlanDTO> selectPlanAll();
+
+    public int insertPlan(PlanDTO planDTO);
 }
