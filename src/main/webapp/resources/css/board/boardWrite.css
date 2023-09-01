@@ -260,10 +260,11 @@ a {
             position: absolute;
             top: 0;
             right: 0;
-            height: 100%;
+            height: 90%;
             width: calc(100% - 300px);
             padding: 10px 125px;
             transition: .1s;
+            margin-top: 60px;
         }
         .main--content.active {
             width: calc(100% - 103px);
@@ -339,6 +340,30 @@ a {
                 padding: 10px;
             }
         }
+
+        .image-container{
+            padding: 30px;
+            padding-top: 0px;
+            padding-bottom: 0px;
+        }
+
+        .carousel-container{
+            height: auto;
+            margin-top: 22px;
+            margin-bottom: 10px;
+            border-radius: 26px;
+            box-shadow: 0px 0px 8px 3px #b9b9b947;
+            max-width: 100%;
+            display: flow-root;
+        }
+
+
+
+
+
+
+
+
         .main-container{
             height: auto;
             margin-top: 22px;
@@ -347,184 +372,147 @@ a {
             box-shadow: 0px 0px 8px 3px #b9b9b947;
             max-width: 100%;
             display: flow-root;
-            padding-left: 30px;
-            padding-right: 30px;
             }
 
-.title-container{
-padding-top: 0px;
-padding-bottom: 0px;
-}
+            .title-container{
+            padding: 30px;
+            padding-top: 0px;
+            padding-bottom: 0px;
+            }
 
-.write-title{
-margin-top: 18px;
-margin-bottom: 10px;
-width: 100%;
-}
-.write-title span{
-font-size: x-large;
-font-weight: bold;
-}
+            .write-title{
+            margin-top: 18px;
+            margin-bottom: 10px;
+            width: 100%;
+            }
+            .write-title span{
+            font-size: x-large;
+            font-weight: bold;
+            }
 
-.write-title textarea{
-width: 100%;
-padding: 9px;
-height: 48px;
-overflow: hidden;
-line-height: 30px;
-font-size: 15px;
-border-radius: 30px;
-box-shadow: 4px 7px 10px -14px;
-border: 1px solid #D9E0E3;
-outline: none;
-resize: none;
-}
-.write-title textarea:hover{
-background: #F8FBFC;
-}
+            .write-title textarea{
+            width: 100%;
+            padding: 9px;
+            height: 48px;
+            overflow: hidden;
+            line-height: 30px;
+            font-size: 15px;
+            border-radius: 30px;
+            box-shadow: 4px 7px 10px -14px;
+            border: 1px solid #D9E0E3;
+            outline: none;
+            resize: none;
+            }
+            .write-title textarea:hover{
+            background: #F8FBFC;
+            }
 
-.content-container{
-height: 80%;
-padding-top: 0px;
-}
+            .content-container{
+            padding: 30px;
+            height: 80%;
+            padding-top: 0px;
+            }
 
-.write-content{
-width: 100%;
-height: 100%;
-}
+            .write-content{
+            width: 100%;
+            height: 100%;
+            }
 
-.content-label{
-border: 1px solid #D9E0E3;
-display: block;
-width: 95px;
-text-align: center;
-line-height: 41px;
-border-bottom: none;
-height: 43px;
-border-top-left-radius: 7px;
-border-top-right-radius: 7px;
-font-weight: bold;
-}
+            .content-label{
+            border: 1px solid #D9E0E3;
+            display: block;
+            width: 95px;
+            text-align: center;
+            line-height: 41px;
+            border-bottom: none;
+            height: 43px;
+            border-top-left-radius: 7px;
+            border-top-right-radius: 7px;
+            font-weight: bold;
+            }
 
-.content-label:hover {
-border: 1px solid #22BBCE;
-color: #22BBCE;
-transition: all 0.4s ease;
-}
+            .content-label:hover {
+            border: 1px solid #22BBCE;
+            color: #22BBCE;
+            transition: all 0.4s ease;
+            }
 
-.content{
-max-height: 56vh;
-border-radius: 30px;
-border-top-left-radius: 1px;
-box-shadow: 8px 9px 14px -18px;
-border: 1px solid #D9E0E3;
-outline: none;
-padding-inline: 10px;
-padding-top: 10px;
-padding-bottom: 10px;
-overflow-y: scroll;
-max-width: 100%;
-}
-.content:hover{
-background: #F8FBFC;
-}
-.content::-webkit-scrollbar{
-display: none;
-}
+            .content{
+                min-height: 58vh;
+                max-height: 10px;
+                border-radius: 30px;
+                border-top-left-radius: 1px;
+                box-shadow: 8px 9px 14px -18px;
+                border: 1px solid #D9E0E3;
+                outline: none;
+                padding-inline: 10px;
+                padding-top: 10px;
+                padding-bottom: 10px;
+                overflow-y: scroll;
+                max-width: 100%;
+            }
+            .content:hover{
+            background: #F8FBFC;
+            }
 
+            .content-textarea{
+                min-height: 58vh;
+                width: 100%;
+                padding: 9px;
+                height: 48px;
+                overflow: hidden;
+                line-height: 30px;
+                font-size: 15px;
+                border-radius: 30px;
+                border-top-left-radius: 1px;
+                box-shadow: 4px 7px 10px -14px;
+                border: 1px solid #D9E0E3;
+                outline: none;
+                resize: none;
+            }
 
-.content-textarea{
-    min-height: 58vh;
-    width: 100%;
-    padding: 9px;
-    height: 48px;
-    overflow: hidden;
-    line-height: 30px;
-    font-size: 15px;
-    border-radius: 30px;
-    border-top-left-radius: 1px;
-    box-shadow: 4px 7px 10px -14px;
-    border: 1px solid #D9E0E3;
-    outline: none;
-    resize: none;
-}
+            .content-textarea:hover{
+            background: #F8FBFC;
+            }
 
-.content-textarea:hover{
-background: #F8FBFC;
-}
+            .content::-webkit-scrollbar{
+            display: none;
+            }
 
-.insert-reply{
-float: right;
-width: 85px;
-margin-top: 13px;
-margin-bottom: 15px;
-height: 34px;
-outline: none;
-border-radius: 22px;
-border: none;
-background-color: #22BBCE;
-font-weight: bold;
-font-size: 15px;
-color: white;
-cursor: pointer;
-}
+            .content-file{
+            width: 85px;
+            margin-top: 13px;
+            height: 34px;
+            outline: none;
+            border-radius: 22px;
+            border: none;
+            background-color: #22BBCE;
+            font-weight: bold;
+            font-size: 15px;
+            color: white;
+            cursor: pointer;
+            }
 
-.insert-reply:hover{
-background-color: #3b909b;
-transition: all 0.4s ease;
-}
-.edit{
-float: right;
-width: 70px;
-height: 33px;
-margin-bottom: 16px;
-margin-top: 14px;
-margin-left: 10px;
-border: none;
-font-size: 15px;
-font-weight: bold;
-color: white;
-border-radius: 20px;
-background: #22BBCE;
-cursor: pointer;
-}
-.edit:hover{
-background-color: #3b909b;
-transition: all 0.4s ease;
-}
-.delete{
-float: right;
-            width: 70px;
+            .content-file:hover{
+            background-color: #3b909b;
+            transition: all 0.4s ease;
+            }
+            .save{
+            float: right;
+            margin-right: 30px;
+            width: 100px;
             height: 33px;
             margin-bottom: 16px;
             margin-top: 14px;
-            margin-left: 10px;
             border: none;
             font-size: 15px;
             font-weight: bold;
             color: white;
             border-radius: 20px;
-            background: #ff0000;
+            background: #22BBCE;
             cursor: pointer;
-}
-            .delete:hover{
-            background-color: #c30f0f;
+            }
+            .save:hover{
+            background-color: #3b909b;
             transition: all 0.4s ease;
             }
-.reply-insert{
-width: 100%;
-    height: 100px;
-        border-radius: 18px;
-        padding: 10px;
-        height: 61px;
-        margin-bottom: 17px;
-        outline: none;
-}
-.reply-content-container{
-margin-bottom: 25px;
-}
-.reply-content-container p{
-    width: 100%;
-    height: 30px;
-    border: 1px solid red;
-}

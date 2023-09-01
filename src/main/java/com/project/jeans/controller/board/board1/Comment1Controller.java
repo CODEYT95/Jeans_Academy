@@ -84,7 +84,6 @@ public class Comment1Controller {
         comment1Service.updateComment1(updateMap);
     }
 
-
     //댓글 삭제
     @PostMapping("/delete")
     public ModelAndView deleteComment1(ModelAndView modelAndView, @RequestParam Map<String, Object> map, @RequestParam int board1_no){

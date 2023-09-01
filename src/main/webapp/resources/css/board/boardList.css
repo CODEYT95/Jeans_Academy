@@ -166,8 +166,6 @@ a {
 .icon-9 {
 		color: #585858;
 }
-
-
 /* main--content */
 .main--content {
     position: absolute;
@@ -253,9 +251,7 @@ a {
         padding: 10px;
     }
 }
-
 /* title */
-
 .title--container{
 
 }
@@ -265,7 +261,6 @@ a {
 }
 
 /* slide */
-
 slide--container{
 	margin: 0;
 	background: white;
@@ -304,11 +299,9 @@ slide--container{
 	user-select: none;
 	cursor: pointer;
 }
-
 .testimonials .item h1{
     font-size: 30px; color: white;
 }
-
 .testimonial .item p{
     font-size: 20px; color: white;
 }
@@ -331,7 +324,6 @@ slide--container{
 	background-color: #fff;
 	box-shadow: 0px 0px 0px 3px #dddddd24;
 }
-
 #t-1:checked ~ .dots label[for="t-2"],
 #t-2:checked ~ .dots label[for="t-1"],
 #t-2:checked ~ .dots label[for="t-3"],
@@ -342,7 +334,6 @@ slide--container{
 #t-5:checked ~ .dots label[for="t-4"]{
 	transform: scale(1.5);
 }
-
 #t-1:checked ~ .testimonials label[for="t-3"],
 #t-2:checked ~ .testimonials label[for="t-4"],
 #t-3:checked ~ .testimonials label[for="t-5"],
@@ -351,7 +342,6 @@ slide--container{
 	transform: translate3d(600px, 0, -180px) rotateY(-25deg);
 	z-index: 2;
 }
-
 #t-1:checked ~ .testimonials label[for="t-2"],
 #t-2:checked ~ .testimonials label[for="t-3"],
 #t-3:checked ~ .testimonials label[for="t-4"],
@@ -360,7 +350,6 @@ slide--container{
 	transform: translate3d(300px, 0, -90px) rotateY(-15deg);
 	z-index: 3;
 }
-
 #t-2:checked ~ .testimonials label[for="t-1"],
 #t-3:checked ~ .testimonials label[for="t-2"],
 #t-4:checked ~ .testimonials label[for="t-3"],
@@ -369,7 +358,6 @@ slide--container{
 	transform: translate3d(-300px, 0, -90px) rotateY(15deg);
 	z-index: 3;
 }
-
 #t-3:checked ~ .testimonials label[for="t-1"],
 #t-4:checked ~ .testimonials label[for="t-2"],
 #t-5:checked ~ .testimonials label[for="t-3"],
@@ -378,19 +366,16 @@ slide--container{
 	transform: translate3d(-600px, 0, -180px) rotateY(25deg);
 
 }
-
 #t-1:checked ~ .testimonials label[for="t-1"],
 #t-2:checked ~ .testimonials label[for="t-2"],
 #t-3:checked ~ .testimonials label[for="t-3"],
 #t-4:checked ~ .testimonials label[for="t-4"],
 #t-5:checked ~ .testimonials label[for="t-4"],
 #t-5:checked ~ .testimonials label[for="t-5"]{
-
 	z-index: 4;
 }
 
 /* box */
-
 .boxes {
     display: flex;
     flex-wrap: wrap;
@@ -398,7 +383,6 @@ slide--container{
     gap: 20px;
     padding: 20px;
 }
-
 .box {
     height: 17em;
     width: calc(33.333% - 20px); /* 3개씩 나오도록 너비 계산 */
@@ -409,23 +393,19 @@ slide--container{
 }
 
 /* table */
-
 table {
     border-collapse: collapse; /* 테두리 겹치는 부분을 병합 */
     width: 100%;
 }
-
 th, td {
     border: 1px solid #ccc; /* 테두리 스타일과 색상 설정 */
     padding: 8px; /* 셀 내부 여백 설정 */
     text-align: left;
 }
-
 th {
     background-color: #5073FB; /* 헤더 배경색 설정 */
     color: #fff;
 }
-
 .input-level {
     width: 90%;
     font-size: 1rem;
@@ -435,7 +415,6 @@ th {
     border-radius: 4px;
     background-color: white;
 }
-
 .text{
     text-align: center;
     font-size: 2rem;
@@ -456,94 +435,6 @@ th {
 
 
 
-
-
-
-
-/* main--content */
-.main--content {
-    position: absolute;
-    top: 0;
-    right: 0;
-    height: 100%;
-    width: calc(100% - 300px);
-    padding: 10px 125px;
-    transition: .1s;
-}
-.main--content.active {
-    width: calc(100% - 103px);
-}
-@media screen and (max-width:1024px) {
-    table {
-        min-width: 600px;
-    }
-}
-@media screen and (max-width:768px) {
-    .logo {
-        padding-left: 30px;
-        width: fit-content;
-    }
-    .search--notification--profile {
-        padding: 0 20px;
-        margin-left: auto;
-    }
-    .main--content {
-        padding: 0 20px;
-    }
-    .sidebar {
-        padding: 20px;
-    }
-    .sidebar.active {
-        width: 85px;
-    }
-    .main--content.active {
-        width: calc(100% - 85px);
-    }
-}
-@media screen and (max-width:590px) {
-    .lock,
-    .chat {
-        display: none;
-    }
-    .notification--profile {
-        margin-left: auto;
-    }
-    .search--notification--profile {
-        width: fit-content;
-    }
-    .sidebar {
-        transform: translateX(-100%);
-        z-index: 10;
-        background-color: #fff;
-    }
-    .sidebar.active {
-        transform: translateX(0);
-        width: 300px;
-    }
-    .sidebar.active .sidebar--item {
-        display: block;
-    }
-    .main--content {
-        width: calc(100% - 0px);
-    }
-    .main--content.active {
-        width: calc(100% - 0px);
-    }
-}
-@media screen and (max-width:450px) {
-    .main--content {
-        padding: 0 10px;
-    }
-    .logo {
-        padding-left: 10px;
-    }
-    .search--notification--profile {
-        padding: 0 10px;
-    }
-    .sidebar {
-        padding: 10px;
-    }
-}
 
 
 .title--container{

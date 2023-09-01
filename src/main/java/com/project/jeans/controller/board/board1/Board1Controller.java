@@ -67,7 +67,7 @@ public class Board1Controller {
     public String modifyBoard1Form(@RequestParam int board1_no, Model model){
         Board1DTO board1DTO = board1Service.getBoard1Detail(board1_no);
         model.addAttribute("board1DTO", board1DTO);
-        return "/board/board1/board1ModifySub";
+        return "/board/board1/board1Modify";
     }
 
     //반별 게시글 수정
@@ -86,6 +86,7 @@ public class Board1Controller {
     //반별 게시글 삭제
     @GetMapping("/delete")
     public ModelAndView deleteBoard1(ModelAndView modelAndView, @RequestParam Map<String,Object> map){
+        System.out.println(map);
         int deletetInt = board1Service.deleteBoard1(map);
         if(deletetInt==1){
             modelAndView.setViewName("redirect:/board1/list");

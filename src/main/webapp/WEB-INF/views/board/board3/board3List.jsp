@@ -1,14 +1,13 @@
 <!DOCTYPE html>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<html xmlns:c="http://java.sun.com/JSP/Page">
+<html>
 <head>
     <meta charset="UTF-8">
-    <title>1반 게시글 목록</title>
+    <title>3반 게시글 목록</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="../../../../resources/css/board/boardList.css">
-    <script type="text/javascript" src="../../../../resources/js/board/boardList.js"></script>
+    <link rel="stylesheet" type="text/css" href="#">
+    <script type="text/javascript" src="#"></script>
 </head>
 <body>
 <section class="header">
@@ -58,13 +57,13 @@
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="/board3/list">
                     <span class="icon icon-5"><i class="ri-draft-line"></i></span>
                     <span class="sidebar--item">3반</span>
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="/board4/list">
                     <span class="icon icon-6"><i class="ri-draft-line"></i></span>
                     <span class="sidebar--item">4반</span>
                 </a>
@@ -92,44 +91,7 @@
         </ul>
     </div>
     <div class="main--content">
-        <div class = "title--container">
-            <div class="title-content">1반 게시판입니다</div>
-            <button type="button" class="button" onclick="location.href='/board1/write'">글쓰기</button>
-        </div>
-        <div class="slide-container">
-            <div class="slider">
-                <input type="radio" name="testimonial" id="t-1">
-                <input type="radio" name="testimonial" id="t-2">
-                <input type="radio" name="testimonial" id="t-3" checked>
-                <input type="radio" name="testimonial" id="t-4">
-                <input type="radio" name="testimonial" id="t-5">
-                <div class="testimonials">
-                    <c:forEach var="board" items="${board1List}" varStatus="loop" begin="0" end="4">
-                        <label class="item"  for="t-${loop.index + 1}">
-                            <h1><a href="/board1/detail/${board.board1_no}">${board.board1_title}</a></h1>
-                            <p>${board.board1_content}</p>
-                        </label>
-                    </c:forEach>
-                </div>
-                <div class="dots">
-                    <label for="t-1"></label>
-                    <label for="t-2"></label>
-                    <label for="t-3"></label>
-                    <label for="t-4"></label>
-                    <label for="t-5"></label>
-                </div>
-            </div>
-        </div>
-        <div class = "class--container">
-            <div class="boxes">
-                <c:forEach var="board1List" items="${board1List}">
-                    <div class="box">
-                        <a href="/board1/detail/${board1List.board1_no}">${board1List.board1_title}</a>
-                        <p>${board1List.board1_content}</p>
-                    </div>
-                </c:forEach>
-            </div>
-        </div>
+        <h1>3반 게시판입니다</h1>
     </div>
 </section>
 </body>

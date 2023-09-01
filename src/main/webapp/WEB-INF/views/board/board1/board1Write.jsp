@@ -5,24 +5,10 @@
 <head>
     <meta charset="UTF-8">
     <title>게시글 작성</title>
-    <link rel="stylesheet" type="text/css" href="../../../resources/css/board/board1Write.css">
-    <script type="text/javascript" src="../../../resources/js/board/board1.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
-
-
-    <script>
-        $(document).ready(function() {
-            let menu = $('.menu');
-            let sidebar = $('.sidebar');
-            let mainContent = $('.main--content');
-            menu.click(function() {
-                sidebar.toggleClass('active');
-                mainContent.toggleClass('active');
-            });
-        });
-
-
+    <link rel="stylesheet" type="text/css" href="../../../../resources/css/board/boardWrite.css">
+    <script type="text/javascript" src="../../../../resources/js/board/boardWrite.js"></script>
     </script>
 
 </head>
@@ -111,7 +97,6 @@
         <form action="/board1/write" method="post">
             <input type="hidden" name="member_name" value="${board1DTO.member_name}">
             <input type="hidden" name="member_class" value="${board1DTO.member_class}">
-
                 <div class="main--container">
                     <button type="submit" class="button">저장</button>
                     <button type="button" class="button" onclick="location.href='/board1/list'">취소/목록</button>

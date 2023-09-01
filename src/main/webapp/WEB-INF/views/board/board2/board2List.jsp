@@ -3,12 +3,11 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>1반 게시글 목록</title>
-    <link rel="stylesheet" type="text/css" href="../../../resources/css/board/board1.css">
-    <script type="text/javascript" src="../../../resources/js/board/board1.js"></script>
+    <title>2반 게시글 목록</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
-
+    <link rel="stylesheet" type="text/css" href="#">
+    <script type="text/javascript" src="#"></script>
 </head>
 <body>
 <section class="header">
@@ -58,13 +57,13 @@
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="/board3/list">
                     <span class="icon icon-5"><i class="ri-draft-line"></i></span>
                     <span class="sidebar--item">3반</span>
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="/board4/list">
                     <span class="icon icon-6"><i class="ri-draft-line"></i></span>
                     <span class="sidebar--item">4반</span>
                 </a>

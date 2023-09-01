@@ -5,23 +5,10 @@
 <head>
     <meta charset="UTF-8">
     <title>게시글 상세보기</title>
-    <link rel="stylesheet" type="text/css" href="../../../../resources/css/board/board1Detail.css">
-    <!--    <script type="text/javascript" src="../../../resources/js/board/board1.js"></script>-->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
-
-    <script>
-        $(document).ready(function() {
-            let menu = $('.menu');
-            let sidebar = $('.sidebar');
-            let mainContent = $('.main--content');
-            menu.click(function() {
-                sidebar.toggleClass('active');
-                mainContent.toggleClass('active');
-            });
-        });
-    </script>
-
+    <link rel="stylesheet" type="text/css" href="../../../../resources/css/board/boardDetail.css">
+    <script type="text/javascript" src="../../../../resources/js/board/boardDetail.js"></script>
 </head>
 <body>
 <section class="header">
@@ -111,11 +98,14 @@
                 <input type="hidden" name="board1_no" value="${board1DTO.board1_no}"/>
                 <button type="submit" class="button">수정</button>
             </form>
+
             <form action="/board1/delete" method="get">
                 <input type="hidden" name="board1_no" value="${board1DTO.board1_no}"/>
                 <button type="submit" class="button">삭제</button>
             </form>
+
             <button type="button" class="button" onclick="location.href='/board1/list'">목록</button>
+
             <div class="title--container">
                 <div class="write-title">
                     <label>
@@ -142,7 +132,7 @@
             </div>
             <div class="reply-content-container">
                 <ul>
-                    <c:forEach items="${comment1DTO}" var="comment1DTO">
+                    <c:forEach items="${comment1DTO}" var="comment1DTO" varStatus="loop" begin="0">
                         <li>
                             <table>
                                 <td><c:out value="${comment1DTO.comment1_content}"/></td>
@@ -153,7 +143,9 @@
                                         <button type="submit" class="button">삭제</button>
                                     </form>
                                 </td>
-                                    <td><button type="button" class="button" data-toggle='modal' data-target='#modifyModal'>수정</button></td>
+                                    <label class="item">
+                                        <td><button class="btn-modal">수정</button></td>
+                                    </label>
                             </table>
                         </li>
                     </c:forEach>
@@ -163,4 +155,29 @@
     </div>
 </section>
 </body>
+
+<div id="modal" class="modal-overlay">
+    <div class="modal-window">
+        <div class="close-area">X</div>
+        <div class="modal-header">
+            <h4>header/모달창</h4>
+        </div>
+        <div class="modal-body">
+            <div class="form-group">
+                <h3>작성자</h3>
+                <input type="text" name=""/>
+            </div>
+            <div class="form-group">
+                <h3>댓글 내용</h3>
+                <input type="text" name=""/>
+            </div>
+            <br/>
+        </div>
+        <div class="modal-footer">
+            <button type="button">수정</button>
+        </div>
+    </div>
+</div>
+
+
 </html>
