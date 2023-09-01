@@ -9,6 +9,15 @@
         FROM notice
         ]]>
     </select>
+    <!-- 공지사항 최근 목록 5개-->
+    <select id="selectFive" resultType="NoticeDTO">
+        <![CDATA[
+        SELECT *
+        FROM notice
+        ORDER BY notice_regdate DESC
+        LIMIT 5;
+        ]]>
+    </select>
     <!--공지사항 INSERT-->
     <insert id="insertNotice" parameterType="NoticeDTO">
         <![CDATA[

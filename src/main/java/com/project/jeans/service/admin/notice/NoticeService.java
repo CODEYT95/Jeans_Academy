@@ -7,6 +7,7 @@ import java.util.List;
 public interface NoticeService {
     public List<NoticeDTO> selectAll();
 
+    public  List<NoticeDTO> selectFive();
     //공지사항 INSERT
     public int insertNotice(NoticeDTO noticeDTO);
 }

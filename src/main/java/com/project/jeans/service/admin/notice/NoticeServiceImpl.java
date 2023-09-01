@@ -5,6 +5,9 @@ import com.project.jeans.domain.admin.notice.dto.NoticeDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 
 @Service
@@ -15,6 +18,12 @@ public class NoticeServiceImpl implements NoticeService {
     public List<NoticeDTO> selectAll() {
         return noticeDAO.selectAll();
     }
+
+    @Override
+    public List<NoticeDTO> selectFive() {
+        return noticeDAO.selectFive();
+    }
+
 
     //공지사항 INSERT
     @Override

@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 pageEncoding="UTF-8"%>
-<html>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<html lang="ko" xmlns:c="http://java.sun.com/JSP/Page" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset='utf-8'/>
     <title>메인</title>
@@ -1120,14 +1121,16 @@ color: #4A148C;
                     <div class="box-notice">
                         <ul>
                             <ol class="olcards">
-                                <li style="--cardColor:#7E57C2">
-                                    <a href="/notice/list">
-                                        <div class="content">
-                                            <div class="icon">🌏</div>
-                                            <div class="title">공지리스트1</div>
-                                        </div>
-                                    </a>
-                                </li>
+                                <c:if test="${not empty notice1}">
+                                    <li style="--cardColor:#7E57C2">
+                                        <a href="/notice/list">
+                                            <div class="content">
+                                                <div class="icon">🌏</div>
+                                                <div class="title">Notice 1: <span th:text="${notice1.title}"></span></div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                </c:if>
 
 
 
@@ -1187,7 +1190,7 @@ color: #4A148C;
                     <div class="notice-list">
                         <h3>게시글</h3>
                         <ul>
-                            <li><a href="/board1/notice/?=<%= notice.getId() %>"></a></li>
+                            <li><a href=""></a></li>
 
                         </ul>
                     </div>
@@ -1200,7 +1203,7 @@ color: #4A148C;
                     <div class="notice-list">
                         <h3>게시글</h3>
                         <ul>
-                            <li><a href="/board2/notice/?=<%= notice.getId() %>"></a></li>
+                            <li><a href=""></a></li>
                         </ul>
                     </div>
 
@@ -1213,7 +1216,7 @@ color: #4A148C;
                         <h3>게시글</h3>
                         <ul>
 
-                            <li><a href="/board3/notice/?=<%= notice.getId() %>"></a></li>
+                            <li><a href=""></a></li>
 
                         </ul>
                     </div>
@@ -1228,7 +1231,7 @@ color: #4A148C;
                     <h3>게시글</h3>
                     <ul>
 
-                        <li><a href="/board4/notice/?=<%= notice.getId() %>"></a></li>
+                        <li><a href=""></a></li>
 
                     </ul>
                 </div>
