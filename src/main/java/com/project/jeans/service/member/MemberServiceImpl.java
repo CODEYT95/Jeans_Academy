@@ -16,6 +16,7 @@ public class MemberServiceImpl implements MemberService{
 
     @Autowired
     private final MemberDAO memberDAO;
+
     //현재 회원 조회
     @Override
     public List<HashMap<String, Object>> getShowMember(HashMap<String, Object> map) {
@@ -40,10 +41,10 @@ public class MemberServiceImpl implements MemberService{
         return memberDAO.insertTeacher(memberDTO);
     }
 
-    //강사님 로그인 처리
+    //회원 타입 조회
     @Override
-    public int loginTeacher(MemberDTO memberDTO) {
-        return memberDAO.loginTeacher(memberDTO);
+    public String memberType(String member_id) {
+        return memberDAO.memberType(member_id);
     }
 
     //수강생 로그인 처리
@@ -52,10 +53,16 @@ public class MemberServiceImpl implements MemberService{
         return memberDAO.loginStudent(memberDTO);
     }
 
-    //회원 타입 조회
+    //강사님 로그인 처리
     @Override
-    public String memberType(String member_id) {
-        return memberDAO.memberType(member_id);
+    public int loginTeacher(MemberDTO memberDTO) {
+        return memberDAO.loginTeacher(memberDTO);
+    }
+
+    //요청 처리중인 회원 조회
+    @Override
+    public int noAccept(String member_id) {
+        return memberDAO.noAccept(member_id);
     }
 
     //아이디 중복체크
