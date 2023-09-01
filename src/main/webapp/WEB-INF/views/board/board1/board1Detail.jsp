@@ -170,7 +170,8 @@
     <div class="modal-window">
         <div class="close-area">X</div>
         <div class="modal-header">
-            <h4>header/모달창</h4>
+            <h1>댓글 수정</h1>
+            <br/><br/>
         </div>
         <div class="modal-body">
             <div class="form-group">
@@ -182,9 +183,9 @@
                 <input type="text" name=""/>
             </div>
             <br/>
+            <button type="button">수정</button>
         </div>
         <div class="modal-footer">
-            <button type="button">수정</button>
         </div>
     </div>
 </div>
