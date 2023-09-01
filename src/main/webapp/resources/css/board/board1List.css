@@ -166,6 +166,8 @@ a {
 .icon-9 {
 		color: #585858;
 }
+
+
 /* main--content */
 .main--content {
     position: absolute;
@@ -252,82 +254,161 @@ a {
     }
 }
 
+/* title */
 
-
-
-
-/* 새롭게 추가한 정보 */
-
-.sub-section {
-    padding: 20px;
-    border: 1px solid #ccc;
-    margin-bottom: 20px; /* 각 서브 섹션 아래에 여백 추가 */
-}
-/* 카루셀 스타일 */
-.carousel-container {
-    overflow: hidden; /* 내용이 넘치는 부분은 숨김 */
-}
-
-.carousel {
-    overflow: hidden; /* 가로 스크롤을 감춤 */
-}
-
-.carousel-inner {
-    display: flex; /* Flexbox 레이아웃 사용 */
-    width: 30px;
-}
-.carousel-item {
-    flex: 0 0 calc(33.333% - 20px); /* 3개씩 나오게 설정 */
-    background-color: #5073FB;
-    border: 1px solid #ccc;
-    padding: 20px;
-    box-sizing: border-box;
-    margin-right: 20px;
-}
-
-/* 마지막 카루셀 아이템의 오른쪽 마진 제거 */
-.carousel-item:last-child {
-    margin-right: 0;
-}
-
-.carousel-btn {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 1rem;
-    border: none;
-    background-color: transparent;
-    cursor: pointer;
-}
-
-/* carousel-container 스타일 */
-.carousel-container {
-    overflow: hidden; /* 내용이 넘치는 부분은 숨김 */
-}
-
-/* carousel 스타일 */
-.carousel {
-    display: flex;
-    overflow-x: scroll;
+.title--container{
 
 }
+.title-content {
+    align: center;
+    justify-content: center;
+}
 
+/* slide */
+
+slide--container{
+	margin: 0;
+	background: white;
+	color: white;
+	font-family: sans-serif;;
+	display: flex;
+	align-items: center;
+	min-height: 70vh;
+}
+.slider{width: 100%}
+.slider input{display: none;}
+.testimonials{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: relative;
+	min-height: 350px;
+	perspective: 1000px;
+	overflow: hidden;
+}
+.testimonials .item{
+    max-height: 300px;
+    height: 300px;
+    max-width: 300px;
+	width: 300px;
+	padding: 30px;
+	border-radius: 5px;
+	background-color: #B7A4EE;
+	position: absolute;
+	border:3px black;
+	top: 0;
+	box-sizing: border-box;
+	text-align: center;
+	transition: transform 0.4s;
+	box-shadow: 0 0 7px 0 rgba(0,0,0,0.3);
+	user-select: none;
+	cursor: pointer;
+}
+
+.testimonials .item h1{
+    font-size: 30px; color: white;
+}
+
+.testimonial .item p{
+    font-size: 20px; color: white;
+}
+.dots{display: flex; justify-content: center;align-items: center;}
+.dots label{
+	height: 10px;
+	width: 10px;
+	border-radius: 50%;
+	cursor: pointer;
+	background-color: #413B52;
+	margin: 7px;
+	transition-duration: 0.2s;
+}
+#t-1:checked ~ .dots label[for="t-1"],
+#t-2:checked ~ .dots label[for="t-2"],
+#t-3:checked ~ .dots label[for="t-3"],
+#t-4:checked ~ .dots label[for="t-4"],
+#t-5:checked ~ .dots label[for="t-5"]{
+	transform: scale(2);
+	background-color: #fff;
+	box-shadow: 0px 0px 0px 3px #dddddd24;
+}
+
+#t-1:checked ~ .dots label[for="t-2"],
+#t-2:checked ~ .dots label[for="t-1"],
+#t-2:checked ~ .dots label[for="t-3"],
+#t-3:checked ~ .dots label[for="t-2"],
+#t-3:checked ~ .dots label[for="t-4"],
+#t-4:checked ~ .dots label[for="t-3"],
+#t-4:checked ~ .dots label[for="t-5"],
+#t-5:checked ~ .dots label[for="t-4"]{
+	transform: scale(1.5);
+}
+
+#t-1:checked ~ .testimonials label[for="t-3"],
+#t-2:checked ~ .testimonials label[for="t-4"],
+#t-3:checked ~ .testimonials label[for="t-5"],
+#t-4:checked ~ .testimonials label[for="t-1"],
+#t-5:checked ~ .testimonials label[for="t-2"]{
+	transform: translate3d(600px, 0, -180px) rotateY(-25deg);
+	z-index: 2;
+}
+
+#t-1:checked ~ .testimonials label[for="t-2"],
+#t-2:checked ~ .testimonials label[for="t-3"],
+#t-3:checked ~ .testimonials label[for="t-4"],
+#t-4:checked ~ .testimonials label[for="t-5"],
+#t-5:checked ~ .testimonials label[for="t-1"]{
+	transform: translate3d(300px, 0, -90px) rotateY(-15deg);
+	z-index: 3;
+}
+
+#t-2:checked ~ .testimonials label[for="t-1"],
+#t-3:checked ~ .testimonials label[for="t-2"],
+#t-4:checked ~ .testimonials label[for="t-3"],
+#t-5:checked ~ .testimonials label[for="t-4"],
+#t-1:checked ~ .testimonials label[for="t-5"]{
+	transform: translate3d(-300px, 0, -90px) rotateY(15deg);
+	z-index: 3;
+}
+
+#t-3:checked ~ .testimonials label[for="t-1"],
+#t-4:checked ~ .testimonials label[for="t-2"],
+#t-5:checked ~ .testimonials label[for="t-3"],
+#t-2:checked ~ .testimonials label[for="t-5"],
+#t-1:checked ~ .testimonials label[for="t-4"]{
+	transform: translate3d(-600px, 0, -180px) rotateY(25deg);
+
+}
+
+#t-1:checked ~ .testimonials label[for="t-1"],
+#t-2:checked ~ .testimonials label[for="t-2"],
+#t-3:checked ~ .testimonials label[for="t-3"],
+#t-4:checked ~ .testimonials label[for="t-4"],
+#t-5:checked ~ .testimonials label[for="t-4"],
+#t-5:checked ~ .testimonials label[for="t-5"]{
+
+	z-index: 4;
+}
+
+/* box */
 
 .boxes {
-display: flex;
-flex-wrap: wrap;
-justify-content: space-between;
-gap: 20px;
-padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 20px;
 }
 
 .box {
+    height: 17em;
     width: calc(33.333% - 20px); /* 3개씩 나오도록 너비 계산 */
-    background-color: #5073FB;
     border: 1px solid #ccc;
     padding: 20px;
     box-sizing: border-box;
+    box-shadow: 8px 9px 30px -18px;
 }
+
+/* table */
 
 table {
     border-collapse: collapse; /* 테두리 겹치는 부분을 병합 */
@@ -354,6 +435,7 @@ th {
     border-radius: 4px;
     background-color: white;
 }
+
 .text{
     text-align: center;
     font-size: 2rem;

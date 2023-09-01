@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
     <meta charset="UTF-8">
@@ -106,35 +107,34 @@
             </li>
         </ul>
     </div>
+    <div class="main--content">
+        <form action="/board1/write" method="post">
+            <input type="hidden" name="member_name" value="${board1DTO.member_name}">
+            <input type="hidden" name="member_class" value="${board1DTO.member_class}">
 
-
-    <form action="/board1/write" method="post">
-        <input type="hidden" name="member_name" value="${board1DTO.member_name}">
-        <input type="hidden" name="member_class" value="${board1DTO.member_class}">
-        <div class="main--content">
-            <div class="main--container">
-                <button type="submit" class="button">저장</button>
-                <button type="button" class="button" onclick="location.href='/board1/list'">취소/목록</button>
-            </div>
-            <div class="title-container">
-                <div class="write-title">
-                    <div class="text">글 작성</div>
-                    <label>
-                        <div><span>제목</span></div>
-                        <textarea id="board1_title" name="board1_title"></textarea>
-                    </label>
+                <div class="main--container">
+                    <button type="submit" class="button">저장</button>
+                    <button type="button" class="button" onclick="location.href='/board1/list'">취소/목록</button>
+                    <div class="title-container">
+                        <div class="write-title">
+                            <div class="text">글 작성</div>
+                            <label>
+                                <div><span>제목</span></div>
+                                <textarea id="board1_title" name="board1_title" placeholder="제목을 입력해주세요"></textarea>
+                            </label>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="content-container">
-                <div class="write-content">
-                    <span class="content-label">내용</span>
-                    <textarea class="content-textarea" contenteditable="true" name="board1_content"></textarea>
-                    <br/>
-                    <input type="button" class="content-file" value="사진추가">
+                <div class="content-container">
+                    <div class="write-content">
+                        <span class="content-label">내용</span>
+                        <textarea class="content-textarea" contenteditable="true" name="board1_content" placeholder="내용을 입력해주세요"></textarea>
+                        <br/>
+                        <input type="button" class="content-file" value="사진추가">
+                    </div>
                 </div>
-            </div>
-        </div>
-    </form>
+        </form>
+    </div>
 </section>
 </body>
 </html>

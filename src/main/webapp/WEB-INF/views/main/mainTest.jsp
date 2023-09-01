@@ -209,7 +209,7 @@ pageEncoding="UTF-8"%>
             padding: 14px 50px;
             overflow-y: auto;
             transition: .1s;
-	    margin-top: 60px;
+	        margin-top: 60px;
         }
         .main--content.active {
             width: calc(100% - 103px);

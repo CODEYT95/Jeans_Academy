@@ -5,6 +5,13 @@
 	box-sizing: border-box;
 }
 
+.main{
+   width: 100%;
+   display: flex;
+   justify-content: center;
+   position: relative;
+}
+
 body {
 	display: flex;
 	justify-content: center;
@@ -117,10 +124,10 @@ input {
     box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
     position: relative;
     overflow: hidden;
-    width: 50%;
     max-width: 100%;
+    width: 900px;
     min-height: 55vh;
-    min-width: 560px;
+    min-width: 520px;
 }
 
 .buttons {
@@ -241,29 +248,10 @@ input {
 	transform: translateX(20%);
 }
 
-input:-webkit-autofill,
-input:-webkit-autofill:hover,
-input:-webkit-autofill:focus,
-input:-webkit-autofill:active {
-	-webkit-text-fill-color: #fff !important;
-    -webkit-box-shadow: 0 0 0px 1000px #fff inset;
-    box-shadow: 0 0 0px 1000px #fff inset;
-    transition: background-color 5000s ease-in-out 0s;
-}
-
-input:autofill,
-input:autofill:hover,
-input:autofill:focus,
-input:autofill:active {
-	-webkit-text-fill-color: #fff !important;
-    -webkit-box-shadow: 0 0 0px 1000px #fff inset;
-    box-shadow: 0 0 0px 1000px #fff inset;
-    transition: background-color 5000s ease-in-out 0s;
-}
-
 @media screen and (max-width:600px) {
     .container {
         padding: 0 10px;
     }
 }
 
+i
