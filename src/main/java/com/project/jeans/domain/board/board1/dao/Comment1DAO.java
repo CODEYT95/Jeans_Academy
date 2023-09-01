@@ -19,7 +19,7 @@ public interface Comment1DAO {
 
 
     //댓글 상세 조회
-    Comment1DTO getComment1Detail(Map<String,Object> map);
+    Map<String,Object> getComment1Detail(Map<String,Object> map);
 
     //댓글 작성
     int insertComment1(Map<String,Object> map);

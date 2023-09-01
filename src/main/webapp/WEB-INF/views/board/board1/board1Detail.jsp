@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
 <head>
     <meta charset="UTF-8">
@@ -8,7 +9,6 @@
     <!--    <script type="text/javascript" src="../../../resources/js/board/board1.js"></script>-->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
-
 
     <script>
         $(document).ready(function() {
@@ -21,8 +21,6 @@
             });
         });
     </script>
-
-
 
 </head>
 <body>
@@ -61,7 +59,7 @@
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="/board1/list">
                     <span class="icon icon-3"><i class="ri-draft-line"></i></span>
                     <span class="sidebar--item" style="white-space: nowrap;">1반</span>
                 </a>
@@ -107,16 +105,7 @@
         </ul>
     </div>
 
-
-
-
-
-
-
-
-
     <div class="main--content">
-
         <div class="main-container">
             <form action="/board1/modify" method="get">
                 <input type="hidden" name="board1_no" value="${board1DTO.board1_no}"/>
@@ -127,57 +116,51 @@
                 <button type="submit" class="button">삭제</button>
             </form>
             <button type="button" class="button" onclick="location.href='/board1/list'">목록</button>
-            <div class="title--conatiner">
+            <div class="title--container">
                 <div class="write-title">
-                    <h2>게시글 목록</h2><br/>
                     <label>
-                        <h4>${board1DTO.member_name}</h4>
-                        <textarea name="board1_title">${board1DTO.board1_title}</textarea>
+                        <h2>제목</h2>
+                        <h4>by ${board1DTO.member_name}</h4>
+                        <textarea name="board1_title" readonly>${board1DTO.board1_title}</textarea>
                     </label>
-            </div>
+                </div>
             </div>
         </div>
-
         <div class="content-container">
             <div class="write-content">
                 <span class="content-label">내용</span>
-                <div class="content-textarea">${board1DTO.board1_content}</div>
+                <div class="content-textarea" readonly>${board1DTO.board1_content}</div>
             </div>
         </div>
-
         <div class="reply-container">
             <div>
                 <form action="/comment1/write" method="post">
                     <input type="hidden" name="board1_no" value="${board1DTO.board1_no}">
                     <button type="submit" class="insert-reply">댓글 등록</button>
-
-                        <textarea name="comment1_content" class="reply-insert" maxlength="300"></textarea>
+                    <textarea name="comment1_content" class="reply-insert" maxlength="300"></textarea>
                 </form>
             </div>
             <div class="reply-content-container">
                 <ul>
-                    <c:forEach items="${commentDTOs}" var="commentDTOs">
+                    <c:forEach items="${comment1DTO}" var="comment1DTO">
                         <li>
                             <table>
-                                <td><c:out value="${commentDTOs.comment1_content}"/></td>
+                                <td><c:out value="${comment1DTO.comment1_content}"/></td>
                                 <td>
                                     <form action="/comment1/delete" method="post">
-                                        <input type="hidden" name="comment1_no" value="${commentDTOs.comment1_no}"/>
+                                        <input type="hidden" name="comment1_no" value="${comment1DTO.comment1_no}"/>
                                         <input type="hidden" name="board1_no" value="${board1DTO.board1_no}"/>
                                         <button type="submit" class="button">삭제</button>
                                     </form>
                                 </td>
-                                <td><button type="button" class="button">수정</button></td>
-
+                                    <td><button type="button" class="button" data-toggle='modal' data-target='#modifyModal'>수정</button></td>
                             </table>
                         </li>
                     </c:forEach>
                 </ul>
             </div>
         </div>
-
     </div>
 </section>
-
 </body>
 </html>

@@ -1,42 +1,30 @@
 <!DOCTYPE html>
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+pageEncoding="UTF-8"%>
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>게시글 작성</title>
-    <link rel="stylesheet" type="text/css" href="../../../resources/css/board/board1Write.css">
-    <script type="text/javascript" src="../../../resources/js/board/board1.js"></script>
+    <title>공지사항</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
-    <script>
-        $(document).ready(function() {
-            let menu = $('.menu');
-            let sidebar = $('.sidebar');
-            let mainContent = $('.main--content');
-            menu.click(function() {
-                sidebar.toggleClass('active');
-                mainContent.toggleClass('active');
-            });
-        });
-    </script>
+    <link rel="stylesheet" type="text/css" href="../../../resources/css/question/questionWrite.css">
+    <script type="text/javascript" src="../../../resources/js/question/questionWrite.js"></script>
 </head>
 <body>
 <section class="header">
     <div class="logo">
         <i class="ri-menu-line icon icon-0 menu"></i>
-        <h2>J<span>eans:청바지:</span></h2><h5><span style="color:#5073FB">청</span>춘은 <span style="color:#5073FB">바</span>로 <span style="color:#5073FB">지</span>금!</h5>
+        <h2>J<span>eans👖</span></h2><h5><span style="color:#5073FB">청</span>춘은 <span style="color:#5073FB">바</span>로
+        <span style="color:#5073FB">지</span>금!</h5>
     </div>
     <div class="search--notification--profile">
         <div class="notification--profile">
-            <div class="picon bell">
-                <i class="ri-notification-2-line"></i>
-            </div>
             <div class="picon chat">
                 <i class="ri-mail-line"></i>
             </div>
             <div class="picon profile">
-                <span>???님 오늘도 파이팅하세요:미소짓는_얼굴:</span>
+                <span>???님 오늘도 파이팅하세요🙂</span>
             </div>
         </div>
     </div>
@@ -45,19 +33,19 @@
     <div class="sidebar">
         <ul class="sidebar--items">
             <li>
-                <a href="#" id="active--link">
+                <a href="#">
                     <span class="icon icon-1"><i class="ri-home-4-line"></i></span>
                     <span class="sidebar--item">홈</span>
                 </a>
             </li>
             <li>
-                <a href="#">
-                    <span class="icon icon-2"><i class="ri-megaphone-line"></i></span>
+                <a href="#" id="active--link">
+                    <span class="icon icon-2"><i style="color:white;" class="ri-megaphone-line"></i></span>
                     <span class="sidebar--item">공지사항</span>
                 </a>
             </li>
             <li>
-                <a href="/board1/list">
+                <a href="#">
                     <span class="icon icon-3"><i class="ri-draft-line"></i></span>
                     <span class="sidebar--item" style="white-space: nowrap;">1반</span>
                 </a>
@@ -103,33 +91,30 @@
         </ul>
     </div>
     <div class="main--content">
-        <form action="/board1/modify" method="post">
-            <input type="hidden" name="member_name" value="${board1DTO.member_name}">
-            <input type="hidden" name="member_class" value="${board1DTO.member_class}">
-            <input type="hidden" name="board1_no" value="${board1DTO.board1_no}">
-
-            <div class="main--container">
-                <button type="submit" class="button">수정하기</button>
-                <button type="button" class="button" onclick="location.href='/board1/detail/${board1DTO.board1_no}'">취소/목록</button>
-                <div class="title-container">
-                    <div class="write-title">
-                        <div class="text">글 작성</div>
-                        <label>
-                            <div><span>제목</span></div>
-                            <input type="text" class = "input-level" id="board1_title" name="board1_title" value="${board1DTO.board1_title}"></input>
-                        </label>
+        <span class="category-label">Q&A</span>
+        <div class="main-container">
+            <form method="post" action="/question/write">
+                <div class="container">
+                    <button class="save">저장</button>
+                    <div class="title-container">
+                        <div class="write-title">
+                            <label>
+                                <span>제목</span>
+                                <textarea name="title" required></textarea>
+                            </label>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="content-container">
-                <div class="write-content">
-                    <span class="content-label">내용</span>
-                    <textarea class="content-textarea" contenteditable="true" name="board1_content">${board1DTO.board1_content}</textarea>
-                    <input type="button" class="content-file" value="사진수정">
+                <div class="content-container">
+                    <div class="write-content">
+                        <span class="content-label">내용</span>
+                        <input type="file" id="photo-input" accept="image/gif, image/jpeg, image/png, image/webp" multiple style="display: none;">
+                        <div class="content" name="content" contenteditable="true"></div>
+                        <input type="button" class="content-file" value="사진추가">
+                    </div>
                 </div>
-            </div>
-        </form>
+            </form>
+        </div>
     </div>
 </section>
 </body>
-</html>

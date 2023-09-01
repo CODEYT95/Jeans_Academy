@@ -1,12 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
-
-    <typeAliases>
-        <!-- alias 별칭-->
-        <typeAlias alias="board1" type="com.project.jeans.domain.board.board1.dto.Board1DTO"/>
-    </typeAliases>
-
 <mappers>
     <package name="mybatis.mapper"/>
 </mappers>
