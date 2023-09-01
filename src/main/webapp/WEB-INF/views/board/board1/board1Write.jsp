@@ -97,9 +97,9 @@
         <form action="/board1/write" method="post">
             <input type="hidden" name="member_name" value="${board1DTO.member_name}">
             <input type="hidden" name="member_class" value="${board1DTO.member_class}">
-                <div class="main--container">
-                    <button type="submit" class="button">저장</button>
-                    <button type="button" class="button" onclick="location.href='/board1/list'">취소/목록</button>
+                <div class="head-container">
+                    <button type="submit" class="main-ori-button">저장</button>
+                    <button type="button" class="main-ori-button" onclick="location.href='/board1/list'">취소/목록</button>
                     <div class="title-container">
                         <div class="write-title">
                             <div class="text">글 작성</div>

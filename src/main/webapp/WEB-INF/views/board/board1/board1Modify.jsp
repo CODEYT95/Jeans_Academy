@@ -4,7 +4,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>게시글 작성</title>
+    <title>게시글 수정</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
     <link rel="stylesheet" type="text/css" href="../../../../resources/css/board/boardModify.css">
@@ -97,15 +97,15 @@
             <input type="hidden" name="member_class" value="${board1DTO.member_class}">
             <input type="hidden" name="board1_no" value="${board1DTO.board1_no}">
 
-            <div class="main--container">
-                <button type="submit" class="button">수정하기</button>
-                <button type="button" class="button" onclick="location.href='/board1/detail/${board1DTO.board1_no}'">취소/목록</button>
+            <div class="head-container">
+                <button type="submit" class="main-ori-button">저장</button>
+                <button type="button" class="main-ori-button" onclick="location.href='/board1/detail/${board1DTO.board1_no}'">목록</button>
                 <div class="title-container">
                     <div class="write-title">
-                        <div class="text">글 작성</div>
+                        <div class="text">글 수정</div>
                         <label>
                             <div><span>제목</span></div>
-                            <input type="text" class = "input-level" id="board1_title" name="board1_title" value="${board1DTO.board1_title}"></input>
+                            <textarea id="board1_title" name="board1_title">${board1DTO.board1_title}</textarea>
                         </label>
                     </div>
                 </div>
