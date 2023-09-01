@@ -6,7 +6,7 @@ pageEncoding="UTF-8"%>
     <meta charset="UTF-8">
     <title>Jeans|로그인</title>
     <link rel="stylesheet" type="text/css" href="../../../resources/css/member/login.css">
-    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
     <script type="text/javascript" src="../../../resources/js/member/login.js"></script>
 </head>
 <body>
