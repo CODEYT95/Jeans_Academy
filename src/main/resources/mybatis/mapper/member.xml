@@ -18,6 +18,14 @@
         SELECT * FROM member WHERE member_accept='N' ORDER BY member_type, member_id;
     </select>
 
+    <!--로그인 시 유효성 검사-->
+    <select id="noAccept" resultType="Integer" parameterType="String">
+        <![CDATA[
+        SELECT COUNT(*) FROM member WHERE member_id = #{member_id}
+        AND member_accept = 'Y';
+        ]]>
+    </select>
+
     <!--//////////////////////////////////////////////////////////////////////////////-->
     <!--회원가입/로그인 관련 쿼리문-->
     <!--수강생 회원가입-->
@@ -62,8 +70,6 @@
     SELECT COUNT(*) FROM MEMBER
     WHERE member_id = #{member_id}
     AND member_pw = #{member_pw}
-    AND member_accept = 'Y'
-    AND (member_type = '강사님' OR member_type = '관리자');
     ]]>
     </select>
 
@@ -73,8 +79,6 @@
         SELECT COUNT(*) FROM MEMBER
         WHERE member_id = #{member_id}
         AND member_pw = #{member_pw}
-        AND member_accept = 'Y'
-        AND member_type = '수강생'
         ]]>
     </select>
 
