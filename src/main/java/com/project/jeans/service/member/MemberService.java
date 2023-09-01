@@ -25,6 +25,10 @@ public interface MemberService {
     //수강생 로그인 처리
     public int loginStudent(MemberDTO memberDTO);
 
+    //요청 처리중인 회원 조회
+    public int noAccept(String member_id);
+
+
     //회원 타입 조회
     public String memberType(String member_id);
 

@@ -1,6 +1,5 @@
 package com.project.jeans.controller.question;
 
-import com.project.jeans.domain.question.dao.QuestionDAO;
 import com.project.jeans.domain.question.dto.QuestionDTO;
 import com.project.jeans.service.question.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;

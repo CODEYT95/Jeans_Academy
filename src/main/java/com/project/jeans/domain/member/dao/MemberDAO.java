@@ -17,6 +17,10 @@ public interface MemberDAO {
     //탈퇴 회원 조회
     public List<HashMap<String,Object>> getHiddenMember(HashMap<String,Object>map);
 
+    //요청 처리중인 회원 조회
+    public int noAccept(String member_id);
+
+
     //수강생 회원가입
     public int insertStudent(MemberDTO memberDTO);
 

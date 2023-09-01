@@ -1,14 +1,13 @@
 <!DOCTYPE html>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>게시글 수정</title>
+    <title>3반 게시글 목록</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="../../../../resources/css/board/boardModify.css">
-    <script type="text/javascript" src="../../../../resources/js/board/boardModify.js"></script>
+    <link rel="stylesheet" type="text/css" href="#">
+    <script type="text/javascript" src="#"></script>
 </head>
 <body>
 <section class="header">
@@ -52,19 +51,19 @@
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="/board2/list">
                     <span class="icon icon-4"><i class="ri-draft-line"></i></span>
                     <span class="sidebar--item">2반</span>
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="/board3/list">
                     <span class="icon icon-5"><i class="ri-draft-line"></i></span>
                     <span class="sidebar--item">3반</span>
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="/board4/list">
                     <span class="icon icon-6"><i class="ri-draft-line"></i></span>
                     <span class="sidebar--item">4반</span>
                 </a>
@@ -92,32 +91,7 @@
         </ul>
     </div>
     <div class="main--content">
-        <form action="/board1/modify" method="post">
-            <input type="hidden" name="member_name" value="${board1DTO.member_name}">
-            <input type="hidden" name="member_class" value="${board1DTO.member_class}">
-            <input type="hidden" name="board1_no" value="${board1DTO.board1_no}">
-
-            <div class="head-container">
-                <button type="submit" class="main-ori-button">저장</button>
-                <button type="button" class="main-ori-button" onclick="location.href='/board1/detail/${board1DTO.board1_no}'">목록</button>
-                <div class="title-container">
-                    <div class="write-title">
-                        <div class="text">글 수정</div>
-                        <label>
-                            <div><span>제목</span></div>
-                            <textarea id="board1_title" name="board1_title">${board1DTO.board1_title}</textarea>
-                        </label>
-                    </div>
-                </div>
-            </div>
-            <div class="content-container">
-                <div class="write-content">
-                    <span class="content-label">내용</span>
-                    <textarea class="content-textarea" contenteditable="true" name="board1_content">${board1DTO.board1_content}</textarea>
-                    <input type="button" class="content-file" value="사진수정">
-                </div>
-            </div>
-        </form>
+        <h1>3반 게시판입니다</h1>
     </div>
 </section>
 </body>

@@ -13,18 +13,13 @@ pageEncoding="UTF-8"%>
     <section class="main">
         <div class="container" id="container">
             <div class="form-container sign-up-container">
-                <form action="/login" method="post">
+                <form action="/login" method="post" id="teacherForm">
                     <h1>Login</h1>
                     <span>강사/관리자</span>
                     <input type="hidden" name="member_type" id="teacher" value="강사님">
                     <input type="text" name="member_id" class="teacherId" placeholder="Id" />
-                    <span id="idErrorTeacher" style="color: red; font-size: 10px; margin-left: 10px;"></span>
                     <input type="password" name="member_pw" class="teacherPw" placeholder="Password" />
-                    <span id="pwErrorTeacher" style="color: red; font-size: 10px; margin-left: 10px;"></span>
-                    <pre>
-
-                    </pre>
-                    <span id="loginErrorTeacher" style="color: red; font-size: 10px; margin-left: 10px;"></span>
+                    <span id="ErrorTeacher" style="color: red; font-size: 10px; margin-left: 10px;"></span>
                     <div>
                         <button type="submit" class="login">로그인</button>
                         <button id="teacherSignup">회원가입</button>
@@ -32,16 +27,15 @@ pageEncoding="UTF-8"%>
                 </form>
             </div>
             <div class="form-container sign-in-container">
-                <form action="/login" method="post">
+                <form action="/login" method="post" id="studentForm">
                     <h1>Login</h1>
                     <span>수강생</span>
                     <input type="hidden" name="member_type" id="student" value="수강생">
                     <input type="text" name="member_id"  class="studentId" placeholder="Id" />
                     <span id="idErrorStudent" style="color: red; font-size: 10px; margin-left: 10px;"></span>
                     <input type="password" name="member_pw"  class="studentPw" placeholder="Password"/>
-                    <span id="pwErrorStudent" style="color: red; font-size: 10px; margin-left: 10px;"></span>
+                    <span id="ErrorStudent" style="color: red; font-size: 10px; margin-left: 10px;"></span>
                     <a href="#">아이디 찾기</a>
-                    <span id="loginErrorStudent" style="color: red; font-size: 10px; margin-left: 10px;"></span>
                     <div>
                         <button type="submit" class="login">로그인</button>
                         <button id="studentSignup">회원가입</button>
