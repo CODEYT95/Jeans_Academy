@@ -40,6 +40,46 @@
         ]]>
     </insert>
 
+    <!--요청 회원 등록-->
+    <update id="acceptMember" parameterType="String">
+        <![CDATA[
+        UPDATE MEMBER SET member_accept='Y'
+        WHERE member_id=#{member_id};
+        ]]>
+    </update>
+
+    <!--member_type 조회하기-->
+    <select id="memberType" parameterType="String" resultType="String">
+        <![CDATA[
+        SELECT member_type FROM MEMBER
+        WHERE member_id = #{member_id};
+        ]]>
+    </select>
+
+    <!--강사님 로그인 처리-->
+    <select id="loginTeacher" parameterType="String" resultType="Integer">
+    <![CDATA[
+    SELECT COUNT(*) FROM MEMBER
+    WHERE member_id = #{member_id}
+    AND member_pw = #{member_pw}
+    AND member_accept = 'Y'
+    AND (member_type = '강사님' OR member_type = '관리자');
+    ]]>
+    </select>
+
+    <!--수강생 로그인 처리-->
+    <select id="loginStudent" parameterType="String" resultType="Integer">
+        <![CDATA[
+        SELECT COUNT(*) FROM MEMBER
+        WHERE member_id = #{member_id}
+        AND member_pw = #{member_pw}
+        AND member_accept = 'Y'
+        AND member_type = '수강생'
+        ]]>
+    </select>
+
+
+    <!--유효성 관련 쿼리문///////////////////////////////////////////////////////////////////////////////////////-->
     <!--전화번호 중복 체크-->
     <select id="phoneDuplicate" parameterType="String" resultType="Integer">
         <![CDATA[
@@ -67,14 +107,6 @@
         SELECT count(*) FROM code WHERE code = #{member_code};
         ]]>
     </select>
-
-    <!--요청 회원 등록-->
-    <update id="acceptMember" parameterType="String">
-        <![CDATA[
-        UPDATE MEMBER SET member_accept='Y'
-        WHERE member_id=#[member_id];
-        ]]>
-    </update>
 
     <!--//////////////////////////////////////////////////////////////////////////////-->
     <!--회원 관리 관련 쿼리문-->

@@ -32,6 +32,7 @@ public class Board1Controller {
         return "/board/board1/board1List";
     }
 
+
     //반별 게시글 상세 조회 및 게시글 관련 댓글 조회
     //페이지 연결할 때 수정 가능성 있음
     @GetMapping("/detail/{board1_no}")
