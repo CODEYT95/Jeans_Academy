@@ -2,7 +2,7 @@
 <%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<html>
+<html xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
     <title>게시글 상세보기</title>
@@ -157,6 +157,33 @@
                                     <td class="col-4"><button class="btn-modal" id="reply-button-sm">수정</button></td>
                                 </label>
                             </table>
+                            <div id="modal" class="modal-overlay">
+                                <div class="modal-window">
+                                    <div class="close-area">X</div>
+                                    <div class="modal-header">
+                                        <h1>댓글 수정</h1>
+                                        <br/><br/>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form action="/comment1/update" method="post">
+                                            <input type="hidden" name="board1_no" value="${board1DTO.board1_no}"/>
+                                            <div id="comment_no"  class="form-group">
+                                                <h3>댓글 번호</h3>
+                                                <textarea name="comment1_no"><c:out value="${comment1DTO.comment1_no}"/></textarea>
+                                            </div>
+                                            <div id="comment_content" class="form-group">
+                                                <h3>댓글 내용</h3>
+                                                <textarea name="comment1_content"><c:out value="${comment1DTO.comment1_content}"/></textarea>
+                                            </div>
+                                            <br/>
+                                            <button type="submit" class="reply-button">수정</button>
+                                        </form>
+                                    </div>
+                                    <div class="modal-footer">
+                                    </div>
+                                </div>
+                            </div>
+
                         </li>
                     </c:forEach>
                 </ul>
@@ -165,30 +192,6 @@
     </div>
 </section>
 </body>
-
-<div id="modal" class="modal-overlay">
-    <div class="modal-window">
-        <div class="close-area">X</div>
-        <div class="modal-header">
-            <h1>댓글 수정</h1>
-            <br/><br/>
-        </div>
-        <div class="modal-body">
-            <div class="form-group">
-                <h3>작성자</h3>
-                <input type="text" name=""/>
-            </div>
-            <div class="form-group">
-                <h3>댓글 내용</h3>
-                <input type="text" name=""/>
-            </div>
-            <br/>
-            <button type="button">수정</button>
-        </div>
-        <div class="modal-footer">
-        </div>
-    </div>
-</div>
 
 
 </html>

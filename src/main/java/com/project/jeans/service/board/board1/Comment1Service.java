@@ -10,9 +10,6 @@ public interface Comment1Service {
     //댓글 목록 조회
     public List<Comment1DTO> getComment1List(int board1_no);
 
-    //댓글 상세 조회
-    public Map<String,Object> getComment1Detail(Map<String,Object> map);
-
     //댓글 입력
     public int writeComment1(Map<String,Object> map);
 
