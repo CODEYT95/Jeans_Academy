@@ -420,7 +420,7 @@
         .button,
         .links,
         .link {
-          display: flex;
-          align-items: center;
-          justify-content: center;
+            isplay: flex;
+            align-items: center;
+            justify-content: center;
         }

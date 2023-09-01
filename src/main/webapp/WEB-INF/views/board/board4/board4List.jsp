@@ -1,31 +1,13 @@
 <!DOCTYPE html>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>게시글 작성</title>
-    <link rel="stylesheet" type="text/css" href="../../../resources/css/board/board1Write.css">
-    <script type="text/javascript" src="../../../resources/js/board/board1.js"></script>
+    <title>4반 게시글 목록</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
-
-
-    <script>
-        $(document).ready(function() {
-            let menu = $('.menu');
-            let sidebar = $('.sidebar');
-            let mainContent = $('.main--content');
-            menu.click(function() {
-                sidebar.toggleClass('active');
-                mainContent.toggleClass('active');
-            });
-        });
-
-
-    </script>
-
-</head>
+    <link rel="stylesheet" type="text/css" href="#">
+    <script type="text/javascript" src="#"></script>
 <body>
 <section class="header">
     <div class="logo">
@@ -62,25 +44,25 @@
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="/board1/list">
                     <span class="icon icon-3"><i class="ri-draft-line"></i></span>
                     <span class="sidebar--item" style="white-space: nowrap;">1반</span>
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="/board2/list">
                     <span class="icon icon-4"><i class="ri-draft-line"></i></span>
                     <span class="sidebar--item">2반</span>
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="/board3/list">
                     <span class="icon icon-5"><i class="ri-draft-line"></i></span>
                     <span class="sidebar--item">3반</span>
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="/board4/list">
                     <span class="icon icon-6"><i class="ri-draft-line"></i></span>
                     <span class="sidebar--item">4반</span>
                 </a>
@@ -107,35 +89,9 @@
             </li>
         </ul>
     </div>
-
-
-    <form action="/board1/modify" method="post">
-        <input type="hidden" name="member_name" value="${board1DTO.member_name}">
-        <input type="hidden" name="member_class" value="${board1DTO.member_class}">
-        <input type="hidden" name="board1_no" value="${board1DTO.board1_no}">
-        <div class="main--content">
-            <div class="main--container">
-                <button type="submit" class="button">수정하기</button>
-                <button type="button" class="button" onclick="location.href='/board1/detail/${board1DTO.board1_no}'">취소/목록</button>
-            </div>
-            <div class="title-container">
-                <div class="write-title">
-                    <div class="text">글 작성</div>
-                    <label>
-                        <div><span>제목</span></div>
-                        <input type="text" class = "input-level" id="board1_title" name="board1_title" value="${board1DTO.board1_title}"></input>
-                    </label>
-                </div>
-            </div>
-            <div class="content-container">
-                <div class="write-content">
-                    <span class="content-label">내용</span>
-                    <textarea class="content-textarea" contenteditable="true" name="board1_content">${board1DTO.board1_content}</textarea>
-                    <input type="button" class="content-file" value="사진수정">
-                </div>
-            </div>
-        </div>
-    </form>
+    <div class="main--content">
+        <h1>4반 게시판입니다</h1>
+    </div>
 </section>
 </body>
 </html>

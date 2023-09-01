@@ -90,8 +90,23 @@ pageEncoding="UTF-8"%>
             </li>
         </ul>
     </div>
+<form>
     <div class="main--content">
         <div class="main-container">
+            <!-- Modal -->
+            <div class="modal-container">
+              <div id="myModal" class="modal">
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <p>정말 삭제하시겠습니까?</p>
+                    <!-- 삭제 확인 및 취소 버튼 -->
+                    <div class="confirm-container">
+                      <button id="confirmDelete">확인</button>
+                      <button id="cancelDelete">취소</button>
+                    </div>
+                </div>
+              </div>
+            </div>
             <button class="delete">삭제</button>
             <button class="edit">수정</button>
             <div class="title-container">
@@ -104,33 +119,33 @@ pageEncoding="UTF-8"%>
             </div>
             <div class="content-container">
                 <div class="write-content">
-                    <span class="content-label">내용</span>
+                    <span class="content-label" disabled>내용</span>
                     <div class="content" contenteditable="true"></div>
                 </div>
                 <input type="button" class="insert-reply" value="댓글 등록">
             </div>
             <div class="reply-container">
                 <div>
-            <textarea class="reply-insert" maxlength="300"></textarea>
+                    <textarea class="reply-insert" maxlength="300"></textarea>
                 </div>
                 <div class="reply-content-container">
                     <ul>
                         <li>
-                    <p class="reply-content"></p>
-                        </li>
-                        <li>
-                            <p class="reply-content"></p>
-                        </li>
-                        <li>
-                            <p class="reply-content"></p>
-                        </li>
-                        <li>
-                            <p class="reply-content"></p>
+                            <div class="reply-info">
+                                <span class="reply-class">1반</span>
+                                <span class="reply-name">홍길동</span>
+                                <span class="reply-regdate">2023-08-30</span>
+                                <input type="button" class="reply-edit" value="수정">
+                                <input type="button" class="reply-delete" value="삭제">
+                            </div>
+                            <p class="reply-content">안녕하세요 댓글 테스트 중입니다 ㅎㅎㅎㅎㅎㅎㅎ</p>
                         </li>
                     </ul>
                 </div>
             </div>
         </div>
     </div>
+</form>
+
 </section>
 </body>

@@ -1,6 +1,5 @@
 package com.project.jeans.controller.member;
 
-import com.project.jeans.domain.member.dto.CodeDTO;
 import com.project.jeans.domain.member.dto.MemberDTO;
 import com.project.jeans.service.member.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,10 +11,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.List;
 
 @Controller
-public class MemberController {
+public class JoinController {
 
     //날짜 데이터 형식 변환 코드
     @ControllerAdvice
@@ -30,13 +28,6 @@ public class MemberController {
 
     @Autowired
     private MemberService memberService;
-
-    //로그인 폼 보여주기
-    @RequestMapping("/login")
-    public String login(){
-        return "member/login";
-    }
-    //로그인 처리
 
     //강사님 회원가입 폼 보여주기
     @RequestMapping("/teacher")
@@ -56,12 +47,6 @@ public class MemberController {
         return mv;
     }
 
-    //메인페이지 (삭제하기)
-    @RequestMapping("/main")
-    public String main(){
-        return "main";
-    }
-
     //수강생 회원가입 폼 보여주기
     @RequestMapping("/student")
     public String joinStudent(){
@@ -75,11 +60,12 @@ public class MemberController {
         if (insertTeacher == 1) {
             mv.setViewName("redirect:/login");
         } else {
-            mv.setViewName("redirect:/member/studentJoin");
+            mv.setViewName("redirect:/member/memberJoin");
         }
         return mv;
     }
 
+    /* 유효성 관련 메소드--------------------------------------------------------------------------------*/
     //아이디 중복 체크
     @GetMapping("/idDuplicate")
     @ResponseBody

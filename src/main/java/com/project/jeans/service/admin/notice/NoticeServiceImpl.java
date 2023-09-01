@@ -15,4 +15,11 @@ public class NoticeServiceImpl implements NoticeService {
     public List<NoticeDTO> selectAll() {
         return noticeDAO.selectAll();
     }
+
+    //공지사항 INSERT
+    @Override
+    public int insertNotice(NoticeDTO noticeDTO) {
+        return noticeDAO.insertNotice(noticeDTO);
+    }
+
 }

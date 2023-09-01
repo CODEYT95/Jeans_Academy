@@ -3,7 +3,6 @@ package com.project.jeans.controller.board.board1;
 import com.project.jeans.domain.board.board1.dto.Board1DTO;
 import com.project.jeans.domain.board.board1.dto.Comment1DTO;
 import com.project.jeans.service.board.board1.Board1Service;
-import com.project.jeans.service.board.board1.Board1ServiceImpl;
 import com.project.jeans.service.board.board1.Comment1ServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -32,6 +31,7 @@ public class Board1Controller {
         model.addAttribute("board1List", board1DTOList);
         return "/board/board1/board1List";
     }
+
 
     //반별 게시글 상세 조회 및 게시글 관련 댓글 조회
     //페이지 연결할 때 수정 가능성 있음
@@ -68,7 +68,7 @@ public class Board1Controller {
     public String modifyBoard1Form(@RequestParam int board1_no, Model model){
         Board1DTO board1DTO = board1Service.getBoard1Detail(board1_no);
         model.addAttribute("board1DTO", board1DTO);
-        return "/board/board1/board1ModifySub";
+        return "/board/board1/board1Modify";
     }
 
     //반별 게시글 수정
@@ -87,6 +87,7 @@ public class Board1Controller {
     //반별 게시글 삭제
     @GetMapping("/delete")
     public ModelAndView deleteBoard1(ModelAndView modelAndView, @RequestParam Map<String,Object> map){
+        System.out.println(map);
         int deletetInt = board1Service.deleteBoard1(map);
         if(deletetInt==1){
             modelAndView.setViewName("redirect:/board1/list");
