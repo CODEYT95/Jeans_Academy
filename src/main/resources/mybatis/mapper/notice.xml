@@ -3,14 +3,14 @@
 
 <mapper namespace="com.project.jeans.domain.admin.notice.dao.NoticeDAO">
     <!--공지사항 목록 모두 조회-->
-    <select id="selectAll" resultType="NoticeDTO">
+    <select id="selectAll" resultType="com.project.jeans.domain.admin.notice.dto.NoticeDTO">
         <![CDATA[
         SELECT *
         FROM notice
         ]]>
     </select>
     <!--공지사항 INSERT-->
-    <insert id="insertNotice" parameterType="NoticeDTO">
+    <insert id="insertNotice" parameterType="com.project.jeans.domain.admin.notice.dto.NoticeDTO">
         <![CDATA[
         INSERT INTO notice (notice_title, notice_content, member_class)
         VALUES (#{notice_title}, #{notice_content}, #{member_class});

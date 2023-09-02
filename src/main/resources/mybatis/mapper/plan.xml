@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.project.jeans.domain.plan.dao.PlanLiatDAO">
-    <select id="selectPlanAll" resultType="com.project.jeans.domain.plan.dto.PlanListDTO">
+<mapper namespace="com.project.jeans.domain.plan.dao.PlanDAO">
+    <select id="selectPlanAll" resultType="com.project.jeans.domain.plan.dto.PlanDTO">
         <![CDATA[
-    select plan_no, plan_title, plan_content, plan_regdate from plan;
+    select todo_no, todo_content, todo_regdate from todo;
     ]]>
     </select>
 
     <insert id="insertPlan" parameterType="com.project.jeans.domain.plan.dto.PlanDTO">
     <![CDATA[
-    INSERT INTO plan (plan_no, plan_title, plan_content)
-    VALUES (#{plan_title}, #{plan_content});
+    INSERT INTO todo (todo_content)
+    VALUES (#{todo_content});
     ]]>
     </insert>
 
