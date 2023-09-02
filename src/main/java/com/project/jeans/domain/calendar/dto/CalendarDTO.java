@@ -2,21 +2,16 @@ package com.project.jeans.domain.calendar.dto;
 
 import lombok.Data;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 @Data
 public class CalendarDTO {
 
     private int id;
-    private int groupId;
     private String title;
-    private String writer;
-    private String content;
-    private Date start1;
-    private Date end1;
-    private int allDay;
-    private String textColor;
-    private String backgroundColor;
-    private String borderColor;
+    private LocalDateTime start;
+    private LocalDateTime end;
+    private boolean allDay;
+    private String member_id;
 
 }

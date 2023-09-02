@@ -35,13 +35,13 @@ public class PlanController {
     @ResponseBody
     public ModelAndView insertPlan(@RequestParam("text") String todo_content,
                                    ModelAndView modelAndView) {
-            PlanDTO planDTO = new PlanDTO();
-            planDTO.setTodo_content(todo_content);
-            int result = planService.insertPlan(planDTO); // 데이터베이스에 저장
-            if(result > 0){
-                modelAndView.setViewName("redirect:http://localhost:8090/plan/planlist");
-            }
-            return modelAndView;
+        PlanDTO planDTO = new PlanDTO();
+        planDTO.setTodo_content(todo_content);
+        int result = planService.insertPlan(planDTO); // 데이터베이스에 저장
+        if(result > 0){
+            modelAndView.setViewName("redirect:http://localhost:8090/plan/planlist");
         }
+        return modelAndView;
     }
+}
 

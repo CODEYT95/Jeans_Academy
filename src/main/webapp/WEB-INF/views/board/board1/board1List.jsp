@@ -125,7 +125,7 @@
                 <c:forEach var="board1List" items="${board1List}">
                     <div class="box">
                         <div>
-                            <button type="button" class="box-button" value="상세" onclick="location.href='/board1/detail/${board1List.board1_no}'"/>
+                            <button type="button" class="box-button" onclick="location.href='/board1/detail/${board1List.board1_no}'">상세</button>
                         </div>
                         <div>
                             <h1>${board1List.board1_title}</h1>
