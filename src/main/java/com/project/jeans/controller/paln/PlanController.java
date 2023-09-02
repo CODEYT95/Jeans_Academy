@@ -1,6 +1,7 @@
 package com.project.jeans.controller.paln;
 
 import com.project.jeans.domain.plan.dto.PlanDTO;
+import com.project.jeans.domain.question.dto.QuestionDTO;
 import com.project.jeans.service.plan.PlanService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -29,27 +31,17 @@ public class PlanController {
         return "plan/planlist";
     }
 
-    @RequestMapping(value = "/planInsert", method = RequestMethod.POST)
+    @RequestMapping(value = "/planlist", method = RequestMethod.POST)
     @ResponseBody
-    public String insertPlan(@RequestParam("date") String dateStr, @RequestParam("title") String title) {
-        try {
-            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd"); // 날짜 포맷 정의
-            Date date = dateFormat.parse(dateStr); // 문자열로 받은 날짜를 Date로 변환
-
-            PlanDTO planDTO = new PlanDTO();
-            planDTO.setPlan_regdate(date);
-            planDTO.setPlan_title(title);
-
-            int result = planService.insertPlan(planDTO);
-
-            if (result > 0) {
-                return "redirect:/plan/planlist";
-            } else {
-                return "failure";
-            }
-        } catch (ParseException e) {
-
-            return "failure";
+    public ModelAndView insertPlan(@RequestParam("text") String todo_content,
+                                   ModelAndView modelAndView) {
+        PlanDTO planDTO = new PlanDTO();
+        planDTO.setTodo_content(todo_content);
+        int result = planService.insertPlan(planDTO); // 데이터베이스에 저장
+        if(result > 0){
+            modelAndView.setViewName("redirect:http://localhost:8090/plan/planlist");
         }
+        return modelAndView;
     }
 }
+

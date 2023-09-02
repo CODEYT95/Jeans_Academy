@@ -376,6 +376,22 @@ const init = () => {
     clearCompletedBtnElem.addEventListener('click', clearCompletedTodos);
     setLeftItems()
 }
-
+ function saveTodoToServer(todoText) {
+        // 서버로 데이터를 전송하는 코드를 작성해야 합니다.
+        // 이 예시에서는 jQuery를 사용하여 POST 요청을 보내는 방법을 보여줍니다.
+        $.ajax({
+            type: "POST",
+            url: "/plan/planlist", // 백엔드 API 엔드포인트 URL
+            data: { text: todoText }, // 전송할 데이터
+            success: function (response) {
+                // 성공 시 처리
+                console.log("Todo가 서버에 저장되었습니다.");
+            },
+            error: function (error) {
+                // 실패 시 처리
+                console.error("Todo 저장 중 오류 발생:", error);
+            },
+        });
+    }
 init()
 });
