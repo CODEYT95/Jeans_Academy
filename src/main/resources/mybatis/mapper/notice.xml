@@ -25,4 +25,10 @@
         VALUES (#{notice_title}, #{notice_content}, #{member_class});
         ]]>
     </insert>
+    <!-- 공지사항 Isshow N으로 바꾸기-->
+    <update id="noticeIsshow" parameterType="Integer">
+        UPDATE notices
+        SET notice_isshow = 'N'
+        WHERE notice_no = #{notice_no};
+    </update>
 </mapper>

@@ -16,6 +16,8 @@ public interface NoticeDAO {
 
     //공지사항 INSERT
     int insertNotice(NoticeDTO noticeDTO);
+    //공지사항 isShow N으로 바꾸기
+    int noticeIsshow(int notice_no);
 
 
 }

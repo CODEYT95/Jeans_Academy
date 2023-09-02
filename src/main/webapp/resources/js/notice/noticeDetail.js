@@ -1,8 +1,6 @@
 $(document).ready(function() {
-
-
    // Delete 버튼 클릭 시 이벤트 핸들러
-   $('.delete').click(function() {
+   $('.delete').click(function(e) {
      // Modal 보이기
      $('#myModal').css('display', 'block');
    });
@@ -15,15 +13,31 @@ $(document).ready(function() {
 
    // 확인 버튼 클릭 시 이벤트 핸들러 (삭제 작업 처리)
    $('#confirmDelete').click(function() {
-     // TODO: 실제로 삭제 작업을 수행하는 코드를 여기에 추가
+       // 확인 버튼 클릭 시 수행할 작업
 
-     // 예시로 경고창으로 확인 메시지 표시 후, 모달 숨기기
-     if (confirm("정말로 삭제하시겠습니까?")) {
-         console.log("삭제가 완료되었습니다."); // 예시로 콘솔에 메시지 출력
 
-         // Modal 숨기기
-         $('#myModal').css('display', 'none');
-     }
+           // AJAX 요청 보내기
+           $.ajax({
+               type: "POST", // POST 방식 요청
+               url: "/noticeIsshow", // 요청할 URL
+               data: { /* 데이터를 여기에 추가 */ },
+               success: function(response) {
+               if(response === 1){
+                  // 요청이 성공했을 때 실행할 코드
+                  console.log("삭제 요청이 성공했습니다.");
+               }
+
+                   // 모달 숨기기
+                   $('#myModal').css('display', 'none');
+               },
+               error: function(error) {
+                   // 요청이 실패했을 때 실행할 코드
+                   console.error("삭제 요청이 실패했습니다.");
+                   // 모달 숨기기
+                   $('#myModal').css('display', 'none');
+               }
+           });
+
    });
 
    // 취소 버튼 클릭 시 이벤트 핸들러 (모달 닫기)

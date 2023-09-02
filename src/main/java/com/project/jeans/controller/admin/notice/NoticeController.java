@@ -18,6 +18,7 @@ public class NoticeController {
     private final NoticeService noticeService;
     private final NoticeDAO noticeDAO;
 
+    //공지사항 전체목록 불러오기
     @GetMapping("/noticeList")
     public ModelAndView noticeList() {
         List<NoticeDTO> noticeList = noticeService.selectAll();
@@ -28,17 +29,13 @@ public class NoticeController {
         return modelAndView;
     }
 
+    //공지사항 Insert
     @GetMapping("/noticeInsert")
     public ModelAndView noticeInsert(){
         return new ModelAndView("notice/noticeInsert");
     }
 
-    @GetMapping("/noticeDetail")
-    public ModelAndView noticeDetail(){
-        return new ModelAndView("notice/noticeDetail");
-    }
-
-
+    //공지사항 Insert-insert ajax
     @PostMapping("/notice_insert")
     public NoticeDTO notice_insert(@RequestParam("title") String title, @RequestParam("content") String content){
         NoticeDTO noticeDTO = new NoticeDTO();
@@ -51,9 +48,21 @@ public class NoticeController {
 
         return noticeDTO;
     }
+    //공지사항 상세보기
+    @GetMapping("/noticeDetail")
+    public ModelAndView noticeDetail(){
+        return new ModelAndView("notice/noticeDetail");
+    }
+
+    //공지사항 게시글 ishshow 'N'처리
+    @PostMapping("/noticeIsshow")
+    public int noticeIsshow(@RequestParam("notice_no") int notice_no){
+        System.out.println("ishshow컨트롤러 진입");
+        return noticeDAO.noticeIsshow(notice_no);
+    }
 
     @GetMapping("/test")
     public ModelAndView test(){
-        return new ModelAndView("notice/abc");
+        return new ModelAndView("test");
     }
 }

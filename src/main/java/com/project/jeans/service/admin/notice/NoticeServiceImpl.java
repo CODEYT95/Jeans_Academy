@@ -31,4 +31,10 @@ public class NoticeServiceImpl implements NoticeService {
         return noticeDAO.insertNotice(noticeDTO);
     }
 
+    //공지사항 isShow N으로 바꾸기
+    @Override
+    public int noticeIsshow(int notice_no) {
+        return noticeDAO.noticeIsshow(notice_no);
+    }
+
 }

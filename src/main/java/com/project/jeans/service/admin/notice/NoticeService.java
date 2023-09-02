@@ -10,4 +10,7 @@ public interface NoticeService {
     public  List<NoticeDTO> selectFive();
     //공지사항 INSERT
     public int insertNotice(NoticeDTO noticeDTO);
+
+    //공지사항 isShow N으로 바꾸기
+    public int noticeIsshow(int notice_no);
 }

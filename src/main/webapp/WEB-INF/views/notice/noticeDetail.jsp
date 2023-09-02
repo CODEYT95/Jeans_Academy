@@ -90,7 +90,6 @@ pageEncoding="UTF-8"%>
             </li>
         </ul>
     </div>
-<form>
     <div class="main--content">
         <div class="main-container">
             <!-- Modal -->
@@ -145,7 +144,5 @@ pageEncoding="UTF-8"%>
             </div>
         </div>
     </div>
-</form>
-
 </section>
 </body>
