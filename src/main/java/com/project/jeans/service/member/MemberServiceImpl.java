@@ -59,6 +59,14 @@ public class MemberServiceImpl implements MemberService{
         return memberDAO.loginTeacher(memberDTO);
     }
 
+    //정보 가져오기
+
+
+    @Override
+    public MemberDTO getMemberInfo(String member_id) {
+        return memberDAO.getMemberInfo(member_id);
+    }
+
     //요청 처리중인 회원 조회
     @Override
     public int noAccept(String member_id) {

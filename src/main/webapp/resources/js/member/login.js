@@ -1,15 +1,15 @@
 document.addEventListener("DOMContentLoaded", function() {
-    const signUpButton = document.getElementById('signUp');
-    const signInButton = document.getElementById('signIn');
+    const teacherLoginButton = document.getElementById('teacherLogin');
+    const studentLoginButton = document.getElementById('studentLogin');
     const container = document.getElementById('container');
 
-    signUpButton.addEventListener('click', () => {
+    teacherLoginButton.addEventListener('click', () => {
         // 패널 전환 시 input 필드 초기화
         clearInputFields();
         container.classList.add("right-panel-active");
     });
 
-    signInButton.addEventListener('click', () => {
+    studentLoginButton.addEventListener('click', () => {
         // 패널 전환 시 input 필드 초기화
         clearInputFields();
         container.classList.remove("right-panel-active");

@@ -19,7 +19,7 @@ pageEncoding="UTF-8"%>
                     <input type="hidden" name="member_type" id="teacher" value="강사님">
                     <input type="text" name="member_id" class="teacherId" placeholder="Id" />
                     <input type="password" name="member_pw" class="teacherPw" placeholder="Password" />
-                    <span id="ErrorTeacher" style="color: red; font-size: 10px; margin-left: 10px;"></span>
+                    <span id="ErrorTeacher" style="color: red;"></span>
                     <div>
                         <button type="submit" class="login">로그인</button>
                         <button id="teacherSignup">회원가입</button>
@@ -32,9 +32,8 @@ pageEncoding="UTF-8"%>
                     <span>수강생</span>
                     <input type="hidden" name="member_type" id="student" value="수강생">
                     <input type="text" name="member_id"  class="studentId" placeholder="Id" />
-                    <span id="idErrorStudent" style="color: red; font-size: 10px; margin-left: 10px;"></span>
                     <input type="password" name="member_pw"  class="studentPw" placeholder="Password"/>
-                    <span id="ErrorStudent" style="color: red; font-size: 10px; margin-left: 10px;"></span>
+                    <span id="ErrorStudent" style="color: red;"></span>
                     <a href="#">아이디 찾기</a>
                     <div>
                         <button type="submit" class="login">로그인</button>
@@ -48,13 +47,13 @@ pageEncoding="UTF-8"%>
                         <h1>Jeans👖</h1>
                         <span>청춘은 바로 지금!</span>
                         <p>수강생인가요?👨‍👨‍👧‍👧</p>
-                        <button class="ghost" id="signIn">수강생</button>
+                        <button class="ghost" id="studentLogin">수강생</button>
                     </div>
                     <div class="overlay-panel overlay-right">
                         <h1>Jeans👖</h1>
                         <span>청춘은 바로 지금!</span>
                         <p>강사님 또는 관리자인가요?👩‍🏫</p>
-                        <button class="ghost" id="signUp">강사/관리자</button>
+                        <button class="ghost" id="teacherLogin">강사/관리자</button>
                     </div>
                 </div>
             </div>

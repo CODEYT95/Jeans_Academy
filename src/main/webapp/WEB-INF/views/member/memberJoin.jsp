@@ -52,7 +52,7 @@ pageEncoding="UTF-8"%>
                     <select name="member_class" required>
                         <option value="" disabled selected>반 선택</option>
                         <option value="1반">1반</option>
-                        <option value="c2반">2반</option>
+                        <option value="2반">2반</option>
                         <option value="3반">3반</option>
                         <option value="4반">4반</option>
                     </select>
