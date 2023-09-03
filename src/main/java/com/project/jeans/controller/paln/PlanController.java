@@ -1,5 +1,6 @@
 package com.project.jeans.controller.paln;
 
+import com.project.jeans.domain.plan.dao.PlanDAO;
 import com.project.jeans.domain.plan.dto.PlanDTO;
 import com.project.jeans.domain.question.dto.QuestionDTO;
 import com.project.jeans.service.plan.PlanService;
@@ -31,17 +32,5 @@ public class PlanController {
         return "plan/planlist";
     }
 
-    @RequestMapping(value = "/planlist", method = RequestMethod.POST)
-    @ResponseBody
-    public ModelAndView insertPlan(@RequestParam("text") String todo_content,
-                                   ModelAndView modelAndView) {
-        PlanDTO planDTO = new PlanDTO();
-        planDTO.setTodo_content(todo_content);
-        int result = planService.insertPlan(planDTO); // 데이터베이스에 저장
-        if(result > 0){
-            modelAndView.setViewName("redirect:http://localhost:8090/plan/planlist");
-        }
-        return modelAndView;
-    }
 }
 

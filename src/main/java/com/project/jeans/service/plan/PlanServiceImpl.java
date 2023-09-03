@@ -18,7 +18,8 @@ public class PlanServiceImpl implements PlanService {
     }
 
     @Override
-    public int insrtPlan(PlanDTO planDTO) {
+    public int insertPlan(PlanDTO planDTO) {
         return planDAO.insertPlan(planDTO);
     }
+
 }

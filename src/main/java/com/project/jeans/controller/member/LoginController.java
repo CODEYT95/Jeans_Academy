@@ -23,6 +23,12 @@ public class LoginController {
         return "member/login";
     }
 
+    //아이디 찾기
+    @GetMapping("/findId")
+    public String findId(){
+        return "";
+    }
+
     //로그인 처리
     @PostMapping("/login")
     @ResponseBody

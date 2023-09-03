@@ -2,17 +2,21 @@ document.addEventListener("DOMContentLoaded", function() {
     const teacherLoginButton = document.getElementById('teacherLogin');
     const studentLoginButton = document.getElementById('studentLogin');
     const container = document.getElementById('container');
+    const teachereyeIcon = document.querySelector(".eye-icon");
+    const studenteyeIcon = document.querySelector(".eye-icon2");
 
     teacherLoginButton.addEventListener('click', () => {
         // 패널 전환 시 input 필드 초기화
         clearInputFields();
         container.classList.add("right-panel-active");
+        studenteyeIcon.style.display ="none";
     });
 
     studentLoginButton.addEventListener('click', () => {
         // 패널 전환 시 input 필드 초기화
         clearInputFields();
         container.classList.remove("right-panel-active");
+        teachereyeIcon.style.display ="none";
     });
 
     const teacherSignup = document.getElementById('teacherSignup');
@@ -100,3 +104,50 @@ document.addEventListener("DOMContentLoaded", function() {
         $("#ErrorTeacher, #ErrorStudent").text(""); // 에러 메시지 초기화
     }
 });
+    //비밀번호 type 전환 기능
+    document.addEventListener("DOMContentLoaded", function() {
+      const teacherPassword = document.querySelector(".teacherPw");
+      const studentPassword = document.querySelector(".studentPw");
+      const teachereyeIcon = document.querySelector(".eye-icon");
+      const studenteyeIcon = document.querySelector(".eye-icon2");
+
+      // 선생님 비밀번호 눈 아이콘 클릭 이벤트
+      teachereyeIcon.addEventListener("click", function() {
+        if (teacherPassword.type === "password") {
+          teacherPassword.type = "text";
+          teachereyeIcon.innerHTML = '<ion-icon name="eye-off-outline"></ion-icon>';
+        } else {
+          teacherPassword.type = "password";
+          teachereyeIcon.innerHTML = '<ion-icon name="eye-outline"></ion-icon>';
+        }
+      });
+
+       // 학생 비밀번호 눈 아이콘 클릭 이벤트
+       studenteyeIcon.addEventListener("click", function() {
+         if (studentPassword.type === "password") {
+           studentPassword.type = "text";
+           studenteyeIcon.innerHTML = '<ion-icon name="eye-off-outline"></ion-icon>';
+         } else {
+           studentPassword.type ="password";
+           studenteyeIcon.innerHTML ="<ion-icon name='eye-outline'></ion-icon>";
+         }
+       });
+
+       // 선생님 비밀번호 입력 필드에 입력 이벤트 리스너 추가하여 값이 비어 있는지 확인
+       teacherPassword.addEventListener("input", function() {
+         if (teacherPassword.value.trim() === "") {
+           teachereyeIcon.style.display ="none";
+         } else {
+           teachereyeIcon.style.display ="block";
+         }
+       });
+
+       // 학생 비밀번호 입력 필드에 입력 이벤트 리스너 추가하여 값이 비어 있는지 확인
+       studentPassword.addEventListener("input", function() {
+         if (studentPassword.value.trim() === "") {
+           studenteyeIcon.style.display ="none";
+         } else {
+            studenteyeIcon.style.display ="block";
+          }
+        });
+    });

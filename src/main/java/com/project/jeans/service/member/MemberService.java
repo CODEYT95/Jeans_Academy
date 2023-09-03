@@ -25,6 +25,9 @@ public interface MemberService {
     //수강생 로그인 처리
     public int loginStudent(MemberDTO memberDTO);
 
+    //아이디 찾기
+    public String findId(MemberDTO memberDTO);
+
     //회원 정보 가져오기
     public MemberDTO getMemberInfo(String member_id);
 

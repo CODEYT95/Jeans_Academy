@@ -53,6 +53,11 @@ public class MemberServiceImpl implements MemberService{
         return memberDAO.loginStudent(memberDTO);
     }
 
+    @Override
+    public String findId(MemberDTO memberDTO) {
+        return memberDAO.findId(memberDTO);
+    }
+
     //강사님 로그인 처리
     @Override
     public int loginTeacher(MemberDTO memberDTO) {
@@ -60,8 +65,6 @@ public class MemberServiceImpl implements MemberService{
     }
 
     //정보 가져오기
-
-
     @Override
     public MemberDTO getMemberInfo(String member_id) {
         return memberDAO.getMemberInfo(member_id);
