@@ -1,5 +1,6 @@
 package com.project.jeans.controller.main;
 
+import com.project.jeans.LoginCheckSession;
 import com.project.jeans.domain.member.dto.MemberDTO;
 import com.project.jeans.service.admin.notice.NoticeService;
 import com.project.jeans.service.calendar.CalendarService;
@@ -8,6 +9,7 @@ import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class mainController {
@@ -24,8 +26,15 @@ public class mainController {
     @GetMapping("/main1")
     public String main(Model model, HttpSession session) {
         String member_id = (String) session.getAttribute("member_id");
+        LoginCheckSession loginCheck = new LoginCheckSession(memberService); // Provide the memberService instance here
+        MemberDTO memberInfo = loginCheck.getLoginCheckSession(session, model);
 
-        MemberDTO memberInfo = memberService.getMemberInfo(member_id);
+        if (memberInfo == null) {
+            // 로그인이 필요한 경우 리디렉션
+            return "member/login";
+        }
+
+        memberInfo = memberService.getMemberInfo(member_id);
         if(memberInfo != null){
             String member_name = memberInfo.getMember_name();
             String member_class = memberInfo.getMember_class();

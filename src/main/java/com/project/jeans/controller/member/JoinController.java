@@ -2,6 +2,7 @@ package com.project.jeans.controller.member;
 
 import com.project.jeans.domain.member.dto.MemberDTO;
 import com.project.jeans.service.member.MemberService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
@@ -13,6 +14,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @Controller
+@RequiredArgsConstructor
 public class JoinController {
 
     //날짜 데이터 형식 변환 코드

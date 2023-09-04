@@ -1,6 +1,7 @@
 package com.project.jeans.controller.board.board1;
 
 import com.project.jeans.service.board.board1.Comment1Service;
+import com.project.jeans.service.member.MemberService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -13,6 +14,7 @@ import java.util.Map;
 @Controller
 public class Comment1Controller {
 
+    private final MemberService memberService;
     private final Comment1Service comment1Service;
 
     //댓글 입력
