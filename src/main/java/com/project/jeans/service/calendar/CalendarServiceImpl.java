@@ -6,22 +6,27 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
 @RequiredArgsConstructor
 public class CalendarServiceImpl implements CalendarService {
-    @Autowired
+    @Autowired(required = false)
     private final CalendarDAO calendarDAO;
 
-
     @Override
-    public List<CalendarDTO> selectCalendar(String member_id) {
-        return calendarDAO.selectCalendar(member_id);
+    public int insertCalendar(CalendarDTO calendarDTO) {
+        return 0;
     }
 
     @Override
-    public int insertEvent(CalendarDTO calendarDTO) {
-        return calendarDAO.insertEvent(calendarDTO);
+    public ArrayList<CalendarDTO> calenList() {
+        return calendarDAO.calenList();
+    }
+
+    @Override
+    public void selectCalendar(Object memberId) {
+
     }
 }

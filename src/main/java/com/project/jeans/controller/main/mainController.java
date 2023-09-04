@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
@@ -23,8 +24,9 @@ public class mainController {
     }
     @GetMapping("/main1")
     public String main(Model model) {
-        /*
+
         List<NoticeDTO> recentNotices = noticeService.selectFive();
+        Object member_id = null;
         calendarService.selectCalendar(member_id);
 
         if (recentNotices.size() >= 1) {
@@ -42,9 +44,14 @@ public class mainController {
         if (recentNotices.size() >= 5) {
             model.addAttribute("notice5", recentNotices.get(4));
         }
-*/
+
         return "main/main";
 
 
     }
+
+
 }
+
+
+

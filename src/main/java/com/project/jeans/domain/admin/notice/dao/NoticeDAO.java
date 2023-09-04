@@ -18,4 +18,5 @@ public interface NoticeDAO {
     int insertNotice(NoticeDTO noticeDTO);
 
 
+    List<NoticeDTO> findNoticeAll();
 }
