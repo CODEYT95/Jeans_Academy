@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 pageEncoding="UTF-8"%>
-<%@ taglib prefix="c"
-uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html xmlns:c="http://java.sun.com/JSP/Page" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset='utf-8'/>
@@ -19,10 +18,7 @@ uri="http://java.sun.com/jsp/jstl/core"%>
     <!-- fullcalendar 언어 CDN -->
     <script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.8.0/locales-all.min.js'></script>
     <!-- 슬라이드-->
-    <link
-            rel="stylesheet"
-            href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"
-    />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"/>
     <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
     <link rel="stylesheet" type="text/css" href="../../../resources/css/main/main.css">
     <link rel="stylesheet" type="text/css" href="../../../resources/css/game/snakeGame.css">
@@ -41,7 +37,6 @@ uri="http://java.sun.com/jsp/jstl/core"%>
     </script>
 
     <!-- 게시물 목록에 제목 표시 -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         $(document).ready(function() {
             // 각 게시물 항목을 순회하며 제목 정보를 가져와서 표시합니다.
@@ -221,7 +216,6 @@ uri="http://java.sun.com/jsp/jstl/core"%>
     </script>
 
     <script type="text/javascript">
-        // <![CDATA[
         var colour="random"; // in addition to "random" can be set to any valid colour eg "#f0f" or "red"
         var sparkles=50;
 
@@ -416,26 +410,81 @@ uri="http://java.sun.com/jsp/jstl/core"%>
             c.sort(function(){return (0.5-Math.random());});
             return("rgb("+c[0]+", "+c[1]+", "+c[2]+")");
         }
-        // ]]>
+    </script>
+    <script>
+    //반별로 게시판 권한 주기
+    document.addEventListener("DOMContentLoaded", function() {
+    var member_class = "${member_class}";
+    console.log(member_class);
+
+    // 클릭 이벤트 캔슬 함수
+    function cancelClickEvent(links) {
+    links.forEach(function(link) {
+    link.addEventListener("click", function(event) {
+    event.preventDefault(); // 클릭 이벤트를 캔슬합니다.
+    });
+    });
+    }
+
+    var class1Links = document.querySelectorAll(".class-1 a");
+    var class2Links = document.querySelectorAll(".class-2 a");
+    var class3Links = document.querySelectorAll(".class-3 a");
+    var class4Links = document.querySelectorAll(".class-4 a");
+    var sideClass1 = document.querySelectorAll(".sideBoard1")
+    var sideClass2 = document.querySelectorAll(".sideBoard2")
+    var sideClass3 = document.querySelectorAll(".sideBoard3")
+    var sideClass4 = document.querySelectorAll(".sideBoard4")
+
+
+    if (member_class === "1반") {
+    cancelClickEvent(class2Links);
+    cancelClickEvent(class3Links);
+    cancelClickEvent(class4Links);
+    cancelClickEvent(sideClass2);
+    cancelClickEvent(sideClass3);
+    cancelClickEvent(sideClass4);
+    } else if (member_class === "2반") {
+    cancelClickEvent(class1Links);
+    cancelClickEvent(class3Links);
+    cancelClickEvent(class4Links);
+    cancelClickEvent(sideClass1);
+    cancelClickEvent(sideClass3);
+    cancelClickEvent(sideClass4);
+    } else if (member_class === "3반") {
+    cancelClickEvent(class1Links);
+    cancelClickEvent(class2Links);
+    cancelClickEvent(class4Links);
+    cancelClickEvent(sideClass1);
+    cancelClickEvent(sideClass2);
+    cancelClickEvent(sideClass4);
+    } else if (member_class === "4반") {
+    cancelClickEvent(class1Links);
+    cancelClickEvent(class2Links);
+    cancelClickEvent(class3Links);
+    cancelClickEvent(sideClass1);
+    cancelClickEvent(sideClass2);
+    cancelClickEvent(sideClass3);
+    }
+    });
     </script>
 </head>
-<body>
 
+<body>
 <section class="header">
     <div class="logo">
         <i class="ri-menu-line icon icon-0 menu"></i>
-        <h2>J<span>eans:👖:</span></h2><h5><span style="color:#5073FB">청</span>춘은 <span style="color:#5073FB">바</span>로 <span style="color:#5073FB">지</span>금!</h5>
+        <h2>J<span>eans👖</span></h2><h5><span style="color:#5073FB">청</span>춘은 <span style="color:#5073FB">바</span>로
+        <span style="color:#5073FB">지</span>금!</h5>
     </div>
     <div class="search--notification--profile">
         <div class="notification--profile">
-            <div class="picon bell">
-                <i class="ri-notification-2-line"></i>
-            </div>
-            <div class="picon chat">
-                <i class="ri-mail-line"></i>
-            </div>
+            <a href="/message/messageList">
+                <div class="picon chat">
+                    <i class="ri-mail-line" ></i>
+                </div>
+            </a>
             <div class="picon profile">
-                <span>${member_class} ${member_name}님 오늘도 파이팅하세요:😊:</span>
+                <span>${member_class} ${member_name}님 오늘도 파이팅하세요🙂</span>
             </div>
         </div>
     </div>
@@ -444,47 +493,55 @@ uri="http://java.sun.com/jsp/jstl/core"%>
     <div class="sidebar">
         <ul class="sidebar--items">
             <li>
-                <a href="/main1" id="active--link">
-                    <span class="icon icon-1"><i class="ri-home-4-line"></i></span>
+                <a  href="/main1" id="active--link">
+                    <span class="icon icon-1"><i  style="color:white;" class="ri-home-4-line"></i></span>
                     <span class="sidebar--item">홈</span>
                 </a>
             </li>
             <li>
-                <a href="/noticelist">
+                <a href="/noticeList">
                     <span class="icon icon-2"><i class="ri-megaphone-line"></i></span>
                     <span class="sidebar--item">공지사항</span>
                 </a>
             </li>
             <li>
-                <a href="/board1/list">
+                <a class="sideBoard1" href="/board1/list">
                     <span class="icon icon-3"><i class="ri-draft-line"></i></span>
                     <span class="sidebar--item" style="white-space: nowrap;">1반</span>
                 </a>
             </li>
             <li>
-                <a href="/board2/list">
+                <a class="sideBoard2" href="/board2/list">
                     <span class="icon icon-4"><i class="ri-draft-line"></i></span>
                     <span class="sidebar--item">2반</span>
                 </a>
             </li>
             <li>
-                <a href="/board3/list">
+                <a class="sideBoard3" href="/board3/list">
                     <span class="icon icon-5"><i class="ri-draft-line"></i></span>
                     <span class="sidebar--item">3반</span>
                 </a>
             </li>
             <li>
-                <a href="/board4/list">
+                <a class="sideBoard4" href="/board4/list">
                     <span class="icon icon-6"><i class="ri-draft-line"></i></span>
                     <span class="sidebar--item">4반</span>
                 </a>
             </li>
             <li>
-                <a href="/question">
+                <a href="/question/list">
                     <span class="icon icon-7"><i class="ri-questionnaire-line"></i></span>
                     <span class="sidebar--item">QnA</span>
                 </a>
             </li>
+            <c:if test="${member_type == '관리자'}">
+                <li>
+                    <a href="/admin/memberList">
+                        <span class="icon icon-10"><i class="ri-admin-line"></i></span>
+                        <span class="sidebar--item">Admin</span>
+                    </a>
+                </li>
+            </c:if>
         </ul>
         <ul class="sidebar--bottom-items">
             <li>
@@ -501,8 +558,6 @@ uri="http://java.sun.com/jsp/jstl/core"%>
             </li>
         </ul>
     </div>
-
-
     <div class="main--content">
         <div class="main-container">
             <div class="contents">
@@ -617,18 +672,15 @@ uri="http://java.sun.com/jsp/jstl/core"%>
                 </div>
 
                 <div class="board-class">
-                    <div class="class-1">
-                        <a href="/board1/list"><h1>1반</h1></a>
-                        <!-- 게시글 목록 링크 -->
-                        <ul class="post-list" data-class="class-1">
-                            <li data-post-id="1"><a href="#">게시글 목록</a></li>
-                        </ul>
-                            <!-- 1반 게시판 목록 -->
-                            <ul class="board-list" data-class="class-3">
-                                <li><a href="/board1/detail/41">▷궁금한 점이 있어요</a></li>
-                                <li><a href="/board1/detail/31">▷글을 작성해볼게요</a></li>
-                            </ul>
-                       </div>
+                            <div class="class-1">
+                                <a href="/board1/list"><h1>1반</h1></a>
+                                <!-- 게시글 목록 링크 -->
+                                <!-- 1반 게시판 목록 -->
+                                <ul class="board-list" data-class="class-3">
+                                    <li><a href="/board1/detail/41">▷궁금한 점이 있어요</a></li>
+                                    <li><a href="/board1/detail/31">▷글을 작성해볼게요</a></li>
+                                </ul>
+                            </div>
 
 
 

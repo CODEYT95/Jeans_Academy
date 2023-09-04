@@ -1,7 +1,12 @@
 package com.project.jeans.controller.question;
 
+import com.project.jeans.LoginCheckSession;
+import com.project.jeans.domain.member.dto.MemberDTO;
 import com.project.jeans.domain.question.dto.QuestionDTO;
+import com.project.jeans.service.member.MemberService;
 import com.project.jeans.service.question.QuestionService;
+import jakarta.servlet.http.HttpSession;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,13 +19,26 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/question")
+@RequiredArgsConstructor
 public class QuestionController {
 
     @Autowired
     private QuestionService questionService;
+    private final MemberService memberService;
 
     @RequestMapping("/list")
-    public String questionList(Model model) {
+    public String questionList(HttpSession session, Model model) {
+        LoginCheckSession loginCheck = new LoginCheckSession(memberService);
+        MemberDTO memberInfo = loginCheck.getLoginCheckSession(session, model);
+
+        if (memberInfo == null) {
+            // 로그인이 필요한 경우 리디렉션
+            return "/member/login";
+
+        }
+        model.addAttribute("member_name",memberInfo.getMember_name());
+        model.addAttribute("member_class",memberInfo.getMember_class());
+        model.addAttribute("member_type",memberInfo.getMember_type());
         List<QuestionDTO> questionList = questionService.selectQuestionAll();
         model.addAttribute("questionList", questionList);
         return "question/questionlist";
@@ -28,12 +46,36 @@ public class QuestionController {
 
 
     @RequestMapping("/write")
-    public String insertQuestion(){
+    public String insertQuestion(HttpSession session, Model model){
+        LoginCheckSession loginCheck = new LoginCheckSession(memberService);
+        MemberDTO memberInfo = loginCheck.getLoginCheckSession(session, model);
+
+
+        if (memberInfo == null) {
+            // 로그인이 필요한 경우 리디렉션
+            return "/member/login";
+        }
+        model.addAttribute("member_name",memberInfo.getMember_name());
+        model.addAttribute("member_class",memberInfo.getMember_class());
+        model.addAttribute("member_type",memberInfo.getMember_type());
+
         return "/question/questionWrite";
     }
 
     @RequestMapping(value = "/write",method = RequestMethod.POST)
-    public ModelAndView insertQuestion(@RequestParam("title") String title, @RequestParam("content") String content, ModelAndView modelAndView){
+    public ModelAndView insertQuestion(@RequestParam("title") String title, @RequestParam("content") String content, ModelAndView modelAndView, HttpSession session, Model model){
+        LoginCheckSession loginCheck = new LoginCheckSession(memberService);
+        MemberDTO memberInfo = loginCheck.getLoginCheckSession(session, model);
+
+
+        if (memberInfo == null) {
+            // 로그인이 필요한 경우 리디렉션
+            return new ModelAndView("/member/login");
+        }
+        model.addAttribute("member_name",memberInfo.getMember_name());
+        model.addAttribute("member_class",memberInfo.getMember_class());
+        model.addAttribute("member_type",memberInfo.getMember_type());
+
         QuestionDTO questionDTO = new QuestionDTO();
         questionDTO.setQuestion_title(title);
         questionDTO.setQuestion_content(content);

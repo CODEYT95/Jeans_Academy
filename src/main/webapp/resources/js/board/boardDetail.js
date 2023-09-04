@@ -1,3 +1,4 @@
+
 $(document).ready(function() {
 
     /* 메뉴 공통 기능 */
@@ -36,7 +37,7 @@ $(document).ready(function() {
         modalCommentNoInput.val(commentNo);
         modalCommentContentInput.val(commentContent);                       // 모달 창에 데이터 설정
 
-            modal.css("display", "flex");
+        modal.css("display", "flex");
     });
 
     closeBtn.on("click", function() {
@@ -56,3 +57,4 @@ $(document).ready(function() {
         }
     });
 });
+
