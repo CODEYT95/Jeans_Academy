@@ -18,7 +18,6 @@ public interface Comment1Service {
 
 /*   //댓글 수정
     public int updateComment1(Map<String,Object> map);*/
-
     //댓글 삭제
     public int deleteComment1(Map<String,Object> map);
 
