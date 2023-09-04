@@ -115,13 +115,28 @@
                             <div class="modal-window">
                                 <div class="close-area">X</div>
                                 <div class="modal-header">
+
+                                    <!-- 수신자 작성 -->
+
+
                                 </div>
                                 <div class="modal-body">
+
+
+                                    <!-- 내용 작성 -->
+
+
+
+
+
                                     <form action="/" method="post">
                                         띄워보자 ${messageRecDTO.message_sender}
                                     </form>
                                 </div>
                                 <div class="modal-footer">
+
+                                    <!-- 보내기 버튼, 취소(목록) 버튼 -->
+
                                 </div>
                             </div>
                         </div>
@@ -155,6 +170,7 @@
             </div>
         </div>
     </div>
+
     </section>
 </body>
 </html>

@@ -13,21 +13,6 @@ public class MessageServiceImpl implements MessageService{
 
     private final MessageDAO messageDAO;
 
-
-    /* 메시지 작성(1.유저 정보)*/
-//    @Override
-/*    public int insertUserMessage(){
-        return 0;
-    }*/
-
-    /* 메시지 작성(2.내용)*/
- //   @Override
-/*
-    public int insertContentMessage(){
-        return 0;
-    }
-*/
-
     /* 메시지 목록 조회(수신함) */
     @Override
     public List<MessageDTO> selectReceiveMessage(String member_id){
@@ -43,10 +28,34 @@ public class MessageServiceImpl implements MessageService{
     }
 
     /* 메시지 상세 조회 */
- //   @Override
-/*    public MessageDTO selectMessageDetail(){
-        return null;
+    //   @Override
+    public MessageDTO selectMessageDetail(int message_no){
+        MessageDTO messageDTO = messageDAO.selectMessageDetail(message_no);
+        return messageDTO;
+    }
+
+
+
+
+
+
+
+
+
+
+    /* 메시지 작성(1.유저 정보)*/
+//    @Override
+/*    public int insertUserMessage(){
+        return 0;
     }*/
+
+    /* 메시지 작성(2.내용)*/
+    //   @Override
+/*
+    public int insertContentMessage(){
+        return 0;
+    }
+*/
 
     /* 메시지 삭제 (수신함) */
  //   @Override

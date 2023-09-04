@@ -1,6 +1,7 @@
 package com.project.jeans.controller.message;
 
 import com.project.jeans.domain.member.dto.MemberDTO;
+import com.project.jeans.domain.message.dao.MessageDAO;
 import com.project.jeans.domain.message.dto.MessageDTO;
 import com.project.jeans.service.member.MemberService;
 import com.project.jeans.service.message.MessageService;
@@ -10,6 +11,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -25,7 +27,7 @@ public class MessageController {
 
     /* 메시지 목록 조회(수신함) 및 목록 조회(발신함) - 1page*/
     @GetMapping("/messageList")
-    public String selectReceiveMessage(Model model, HttpSession session){
+    public String readMessageList(Model model, HttpSession session){
 
         String member_id = (String)session.getAttribute("member_id");
 
@@ -48,11 +50,23 @@ public class MessageController {
         return "/message/messageList";
     }
 
-    //메시지 상세 보기(수신함)
+   /* //메시지 상세 보기(수신함)
+
+    public String readReceivedMessage(@PathVariable int message_no, Model model){
+
+        MessageDTO messageDTO = messageService.selectMessageDetail(message_no);
+        model.addAttribute("",messageDTO);
+        return null;
+
+    }
+
 
 
     //메시지 상세 보기(발신함)
+    public String readSentMessage(){
 
+    }
+*/
 
 
     //메시지 보내기(form)
