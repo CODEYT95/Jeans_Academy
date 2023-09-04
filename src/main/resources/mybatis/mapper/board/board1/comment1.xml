@@ -9,14 +9,6 @@
         SELECT comment1_no, board1_no, comment1_content, comment1_regdate, comment1_isshow, member_name, member_class FROM comment1 WHERE board1_no=${board1_no} AND comment1_isshow='Y' ORDER BY comment1_no DESC
         ]]>
     </select>
-    <!-- 댓글 상세 조회 -->
-    <select id="getComment1Detail" parameterType="map" resultType="com.project.jeans.domain.board.board1.dto.Comment1DTO">
-        <![CDATA[
-            SELECT comment1_no, board1_no, comment1_content, comment1_regdate, comment1_isshow, member_name, member_class
-            FROM comment1
-            WHERE comment1_no=#{comment1_no};
-        ]]>
-    </select>
     <!-- 댓글 작성 -->
     <insert id="insertComment1" parameterType="map">
         <![CDATA[
@@ -24,6 +16,14 @@
         VALUES(#{board1_no},#{comment1_content},now(),'Y','John Doe','A')
         ]]>
     </insert>
+    <!-- 댓글 상세 조회(수정용) -->
+    <select id="getComment1Detail" parameterType="map" resultType="map">
+        <![CDATA[
+            SELECT comment1_no, board1_no, comment1_content, comment1_regdate, comment1_isshow, member_name, member_class
+            FROM comment1
+            WHERE comment1_no=#{comment1_no};
+        ]]>
+    </select>
     <!-- 댓글 수정 -->
     <update id="updateComment1" parameterType="map">
         <![CDATA[

@@ -1,7 +1,7 @@
 package com.project.jeans.controller.paln;
 
-import com.project.jeans.domain.plan.dto.PlanDTO;
-import com.project.jeans.service.plan.PlanService;
+import com.project.jeans.domain.plan.dto.PlanListDTO;
+import com.project.jeans.service.plan.PlanListService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,13 +13,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import java.util.List;
 
 @Controller
-public class PlanController {
+public class PlanListController {
     @Autowired
-    private PlanService planService;
+    private PlanListService planService;
 
     @RequestMapping("/plan")
     public String planlist(Model model) {
-        List<PlanDTO> PlanList = planService.selectPlanAll();
+        List<PlanListDTO> PlanList = planService.selectPlanAll();
         model.addAttribute("planList", PlanList);
         return "plan/planlist";
     }

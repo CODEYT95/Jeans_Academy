@@ -59,7 +59,7 @@
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="/board1/list">
                     <span class="icon icon-3"><i class="ri-draft-line"></i></span>
                     <span class="sidebar--item" style="white-space: nowrap;">1반</span>
                 </a>
@@ -105,16 +105,7 @@
         </ul>
     </div>
 
-
-
-
-
-
-
-
-
     <div class="main--content">
-
         <div class="main-container">
             <form action="/board1/modify" method="get">
                 <input type="hidden" name="board1_no" value="${board1DTO.board1_no}"/>
@@ -127,22 +118,20 @@
             <button type="button" class="button" onclick="location.href='/board1/list'">목록</button>
             <div class="title--container">
                 <div class="write-title">
-                    <h2>게시글 목록</h2><br/>
                     <label>
-                        <h4>${board1DTO.member_name}</h4>
-                        <textarea name="board1_title">${board1DTO.board1_title}</textarea>
+                        <h2>제목</h2>
+                        <h4>by ${board1DTO.member_name}</h4>
+                        <textarea name="board1_title" readonly>${board1DTO.board1_title}</textarea>
                     </label>
-            </div>
+                </div>
             </div>
         </div>
-
         <div class="content-container">
             <div class="write-content">
                 <span class="content-label">내용</span>
-                <div class="content-textarea">${board1DTO.board1_content}</div>
+                <div class="content-textarea" readonly>${board1DTO.board1_content}</div>
             </div>
         </div>
-
         <div class="reply-container">
             <div>
                 <form action="/comment1/write" method="post">
@@ -164,17 +153,14 @@
                                         <button type="submit" class="button">삭제</button>
                                     </form>
                                 </td>
-                                <td><button type="button" class="button">수정</button></td>
-
+                                    <td><button type="button" class="button" data-toggle='modal' data-target='#modifyModal'>수정</button></td>
                             </table>
                         </li>
                     </c:forEach>
                 </ul>
             </div>
         </div>
-
     </div>
 </section>
-
 </body>
 </html>

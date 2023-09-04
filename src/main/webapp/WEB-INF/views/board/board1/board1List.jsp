@@ -125,36 +125,36 @@
         </ul>
     </div>
 
-
     <div class="main--content">
-
         <div class = "title--container">
-            <div>
-                1반 게시판입니다
-            </div>
+            <div class="title-content">1반 게시판입니다</div>
+            <button type="button" class="button" onclick="location.href='/board1/write'">글쓰기</button>
         </div>
 
-        <div class = "image-container">
-            <div class="image">
-                <img src="#" alt="이미지">
-            </div>
-        </div>
-
-        <div class = "carousel-container">
-            <div class="carousel">
-                <div class="carousel-inner">
-                    <button class="carousel-btn prev-btn" onclick="moveSlide(-1)"></button>
-                    <c:forEach var="board" items="${board1List}">
-                        <div class="carousel-item">
-                            <a href="/board1/detail/${board.board1_no}">${board.board1_title}</a>
+        <div class="slide-container">
+            <div class="slider">
+                <input type="radio" name="testimonial" id="t-1">
+                <input type="radio" name="testimonial" id="t-2">
+                <input type="radio" name="testimonial" id="t-3" checked>
+                <input type="radio" name="testimonial" id="t-4">
+                <input type="radio" name="testimonial" id="t-5">
+                <div class="testimonials">
+                    <c:forEach var="board" items="${board1List}" varStatus="loop" begin="0" end="4">
+                        <label class="item" for="t-${loop.index + 1}">
+                            <h1><a href="/board1/detail/${board.board1_no}">${board.board1_title}</a></h1>
                             <p>${board.board1_content}</p>
-                        </div>
+                        </label>
                     </c:forEach>
-                    <button class="carousel-btn next-btn" onclick="moveSlide(1)">&gt;</button>
+                </div>
+                <div class="dots">
+                    <label for="t-1"></label>
+                    <label for="t-2"></label>
+                    <label for="t-3"></label>
+                    <label for="t-4"></label>
+                    <label for="t-5"></label>
                 </div>
             </div>
         </div>
-
         <div class = "class--container">
             <div class="boxes">
                 <c:forEach var="board1List" items="${board1List}">
@@ -165,7 +165,6 @@
                 </c:forEach>
             </div>
         </div>
-
     </div>
 </section>
 </body>

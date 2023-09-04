@@ -9,8 +9,6 @@
     <script type="text/javascript" src="../../../resources/js/board/board1.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
-
-
     <script>
         $(document).ready(function() {
             let menu = $('.menu');
@@ -21,10 +19,7 @@
                 mainContent.toggleClass('active');
             });
         });
-
-
     </script>
-
 </head>
 <body>
 <section class="header">
@@ -62,7 +57,7 @@
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="/board1/list">
                     <span class="icon icon-3"><i class="ri-draft-line"></i></span>
                     <span class="sidebar--item" style="white-space: nowrap;">1반</span>
                 </a>
@@ -107,24 +102,23 @@
             </li>
         </ul>
     </div>
+    <div class="main--content">
+        <form action="/board1/modify" method="post">
+            <input type="hidden" name="member_name" value="${board1DTO.member_name}">
+            <input type="hidden" name="member_class" value="${board1DTO.member_class}">
+            <input type="hidden" name="board1_no" value="${board1DTO.board1_no}">
 
-
-    <form action="/board1/modify" method="post">
-        <input type="hidden" name="member_name" value="${board1DTO.member_name}">
-        <input type="hidden" name="member_class" value="${board1DTO.member_class}">
-        <input type="hidden" name="board1_no" value="${board1DTO.board1_no}">
-        <div class="main--content">
             <div class="main--container">
                 <button type="submit" class="button">수정하기</button>
                 <button type="button" class="button" onclick="location.href='/board1/detail/${board1DTO.board1_no}'">취소/목록</button>
-            </div>
-            <div class="title-container">
-                <div class="write-title">
-                    <div class="text">글 작성</div>
-                    <label>
-                        <div><span>제목</span></div>
-                        <input type="text" class = "input-level" id="board1_title" name="board1_title" value="${board1DTO.board1_title}"></input>
-                    </label>
+                <div class="title-container">
+                    <div class="write-title">
+                        <div class="text">글 작성</div>
+                        <label>
+                            <div><span>제목</span></div>
+                            <input type="text" class = "input-level" id="board1_title" name="board1_title" value="${board1DTO.board1_title}"></input>
+                        </label>
+                    </div>
                 </div>
             </div>
             <div class="content-container">
@@ -134,8 +128,8 @@
                     <input type="button" class="content-file" value="사진수정">
                 </div>
             </div>
-        </div>
-    </form>
+        </form>
+    </div>
 </section>
 </body>
 </html>
