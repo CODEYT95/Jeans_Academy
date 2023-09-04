@@ -1,9 +1,13 @@
 package com.project.jeans.controller.admin.notice;
 
+import com.project.jeans.LoginCheckSession;
 import com.project.jeans.domain.admin.notice.dao.NoticeDAO;
 import com.project.jeans.domain.admin.notice.dto.NoticeDTO;
 import com.project.jeans.domain.board.board1.dto.Board1DTO;
+import com.project.jeans.domain.member.dto.MemberDTO;
 import com.project.jeans.service.admin.notice.NoticeService;
+import com.project.jeans.service.member.MemberService;
+import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,6 +23,7 @@ import java.util.List;
 public class NoticeController {
     private final NoticeService noticeService;
     private final NoticeDAO noticeDAO;
+    private final MemberService memberService;
 
     //공지사항 조회
     @GetMapping("/noticeList")

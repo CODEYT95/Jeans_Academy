@@ -1,5 +1,6 @@
 package com.project.jeans.controller.main;
 
+import com.project.jeans.LoginCheckSession;
 import com.project.jeans.domain.member.dto.MemberDTO;
 import com.project.jeans.service.admin.notice.NoticeService;
 import com.project.jeans.service.calendar.CalendarService;
