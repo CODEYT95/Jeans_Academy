@@ -136,4 +136,51 @@
                 }
             });
         });
-    });
+            //비밀번호 type 전환 기능
+            $(document).ready(function() {
+                 const memberPassword = document.querySelector("#member_pw");
+                 const passwordCheck = document.querySelector("#member_pw2");
+                 const memberPasswordIcon = document.querySelector(".eye-icon");
+                 const passwordCheckIcon = document.querySelector(".eye-icon2");
+
+                 // 비밀번호 눈 아이콘 클릭 이벤트
+                 memberPasswordIcon.addEventListener("click", function() {
+                   if (memberPassword.type === "password") {
+                     memberPassword.type = "text";
+                     memberPasswordIcon.innerHTML = '<ion-icon name="eye-off-outline"></ion-icon>';
+                   } else {
+                     memberPassword.type = "password";
+                     memberPasswordIcon.innerHTML = '<ion-icon name="eye-outline"></ion-icon>';
+                   }
+                 });
+
+                  // 비밀번호 확인 눈 아이콘 클릭 이벤트
+                  passwordCheckIcon.addEventListener("click", function() {
+                    if (passwordCheck.type === "password") {
+                      passwordCheck.type = "text";
+                      passwordCheckIcon.innerHTML = '<ion-icon name="eye-off-outline"></ion-icon>';
+                    } else {
+                      passwordCheck.type ="password";
+                      passwordCheckIcon.innerHTML ="<ion-icon name='eye-outline'></ion-icon>";
+                    }
+                  });
+
+                  // 비밀번호 입력 필드에 입력 이벤트 리스너 추가하여 값이 비어 있는지 확인
+                  memberPassword.addEventListener("input", function() {
+                    if (memberPassword.value.trim() === "") {
+                      memberPasswordIcon.style.display ="none";
+                    } else {
+                      memberPasswordIcon.style.display ="block";
+                    }
+                  });
+
+                  // 비밀번호 확인 입력 필드에 입력 이벤트 리스너 추가하여 값이 비어 있는지 확인
+                  passwordCheck.addEventListener("input", function() {
+                    if (passwordCheck.value.trim() === "") {
+                      passwordCheckIcon.style.display ="none";
+                    } else {
+                       passwordCheckIcon.style.display ="block";
+                     }
+                   });
+               });
+        });

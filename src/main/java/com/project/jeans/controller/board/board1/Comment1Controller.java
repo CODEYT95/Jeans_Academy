@@ -30,6 +30,8 @@ public class Comment1Controller {
    //댓글 수정(Controller)
     @PostMapping("/update")
     public ModelAndView updateComment1(ModelAndView modelAndView, @RequestParam Map<String, Object> map, @RequestParam int board1_no){
+
+
         int updateRow = comment1Service.updateComment1(map);
         if(updateRow==1){
             modelAndView.setViewName("redirect:/board1/detail/"+board1_no);

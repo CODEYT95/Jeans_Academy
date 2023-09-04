@@ -1,28 +1,38 @@
 package com.project.jeans.controller.main;
 
-import com.project.jeans.domain.admin.notice.dto.NoticeDTO;
-import com.project.jeans.domain.calendar.dto.CalendarDTO;
+import com.project.jeans.domain.member.dto.MemberDTO;
 import com.project.jeans.service.admin.notice.NoticeService;
 import com.project.jeans.service.calendar.CalendarService;
+import com.project.jeans.service.member.MemberService;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-
-import java.util.List;
 
 @Controller
 public class mainController {
 
     private final NoticeService noticeService;
     private  final CalendarService calendarService;
+    private final MemberService memberService;
 
-    public mainController(NoticeService noticeService, CalendarService calendarService) {
+    public mainController(NoticeService noticeService, CalendarService calendarService, MemberService memberService) {
         this.noticeService = noticeService;
         this.calendarService = calendarService;
+        this.memberService = memberService;
     }
     @GetMapping("/main1")
-    public String main(Model model) {
+    public String main(Model model, HttpSession session) {
+        String member_id = (String) session.getAttribute("member_id");
+
+        MemberDTO memberInfo = memberService.getMemberInfo(member_id);
+        if(memberInfo != null){
+            String member_name = memberInfo.getMember_name();
+            String member_class = memberInfo.getMember_class();
+
+            model.addAttribute("member_name", member_name);
+            model.addAttribute("member_class", member_class);
+        }
         /*
         List<NoticeDTO> recentNotices = noticeService.selectFive();
         calendarService.selectCalendar(member_id);
@@ -44,7 +54,6 @@ public class mainController {
         }
 */
         return "main/main";
-
 
     }
 }
