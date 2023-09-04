@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 pageEncoding="UTF-8"%>
-<html>
+<html xmlns:c="http://java.sun.com/JSP/Page">
 <head>
     <meta charset="UTF-8">
     <title>공지사항</title>
@@ -24,7 +24,7 @@ pageEncoding="UTF-8"%>
                 <i class="ri-mail-line"></i>
             </div>
             <div class="picon profile">
-                <span>???님 오늘도 파이팅하세요🙂</span>
+                <span>${member_class} ${member_name}님 오늘도 파이팅하세요🙂</span>
             </div>
         </div>
     </div>
@@ -74,6 +74,14 @@ pageEncoding="UTF-8"%>
                     <span class="sidebar--item">QnA</span>
                 </a>
             </li>
+            <c:if test="${member_type == '관리자'}">
+                <li>
+                    <a href="/admin/memberList">
+                        <span class="icon icon-10"><i class="ri-admin-line"></i></span>
+                        <span class="sidebar--item">Admin</span>
+                    </a>
+                </li>
+            </c:if>
         </ul>
         <ul class="sidebar--bottom-items">
             <li>

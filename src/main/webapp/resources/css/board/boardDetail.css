@@ -178,7 +178,9 @@ a {
 .icon-9 {
         color: #585858;
 }
-
+.icon-10 {
+        color: #00acc1;
+}
 /* main--content */
 .main--content {
     position: absolute;

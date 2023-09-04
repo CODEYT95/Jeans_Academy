@@ -34,47 +34,64 @@ pageEncoding="UTF-8"%>
         </div>
     </div>
 </section>
+<section class="header">
+    <div class="logo">
+        <i class="ri-menu-line icon icon-0 menu"></i>
+        <h2>J<span>eans👖</span></h2><h5><span style="color:#5073FB">청</span>춘은 <span style="color:#5073FB">바</span>로
+        <span style="color:#5073FB">지</span>금!</h5>
+    </div>
+    <div class="search--notification--profile">
+        <div class="notification--profile">
+            <div class="picon chat">
+                <i class="ri-mail-line"></i>
+            </div>
+            <div class="picon profile">
+                <span>${member_class} ${member_name}님 오늘도 파이팅하세요🙂</span>
+            </div>
+        </div>
+    </div>
+</section>
 <section class="main">
     <div class="sidebar">
         <ul class="sidebar--items">
             <li>
-                <a href="#" id="active--link">
-                    <span class="icon icon-1"><i class="ri-home-4-line"></i></span>
+                <a href="/main1">
+                    <span class="icon icon-1"><i  style="color:white;" class="ri-home-4-line"></i></span>
                     <span class="sidebar--item">홈</span>
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="/noticeList" id="active--link">
                     <span class="icon icon-2"><i class="ri-megaphone-line"></i></span>
                     <span class="sidebar--item">공지사항</span>
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="/board1/list">
                     <span class="icon icon-3"><i class="ri-draft-line"></i></span>
                     <span class="sidebar--item" style="white-space: nowrap;">1반</span>
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="/board2/list">
                     <span class="icon icon-4"><i class="ri-draft-line"></i></span>
                     <span class="sidebar--item">2반</span>
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="/board3/list">
                     <span class="icon icon-5"><i class="ri-draft-line"></i></span>
                     <span class="sidebar--item">3반</span>
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="/board4/list">
                     <span class="icon icon-6"><i class="ri-draft-line"></i></span>
                     <span class="sidebar--item">4반</span>
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="/question/list">
                     <span class="icon icon-7"><i class="ri-questionnaire-line"></i></span>
                     <span class="sidebar--item">QnA</span>
                 </a>
@@ -88,11 +105,19 @@ pageEncoding="UTF-8"%>
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="/logout">
                     <span class="icon icon-9"><i class="ri-logout-box-r-line"></i></span>
                     <span class="sidebar--item">로그아웃</span>
                 </a>
             </li>
+            <c:if test="${member_type == '관리자'}">
+                <li>
+                    <a href="/admin/memberList">
+                        <span class="icon icon-10"><i class="ri-admin-line"></i></span>
+                        <span class="sidebar--item">Admin</span>
+                    </a>
+                </li>
+            </c:if>
         </ul>
     </div>
     <div class="main--content">
