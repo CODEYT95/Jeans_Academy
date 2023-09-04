@@ -8,10 +8,14 @@ import java.time.LocalDateTime;
 public class CalendarDTO {
 
     private int id;
+    private String groupId;
     private String title;
-    private LocalDateTime start;
-    private LocalDateTime end;
-    private boolean allDay;
-    private String member_id;
-
+    private String writer;
+    private String content;
+    private String start;
+    private String end;
+    private boolean allday;
+    private String textColor;
+    private String backgroundColor;
+    private String borderColor;
 }

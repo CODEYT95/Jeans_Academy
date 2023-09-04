@@ -6,16 +6,15 @@
     <select id="selectAll" resultType="com.project.jeans.domain.admin.notice.dto.NoticeDTO">
         <![CDATA[
         SELECT *
-        FROM notice
+        FROM notice;
         ]]>
     </select>
-    <!-- 공지사항 최근 목록 5개-->
-    <select id="selectFive" resultType="NoticeDTO">
+    <!--공지사항 상세보기-->
+    <select id="noticeDetail" parameterType="Integer" resultType="NoticeDTO">
         <![CDATA[
         SELECT *
         FROM notice
-        ORDER BY notice_regdate DESC
-        LIMIT 5;
+        WHERE notice_no = #{notice_no};
         ]]>
     </select>
     <!--공지사항 INSERT-->
@@ -25,4 +24,12 @@
         VALUES (#{notice_title}, #{notice_content}, #{member_class});
         ]]>
     </insert>
+    <!--공지사항 isShow-->
+    <update id="isShowNotice" parameterType="Integer">
+        <![CDATA[
+        UPDATE notice
+        SET notice_isshow = 'N'
+        WHERE notice_no = #{notice_no};
+        ]]>
+    </update>
 </mapper>

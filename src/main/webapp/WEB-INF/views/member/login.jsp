@@ -10,6 +10,17 @@ pageEncoding="UTF-8"%>
     <script type="text/javascript" src="../../../resources/js/member/login.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+    <script>
+        function new_window() {
+          window.open(
+            "find",
+            "findId",
+            "width=400, height=300, top=400, left=750"
+          );
+        }
+    </script>
+
 </head>
 <body>
 <section class="main">
@@ -42,7 +53,7 @@ pageEncoding="UTF-8"%>
                     <span  class="eye-icon2"><ion-icon name="eye-outline"></ion-icon></span>
                 </div>
                 <span id="ErrorStudent" style="color: red;"></span>
-                <a href="#">아이디 찾기</a>
+                <a onclick="new_window();">아이디 찾기</a>
                 <div>
                     <button type="submit" class="login">로그인</button>
                     <button id="studentSignup">회원가입</button>

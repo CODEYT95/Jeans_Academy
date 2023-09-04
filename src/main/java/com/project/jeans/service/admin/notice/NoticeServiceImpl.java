@@ -5,9 +5,6 @@ import com.project.jeans.domain.admin.notice.dto.NoticeDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.LinkedHashMap;
 import java.util.List;
 
 @Service
@@ -19,16 +16,22 @@ public class NoticeServiceImpl implements NoticeService {
         return noticeDAO.selectAll();
     }
 
+    //공지사항 상세보기
     @Override
-    public List<NoticeDTO> selectFive() {
-        return noticeDAO.selectFive();
+    public List<NoticeDTO> noticeDetail(int notice_no){
+     return noticeDAO.noticeDetail(notice_no);
     }
-
 
     //공지사항 INSERT
     @Override
     public int insertNotice(NoticeDTO noticeDTO) {
         return noticeDAO.insertNotice(noticeDTO);
+    }
+
+    //공지사항 isShow 'N'으로 바꾸기
+    @Override
+    public int isShowNotice(int notice_no) {
+        return noticeDAO.isShowNotice(notice_no);
     }
 
 }
