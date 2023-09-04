@@ -424,7 +424,7 @@ uri="http://java.sun.com/jsp/jstl/core"%>
 <section class="header">
     <div class="logo">
         <i class="ri-menu-line icon icon-0 menu"></i>
-        <h2>J<span>eans:👖:</span></h2><h5><span style="color:#5073FB">청</span>춘은 <span style="color:#5073FB">바</span>로 <span style="color:#5073FB">지</span>금!</h5>
+        <h2>J<span>eans:👖</span></h2><h5><span style="color:#5073FB">청</span>춘은 <span style="color:#5073FB">바</span>로 <span style="color:#5073FB">지</span>금!</h5>
     </div>
     <div class="search--notification--profile">
         <div class="notification--profile">
@@ -450,7 +450,7 @@ uri="http://java.sun.com/jsp/jstl/core"%>
                 </a>
             </li>
             <li>
-                <a href="/noticelist">
+                <a href="/noticeList">
                     <span class="icon icon-2"><i class="ri-megaphone-line"></i></span>
                     <span class="sidebar--item">공지사항</span>
                 </a>
@@ -480,7 +480,7 @@ uri="http://java.sun.com/jsp/jstl/core"%>
                 </a>
             </li>
             <li>
-                <a href="/question">
+                <a href="/question/list">
                     <span class="icon icon-7"><i class="ri-questionnaire-line"></i></span>
                     <span class="sidebar--item">QnA</span>
                 </a>
@@ -627,6 +627,9 @@ uri="http://java.sun.com/jsp/jstl/core"%>
                             <ul class="board-list" data-class="class-3">
                                 <li><a href="/board1/detail/41">▷궁금한 점이 있어요</a></li>
                                 <li><a href="/board1/detail/31">▷글을 작성해볼게요</a></li>
+                                <li><a href="/board1/detail/43">▷좋은 아침입니다</a></li>
+                                <li><a href="/board1/detail/31">▷</a></li>
+                                <li><a href="/board1/detail/31">▷</a></li>
                             </ul>
                        </div>
 
