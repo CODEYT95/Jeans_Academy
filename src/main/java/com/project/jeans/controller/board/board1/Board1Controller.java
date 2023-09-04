@@ -4,12 +4,14 @@ import com.project.jeans.domain.board.board1.dto.Board1DTO;
 import com.project.jeans.domain.board.board1.dto.Comment1DTO;
 import com.project.jeans.service.board.board1.Board1Service;
 import com.project.jeans.service.board.board1.Comment1ServiceImpl;
+import com.project.jeans.service.member.MemberService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.lang.reflect.Member;
 import java.util.List;
 import java.util.Map;
 
@@ -20,6 +22,7 @@ public class Board1Controller {
 
     private final Board1Service board1Service;
     private final Comment1ServiceImpl comment1ServiceImpl;
+    private final MemberService memberService;
 
     //(주의) 관리자, 작성자만 UD할 수 있도록 수정해야 함!!!
 

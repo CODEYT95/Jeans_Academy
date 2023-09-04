@@ -25,7 +25,7 @@
                 <i class="ri-mail-line"></i>
             </div>
             <div class="picon profile">
-                <span>???님 오늘도 파이팅하세요:미소짓는_얼굴:</span>
+                <span>${member_id}님 오늘도 파이팅하세요:미소짓는_얼굴:</span>
             </div>
         </div>
     </div>
@@ -34,7 +34,7 @@
     <div class="sidebar">
         <ul class="sidebar--items">
             <li>
-                <a href="#" id="active--link">
+                <a href="/main1 " id="active--link">
                     <span class="icon icon-1"><i class="ri-home-4-line"></i></span>
                     <span class="sidebar--item">홈</span>
                 </a>
