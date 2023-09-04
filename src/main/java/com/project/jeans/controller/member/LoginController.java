@@ -3,18 +3,11 @@ package com.project.jeans.controller.member;
 import com.project.jeans.domain.member.dao.MemberDAO;
 import com.project.jeans.domain.member.dto.MemberDTO;
 import com.project.jeans.service.member.MemberService;
-import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
-import org.eclipse.tags.shaded.org.apache.bcel.generic.RETURN;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
-import javax.xml.transform.Result;
-import java.util.Map;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 @Controller
 public class LoginController {

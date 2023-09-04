@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.project.jeans.domain.mypage.dao.MyPageDAO">
+    <select id="selectMyPageAll" resultType="com.project.jeans.domain.mypage.dto.MyPageDTO">
+        <![CDATA[
+    select mypage_no, mypage_content, mypage_regdate from mypage;
+    ]]>
+    </select>
+</mapper>

@@ -39,9 +39,9 @@ public class QuestionController {
         questionDTO.setQuestion_content(content);
         int result = questionService.insertQuestion(questionDTO);
         if(result > 0){
-            modelAndView.setViewName("redirect:http://localhost:8090/question/list");
+            modelAndView.setViewName("redirect:/question/list");
         }else{
-            modelAndView.setViewName("redirect:/question/questionWrite");
+            modelAndView.setViewName("redirect:/question/write");
         }
         return modelAndView;
     }
