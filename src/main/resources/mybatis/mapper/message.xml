@@ -3,54 +3,55 @@
 
 <mapper namespace="com.project.jeans.domain.message.dao.MessageDAO">
 
+    <!-- 메시지 목록 조회 (수신함)-->
+    <select id="selectReceiveMessage" resultType="com.project.jeans.domain.message.dto.MessageDTO">
+        <![CDATA[
+        SELECT message_no,message_sender,message_receiver,message_title,message_date,message_rec_isshow
+        FROM message
+        WHERE message_receiver=#{member_id} AND message_rec_isshow='Y'
+        ORDER BY message_no DESC;
+        ]]>
+    </select>
 
-    <!-- 메시지 작성 (1.유저 정보) -->
-    <!-- 이후 수정할 예정 (1.sender:로그인한 회원)(2.receiver:회원 멤버들)-->
-<!--    <insert id="insertUserMessage" parameterType="map">
+    <!-- 메시지 목록 조회 (발신함)-->
+    <select id="selectSendMessage" resultType="com.project.jeans.domain.message.dto.MessageDTO">
+        <![CDATA[
+        SELECT message_no,message_sender,message_receiver,message_title,message_date,message_sen_isshow
+        FROM message
+        WHERE message_sender=#{member_id} AND message_sen_isshow='Y'
+        ORDER BY message_no DESC;
+        ]]>
+    </select>
+
+    <!-- 메시지 상세 조회 -->
+    <select id="selectMessageDetail" parameterType="int" resultType="com.project.jeans.domain.message.dto.MessageDTO">
+        <![CDATA[
+        SELECT message_no,message_sender,message_receiver,message_title,message_content,message_date
+        FROM message
+        WHERE message_no=#{message_no};
+        ]]>
+    </select>
+
+
+
+<!--    &lt;!&ndash; 메시지 작성 (1.유저 정보)&ndash;&gt;
+    &lt;!&ndash; 이후 수정할 예정 (1.sender:로그인한 회원)(2.receiver:회원 멤버들)&ndash;&gt;
+    <insert id="insertUserMessage" parameterType="map">
         <![CDATA[
         INSERT INTO message_user(message_sender,message_receiver)
         VALUES('msgSender','msgReceiver')
         ]]>
-    </insert>-->
-    <!-- 메시지 작성 (2.발신 내용) -->
-    <!-- 이후 수정할 예정 (1.sender:로그인한 회원)(2.receiver:회원 멤버들)-->
-<!--    <insert id="insertContentMessage" parameterType="map">
+    </insert>
+    &lt;!&ndash;메시지 작성 (2.발신 내용)&ndash;&gt;
+    &lt;!&ndash; 이후 수정할 예정 (1.sender:로그인한 회원)(2.receiver:회원 멤버들)&ndash;&gt;
+    <insert id="insertContentMessage" parameterType="map">
         <![CDATA[
         INSERT INTO message(message_sender,message_receiver,message_title,message_content,message_date)
         VALUES('msgSender','msgReceiver',#{message_title},#{message_content},now())
         ]]>
     </insert>-->
 
-    <!-- 메시지 목록 조회 (수신함)-->
-    <select id="selectReceiveMessage" resultType="com.project.jeans.domain.message.dto.MessageDTO">
-        <![CDATA[
-        SELECT message_no,message_sender,message_receiver,message_title,message_content,message_date,message_rec_isshow
-        FROM message
-        WHERE message_receiver='msgReceiver' AND message_rec_isshow='Y'
-        ORDER BY message_no DESC;
-        ]]>
-    </select>
-    <!--WHERE message_receiver=#{message_receiver} AND message_rec_isshow='Y'-->
 
-    <!-- 메시지 목록 조회 (발신함)-->
-    <select id="selectSendMessage" resultType="com.project.jeans.domain.message.dto.MessageDTO">
-        <![CDATA[
-        SELECT message_no,message_sender,message_receiver,message_title,message_content,message_date,message_sen_isshow
-        FROM message
-        WHERE message_sender='msgSender' AND message_sen_isshow='Y'
-        ORDER BY message_no DESC;
-        ]]>
-    </select>
-    <!--WHERE message_sender=#{message_sender} AND message_sen_isshow='Y'-->
-
-    <!-- 메시지 상세 조회 -->
-<!--    <select id="selectMessageDetail" resultType="com.project.jeans.domain.message.dto.MessageDTO">
-        <![CDATA[
-        SELECT message_no,message_sender,message_receiver,message_title,message_content,message_date
-        FROM message
-        WHERE message_no=#{message_no};
-        ]]>
-    </select>-->
 
     <!-- 메시지 삭제 (수신함) update-->
 <!--    <delete id="deleteReceiveMessage" parameterType="map">

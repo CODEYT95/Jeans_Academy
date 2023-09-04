@@ -12,6 +12,9 @@ $(document).ready(function() {
     /* 모달창 */
     const modal = $("#modal");
     const btnModal = $(".btn-modal");
+    const modalCommentNoInput = modal.find("input[name='comment1_no']");
+    const modalCommentContentInput = modal.find("input[name='comment1_content']");
+
     const closeBtn = modal.find(".close-area");
 
     function isModalOn() {
@@ -27,7 +30,13 @@ $(document).ready(function() {
     }
 
     btnModal.on("click", function() {
-        modalOn();
+        const commentNo = $(this).data("comment-no");
+        const commentContent = $(this).closest("li").find(".col-1").text(); // 댓글 내용 가져오기
+
+        modalCommentNoInput.val(commentNo);
+        modalCommentContentInput.val(commentContent);                       // 모달 창에 데이터 설정
+
+            modal.css("display", "flex");
     });
 
     closeBtn.on("click", function() {

@@ -1,26 +1,15 @@
 <!DOCTYPE html>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <html xmlns:c="http://java.sun.com/JSP/Page">
 <head>
     <meta charset="UTF-8">
     <title>메시지 수신함</title>
-    <link rel="stylesheet" type="text/css" href="../../../resources/css/board/boardList.css">
-    <script type="text/javascript" src="../../../resources/js/board/boardWrite.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
-
-    <script>
-        $(document).ready(function() {
-            let menu = $('.menu');
-            let sidebar = $('.sidebar');
-            let mainContent = $('.main--content');
-            menu.click(function() {
-                sidebar.toggleClass('active');
-                mainContent.toggleClass('active');
-            });
-        });
-    </script>
+    <link rel="stylesheet" type="text/css" href="../../../resources/css/message/messageList.css">
+    <script type="text/javascript" src="../../../resources/js/message/messageList.js"></script>
 
 </head>
 <body>
@@ -38,7 +27,7 @@
                     <i class="ri-mail-line"></i>
                 </div>
                 <div class="picon profile">
-                    <span>???님 오늘도 파이팅하세요:미소짓는_얼굴:</span>
+                    <span>${member_id}님 오늘도 파이팅하세요:미소짓는_얼굴:</span>
                 </div>
             </div>
         </div>
@@ -47,7 +36,7 @@
         <div class="sidebar">
             <ul class="sidebar--items">
                 <li>
-                    <a href="#" id="active--link">
+                    <a href="/main1" id="active--link">
                         <span class="icon icon-1"><i class="ri-home-4-line"></i></span>
                         <span class="sidebar--item">홈</span>
                     </a>
@@ -105,33 +94,83 @@
             </ul>
         </div>
 
-    <div class="main--content">
+    <div class="main--content" >
 
         <div class="messageRec--content">
-            <h2>메시지 수신함</h2>
-            <div class="boxes">
+            <h2>받은 쪽지</h2>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>보낸 사람</th>
+                        <th>제목</th>
+                        <th>날짜</th>
+                    </tr>
+                </thead>
                 <c:forEach var="messageRecDTO" items="${messageRecDTO}">
-                    <div class="box">
-                        <a href="/message/messageList/${messageRecDTO.message_title}">${messageRecDTO.message_title}</a>
-                        <p>${messageRecDTO.message_content}</p>
-                    </div>
+                <tbody>
+                    <tr>
+                        <td>${messageRecDTO.message_sender}</td>
+                        <td><button type="button" class="btn-modal">${messageRecDTO.message_title}</button></td>
+                        <div id="modal" class="modal-overlay">
+                            <div class="modal-window">
+                                <div class="close-area">X</div>
+                                <div class="modal-header">
+
+                                    <!-- 수신자 작성 -->
+
+
+                                </div>
+                                <div class="modal-body">
+
+
+                                    <!-- 내용 작성 -->
+
+
+
+
+
+                                    <form action="/" method="post">
+                                        띄워보자 ${messageRecDTO.message_sender}
+                                    </form>
+                                </div>
+                                <div class="modal-footer">
+
+                                    <!-- 보내기 버튼, 취소(목록) 버튼 -->
+
+                                </div>
+                            </div>
+                        </div>
+                        <td><fmt:formatDate value="${messageRecDTO.message_date}" pattern="yyyy-MM-dd HH:mm"/></td>
+                    </tr>
+                </tbody>
                 </c:forEach>
-            </div>
+            </table>
         </div>
 
         <div class="messageSend--content">
-            <h2>메시지 발신함</h2>
-            <div class="boxes">
+            <h2>보낸 쪽지</h2>
+            <table>
+                <thead>
+                <tr>
+                    <th>받은 사람</th>
+                    <th>제목</th>
+                    <th>날짜</th>
+                </tr>
+                </thead>
+                <tbody>
                 <c:forEach var="messageSendDTO" items="${messageSendDTO}">
-                    <div class="box">
-                        <a href="/message/messageList/${messageSendDTO.message_title}">${messageSendDTO.message_title}</a>
-                        <p>${messageSendDTO.message_content}</p>
-                    </div>
+                    <tr>
+                        <td>${messageSendDTO.message_receiver}</td>
+                        <td>${messageSendDTO.message_title}</td>
+                        <td><fmt:formatDate value="${messageSendDTO.message_date}" pattern="yyyy-MM-dd HH:mm"/></td>
+                    </tr>
                 </c:forEach>
+                </tbody>
+            </table>
             </div>
         </div>
-
     </div>
+
     </section>
 </body>
 </html>

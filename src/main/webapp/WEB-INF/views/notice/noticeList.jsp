@@ -11,6 +11,23 @@ pageEncoding="UTF-8"%>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
     <link rel="stylesheet" type="text/css" href="../../../resources/css/notice/noticeList.css">
     <script type="text/javascript" src="../../../resources/js/notice/noticeList.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            // 모든 "view-link" 클래스를 가진 요소에 클릭 이벤트 핸들러를 추가합니다.
+            $('.view-link').on('click', function () {
+                // "data-notice-no" 속성의 값을 가져옵니다.
+                var noticeNo = $(this).attr('data-notice-no');
+
+                // noticeNo 값을 사용하여 noticeDetail URL을 생성합니다.
+                var noticeDetailURL = '/noticeDetail?notice_no=' + noticeNo;
+
+                // 사용자를 noticeDetail 페이지로 리다이렉션합니다.
+                window.location.href = noticeDetailURL;
+            });
+        });
+    </script>
+
 </head>
 <body>
 <section class="header">
@@ -25,7 +42,7 @@ pageEncoding="UTF-8"%>
                 <i class="ri-mail-line"></i>
             </div>
             <div class="picon profile">
-                <span>???님 오늘도 파이팅하세요🙂</span>
+                <span>${member_class} ${member_name}님 오늘도 파이팅하세요🙂</span>
             </div>
         </div>
     </div>
@@ -34,47 +51,55 @@ pageEncoding="UTF-8"%>
     <div class="sidebar">
         <ul class="sidebar--items">
             <li>
-                <a href="#">
+                <a href="/main1">
                     <span class="icon icon-1"><i class="ri-home-4-line"></i></span>
                     <span class="sidebar--item">홈</span>
                 </a>
             </li>
             <li>
-                <a href="#" id="active--link">
-                    <span class="icon icon-2"><i style="color:white;" class="ri-megaphone-line"></i></span>
+                <a href="/noticeList" id="active--link">
+                    <span class="icon icon-2"><i class="ri-megaphone-line" style="color:white;"></i></span>
                     <span class="sidebar--item">공지사항</span>
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="/board1/list">
                     <span class="icon icon-3"><i class="ri-draft-line"></i></span>
                     <span class="sidebar--item" style="white-space: nowrap;">1반</span>
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="/board2/list">
                     <span class="icon icon-4"><i class="ri-draft-line"></i></span>
                     <span class="sidebar--item">2반</span>
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="/board3/list">
                     <span class="icon icon-5"><i class="ri-draft-line"></i></span>
                     <span class="sidebar--item">3반</span>
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="/board4/list">
                     <span class="icon icon-6"><i class="ri-draft-line"></i></span>
                     <span class="sidebar--item">4반</span>
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="/question/list">
                     <span class="icon icon-7"><i class="ri-questionnaire-line"></i></span>
                     <span class="sidebar--item">QnA</span>
                 </a>
             </li>
+            <c:if test="${member_type == '관리자'}">
+                <li>
+                    <a href="/admin/memberList">
+                        <span class="icon icon-10"><i class="ri-admin-line"></i></span>
+                        <span class="sidebar--item">Admin</span>
+                    </a>
+                </li>
+            </c:if>
         </ul>
         <ul class="sidebar--bottom-items">
             <li>
@@ -84,7 +109,7 @@ pageEncoding="UTF-8"%>
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="/logout">
                     <span class="icon icon-9"><i class="ri-logout-box-r-line"></i></span>
                     <span class="sidebar--item">로그아웃</span>
                 </a>
@@ -110,7 +135,7 @@ pageEncoding="UTF-8"%>
                     <c:forEach items="${noticeList}" var="notice">
                         <li>
                             <span class="no">${notice.notice_no}</span>
-                            <a class="view-link">
+                            <a class="view-link" data-notice-no="${notice.notice_no}">
                                 <span class="title">${notice.notice_content}</span>
                             </a>
                             <div class="writer-container">

@@ -1,21 +1,20 @@
 package com.project.jeans.controller.member;
 
-import com.project.jeans.domain.member.dao.MemberDAO;
 import com.project.jeans.domain.member.dto.MemberDTO;
 import com.project.jeans.service.member.MemberService;
 import jakarta.servlet.http.HttpSession;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
+@RequiredArgsConstructor
 public class LoginController {
 
     @Autowired
     private MemberService memberService;
-    @Autowired
-    private MemberDAO memberDAO;
 
     //로그인 폼 보여주기
     @RequestMapping("/login")
@@ -24,9 +23,27 @@ public class LoginController {
     }
 
     //아이디 찾기
-    @GetMapping("/findId")
-    public String findId(){
-        return "";
+    @GetMapping("/find")
+    public String findId() {
+        return "member/find";
+    }
+
+    @PostMapping("/findId")
+    @ResponseBody
+    public String findId(@RequestParam String member_name,
+                                        @RequestParam String member_phone) {
+        MemberDTO memberDTO = new MemberDTO();
+        memberDTO.setMember_name(member_name);
+        memberDTO.setMember_phone(member_phone);
+
+        String member_id = memberService.findId(memberDTO);
+
+        System.out.println(member_id);
+        if (member_id != null) {
+            return member_id;
+        } else {
+            return "0";
+        }
     }
 
     //로그인 처리

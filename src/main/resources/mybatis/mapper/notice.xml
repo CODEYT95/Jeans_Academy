@@ -9,8 +9,8 @@
         FROM notice
         ]]>
     </select>
-    <!-- 공지사항 최근 목록 5개-->
-    <select id="selectFive" resultType="NoticeDTO">
+    <!--공지사항 상세보기-->
+    <select id="noticeDetail" parameterType="Integer" resultType="NoticeDTO">
         <![CDATA[
         SELECT *
         FROM notice
@@ -25,4 +25,12 @@
         VALUES (#{notice_title}, #{notice_content}, #{member_class});
         ]]>
     </insert>
+    <!--공지사항 isShow-->
+    <update id="isShowNotice" parameterType="Integer">
+        <![CDATA[
+        UPDATE notice
+        SET notice_isshow = 'N'
+        WHERE notice_no = #{notice_no};
+        ]]>
+    </update>
 </mapper>
