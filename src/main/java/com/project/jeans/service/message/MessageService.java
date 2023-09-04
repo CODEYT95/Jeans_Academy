@@ -1,5 +1,6 @@
 package com.project.jeans.service.message;
 
+import com.project.jeans.domain.member.dto.MemberDTO;
 import com.project.jeans.domain.message.dto.MessageDTO;
 
 import java.util.List;
@@ -15,6 +16,8 @@ public interface MessageService {
     /* 메시지 상세 조회 */
     public MessageDTO selectMessageDetail(int message_no);
 
+    /* 메시지 수신자 목록 조회 */
+    public List<MemberDTO> selectMessageMemList();
 
 
 

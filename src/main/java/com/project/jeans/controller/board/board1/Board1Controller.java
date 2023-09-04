@@ -119,6 +119,7 @@ public class Board1Controller {
     //반별 게시글 수정
     @PostMapping("/modify")
     public ModelAndView modifyBoard1(HttpSession session, Model model,ModelAndView modelAndView, @RequestParam int board1_no, @RequestParam Map<String,Object> map){
+
         LoginCheckSession loginCheck = new LoginCheckSession(memberService);
         MemberDTO memberInfo = loginCheck.getLoginCheckSession(session, model);
 

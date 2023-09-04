@@ -10,7 +10,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
     <link rel="stylesheet" type="text/css" href="../../../resources/css/message/messageList.css">
     <script type="text/javascript" src="../../../resources/js/message/messageList.js"></script>
-
 </head>
 <body>
     <section class="header">
@@ -77,7 +76,8 @@
                         <span class="sidebar--item">QnA</span>
                     </a>
                 </li>
-            </ul>
+            </ul
+>
             <ul class="sidebar--bottom-items">
                 <li>
                     <a href="#">
@@ -95,51 +95,56 @@
         </div>
 
     <div class="main--content" >
+        <button type="button" class="btn-modal">쪽지 보내기</button>
+
+        <div id="modal" class="modal-overlay">
+            <div class="modal-window">
+                <div class="close-area">X</div>
+                <form action="/" method="post" id="aaa">
+                <div class="modal-header">
+                    <!-- 수신자 작성(수신자 불러오기) -->
+                    <select id="aaa">
+                        <c:forEach items="${messageMemberDTO}" var="msgMemberDTO" varStatus="loop" begin="0">
+                            <option value="${msgMemberDTO.member_name}"> ${msgMemberDTO.member_name}${loop.index + 1}</option>
+                        </c:forEach>
+                    </select>
+                </div>
+                <div class="modal-body">
+                    <!-- 내용 작성 -->
+                        <input type="hidden" name="message_sender" value=""/>
+                        <span>쪽지 제목</span><input type="text" name"message_title"/>
+                        <span>쪽지 내용</span><input type="text" name="message_content"/>
+                </div>
+                <div class="modal-footer">
+                    <!-- 보내기 버튼, 취소(목록) 버튼 -->
+                    <button type="submit">작성</button>
+                    <button type="submit">목록</button>
+                </div>
+                </form>
+            </div>
+        </div>
+
 
         <div class="messageRec--content">
-            <h2>받은 쪽지</h2>
+            <h2>받은 쪽지함</h2>
+            <button type="button" class="#">수정</button>
+            <button type="button" class="#">삭제</button>
             <table class="table">
                 <thead>
                     <tr>
-                        <th>보낸 사람</th>
                         <th>제목</th>
+                        <th>보낸 사람</th>
                         <th>날짜</th>
                     </tr>
                 </thead>
                 <c:forEach var="messageRecDTO" items="${messageRecDTO}">
                 <tbody>
                     <tr>
+                        <td>
+                            <input type="checkbox" name="box1">&nbsp;
+                            <label for="box1">"${messageRecDTO.message_title}"</label>
+                        </td>
                         <td>${messageRecDTO.message_sender}</td>
-                        <td><button type="button" class="btn-modal">${messageRecDTO.message_title}</button></td>
-                        <div id="modal" class="modal-overlay">
-                            <div class="modal-window">
-                                <div class="close-area">X</div>
-                                <div class="modal-header">
-
-                                    <!-- 수신자 작성 -->
-
-
-                                </div>
-                                <div class="modal-body">
-
-
-                                    <!-- 내용 작성 -->
-
-
-
-
-
-                                    <form action="/" method="post">
-                                        띄워보자 ${messageRecDTO.message_sender}
-                                    </form>
-                                </div>
-                                <div class="modal-footer">
-
-                                    <!-- 보내기 버튼, 취소(목록) 버튼 -->
-
-                                </div>
-                            </div>
-                        </div>
                         <td><fmt:formatDate value="${messageRecDTO.message_date}" pattern="yyyy-MM-dd HH:mm"/></td>
                     </tr>
                 </tbody>
@@ -148,29 +153,35 @@
         </div>
 
         <div class="messageSend--content">
-            <h2>보낸 쪽지</h2>
+            <h2>보낸 쪽지함</h2>
+            <button type="button" class="#">수정</button>
+            <button type="button" class="#">삭제</button>
             <table>
                 <thead>
                 <tr>
-                    <th>받은 사람</th>
                     <th>제목</th>
+                    <th>받은 사람</th>
                     <th>날짜</th>
                 </tr>
                 </thead>
                 <tbody>
                 <c:forEach var="messageSendDTO" items="${messageSendDTO}">
                     <tr>
-                        <td>${messageSendDTO.message_receiver}</td>
-                        <td>${messageSendDTO.message_title}</td>
-                        <td><fmt:formatDate value="${messageSendDTO.message_date}" pattern="yyyy-MM-dd HH:mm"/></td>
+                        <td>
+                            <input type="checkbox" name="box1">&nbsp;
+                            <label for="box1">"${messageSendDTO.message_title}"</label>
+                            <td>${messageSendDTO.message_receiver}</td>
+                            <td><fmt:formatDate value="${messageSendDTO.message_date}" pattern="yyyy-MM-dd HH:mm"/></td>
+                        </td>
                     </tr>
                 </c:forEach>
                 </tbody>
             </table>
             </div>
         </div>
-    </div>
 
+
+    </div>
     </section>
 </body>
 </html>
