@@ -435,7 +435,7 @@ uri="http://java.sun.com/jsp/jstl/core"%>
                 <i class="ri-mail-line"></i>
             </div>
             <div class="picon profile">
-                <span>???님 오늘도 파이팅하세요:😊:</span>
+                <span>${member_class} ${member_name}님 오늘도 파이팅하세요:😊:</span>
             </div>
         </div>
     </div>
@@ -494,7 +494,7 @@ uri="http://java.sun.com/jsp/jstl/core"%>
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="/logout">
                     <span class="icon icon-9"><i class="ri-logout-box-r-line"></i></span>
                     <span class="sidebar--item">로그아웃</span>
                 </a>

@@ -12,13 +12,16 @@ body {
     width: 100%;
 }
 .header {
+    position: fixed;
+    z-index: 9999;
     height: 60px;
     width: 100%;
     display: flex;
     align-items: center;
     border-bottom: 2px solid #F1F1F1;
-    background-color: #FDF9EE;
+    background-color: #ebf3ff;
     border: none;
+    box-shadow: 11px 3px 16px #0000000d;
 }
 .logo {
     display: flex;
@@ -63,12 +66,10 @@ body {
 font-family: 'Do Hyeon', sans-serif;
 }
 img {
-    position: absolute;
-    top: 0;
-    left: 0;
+
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    border-radius:24px;
 }
 .main {
     position: relative;
@@ -80,22 +81,33 @@ img {
 font-family: 'Do Hyeon', sans-serif;
 }
 .sidebar {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     height: 100%;
     width: 300px;
-    background-color: #FDF9EE;
+    background-color: #f2f7fb;
     border: none;
     padding: 30px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     transition: .5s;
+    overflow-y: scroll;
+    box-shadow: 11px 3px 16px #0000000d;
+}
+.sidebar--items{
+    margin-top: 60px;
+}
+.sidebar::-webkit-scrollbar {
+    display: none;
 }
 .sidebar.active {
     width: 103px;
-    overflow: hidden;
+    overflow-y: scroll;
+}
+.sidebar.active::-webkit-scrollbar{
+    display: none;
 }
 .sidebar.active .sidebar--item {
     display: none;
@@ -164,8 +176,9 @@ a {
     color: #F1D243;
 }
 .icon-9 {
-		color: #585858;
+        color: #585858;
 }
+
 /* main--content */
 .main--content {
     position: absolute;
@@ -173,9 +186,10 @@ a {
     right: 0;
     height: 100%;
     width: calc(100% - 300px);
-    padding: 0 40px;
+    padding: 14px 50px;
     overflow-y: auto;
     transition: .1s;
+margin-top: 60px;
 }
 .main--content.active {
     width: calc(100% - 103px);
@@ -480,7 +494,7 @@ table {
 /* modal */
 #modal.modal-overlay {
   width: 100%;
-  height: 100%;
+  height: 108.5%;
   position: absolute;
   left: 0;
   top: 0;
@@ -492,7 +506,7 @@ table {
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
   backdrop-filter: blur(1.5px);
   -webkit-backdrop-filter: blur(1.5px);
-  border-radius: 20px;
+/*  border-radius: 20px; (필요하면)*/
   border: 1px solid rgba(255, 255, 255, 0.18);
 }
 #modal .modal-window {

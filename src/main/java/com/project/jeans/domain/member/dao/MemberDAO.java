@@ -33,6 +33,9 @@ public interface MemberDAO {
     //수강생 로그인 처리
     public int loginStudent(MemberDTO memberDTO);
 
+    //회원 정보 가져오기
+    public MemberDTO getMemberInfo(String member_id);
+
     //아이디 중복체크
     public int idDuplicate(String member_id);
 
@@ -47,6 +50,9 @@ public interface MemberDAO {
 
     //강사코드 중복체크
     public int codeDuplicate(String member_code);
+
+    //아이디 찾기
+    public String findId(MemberDTO memberDTO);
 
     //요청 회원 조회
     public List<HashMap<String,Object>> getNoAccept(HashMap<String,Object>map);

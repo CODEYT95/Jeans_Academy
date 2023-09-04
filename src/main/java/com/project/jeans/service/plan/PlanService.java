@@ -7,5 +7,6 @@ import java.util.List;
 public interface PlanService {
    List<PlanDTO> selectPlanAll();
 
-   int insrtPlan(PlanDTO planDTO);
+   //일정작성
+   public int insertPlan(PlanDTO planDTO);
 }

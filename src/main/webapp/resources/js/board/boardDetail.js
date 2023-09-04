@@ -11,6 +11,8 @@ $(document).ready(function() {
 
     /* 모달창 */
     const modal = $("#modal");
+    const btnModal = $(".btn-modal");
+    const closeBtn = modal.find(".close-area");
 
     function isModalOn() {
         return modal.css("display") === "none";
@@ -24,13 +26,10 @@ $(document).ready(function() {
         modal.css("display", "none");
     }
 
-    const btnModal = $(".btn-modal");
-
     btnModal.on("click", function() {
         modalOn();
     });
 
-    const closeBtn = modal.find(".close-area");
     closeBtn.on("click", function() {
         modalOff();
     });
