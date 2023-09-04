@@ -38,62 +38,6 @@ pageEncoding="UTF-8"%>
             });
         });
     </script>
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-       var member_class = "${member_class}"; // member_type 값을 가져옵니다.
-       console.log(member_class);
-
-       // 클릭 이벤트 캔슬 함수
-       function cancelClickEvent(links) {
-           links.forEach(function(link) {
-               link.addEventListener("click", function(event) {
-                   event.preventDefault(); // 클릭 이벤트를 캔슬합니다.
-               });
-           });
-       }
-
-       var class1Links = document.querySelectorAll(".class-1 a");
-       var class2Links = document.querySelectorAll(".class-2 a");
-       var class3Links = document.querySelectorAll(".class-3 a");
-       var class4Links = document.querySelectorAll(".class-4 a");
-       var sideClass1 = document.querySelectorAll(".sideBoard1")
-       var sideClass2 = document.querySelectorAll(".sideBoard2")
-       var sideClass3 = document.querySelectorAll(".sideBoard3")
-       var sideClass4 = document.querySelectorAll(".sideBoard4")
-
-
-       if (member_class === "1반") {
-           cancelClickEvent(class2Links);
-           cancelClickEvent(class3Links);
-           cancelClickEvent(class4Links);
-           cancelClickEvent(sideClass2);
-           cancelClickEvent(sideClass3);
-           cancelClickEvent(sideClass4);
-       } else if (member_class === "2반") {
-           cancelClickEvent(class1Links);
-           cancelClickEvent(class3Links);
-           cancelClickEvent(class4Links);
-           cancelClickEvent(sideClass1);
-           cancelClickEvent(sideClass3);
-           cancelClickEvent(sideClass4);
-      } else if (member_class === "3반") {
-           cancelClickEvent(class1Links);
-           cancelClickEvent(class2Links);
-           cancelClickEvent(class4Links);
-           cancelClickEvent(sideClass1);
-           cancelClickEvent(sideClass2);
-           cancelClickEvent(sideClass4);
-       } else if (member_class === "4반") {
-           cancelClickEvent(class1Links);
-           cancelClickEvent(class2Links);
-           cancelClickEvent(class3Links);
-           cancelClickEvent(sideClass1);
-           cancelClickEvent(sideClass2);
-           cancelClickEvent(sideClass3);
-       }
-   });
-
-    </script>
 
     <!-- 게시물 목록에 제목 표시 -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -470,11 +414,66 @@ pageEncoding="UTF-8"%>
             c.sort(function(){return (0.5-Math.random());});
             return("rgb("+c[0]+", "+c[1]+", "+c[2]+")");
         }
-        // ]]>
+    </script>
+    <script>
+    //반별로 게시판 권한 주기
+    document.addEventListener("DOMContentLoaded", function() {
+    var member_class = "${member_class}";
+    console.log(member_class);
+
+    // 클릭 이벤트 캔슬 함수
+    function cancelClickEvent(links) {
+    links.forEach(function(link) {
+    link.addEventListener("click", function(event) {
+    event.preventDefault(); // 클릭 이벤트를 캔슬합니다.
+    });
+    });
+    }
+
+    var class1Links = document.querySelectorAll(".class-1 a");
+    var class2Links = document.querySelectorAll(".class-2 a");
+    var class3Links = document.querySelectorAll(".class-3 a");
+    var class4Links = document.querySelectorAll(".class-4 a");
+    var sideClass1 = document.querySelectorAll(".sideBoard1")
+    var sideClass2 = document.querySelectorAll(".sideBoard2")
+    var sideClass3 = document.querySelectorAll(".sideBoard3")
+    var sideClass4 = document.querySelectorAll(".sideBoard4")
+
+
+    if (member_class === "1반") {
+    cancelClickEvent(class2Links);
+    cancelClickEvent(class3Links);
+    cancelClickEvent(class4Links);
+    cancelClickEvent(sideClass2);
+    cancelClickEvent(sideClass3);
+    cancelClickEvent(sideClass4);
+    } else if (member_class === "2반") {
+    cancelClickEvent(class1Links);
+    cancelClickEvent(class3Links);
+    cancelClickEvent(class4Links);
+    cancelClickEvent(sideClass1);
+    cancelClickEvent(sideClass3);
+    cancelClickEvent(sideClass4);
+    } else if (member_class === "3반") {
+    cancelClickEvent(class1Links);
+    cancelClickEvent(class2Links);
+    cancelClickEvent(class4Links);
+    cancelClickEvent(sideClass1);
+    cancelClickEvent(sideClass2);
+    cancelClickEvent(sideClass4);
+    } else if (member_class === "4반") {
+    cancelClickEvent(class1Links);
+    cancelClickEvent(class2Links);
+    cancelClickEvent(class3Links);
+    cancelClickEvent(sideClass1);
+    cancelClickEvent(sideClass2);
+    cancelClickEvent(sideClass3);
+    }
+    });
     </script>
 </head>
-<body>
 
+<body>
 <section class="header">
     <div class="logo">
         <i class="ri-menu-line icon icon-0 menu"></i>
@@ -483,9 +482,11 @@ pageEncoding="UTF-8"%>
     </div>
     <div class="search--notification--profile">
         <div class="notification--profile">
-            <div class="picon chat">
-                <i class="ri-mail-line"></i>
-            </div>
+            <a href="/message/messageList">
+                <div class="picon chat">
+                    <i class="ri-mail-line" ></i>
+                </div>
+            </a>
             <div class="picon profile">
                 <span>${member_class} ${member_name}님 오늘도 파이팅하세요🙂</span>
             </div>
@@ -561,7 +562,6 @@ pageEncoding="UTF-8"%>
             </li>
         </ul>
     </div>
-
     <div class="main--content">
         <div class="main-container">
             <div class="contents">

@@ -33,11 +33,13 @@ public class Board1Controller {
     public String getBoard1List(HttpSession session, Model model){
         LoginCheckSession loginCheck = new LoginCheckSession(memberService);
         MemberDTO memberInfo = loginCheck.getLoginCheckSession(session, model);
-
         if (memberInfo == null) {
             // 로그인이 필요한 경우 리디렉션
             return "/member/login";
         }
+        model.addAttribute("member_name",memberInfo.getMember_name());
+        model.addAttribute("member_class",memberInfo.getMember_class());
+        model.addAttribute("member_type",memberInfo.getMember_type());
 
         List<Board1DTO> board1DTOList = board1Service.getBoard1List();
         model.addAttribute("board1List", board1DTOList);
@@ -70,10 +72,14 @@ public class Board1Controller {
         LoginCheckSession loginCheck = new LoginCheckSession(memberService);
         MemberDTO memberInfo = loginCheck.getLoginCheckSession(session, model);
 
+
         if (memberInfo == null) {
             // 로그인이 필요한 경우 리디렉션
             return "/member/login";
         }
+        model.addAttribute("member_name",memberInfo.getMember_name());
+        model.addAttribute("member_class",memberInfo.getMember_class());
+        model.addAttribute("member_type",memberInfo.getMember_type());
 
         return "/board/board1/board1Write";
     }
@@ -106,6 +112,9 @@ public class Board1Controller {
         LoginCheckSession loginCheck = new LoginCheckSession(memberService);
         MemberDTO memberInfo = loginCheck.getLoginCheckSession(session, model);
 
+        model.addAttribute("member_name",memberInfo.getMember_name());
+        model.addAttribute("member_class",memberInfo.getMember_class());
+        model.addAttribute("member_type",memberInfo.getMember_type());
         if (memberInfo == null) {
             // 로그인이 필요한 경우 리디렉션
             return "redirect:member/login";

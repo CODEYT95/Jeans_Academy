@@ -10,22 +10,22 @@
     <link rel="stylesheet" type="text/css" href="../../../../resources/css/board/boardList.css">
     <script type="text/javascript" src="../../../../resources/js/board/boardList.js"></script>
 </head>
-<body>
+<body data-member-class="${member_class}">
 <section class="header">
     <div class="logo">
         <i class="ri-menu-line icon icon-0 menu"></i>
-        <h2>J<span>eans:청바지:</span></h2><h5><span style="color:#5073FB">청</span>춘은 <span style="color:#5073FB">바</span>로 <span style="color:#5073FB">지</span>금!</h5>
+        <h2>J<span>eans👖</span></h2><h5><span style="color:#5073FB">청</span>춘은 <span style="color:#5073FB">바</span>로
+        <span style="color:#5073FB">지</span>금!</h5>
     </div>
     <div class="search--notification--profile">
         <div class="notification--profile">
-            <div class="picon bell">
-                <i class="ri-notification-2-line"></i>
-            </div>
-            <div class="picon chat">
-                <i class="ri-mail-line"></i>
-            </div>
+            <a href="/message/messageList">
+                <div class="picon chat">
+                    <i class="ri-mail-line" ></i>
+                </div>
+            </a>
             <div class="picon profile">
-                <span>???님 오늘도 파이팅하세요:미소짓는_얼굴:</span>
+                <span>${member_class} ${member_name}님 오늘도 파이팅하세요🙂</span>
             </div>
         </div>
     </div>
@@ -46,25 +46,25 @@
                 </a>
             </li>
             <li>
-                <a href="/board1/list" id="active--link">
+                <a href="/board1/list" id="active--link" class="sideBoard1">
                     <span class="icon icon-3"><i class="ri-draft-line" style="color:white;"></i></span>
-                    <span class="sidebar--item" style="white-space: nowrap;">1반</span>
+                    <span class="sidebar--item" style="white-space: nowrap;" >1반</span>
                 </a>
             </li>
             <li>
-                <a href="/board2/list">
+                <a href="/board2/list" class="sideBoard2">
                     <span class="icon icon-4"><i class="ri-draft-line"></i></span>
                     <span class="sidebar--item">2반</span>
                 </a>
             </li>
             <li>
-                <a href="/board3/list">
+                <a href="/board3/list" class="sideBoard3">
                     <span class="icon icon-5"><i class="ri-draft-line"></i></span>
                     <span class="sidebar--item">3반</span>
                 </a>
             </li>
             <li>
-                <a href="/board4/list">
+                <a href="/board4/list" class="sideBoard4">
                     <span class="icon icon-6"><i class="ri-draft-line"></i></span>
                     <span class="sidebar--item">4반</span>
                 </a>

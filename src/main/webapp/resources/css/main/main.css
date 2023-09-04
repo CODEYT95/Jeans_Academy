@@ -130,7 +130,8 @@ a {
     border-radius: 10px;
 }
 .sidebar--items a:hover,
-.sidebar--bottom-items a:hover {
+.sidebar--bottom-items a:hover
+.picon chat {
     background-color: #5073FB;
     color: #fff;
 }

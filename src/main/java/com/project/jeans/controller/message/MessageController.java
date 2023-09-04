@@ -30,10 +30,14 @@ public class MessageController {
         LoginCheckSession loginCheck = new LoginCheckSession(memberService);
         MemberDTO memberInfo = loginCheck.getLoginCheckSession(session, model);
 
+
         if (memberInfo == null) {
             // 로그인이 필요한 경우 리디렉션
             return "/member/login";
         }
+        model.addAttribute("member_name",memberInfo.getMember_name());
+        model.addAttribute("member_class",memberInfo.getMember_class());
+        model.addAttribute("member_type",memberInfo.getMember_type());
         //파라미터 : 로그인한 회원 넘기기 <mapper에서 바꿔주기>
         List<MessageDTO> messageRecDTO = messageService.selectReceiveMessage(memberInfo.getMember_id());
         model.addAttribute("messageRecDTO",messageRecDTO);

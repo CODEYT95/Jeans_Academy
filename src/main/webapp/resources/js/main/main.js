@@ -1,4 +1,3 @@
-
     $(document).ready(function() {
         let menu = $('.menu');
         let sidebar = $('.sidebar');
@@ -252,3 +251,5 @@
         c.sort(function(){return (0.5-Math.random());});
         return("rgb("+c[0]+", "+c[1]+", "+c[2]+")");
     }
+
+
