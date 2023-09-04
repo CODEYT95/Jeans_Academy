@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 pageEncoding="UTF-8"%>
-<html xmlns:c="http://java.sun.com/JSP/Page">
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<html lang="ko" xmlns:c="http://java.sun.com/JSP/Page">
 <head>
     <meta charset="UTF-8">
     <title>공지사항</title>
@@ -98,7 +99,6 @@ pageEncoding="UTF-8"%>
             </li>
         </ul>
     </div>
-<form>
     <div class="main--content">
         <div class="main-container">
             <!-- Modal -->
@@ -106,7 +106,7 @@ pageEncoding="UTF-8"%>
               <div id="myModal" class="modal">
                 <div class="modal-content">
                     <span class="close">&times;</span>
-                    <p>정말 삭제하시겠습니까?</p>
+                    <p>정말 삭제하시겠습니까???</p>
                     <!-- 삭제 확인 및 취소 버튼 -->
                     <div class="confirm-container">
                       <button id="confirmDelete">확인</button>
@@ -126,10 +126,12 @@ pageEncoding="UTF-8"%>
                 </div>
             </div>
             <div class="content-container">
-                <div class="write-content">
-                    <span class="content-label" disabled>내용</span>
-                    <div class="content" contenteditable="true"></div>
-                </div>
+                <c:if test="${not empty noticeDetail}">
+                    <div class="write-content">
+                        <span class="content-label">${noticeDetail.notice_title}</span>
+                        <div class="content" contenteditable="true"></div>
+                    </div>
+                </c:if>
                 <input type="button" class="insert-reply" value="댓글 등록">
             </div>
             <div class="reply-container">

@@ -8,7 +8,7 @@ $(document).ready(function() {
     mainContent.toggleClass('active');
   });
 });
-
+/*
 document.addEventListener("DOMContentLoaded", function() {
   // Selecting DOM elements
   const startBtn = document.querySelector("#startBtn");
@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", function() {
    const itemsPerPage = 15;
 
    // Getting the total number of items
-   const totalItems = ${noticeList.length};
+   const totalItems = `${noticeList.length}`;
 
    // Calculating the total number of pages
    let totalPages=Math.ceil(totalItems/itemsPerPage);
@@ -169,3 +169,4 @@ document.addEventListener("DOMContentLoaded", function() {
      });
    };
 });
+*/

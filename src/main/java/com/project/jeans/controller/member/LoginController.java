@@ -3,12 +3,14 @@ package com.project.jeans.controller.member;
 import com.project.jeans.domain.member.dto.MemberDTO;
 import com.project.jeans.service.member.MemberService;
 import jakarta.servlet.http.HttpSession;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
+@RequiredArgsConstructor
 public class LoginController {
 
     @Autowired

@@ -362,6 +362,11 @@
             height: 31px;
             border-radius: 18px;
             color: #efefef;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 1;
+            overflow: hidden;
+            -webkit-box-orient: vertical;
         }
         .reg{
             position: relative;

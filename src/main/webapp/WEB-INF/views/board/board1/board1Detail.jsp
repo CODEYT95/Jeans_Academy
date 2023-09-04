@@ -2,7 +2,7 @@
 <%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<html xmlns="http://www.w3.org/1999/html" xmlns:c="http://www.w3.org/1999/XSL/Transform">
+<html xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
     <title>게시글 상세보기</title>
@@ -15,11 +15,13 @@
 <section class="header">
     <div class="logo">
         <i class="ri-menu-line icon icon-0 menu"></i>
-        <h2>J<span>eans👖</span></h2><h5><span style="color:#5073FB">청</span>춘은 <span style="color:#5073FB">바</span>로
-        <span style="color:#5073FB">지</span>금!</h5>
+        <h2>J<span>eans:청바지:</span></h2><h5><span style="color:#5073FB">청</span>춘은 <span style="color:#5073FB">바</span>로 <span style="color:#5073FB">지</span>금!</h5>
     </div>
     <div class="search--notification--profile">
         <div class="notification--profile">
+            <div class="picon bell">
+                <i class="ri-notification-2-line"></i>
+            </div>
             <div class="picon chat">
                 <i class="ri-mail-line"></i>
             </div>
@@ -33,43 +35,43 @@
     <div class="sidebar">
         <ul class="sidebar--items">
             <li>
-                <a href="/main1">
+                <a href="/main1" id="active--link">
                     <span class="icon icon-1"><i class="ri-home-4-line"></i></span>
                     <span class="sidebar--item">홈</span>
                 </a>
             </li>
             <li>
-                <a href="/noticeList">
+                <a href="#">
                     <span class="icon icon-2"><i class="ri-megaphone-line"></i></span>
                     <span class="sidebar--item">공지사항</span>
                 </a>
             </li>
             <li>
-                <a href="/board1/list"  id="active--link">
+                <a href="/board1/list">
                     <span class="icon icon-3"><i class="ri-draft-line"></i></span>
                     <span class="sidebar--item" style="white-space: nowrap;">1반</span>
                 </a>
             </li>
             <li>
-                <a href="/board2/list">
+                <a href="#">
                     <span class="icon icon-4"><i class="ri-draft-line"></i></span>
                     <span class="sidebar--item">2반</span>
                 </a>
             </li>
             <li>
-                <a href="/board3/list">
+                <a href="#">
                     <span class="icon icon-5"><i class="ri-draft-line"></i></span>
                     <span class="sidebar--item">3반</span>
                 </a>
             </li>
             <li>
-                <a href="/board4/list">
+                <a href="#">
                     <span class="icon icon-6"><i class="ri-draft-line"></i></span>
                     <span class="sidebar--item">4반</span>
                 </a>
             </li>
             <li>
-                <a href="/question/list">
+                <a href="#">
                     <span class="icon icon-7"><i class="ri-questionnaire-line"></i></span>
                     <span class="sidebar--item">QnA</span>
                 </a>
@@ -91,13 +93,16 @@
                 </a>
             </li>
             <li>
-                <a href="/logout">
+                <a href="#">
                     <span class="icon icon-9"><i class="ri-logout-box-r-line"></i></span>
                     <span class="sidebar--item">로그아웃</span>
                 </a>
             </li>
         </ul>
     </div>
+
+
+
     <div class="main--content">
 
         <div class="head-container">
@@ -157,36 +162,34 @@
                                     </form>
                                 </td >
                                 <label class="item">
-                                    <td class="col-4"><button class="btn-modal" id="reply-button-sm">수정</button></td>
+                                    <td class="col-4"><button class="btn-modal" id="reply-button-sm" data-comment-no="${comment1DTO.comment1_no}">수정</button></td>
+
+                                    <!-- 각 댓글에 대한 고유한 모달 창 -->
+                                    <div id="modal" class="modal-overlay">
+                                        <div class="modal-window">
+                                            <div class="close-area">X</div>
+                                            <div class="modal-header">
+                                                <h1>댓글 수정</h1>
+                                                <br/><br/>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form action="/comment1/update" method="post">
+                                                    <input type="hidden" name="board1_no" value="${board1DTO.board1_no}"/>
+                                                    <input type="hidden" name="comment1_no" value="${comment1DTO.comment1_no}">
+                                                    <div id="comment_content" class="form-group">
+                                                        <h3>댓글 내용</h3>
+                                                        <input type="text" name="comment1_content" required/>
+                                                    </div>
+                                                    <br/>
+                                                    <button type="submit" class="reply-button">수정</button>
+                                                </form>
+                                            </div>
+                                            <div class="modal-footer">
+                                            </div>
+                                        </div>
+                                    </div>
                                 </label>
                             </table>
-                            <div id="modal" class="modal-overlay">
-                                <div class="modal-window">
-                                    <div class="close-area">X</div>
-                                    <div class="modal-header">
-                                        <h1>댓글 수정</h1>
-                                        <br/><br/>
-                                    </div>
-                                    <div class="modal-body">
-                                        <form action="/comment1/update" method="post">
-                                            <input type="hidden" name="board1_no" value="${board1DTO.board1_no}"/>
-                                            <div id="comment_no"  class="form-group">
-                                                <h3>댓글 번호</h3>
-                                                <textarea name="comment1_no"><c:out value="${comment1DTO.comment1_no}"/></textarea>
-                                            </div>
-                                            <div id="comment_content" class="form-group">
-                                                <h3>댓글 내용</h3>
-                                                <textarea name="comment1_content"><c:out value="${comment1DTO.comment1_content}"/></textarea>
-                                            </div>
-                                            <br/>
-                                            <button type="submit" class="reply-button">수정</button>
-                                        </form>
-                                    </div>
-                                    <div class="modal-footer">
-                                    </div>
-                                </div>
-                            </div>
-
                         </li>
                     </c:forEach>
                 </ul>

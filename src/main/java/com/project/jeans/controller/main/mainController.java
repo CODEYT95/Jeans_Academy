@@ -8,7 +8,6 @@ import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class mainController {
@@ -25,20 +24,21 @@ public class mainController {
     @GetMapping("/main1")
     public String main(Model model, HttpSession session) {
         String member_id = (String) session.getAttribute("member_id");
+        LoginCheckSession loginCheck = new LoginCheckSession(memberService);
+        MemberDTO memberInfo = loginCheck.getLoginCheckSession(session, model);
 
-        if (member_id == null) {
-            return "/member/login";
+        if (memberInfo == null) {
+            // 로그인이 필요한 경우 리디렉션
+            return "member/login";
         }
 
-        MemberDTO memberInfo = memberService.getMemberInfo(member_id);
+        memberInfo = memberService.getMemberInfo(member_id);
         if(memberInfo != null){
             String member_name = memberInfo.getMember_name();
             String member_class = memberInfo.getMember_class();
-            String member_type = memberInfo.getMember_type();
 
             model.addAttribute("member_name", member_name);
             model.addAttribute("member_class", member_class);
-            model.addAttribute("member_type", member_type);
         }
         /*
         List<NoticeDTO> recentNotices = noticeService.selectFive();
