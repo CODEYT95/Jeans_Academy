@@ -1,47 +1,14 @@
 <!DOCTYPE html>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<html xmlns:c="http://java.sun.com/JSP/Page">
+<html xmlns:c="http://java.sun.com/JSP/Page" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
     <title>1반 게시글 목록</title>
-    <link rel="stylesheet" type="text/css" href="../../../resources/css/board/board1List.css">
-    <script type="text/javascript" src="../../../resources/js/board/board1.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
-
-    <script>
-    $(document).ready(function() {
-        let menu = $('.menu');
-        let sidebar = $('.sidebar');
-        let mainContent = $('.main--content');
-        menu.click(function() {
-            sidebar.toggleClass('active');
-            mainContent.toggleClass('active');
-        });
-    });
-
-    /* 추가한 기능 */
-
-    function moveSlide(direction) {
-        let currentSlide = 0;
-        const slides = document.querySelectorAll(".carousel-item");
-        const maxSlide = slides.length;
-
-        currentSlide += direction;
-        if (currentSlide < 0) {
-            currentSlide = maxSlide - 1;
-        } else if (currentSlide >= maxSlide) {
-            currentSlide = 0;
-        }
-
-        const slideWidth = slides[0].clientWidth;
-        const offset = -currentSlide * slideWidth;
-        document.querySelector(".carousel-inner").style.transform = `translateX(${offset}px)`;
-    }
-
-    </script>
-
+    <link rel="stylesheet" type="text/css" href="../../../../resources/css/board/boardList.css">
+    <script type="text/javascript" src="../../../../resources/js/board/boardList.js"></script>
 </head>
 <body>
 <section class="header">
@@ -124,25 +91,23 @@
             </li>
         </ul>
     </div>
-
     <div class="main--content">
         <div class = "title--container">
-            <div class="title-content">1반 게시판입니다</div>
             <button type="button" class="button" onclick="location.href='/board1/write'">글쓰기</button>
+            <div class="title-content"><h1>1반 게시판입니다</h1></div>
         </div>
-
         <div class="slide-container">
             <div class="slider">
-                <input type="radio" name="testimonial" id="t-1">
+                <input type="radio" name="testimonial" id="t-1"checked>
                 <input type="radio" name="testimonial" id="t-2">
-                <input type="radio" name="testimonial" id="t-3" checked>
+                <input type="radio" name="testimonial" id="t-3">
                 <input type="radio" name="testimonial" id="t-4">
                 <input type="radio" name="testimonial" id="t-5">
                 <div class="testimonials">
                     <c:forEach var="board" items="${board1List}" varStatus="loop" begin="0" end="4">
-                        <label class="item" for="t-${loop.index + 1}">
-                            <h1><a href="/board1/detail/${board.board1_no}">${board.board1_title}</a></h1>
-                            <p>${board.board1_content}</p>
+                        <label class="item"  for="t-${loop.index + 1}">
+                            <h2><a href="/board1/detail/${board.board1_no}">${board.board1_title}</a></h2>
+                            <h3>${board.board1_content}</h3>
                         </label>
                     </c:forEach>
                 </div>
@@ -155,12 +120,17 @@
                 </div>
             </div>
         </div>
-        <div class = "class--container">
+        <div class = "box-container">
             <div class="boxes">
                 <c:forEach var="board1List" items="${board1List}">
                     <div class="box">
-                        <a href="/board1/detail/${board1List.board1_no}">${board1List.board1_title}</a>
-                        <p>${board1List.board1_content}</p>
+                        <div>
+                            <button type="button" class="box-button" onclick="location.href='/board1/detail/${board1List.board1_no}'">상세</button>
+                        </div>
+                        <div>
+                            <h1>${board1List.board1_title}</h1>
+                            <p>${board1List.board1_content}</p>
+                        </div>
                     </div>
                 </c:forEach>
             </div>

@@ -1,5 +1,8 @@
 
-@import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
+@import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap');
+*{
+    	font-family: 'Do Hyeon', sans-serif;
+}
 
 * {
 	box-sizing: border-box;
@@ -17,7 +20,6 @@ body {
 	justify-content: center;
 	align-items: center;
 	flex-direction: column;
-	font-family: 'Montserrat', sans-serif;
 	height: 90vh;
 	margin: 35px 0 50px;
     background: #75E2E9;
@@ -274,4 +276,8 @@ input {
 .eye-icon ion-icon, .eye-icon2 ion-icon{
     width: 20px;
     height: 20px;
+}
+
+a{
+    cursor:pointer;
 }

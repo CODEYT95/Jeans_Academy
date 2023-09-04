@@ -21,13 +21,6 @@ public class Comment1ServiceImpl implements Comment1Service{
         return comment1DTOList;
     }
 
-    //댓글 상세 조회
-    @Override
-    public Map<String,Object> getComment1Detail(Map<String,Object> map){
-        Map<String,Object> commentMap = comment1DAO.getComment1Detail(map);
-        return commentMap;
-    }
-
     //댓글 입력
     @Override
     public int writeComment1(Map<String,Object> map){
@@ -36,7 +29,7 @@ public class Comment1ServiceImpl implements Comment1Service{
 
     //댓글 수정
     public int updateComment1(Map<String,Object> map){
-        return comment1DAO.deleteComment1(map);
+        return comment1DAO.updateComment1(map);
     }
 
     //댓글 삭제

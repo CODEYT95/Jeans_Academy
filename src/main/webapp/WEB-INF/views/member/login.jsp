@@ -6,10 +6,21 @@ pageEncoding="UTF-8"%>
     <meta charset="UTF-8">
     <title>Jeans|로그인</title>
     <link rel="stylesheet" type="text/css" href="../../../resources/css/member/login.css">
-    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
     <script type="text/javascript" src="../../../resources/js/member/login.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+    <script>
+        function new_window() {
+          window.open(
+            "find",
+            "findId",
+            "width=400, height=300, top=400, left=750"
+          );
+        }
+    </script>
+
 </head>
 <body>
 <section class="main">
@@ -21,8 +32,8 @@ pageEncoding="UTF-8"%>
                 <input type="hidden" name="member_type" id="teacher" value="강사님">
                 <input type="text" name="member_id" class="teacherId" placeholder="Id" />
                 <div class="password-container">
-                <input type="password" name="member_pw" class="teacherPw" placeholder="Password" />
-                <span class="eye-icon"><ion-icon name="eye-outline"></ion-icon></span>
+                    <input type="password" name="member_pw" class="teacherPw" placeholder="Password" />
+                    <span class="eye-icon"><ion-icon name="eye-outline"></ion-icon></span>
                 </div>
                 <span id="ErrorTeacher" style="color: red;"></span>
                 <div>
@@ -38,11 +49,11 @@ pageEncoding="UTF-8"%>
                 <input type="hidden" name="member_type" id="student" value="수강생">
                 <input type="text" name="member_id"  class="studentId" placeholder="Id" />
                 <div class="password-container">
-                <input type="password" name="member_pw"  class="studentPw" placeholder="Password"/>
-                <span  class="eye-icon2"><ion-icon name="eye-outline"></ion-icon></span>
+                    <input type="password" name="member_pw"  class="studentPw" placeholder="Password"/>
+                    <span  class="eye-icon2"><ion-icon name="eye-outline"></ion-icon></span>
                 </div>
                 <span id="ErrorStudent" style="color: red;"></span>
-                <a href="#">아이디 찾기</a>
+                <a onclick="new_window();">아이디 찾기</a>
                 <div>
                     <button type="submit" class="login">로그인</button>
                     <button id="studentSignup">회원가입</button>

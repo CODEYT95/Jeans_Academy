@@ -20,4 +20,5 @@ public interface NoticeDAO {
     //공지사항 isShow 'N'으로 바꾸기
     int isShowNotice(int notice_no);
 
+    List<NoticeDTO> findNoticeAll();
 }

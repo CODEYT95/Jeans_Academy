@@ -1,27 +1,15 @@
 <!DOCTYPE html>
 <%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<html>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<html xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
     <title>게시글 상세보기</title>
-    <link rel="stylesheet" type="text/css" href="../../../../resources/css/board/board1Detail.css">
-    <!--    <script type="text/javascript" src="../../../resources/js/board/board1.js"></script>-->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
-
-    <script>
-        $(document).ready(function() {
-            let menu = $('.menu');
-            let sidebar = $('.sidebar');
-            let mainContent = $('.main--content');
-            menu.click(function() {
-                sidebar.toggleClass('active');
-                mainContent.toggleClass('active');
-            });
-        });
-    </script>
-
+    <link rel="stylesheet" type="text/css" href="../../../../resources/css/board/boardDetail.css">
+    <script type="text/javascript" src="../../../../resources/js/board/boardDetail.js"></script>
 </head>
 <body>
 <section class="header">
@@ -105,56 +93,97 @@
         </ul>
     </div>
 
+
+
     <div class="main--content">
-        <div class="main-container">
-            <form action="/board1/modify" method="get">
-                <input type="hidden" name="board1_no" value="${board1DTO.board1_no}"/>
-                <button type="submit" class="button">수정</button>
-            </form>
-            <form action="/board1/delete" method="get">
-                <input type="hidden" name="board1_no" value="${board1DTO.board1_no}"/>
-                <button type="submit" class="button">삭제</button>
-            </form>
-            <button type="button" class="button" onclick="location.href='/board1/list'">목록</button>
-            <div class="title--container">
-                <div class="write-title">
-                    <label>
-                        <h2>제목</h2>
-                        <h4>by ${board1DTO.member_name}</h4>
-                        <textarea name="board1_title" readonly>${board1DTO.board1_title}</textarea>
-                    </label>
-                </div>
+
+        <div class="head-container">
+            <div class="button-container">
+
+                <form action="/board1/delete" method="get">
+                    <input type="hidden" name="board1_no" value="${board1DTO.board1_no}"/>
+                    <button type="submit" class="main-del-button">삭제</button>
+                </form>
+                <form action="/board1/modify" method="get">
+                    <input type="hidden" name="board1_no" value="${board1DTO.board1_no}"/>
+                    <button type="submit" class="main-ori-button">수정</button>
+                </form>
+                <button type="button" class="main-ori-button" onclick="location.href='/board1/list'">목록</button>
+            </div>
+
+
+
+            <div class="write-title">
+                <label>
+                    <h2>제목</h2>
+                    <h4>by ${board1DTO.member_name}</h4>
+                    <textarea name="board1_title" readonly>${board1DTO.board1_title}</textarea>
+                </label>
+
             </div>
         </div>
+
+
         <div class="content-container">
             <div class="write-content">
                 <span class="content-label">내용</span>
                 <div class="content-textarea" readonly>${board1DTO.board1_content}</div>
             </div>
         </div>
+
         <div class="reply-container">
             <div>
                 <form action="/comment1/write" method="post">
                     <input type="hidden" name="board1_no" value="${board1DTO.board1_no}">
-                    <button type="submit" class="insert-reply">댓글 등록</button>
+                    <button type="submit" class="reply-button">댓글 등록</button>
                     <textarea name="comment1_content" class="reply-insert" maxlength="300"></textarea>
                 </form>
             </div>
             <div class="reply-content-container">
                 <ul>
-                    <c:forEach items="${comment1DTO}" var="comment1DTO">
+                    <c:forEach items="${comment1DTO}" var="comment1DTO" varStatus="loop" begin="0">
                         <li>
                             <table>
-                                <td><c:out value="${comment1DTO.comment1_content}"/></td>
-                                <td>
+                                <td class="col-1"><c:out value="${comment1DTO.comment1_content}"/></td>
+                                <td class="col-2"><fmt:formatDate value="${comment1DTO.comment1_regdate}" pattern="yyyy-MM-dd HH:mm"/></td>
+                                <td class="col-3">
                                     <form action="/comment1/delete" method="post">
                                         <input type="hidden" name="comment1_no" value="${comment1DTO.comment1_no}"/>
                                         <input type="hidden" name="board1_no" value="${board1DTO.board1_no}"/>
-                                        <button type="submit" class="button">삭제</button>
+                                        <button type="submit" class="reply-button-sm">삭제</button>
                                     </form>
-                                </td>
-                                    <td><button type="button" class="button" data-toggle='modal' data-target='#modifyModal'>수정</button></td>
+                                </td >
+                                <label class="item">
+                                    <td class="col-4"><button class="btn-modal" id="reply-button-sm">수정</button></td>
+                                </label>
                             </table>
+                            <div id="modal" class="modal-overlay">
+                                <div class="modal-window">
+                                    <div class="close-area">X</div>
+                                    <div class="modal-header">
+                                        <h1>댓글 수정</h1>
+                                        <br/><br/>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form action="/comment1/update" method="post">
+                                            <input type="hidden" name="board1_no" value="${board1DTO.board1_no}"/>
+                                            <div id="comment_no"  class="form-group">
+                                                <h3>댓글 번호</h3>
+                                                <textarea name="comment1_no"><c:out value="${comment1DTO.comment1_no}"/></textarea>
+                                            </div>
+                                            <div id="comment_content" class="form-group">
+                                                <h3>댓글 내용</h3>
+                                                <textarea name="comment1_content"><c:out value="${comment1DTO.comment1_content}"/></textarea>
+                                            </div>
+                                            <br/>
+                                            <button type="submit" class="reply-button">수정</button>
+                                        </form>
+                                    </div>
+                                    <div class="modal-footer">
+                                    </div>
+                                </div>
+                            </div>
+
                         </li>
                     </c:forEach>
                 </ul>
@@ -163,4 +192,6 @@
     </div>
 </section>
 </body>
+
+
 </html>

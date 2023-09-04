@@ -1,4 +1,9 @@
 @charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap');
+*{
+    	font-family: 'Do Hyeon', sans-serif;
+}
+
 body {
     margin: 0;
    background-image: -moz-linear-gradient(0deg, rgb(149, 153, 226) 0%, rgb(139, 198, 236) 100%);
@@ -134,7 +139,6 @@ body {
     -webkit-outline: none;
     -o-outline: none;
     -ms-outline: none;
-    font-family: montserrat, sans-serif;
     font-size: 16px;
     box-sizing: border-box;
     -moz-box-sizing: border-box;
