@@ -1,8 +1,10 @@
 package com.project.jeans.service.message;
 
+import com.project.jeans.domain.member.dto.MemberDTO;
 import com.project.jeans.domain.message.dao.MessageDAO;
 import com.project.jeans.domain.message.dto.MessageDTO;
 import lombok.RequiredArgsConstructor;
+import org.apache.logging.log4j.message.Message;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -34,8 +36,11 @@ public class MessageServiceImpl implements MessageService{
         return messageDTO;
     }
 
-
-
+    /* 메시지 작성 (1.수신자 목록) */
+    public List<MemberDTO> selectMessageMemList(){
+        List<MemberDTO> memberDTO = messageDAO.selectMessageMemList();
+        return memberDTO;
+    }
 
 
 

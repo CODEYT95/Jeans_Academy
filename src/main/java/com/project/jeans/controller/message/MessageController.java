@@ -25,7 +25,6 @@ public class MessageController {
 
     /* 메시지 목록 조회(수신함) 및 목록 조회(발신함)*/
     @GetMapping("/messageList")
-
     public String selectReceiveMessage(HttpSession session, Model model){
         LoginCheckSession loginCheck = new LoginCheckSession(memberService);
         MemberDTO memberInfo = loginCheck.getLoginCheckSession(session, model);
@@ -41,8 +40,19 @@ public class MessageController {
         //파라미터 : 로그인한 회원 넘기기 <mapper에서 바꿔주기>
         List<MessageDTO> messageRecDTO = messageService.selectReceiveMessage(memberInfo.getMember_id());
         model.addAttribute("messageRecDTO",messageRecDTO);
+
         List<MessageDTO> messageSendDTO = messageService.selectSendMessage(memberInfo.getMember_id());
         model.addAttribute("messageSendDTO",messageSendDTO);
+
+        List<MemberDTO> messageMemberDTO = messageService.selectMessageMemList();
+
+        System.out.println(messageMemberDTO);
+
+        model.addAttribute("messageMemberDTO",messageMemberDTO);
         return "/message/messageList";
     }
+
+
+
+
 }
