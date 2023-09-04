@@ -136,7 +136,7 @@
                 <form action="/comment1/write" method="post">
                     <input type="hidden" name="board1_no" value="${board1DTO.board1_no}">
                     <button type="submit" class="reply-button">댓글 등록</button>
-                    <textarea name="comment1_content" class="reply-insert" maxlength="300"></textarea>
+                    <textarea name="comment1_content" class="reply-insert" maxlength="300" placeholder="댓글을 입력하세요" required></textarea>
                 </form>
             </div>
             <div class="reply-content-container">
@@ -170,7 +170,7 @@
                                                     <input type="hidden" name="comment1_no" value="${comment1DTO.comment1_no}">
                                                     <div id="comment_content" class="form-group">
                                                         <h3>댓글 내용</h3>
-                                                        <input type="text" name="comment1_content"/>
+                                                        <input type="text" name="comment1_content" required/>
                                                     </div>
                                                     <br/>
                                                     <button type="submit" class="reply-button">수정</button>
@@ -179,6 +179,7 @@
                                             <div class="modal-footer">
                                             </div>
                                         </div>
+                                    </div>
                                 </label>
                             </table>
                         </li>

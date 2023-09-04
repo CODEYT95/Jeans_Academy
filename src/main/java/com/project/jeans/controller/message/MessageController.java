@@ -35,9 +35,9 @@ public class MessageController {
             return "/member/login";
         }
         //파라미터 : 로그인한 회원 넘기기 <mapper에서 바꿔주기>
-        List<MessageDTO> messageRecDTO = messageService.selectReceiveMessage();
+        List<MessageDTO> messageRecDTO = messageService.selectReceiveMessage(memberInfo.getMember_id());
         model.addAttribute("messageRecDTO",messageRecDTO);
-        List<MessageDTO> messageSendDTO = messageService.selectSendMessage();
+        List<MessageDTO> messageSendDTO = messageService.selectSendMessage(memberInfo.getMember_id());
         model.addAttribute("messageSendDTO",messageSendDTO);
         return "/message/messageList";
     }

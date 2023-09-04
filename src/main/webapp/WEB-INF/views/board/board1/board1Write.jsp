@@ -105,7 +105,7 @@
                             <div class="text">글 작성</div>
                             <label>
                                 <div><span>제목</span></div>
-                                <textarea id="board1_title" name="board1_title" placeholder="제목을 입력해주세요"></textarea>
+                                <textarea id="board1_title" name="board1_title" placeholder="제목을 입력해주세요" required></textarea>
                             </label>
                         </div>
                     </div>
@@ -113,7 +113,7 @@
                 <div class="content-container">
                     <div class="write-content">
                         <span class="content-label">내용</span>
-                        <textarea class="content-textarea" contenteditable="true" name="board1_content" placeholder="내용을 입력해주세요"></textarea>
+                        <textarea class="content-textarea" contenteditable="true" name="board1_content" placeholder="내용을 입력해주세요" required></textarea>
                         <br/>
                         <input type="button" class="content-file" value="사진추가">
                     </div>
