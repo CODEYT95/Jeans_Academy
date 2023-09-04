@@ -8,8 +8,8 @@ pageEncoding="UTF-8"%>
     <title>메인</title>
     <link rel="stylesheet" type="text/css" href="../../../resources/css/plan/plan.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
-    <script src="http://cdn.jsdelivr.net/mojs/latest/mo.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="../../../resources/js/plan/plan.js"></script>
 </head>
@@ -118,9 +118,9 @@ pageEncoding="UTF-8"%>
                 <div class="calendar">
                     <div class="c-outer-gird">
                         <div class="calendar-header">
-                            <button id="prev-month">이전</button>
+                            <button id="prev-month"><i class="fa-solid fa-angle-left fa-lg"></i></button>
                             <h2 id="month-year">2023년 8월</h2>
-                            <button id="next-month">다음</button>
+                            <button id="next-month"><i class="fa-solid fa-angle-left fa-rotate-180 fa-lg"></i></button>
                         </div>
                         <div class="calendar-board">
                             <div class="calendar-grid" id="calendar-grid">
@@ -136,17 +136,30 @@ pageEncoding="UTF-8"%>
                 </div>
                 <!-- 모달과 관련된 코드는 그대로 둡니다 -->
 
-                <div class="event-form">
-                    <h3>일정 추가</h3>
-                    <div class="c-title">
-                        <input type="date" name="date" id="event-date">
-                        <input type="text" name="title" id="event-title" placeholder="일정 제목">
-                        <button id="add-event-button">일정 추가</button>
+                <div class="todo-listbox">
+                    <div class="todo_titlebox">
+                        <div class="todo-title">나의 일정</div>
                     </div>
-                    <!-- 일정 목록 추가 -->
-                    <div class="event-list">
-                        <h4>일정 목록</h4>
-                        <ul id="event-list"></ul>
+                    <div class="todo-box">
+                        <div class="todo-input-box">
+                            <button class="complete-all-btn">✔</button>
+                            <input type="text" class="todo-input" placeholder="해야 할 일을 입력해주세요.">
+                        </div>
+                        <ul class="todo-list">
+                            <!-- 할 일 목록이 여기에 들어갈 예정 -->
+                        </ul>
+                    </div>
+                    <div class="todo-bottom">
+                        <div class="left-items">3 items left</div>
+                        <div class="button-grouplist">
+                            <div class="button-group">
+                                <button class="show-all-btn selected" data-type="all">All</button>
+                                <button class="show-active-btn" data-type="active">Active</button>
+                                <button class="show-completed-btn" data-type="completed">Completed</button>
+                            </div>
+                            <button class="clear-completed-btn">Clear Completed</button>
+                        </div>
+                        <p class='info'>더블클릭 시 수정 가능!</p>
                     </div>
                 </div>
             </div>

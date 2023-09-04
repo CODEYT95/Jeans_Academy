@@ -1,9 +1,14 @@
 @charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap');
+*{
+    	font-family: 'Do Hyeon', sans-serif;
+}
+
 body {
     margin: 0;
-       background-image: -moz-linear-gradient(0deg, rgb(149, 153, 226) 0%, rgb(139, 198, 236) 100%);
-        background-image: -webkit-linear-gradient(0deg, rgb(149, 153, 226) 0%, rgb(139, 198, 236) 100%);
-        background-image: -ms-linear-gradient(0deg, rgb(149, 153, 226) 0%, rgb(139, 198, 236) 100%);
+   background-image: -moz-linear-gradient(0deg, rgb(149, 153, 226) 0%, rgb(139, 198, 236) 100%);
+    background-image: -webkit-linear-gradient(0deg, rgb(149, 153, 226) 0%, rgb(139, 198, 236) 100%);
+    background-image: -ms-linear-gradient(0deg, rgb(149, 153, 226) 0%, rgb(139, 198, 236) 100%);
 }
 
 .page-content {
@@ -134,7 +139,6 @@ body {
     -webkit-outline: none;
     -o-outline: none;
     -ms-outline: none;
-    font-family: montserrat, sans-serif;
     font-size: 16px;
     box-sizing: border-box;
     -moz-box-sizing: border-box;
@@ -456,4 +460,29 @@ input:autofill:active {
     -webkit-box-shadow: 0 0 0px 1000px #fff inset;
     box-shadow: 0 0 0px 1000px #fff inset;
     transition: background-color 5000s ease-in-out 0s;
+}
+
+.eye-icon, .eye-icon2{
+    position: absolute;
+    transform: translateY(0%);
+    display: none;
+    margin-right: 10px;
+    padding: 0px;
+    cursor: pointer;
+}
+
+.eye-icon ion-icon, .eye-icon2 ion-icon{
+    width: 20px;
+    height: 20px;
+}
+
+.password-container{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+#member_pw, #member_pw2{
+    padding-right: 40px;
 }

@@ -12,13 +12,16 @@ body {
     width: 100%;
 }
 .header {
+    position: fixed;
+    z-index: 9999;
     height: 60px;
     width: 100%;
     display: flex;
     align-items: center;
     border-bottom: 2px solid #F1F1F1;
-    background-color: #FDF9EE;
+    background-color: #ebf3ff;
     border: none;
+    box-shadow: 11px 3px 16px #0000000d;
 }
 .logo {
     display: flex;
@@ -63,12 +66,10 @@ body {
 font-family: 'Do Hyeon', sans-serif;
 }
 img {
-    position: absolute;
-    top: 0;
-    left: 0;
+
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    border-radius:24px;
 }
 .main {
     position: relative;
@@ -80,22 +81,33 @@ img {
 font-family: 'Do Hyeon', sans-serif;
 }
 .sidebar {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     height: 100%;
     width: 300px;
-    background-color: #FDF9EE;
+    background-color: #f2f7fb;
     border: none;
     padding: 30px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     transition: .5s;
+    overflow-y: scroll;
+    box-shadow: 11px 3px 16px #0000000d;
+}
+.sidebar--items{
+    margin-top: 60px;
+}
+.sidebar::-webkit-scrollbar {
+    display: none;
 }
 .sidebar.active {
     width: 103px;
-    overflow: hidden;
+    overflow-y: scroll;
+}
+.sidebar.active::-webkit-scrollbar{
+    display: none;
 }
 .sidebar.active .sidebar--item {
     display: none;
@@ -164,8 +176,9 @@ a {
     color: #F1D243;
 }
 .icon-9 {
-		color: #585858;
+        color: #585858;
 }
+
 /* main--content */
 .main--content {
     position: absolute;
@@ -173,9 +186,10 @@ a {
     right: 0;
     height: 100%;
     width: calc(100% - 300px);
-    padding: 0 40px;
+    padding: 14px 50px;
     overflow-y: auto;
     transition: .1s;
+margin-top: 60px;
 }
 .main--content.active {
     width: calc(100% - 103px);
@@ -252,275 +266,11 @@ a {
     }
 }
 
-
-
-
-
-/* 새롭게 추가한 정보 */
-
-.sub-section {
-    padding: 20px;
-    border: 1px solid #ccc;
-    margin-bottom: 20px; /* 각 서브 섹션 아래에 여백 추가 */
-}
-/* 카루셀 스타일 */
-.carousel-container {
-    overflow: hidden; /* 내용이 넘치는 부분은 숨김 */
-}
-
-.carousel {
-    overflow: hidden; /* 가로 스크롤을 감춤 */
-}
-
-.carousel-inner {
-    display: flex; /* Flexbox 레이아웃 사용 */
-    width: 30px;
-}
-.carousel-item {
-    flex: 0 0 calc(33.333% - 20px); /* 3개씩 나오게 설정 */
-    background-color: #5073FB;
-    border: 1px solid #ccc;
-    padding: 20px;
-    box-sizing: border-box;
-    margin-right: 20px;
-}
-
-/* 마지막 카루셀 아이템의 오른쪽 마진 제거 */
-.carousel-item:last-child {
-    margin-right: 0;
-}
-
-.carousel-btn {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 1rem;
-    border: none;
-    background-color: transparent;
-    cursor: pointer;
-}
-
-/* carousel-container 스타일 */
-.carousel-container {
-    overflow: hidden; /* 내용이 넘치는 부분은 숨김 */
-}
-
-/* carousel 스타일 */
-.carousel {
-    display: flex;
-    overflow-x: scroll;
-
-}
-
-
-.boxes {
-display: flex;
-flex-wrap: wrap;
-justify-content: space-between;
-gap: 20px;
-padding: 20px;
-}
-
-.box {
-    width: calc(33.333% - 20px); /* 3개씩 나오도록 너비 계산 */
-    background-color: #5073FB;
-    border: 1px solid #ccc;
-    padding: 20px;
-    box-sizing: border-box;
-}
-
-table {
-    border-collapse: collapse; /* 테두리 겹치는 부분을 병합 */
-    width: 100%;
-}
-
-th, td {
-    border: 1px solid #ccc; /* 테두리 스타일과 색상 설정 */
-    padding: 8px; /* 셀 내부 여백 설정 */
-    text-align: left;
-}
-
-th {
-    background-color: #5073FB; /* 헤더 배경색 설정 */
-    color: #fff;
-}
-
-.input-level {
-    width: 90%;
-    font-size: 1rem;
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    background-color: white;
-}
-.text{
-    text-align: center;
-    font-size: 2rem;
-}
-.button{
-    font-size: 1rem;
-    padding: 10px 20px;
-    border: none;
-    background-color: #5073FB;
-    color: white;
-    cursor: pointer;
-    border-radius: 15px;
-}
-.button:hover {
-   background-color: #2980b9;
-}
-
-
-
-
-
-
-
-
-/* main--content */
-.main--content {
-    position: absolute;
-    top: 0;
-    right: 0;
-    height: 100%;
-    width: calc(100% - 300px);
-    padding: 10px 125px;
-    transition: .1s;
-}
-.main--content.active {
-    width: calc(100% - 103px);
-}
-@media screen and (max-width:1024px) {
-    table {
-        min-width: 600px;
-    }
-}
-@media screen and (max-width:768px) {
-    .logo {
-        padding-left: 30px;
-        width: fit-content;
-    }
-    .search--notification--profile {
-        padding: 0 20px;
-        margin-left: auto;
-    }
-    .main--content {
-        padding: 0 20px;
-    }
-    .sidebar {
-        padding: 20px;
-    }
-    .sidebar.active {
-        width: 85px;
-    }
-    .main--content.active {
-        width: calc(100% - 85px);
-    }
-}
-@media screen and (max-width:590px) {
-    .lock,
-    .chat {
-        display: none;
-    }
-    .notification--profile {
-        margin-left: auto;
-    }
-    .search--notification--profile {
-        width: fit-content;
-    }
-    .sidebar {
-        transform: translateX(-100%);
-        z-index: 10;
-        background-color: #fff;
-    }
-    .sidebar.active {
-        transform: translateX(0);
-        width: 300px;
-    }
-    .sidebar.active .sidebar--item {
-        display: block;
-    }
-    .main--content {
-        width: calc(100% - 0px);
-    }
-    .main--content.active {
-        width: calc(100% - 0px);
-    }
-}
-@media screen and (max-width:450px) {
-    .main--content {
-        padding: 0 10px;
-    }
-    .logo {
-        padding-left: 10px;
-    }
-    .search--notification--profile {
-        padding: 0 10px;
-    }
-    .sidebar {
-        padding: 10px;
-    }
-}
-
-
-.title--container{
-    height: 10%;
-    margin-top: 22px;
-    margin-bottom: 10px;
-    max-width: 100%;
-    display: flow-root;
-    padding-left: 30px;
-    padding-right: 30px;
-
-}
-
-.image-container{
-    height: 25%;
-    margin-top: 22px;
-    margin-bottom: 10px;
-    max-width: 100%;
-    display: flow-root;
-    padding-left: 30px;
-    padding-right: 30px;
-
-}
-
-.carousel-container{
-    height: 20%;
-    margin-top: 22px;
-    margin-bottom: 10px;
-    max-width: 100%;
-    display: flow-root;
-    padding-left: 30px;
-    padding-right: 30px;
-}
-
-.class--conatiner{
+/* title */
+.head-container{
     height: auto;
     margin-top: 22px;
-    margin-bottom: 10px;
-    max-width: 100%;
-    display: flow-root;
-    padding-left: 30px;
-    padding-right: 30px;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-.main-container{
-    height: auto;
-    margin-top: 22px;
-    margin-bottom: 10px;
+    margin-bottom: 25px;
     border-radius: 26px;
     box-shadow: 0px 0px 8px 3px #b9b9b947;
     max-width: 100%;
@@ -529,9 +279,42 @@ th {
     padding-right: 30px;
 }
 
-.title-container{
-    padding-top: 0px;
-    padding-bottom: 0px;
+.main-ori-button{
+  float: right;
+  width: 70px;
+  height: 33px;
+  margin-bottom: 16px;
+  margin-top: 14px;
+  margin-left: 5px;
+  border: none;
+  font-size: 15px;
+  font-weight: bold;
+  color: white;
+  border-top-left-radius: 30px 25px;
+  border-top-right-radius: 0px 5px;
+  border-bottom-left-radius: 0px 5px;
+  border-bottom-right-radius: 30px 25px;
+  background: #5164da ;
+  cursor: pointer;
+}
+
+.main-del-button{
+  float: right;
+  width: 70px;
+  height: 33px;
+  margin-bottom: 16px;
+  margin-top: 14px;
+  margin-left: 5px;
+  border: none;
+  font-size: 15px;
+  font-weight: bold;
+  color: white;
+  border-top-left-radius: 30px 25px;
+  border-top-right-radius: 0px 5px;
+  border-bottom-left-radius: 0px 5px;
+  border-bottom-right-radius: 30px 25px;
+  background: #e276b5 ;
+  cursor: pointer;
 }
 
 .write-title{
@@ -539,6 +322,7 @@ th {
     margin-bottom: 10px;
     width: 100%;
 }
+
 .write-title span{
     font-size: x-large;
     font-weight: bold;
@@ -557,12 +341,10 @@ th {
     outline: none;
     resize: none;
 }
-.write-title textarea:hover{
-    background: #F8FBFC;
-}
 
+/* main-content */
 .content-container{
-    height: 80%;
+    height: 50%;
     padding-top: 0px;
 }
 
@@ -584,14 +366,7 @@ th {
     font-weight: bold;
 }
 
-.content-label:hover {
-    border: 1px solid #22BBCE;
-    color: #22BBCE;
-    transition: all 0.4s ease;
-}
-
 .content{
-    max-height: 56vh;
     border-radius: 30px;
     border-top-left-radius: 1px;
     box-shadow: 8px 9px 14px -18px;
@@ -602,6 +377,7 @@ th {
     padding-bottom: 10px;
     overflow-y: scroll;
     max-width: 100%;
+    max-height: 100%;
 }
 .content:hover{
     background: #F8FBFC;
@@ -609,65 +385,47 @@ th {
 .content::-webkit-scrollbar{
     display: none;
 }
+.content-textarea{
+    min-height: 30%;
+    height: 80%;
+    width: 100%;
+    padding: 9px;
+    overflow: hidden;
+    line-height: 30px;
+    font-size: 15px;
+    border-radius: 30px;
+    border-top-left-radius: 1px;
+    box-shadow: 4px 7px 10px -14px;
+    border: 1px solid #D9E0E3;
+    outline: none;
+    resize: none;
+}
 
-.insert-reply{
+/* reply */
+.reply-button{
     float: right;
     width: 85px;
     margin-top: 13px;
     margin-bottom: 15px;
     height: 34px;
     outline: none;
-    border-radius: 22px;
+    border-top-left-radius: 30px 25px;
+    border-top-right-radius: 0px 5px;
+    border-bottom-left-radius: 0px 5px;
+    border-bottom-right-radius: 30px 25px;
     border: none;
-    background-color: #22BBCE;
+    background-color: #db6354 ;
     font-weight: bold;
     font-size: 15px;
     color: white;
     cursor: pointer;
 }
 
-.insert-reply:hover{
-    background-color: #3b909b;
+.reply-button:hover{
+    background-color: #ce352c;
     transition: all 0.4s ease;
 }
-.edit{
-    float: right;
-    width: 70px;
-    height: 33px;
-    margin-bottom: 16px;
-    margin-top: 14px;
-    margin-left: 10px;
-    border: none;
-    font-size: 15px;
-    font-weight: bold;
-    color: white;
-    border-radius: 20px;
-    background: #22BBCE;
-    cursor: pointer;
-}
-.edit:hover{
-    background-color: #3b909b;
-    transition: all 0.4s ease;
-}
-.delete{
-    float: right;
-    width: 70px;
-    height: 33px;
-    margin-bottom: 16px;
-    margin-top: 14px;
-    margin-left: 10px;
-    border: none;
-    font-size: 15px;
-    font-weight: bold;
-    color: white;
-    border-radius: 20px;
-    background: #ff0000;
-    cursor: pointer;
-}
-.delete:hover{
-    background-color: #c30f0f;
-    transition: all 0.4s ease;
-}
+
 .reply-insert{
     width: 100%;
     height: 100px;
@@ -678,11 +436,113 @@ th {
     outline: none;
 }
 .reply-content-container{
-    margin-bottom: 25px;
+margin-bottom: 25px;
 }
 .reply-content-container p{
     width: 100%;
-    height: 30px;
+    height: 50%;
     border: 1px solid red;
 }
 
+.reply-button-sm, #reply-button-sm{
+    float: right;
+    width: 50px;
+    margin-top: 13px;
+    margin-bottom: 15px;
+    height: 25px;
+    outline: none;
+    border-top-left-radius: 15px 12px;
+    border-top-right-radius: 0px 2px;
+    border-bottom-left-radius: 0px 2px;
+    border-bottom-right-radius: 15px 12px;
+    border: none;
+    background-color: #db6354 ;
+    font-weight: bold;
+    font-size: 15px;
+    color: white;
+    cursor: pointer;
+}
+
+.reply-button-sm:hover, #reply-button-sm:hover{
+    background-color: #ce352c;
+    transition: all 0.4s ease;
+}
+
+/* reply-table */
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.col-1{
+    width: 70%
+}
+
+.col-2{
+    width: 20%
+}
+
+.col-3{
+    width: 5%
+}
+
+.col-4{
+    width: 5%
+}
+
+
+/* modal */
+#modal.modal-overlay {
+  width: 100%;
+  height: 108.5%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(1.5px);
+  -webkit-backdrop-filter: blur(1.5px);
+/*  border-radius: 20px; (필요하면)*/
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+#modal .modal-window {
+  background: linear-gradient(270deg,#5164da 7%,#FFFFFE 7%);
+  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+  backdrop-filter: blur( 13.5px );
+  -webkit-backdrop-filter: blur( 13.5px );
+  border-radius: 10px;
+  border: 1px solid rgba( 255, 255, 255, 0.18 );
+  width: 700px;
+  height: 350px;
+  position: relative;
+  top: -100px;
+  padding: 10px;
+}
+#modal .title {
+  padding-left: 10px;
+  display: inline;
+  text-shadow: 1px 1px 2px gray;
+  color: white;
+}
+#modal .title h2 {
+  display: inline;
+}
+#modal .close-area {
+  display: inline;
+  float: right;
+  padding-right: 10px;
+  cursor: pointer;
+  text-shadow: 1px 1px 2px gray;
+  color: white;
+}
+
+#modal .content {
+  margin-top: 20px;
+  padding: 0px 10px;
+  text-shadow: 1px 1px 2px gray;
+  color: white;
+}

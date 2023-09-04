@@ -1,6 +1,5 @@
 package com.project.jeans.service.member;
 
-import com.project.jeans.domain.member.dto.CodeDTO;
 import com.project.jeans.domain.member.dto.MemberDTO;
 
 import java.util.HashMap;
@@ -19,6 +18,25 @@ public interface MemberService {
     
     //강사님 회원가입
     public int insertTeacher(MemberDTO memberDTO);
+
+    //강사님 로그인 처리
+    public int loginTeacher(MemberDTO memberDTO);
+
+    //수강생 로그인 처리
+    public int loginStudent(MemberDTO memberDTO);
+
+    //아이디 찾기
+    public String findId(MemberDTO memberDTO);
+
+    //회원 정보 가져오기
+    public MemberDTO getMemberInfo(String member_id);
+
+    //요청 처리중인 회원 조회
+    public int noAccept(String member_id);
+
+
+    //회원 타입 조회
+    public String memberType(String member_id);
 
     //아이디 중복 체크
     public int idDuplicate(String member_id);

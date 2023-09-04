@@ -1,10 +1,10 @@
 package com.project.jeans.controller.admin.notice;
 
+import com.project.jeans.domain.admin.notice.dao.NoticeDAO;
 import com.project.jeans.domain.admin.notice.dto.NoticeDTO;
 import com.project.jeans.service.admin.notice.NoticeService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
@@ -13,7 +13,9 @@ import java.util.List;
 @RequiredArgsConstructor
 public class NoticeController {
     private final NoticeService noticeService;
+    private final NoticeDAO noticeDAO;
 
+    //공지사항 조회
     @GetMapping("/noticeList")
     public ModelAndView noticeList() {
         List<NoticeDTO> noticeList = noticeService.selectAll();
@@ -24,18 +26,41 @@ public class NoticeController {
         return modelAndView;
     }
 
+    @GetMapping("/noticeDetail")
+    public ModelAndView noticeDetail(@RequestParam("notice_no") int noticeNo) {
+        System.out.println(noticeNo);
+        ModelAndView modelAndView = new ModelAndView("notice/noticeDetail");
+        // 공지 번호를 뷰에서 사용하기 위해 모델에 추가합니다.
+        modelAndView.addObject("noticeNo", noticeNo);
+        // MyBatis를 사용하여 데이터베이스에서 데이터를 검색합니다.
+        List<NoticeDTO> noticeDetail = noticeDAO.noticeDetail(noticeNo);
+        // 검색된 데이터를 뷰에서 사용하기 위해 모델에 추가합니다.
+        modelAndView.addObject("noticeDetail", noticeDetail);
+        return modelAndView;
+    }
+
+
+    //공지사항 입력
     @GetMapping("/noticeInsert")
     public ModelAndView noticeInsert(){
         return new ModelAndView("notice/noticeInsert");
     }
 
-    @GetMapping("/noticeDetail")
-    public ModelAndView noticeDetail(){
-        return new ModelAndView("notice/noticeDetail");
+    @PostMapping("/notice_insert")
+    public NoticeDTO notice_insert(@RequestParam("title") String title, @RequestParam("content") String content){
+        NoticeDTO noticeDTO = new NoticeDTO();
+        noticeDTO.setNotice_title(title);
+        noticeDTO.setNotice_content(content);
+        noticeDTO.setMember_name("Test");
+        noticeDTO.setMember_class("1반");
+
+        noticeDAO.insertNotice(noticeDTO);
+
+        return noticeDTO;
     }
 
-    @GetMapping("/test")
-    public ModelAndView test(){
-        return new ModelAndView("notice/abc");
+    //공지사항 isshow 'N'으로 바꾸기
+    public int isShowNotice(){
+    return 0;
     }
 }

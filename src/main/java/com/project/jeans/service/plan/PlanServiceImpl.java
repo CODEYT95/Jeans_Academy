@@ -14,6 +14,12 @@ public class PlanServiceImpl implements PlanService {
 
     @Override
     public List<PlanDTO> selectPlanAll() {
-        return planDAO. selectPlanAll();
+        return planDAO.selectPlanAll();
     }
+
+    @Override
+    public int insertPlan(PlanDTO planDTO) {
+        return planDAO.insertPlan(planDTO);
+    }
+
 }

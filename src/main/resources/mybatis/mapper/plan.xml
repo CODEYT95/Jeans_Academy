@@ -6,4 +6,12 @@
     select plan_no, plan_title, plan_content, plan_regdate from plan;
     ]]>
     </select>
+
+    <insert id="insertPlan" parameterType="com.project.jeans.domain.plan.dto.PlanDTO">
+    <![CDATA[
+    INSERT INTO plan (plan_no, plan_title, plan_content)
+    VALUES (#{plan_title}, #{plan_content});
+    ]]>
+    </insert>
+
 </mapper>

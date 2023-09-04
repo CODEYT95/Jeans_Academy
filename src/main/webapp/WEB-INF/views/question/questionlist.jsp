@@ -1,36 +1,23 @@
 <!DOCTYPE html>
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<html>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<html lang="ko" xmlns:c="http://java.sun.com/JSP/Page">
 <head>
     <meta charset="UTF-8">
-    <title>게시글 작성</title>
-    <link rel="stylesheet" type="text/css" href="../../../resources/css/board/board1Write.css">
-    <script type="text/javascript" src="../../../resources/js/board/board1.js"></script>
+    <title>메인</title>
+    <link rel="stylesheet" type="text/css" href="../../../resources/css/question/questionlist.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
-
-
-    <script>
-        $(document).ready(function() {
-            let menu = $('.menu');
-            let sidebar = $('.sidebar');
-            let mainContent = $('.main--content');
-            menu.click(function() {
-                sidebar.toggleClass('active');
-                mainContent.toggleClass('active');
-            });
-        });
-
-
-    </script>
-
+    <script type="text/javascript" src="../../../resources/js/question/question.js"></script>
 </head>
 <body>
 <section class="header">
     <div class="logo">
         <i class="ri-menu-line icon icon-0 menu"></i>
-        <h2>J<span>eans:청바지:</span></h2><h5><span style="color:#5073FB">청</span>춘은 <span style="color:#5073FB">바</span>로 <span style="color:#5073FB">지</span>금!</h5>
+        <h2>J<span>eans:청바지:</span></h2><h5><span style="color:#5073FB">청</span>춘은 <span style="color:#5073FB">바</span>로
+        <span style="color:#5073FB">지</span>금!</h5>
     </div>
     <div class="search--notification--profile">
         <div class="notification--profile">
@@ -107,35 +94,34 @@
             </li>
         </ul>
     </div>
-
-
-    <form action="/board1/modify" method="post">
-        <input type="hidden" name="member_name" value="${board1DTO.member_name}">
-        <input type="hidden" name="member_class" value="${board1DTO.member_class}">
-        <input type="hidden" name="board1_no" value="${board1DTO.board1_no}">
-        <div class="main--content">
-            <div class="main--container">
-                <button type="submit" class="button">수정하기</button>
-                <button type="button" class="button" onclick="location.href='/board1/detail/${board1DTO.board1_no}'">취소/목록</button>
-            </div>
-            <div class="title-container">
-                <div class="write-title">
-                    <div class="text">글 작성</div>
-                    <label>
-                        <div><span>제목</span></div>
-                        <input type="text" class = "input-level" id="board1_title" name="board1_title" value="${board1DTO.board1_title}"></input>
-                    </label>
-                </div>
-            </div>
-            <div class="content-container">
-                <div class="write-content">
-                    <span class="content-label">내용</span>
-                    <textarea class="content-textarea" contenteditable="true" name="board1_content">${board1DTO.board1_content}</textarea>
-                    <input type="button" class="content-file" value="사진수정">
-                </div>
+    <div class="main--content">
+        <div class="title-box">
+            <div class="title">Q&A
             </div>
         </div>
-    </form>
+        <div class="search-box">
+            <input type="text" class="search-input" placeholder="검색어를 입력하세요">
+            <button class="search-button"><i class="ri-search-line"></i></button>
+            <div>
+                <a href="/question/write" class="write-button">글작성</a>
+            </div>
+        </div>
+        <div class="box-list">
+            <c:forEach items="${questionList}" var="question" varStatus="status">
+                <div class="box box${(status.index % 4) + 1}">
+                    <h2>
+                        <c:out value="${question.question_title}"/>
+                    </h2>
+                    <span class="clear">
+                        <c:out value="${question.question_content}"/>
+                    </span>
+                <c:if test="${status.index % 4 == 3 or status.last}">
+                    <div style="clear: both;"></div>
+                </c:if>
+                </div>
+            </c:forEach>
+        </div>
+    </div>
 </section>
 </body>
 </html>
