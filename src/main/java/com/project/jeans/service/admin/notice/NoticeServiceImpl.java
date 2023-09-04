@@ -18,7 +18,7 @@ public class NoticeServiceImpl implements NoticeService {
 
     //공지사항 상세보기
     @Override
-    public List<NoticeDTO> noticeDetail(int notice_no){
+    public NoticeDTO noticeDetail(int notice_no){
      return noticeDAO.noticeDetail(notice_no);
     }
 

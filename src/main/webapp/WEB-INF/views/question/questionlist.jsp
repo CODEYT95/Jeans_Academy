@@ -120,7 +120,7 @@ pageEncoding="UTF-8"%>
                         <c:out value="${question.question_title}"/>
                     </h2>
                     <span class="clear">
-                        <c:out value="${question.question_content}"/>
+                       ${question.question_content}
                     </span>
                 <c:if test="${status.index % 4 == 3 or status.last}">
                     <div style="clear: both;"></div>

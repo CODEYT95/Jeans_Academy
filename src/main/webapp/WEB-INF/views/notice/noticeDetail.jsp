@@ -37,13 +37,13 @@ pageEncoding="UTF-8"%>
         <ul class="sidebar--items">
             <li>
                 <a href="/main1">
-                    <span class="icon icon-1"><i  style="color:white;" class="ri-home-4-line"></i></span>
+                    <span class="icon icon-1"><i class="ri-home-4-line"></i></span>
                     <span class="sidebar--item">홈</span>
                 </a>
             </li>
             <li>
                 <a href="/noticeList" id="active--link">
-                    <span class="icon icon-2"><i class="ri-megaphone-line"></i></span>
+                    <span class="icon icon-2"><i class="ri-megaphone-line" style="color:white;"></i></span>
                     <span class="sidebar--item">공지사항</span>
                 </a>
             </li>

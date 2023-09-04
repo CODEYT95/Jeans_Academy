@@ -181,12 +181,12 @@ a {
 .icon-10 {
         color: #00acc1;
 }
-
-
-
-
-
-
+.sidebar--items a:hover .icon i {
+        color: white;
+}
+.sidebar--bottom-items a:hover .icon i {
+        color: white;
+}
 /* main--content */
 .main--content {
     position: absolute;

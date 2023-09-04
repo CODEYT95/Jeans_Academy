@@ -18,10 +18,7 @@ pageEncoding="UTF-8"%>
     <!-- fullcalendar 언어 CDN -->
     <script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.8.0/locales-all.min.js'></script>
     <!-- 슬라이드-->
-    <link
-            rel="stylesheet"
-            href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"
-    />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"/>
     <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
     <link rel="stylesheet" type="text/css" href="../../../resources/css/main/main.css">
     <link rel="stylesheet" type="text/css" href="../../../resources/css/game/snakeGame.css">
@@ -40,7 +37,6 @@ pageEncoding="UTF-8"%>
     </script>
 
     <!-- 게시물 목록에 제목 표시 -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         $(document).ready(function() {
             // 각 게시물 항목을 순회하며 제목 정보를 가져와서 표시합니다.

@@ -12,23 +12,6 @@ pageEncoding="UTF-8"%>
     <link rel="stylesheet" type="text/css" href="../../../resources/css/notice/noticeList.css">
     <script type="text/javascript" src="../../../resources/js/notice/noticeList.js"></script>
 
-    <script>
-        $(document).ready(function () {
-            // 모든 "view-link" 클래스를 가진 요소에 클릭 이벤트 핸들러를 추가합니다.
-            $('.view-link').on('click', function () {
-                // "data-notice-no" 속성의 값을 가져옵니다.
-                var noticeNo = $(this).attr('data-notice-no');
-
-                // noticeNo 값을 사용하여 noticeDetail URL을 생성합니다.
-                var noticeDetailURL = '/noticeDetail?notice_no=' + noticeNo;
-
-                // 사용자를 noticeDetail 페이지로 리다이렉션합니다.
-                window.location.href = noticeDetailURL;
-            });
-        });
-
-    </script>
-
 </head>
 <body data-member-class="${member_class}">
 <section class="header">
@@ -138,7 +121,7 @@ pageEncoding="UTF-8"%>
                     <c:forEach items="${noticeList}" var="notice">
                         <li>
                             <span class="no">${notice.notice_no}</span>
-                            <a class="view-link" data-notice-no="${notice.notice_no}">
+                            <a class="view-link" href="/noticeDetail/${notice.notice_no}">
                                 <span class="title">${notice.notice_content}</span>
                             </a>
                             <div class="writer-container">
