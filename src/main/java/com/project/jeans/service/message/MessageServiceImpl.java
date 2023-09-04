@@ -30,15 +30,15 @@ public class MessageServiceImpl implements MessageService{
 
     /* 메시지 목록 조회(수신함) */
     @Override
-    public List<MessageDTO> selectReceiveMessage(){
-        List<MessageDTO> messageDTO = messageDAO.selectReceiveMessage();
+    public List<MessageDTO> selectReceiveMessage(String member_id){
+        List<MessageDTO> messageDTO = messageDAO.selectReceiveMessage(member_id);
         return messageDTO;
     }
 
     /* 메시지 목록 조회(발신함) */
     @Override
-    public List<MessageDTO> selectSendMessage(){
-        List<MessageDTO> messageDTO = messageDAO.selectSendMessage();
+    public List<MessageDTO> selectSendMessage(String member_id){
+        List<MessageDTO> messageDTO = messageDAO.selectSendMessage(member_id);
         return messageDTO;
     }
 

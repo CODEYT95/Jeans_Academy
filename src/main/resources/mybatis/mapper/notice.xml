@@ -6,7 +6,7 @@
     <select id="selectAll" resultType="com.project.jeans.domain.admin.notice.dto.NoticeDTO">
         <![CDATA[
         SELECT *
-        FROM notice;
+        FROM notice
         ]]>
     </select>
     <!--공지사항 상세보기-->
@@ -14,7 +14,8 @@
         <![CDATA[
         SELECT *
         FROM notice
-        WHERE notice_no = #{notice_no};
+        ORDER BY notice_regdate DESC
+        LIMIT 5;
         ]]>
     </select>
     <!--공지사항 INSERT-->

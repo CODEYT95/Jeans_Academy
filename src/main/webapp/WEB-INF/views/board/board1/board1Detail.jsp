@@ -26,7 +26,7 @@
                 <i class="ri-mail-line"></i>
             </div>
             <div class="picon profile">
-                <span>???님 오늘도 파이팅하세요:미소짓는_얼굴:</span>
+                <span>${member_id}님 오늘도 파이팅하세요:미소짓는_얼굴:</span>
             </div>
         </div>
     </div>
@@ -35,7 +35,7 @@
     <div class="sidebar">
         <ul class="sidebar--items">
             <li>
-                <a href="#" id="active--link">
+                <a href="/main1" id="active--link">
                     <span class="icon icon-1"><i class="ri-home-4-line"></i></span>
                     <span class="sidebar--item">홈</span>
                 </a>
@@ -154,36 +154,33 @@
                                     </form>
                                 </td >
                                 <label class="item">
-                                    <td class="col-4"><button class="btn-modal" id="reply-button-sm">수정</button></td>
+                                    <td class="col-4"><button class="btn-modal" id="reply-button-sm" data-comment-no="${comment1DTO.comment1_no}">수정</button></td>
+
+                                    <!-- 각 댓글에 대한 고유한 모달 창 -->
+                                    <div id="modal" class="modal-overlay">
+                                        <div class="modal-window">
+                                            <div class="close-area">X</div>
+                                            <div class="modal-header">
+                                                <h1>댓글 수정</h1>
+                                                <br/><br/>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form action="/comment1/update" method="post">
+                                                    <input type="hidden" name="board1_no" value="${board1DTO.board1_no}"/>
+                                                    <input type="hidden" name="comment1_no" value="${comment1DTO.comment1_no}">
+                                                    <div id="comment_content" class="form-group">
+                                                        <h3>댓글 내용</h3>
+                                                        <input type="text" name="comment1_content"/>
+                                                    </div>
+                                                    <br/>
+                                                    <button type="submit" class="reply-button">수정</button>
+                                                </form>
+                                            </div>
+                                            <div class="modal-footer">
+                                            </div>
+                                        </div>
                                 </label>
                             </table>
-                            <div id="modal" class="modal-overlay">
-                                <div class="modal-window">
-                                    <div class="close-area">X</div>
-                                    <div class="modal-header">
-                                        <h1>댓글 수정</h1>
-                                        <br/><br/>
-                                    </div>
-                                    <div class="modal-body">
-                                        <form action="/comment1/update" method="post">
-                                            <input type="hidden" name="board1_no" value="${board1DTO.board1_no}"/>
-                                            <div id="comment_no"  class="form-group">
-                                                <h3>댓글 번호</h3>
-                                                <textarea name="comment1_no"><c:out value="${comment1DTO.comment1_no}"/></textarea>
-                                            </div>
-                                            <div id="comment_content" class="form-group">
-                                                <h3>댓글 내용</h3>
-                                                <textarea name="comment1_content"><c:out value="${comment1DTO.comment1_content}"/></textarea>
-                                            </div>
-                                            <br/>
-                                            <button type="submit" class="reply-button">수정</button>
-                                        </form>
-                                    </div>
-                                    <div class="modal-footer">
-                                    </div>
-                                </div>
-                            </div>
-
                         </li>
                     </c:forEach>
                 </ul>
