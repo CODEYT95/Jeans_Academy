@@ -26,7 +26,7 @@ public class mainController {
     @GetMapping("/main1")
     public String main(Model model, HttpSession session) {
         String member_id = (String) session.getAttribute("member_id");
-        LoginCheckSession loginCheck = new LoginCheckSession(memberService); // Provide the memberService instance here
+        LoginCheckSession loginCheck = new LoginCheckSession(memberService);
         MemberDTO memberInfo = loginCheck.getLoginCheckSession(session, model);
 
         if (memberInfo == null) {

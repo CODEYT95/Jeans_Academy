@@ -22,7 +22,7 @@ public class Board2Controller {
     private final MemberService memberService;
     @GetMapping("/list")
     public String board1List(HttpSession session, Model model){
-        LoginCheckSession loginCheck = new LoginCheckSession(memberService); // Provide the memberService instance here
+        LoginCheckSession loginCheck = new LoginCheckSession(memberService);
         MemberDTO memberInfo = loginCheck.getLoginCheckSession(session, model);
 
         if (memberInfo == null) {

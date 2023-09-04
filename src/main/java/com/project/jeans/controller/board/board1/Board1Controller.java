@@ -31,7 +31,7 @@ public class Board1Controller {
     //반별 게시판 목록 조회
     @GetMapping("/list")
     public String getBoard1List(HttpSession session, Model model){
-        LoginCheckSession loginCheck = new LoginCheckSession(memberService); // Provide the memberService instance here
+        LoginCheckSession loginCheck = new LoginCheckSession(memberService);
         MemberDTO memberInfo = loginCheck.getLoginCheckSession(session, model);
 
         if (memberInfo == null) {
@@ -49,7 +49,7 @@ public class Board1Controller {
     //페이지 연결할 때 수정 가능성 있음
     @GetMapping("/detail/{board1_no}")
     public String readBoard1(@PathVariable("board1_no") int board1_no,HttpSession session, Model model){
-        LoginCheckSession loginCheck = new LoginCheckSession(memberService); // Provide the memberService instance here
+        LoginCheckSession loginCheck = new LoginCheckSession(memberService);
         MemberDTO memberInfo = loginCheck.getLoginCheckSession(session, model);
 
         if (memberInfo == null) {
@@ -67,7 +67,7 @@ public class Board1Controller {
     //반별 게시글 작성(폼)
     @RequestMapping(value="/write", method=RequestMethod.GET)
     public String writeBoard1Form(HttpSession session, Model model){
-        LoginCheckSession loginCheck = new LoginCheckSession(memberService); // Provide the memberService instance here
+        LoginCheckSession loginCheck = new LoginCheckSession(memberService);
         MemberDTO memberInfo = loginCheck.getLoginCheckSession(session, model);
 
         if (memberInfo == null) {
@@ -82,7 +82,7 @@ public class Board1Controller {
     //반별 게시글 작성(로직)
     @RequestMapping(value="/write", method=RequestMethod.POST)
     public ModelAndView writeBoard1(HttpSession session, Model model,ModelAndView modelAndView, @RequestParam Map<String,Object> map){
-        LoginCheckSession loginCheck = new LoginCheckSession(memberService); // Provide the memberService instance here
+        LoginCheckSession loginCheck = new LoginCheckSession(memberService);
         MemberDTO memberInfo = loginCheck.getLoginCheckSession(session, model);
 
         if (memberInfo == null) {
@@ -103,7 +103,7 @@ public class Board1Controller {
     //반별 게시글 수정(폼)
     @GetMapping("/modify")
     public String modifyBoard1Form(@RequestParam int board1_no, Model model, HttpSession session){
-        LoginCheckSession loginCheck = new LoginCheckSession(memberService); // Provide the memberService instance here
+        LoginCheckSession loginCheck = new LoginCheckSession(memberService);
         MemberDTO memberInfo = loginCheck.getLoginCheckSession(session, model);
 
         if (memberInfo == null) {
@@ -119,7 +119,7 @@ public class Board1Controller {
     //반별 게시글 수정
     @PostMapping("/modify")
     public ModelAndView modifyBoard1(HttpSession session, Model model,ModelAndView modelAndView, @RequestParam int board1_no, @RequestParam Map<String,Object> map){
-        LoginCheckSession loginCheck = new LoginCheckSession(memberService); // Provide the memberService instance here
+        LoginCheckSession loginCheck = new LoginCheckSession(memberService);
         MemberDTO memberInfo = loginCheck.getLoginCheckSession(session, model);
 
         if (memberInfo == null) {

@@ -24,7 +24,7 @@ public class CalendarController {
 
     @GetMapping(value = "/main1", params="method=list")
     public String list(HttpSession session, Model model) {
-        LoginCheckSession loginCheck = new LoginCheckSession(memberService); // Provide the memberService instance here
+        LoginCheckSession loginCheck = new LoginCheckSession(memberService);
         MemberDTO memberInfo = loginCheck.getLoginCheckSession(session, model);
 
         if (memberInfo == null) {
@@ -36,7 +36,7 @@ public class CalendarController {
     }
     @GetMapping(params = "method=data")
     public String data(HttpSession session, Model model, Model d) {
-        LoginCheckSession loginCheck = new LoginCheckSession(memberService); // Provide the memberService instance here
+        LoginCheckSession loginCheck = new LoginCheckSession(memberService);
         MemberDTO memberInfo = loginCheck.getLoginCheckSession(session, model);
 
         if (memberInfo == null) {

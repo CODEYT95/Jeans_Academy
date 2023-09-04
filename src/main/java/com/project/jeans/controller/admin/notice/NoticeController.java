@@ -24,7 +24,7 @@ public class NoticeController {
     //공지사항 조회
     @GetMapping("/noticeList")
     public ModelAndView noticeList(HttpSession session, Model model) {
-        LoginCheckSession loginCheck = new LoginCheckSession(memberService); // Provide the memberService instance here
+        LoginCheckSession loginCheck = new LoginCheckSession(memberService);
         MemberDTO memberInfo = loginCheck.getLoginCheckSession(session, model);
 
         if (memberInfo == null) {
