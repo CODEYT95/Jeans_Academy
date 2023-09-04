@@ -16,10 +16,22 @@ public class NoticeServiceImpl implements NoticeService {
         return noticeDAO.selectAll();
     }
 
+    //공지사항 상세보기
+    @Override
+    public List<NoticeDTO> noticeDetail(int notice_no){
+     return noticeDAO.noticeDetail(notice_no);
+    }
+
     //공지사항 INSERT
     @Override
     public int insertNotice(NoticeDTO noticeDTO) {
         return noticeDAO.insertNotice(noticeDTO);
+    }
+
+    //공지사항 isShow 'N'으로 바꾸기
+    @Override
+    public int isShowNotice(int notice_no) {
+        return noticeDAO.isShowNotice(notice_no);
     }
 
 }
