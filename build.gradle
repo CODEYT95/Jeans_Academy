@@ -32,6 +32,8 @@ dependencies {
 	implementation 'jakarta.servlet.jsp.jstl:jakarta.servlet.jsp.jstl-api:3.0.0'
 	implementation 'org.glassfish.web:jakarta.servlet.jsp.jstl:3.0.1'
 	implementation 'javax.servlet:jstl:1.2'
+	implementation 'org.apache.tiles:tiles-jsp:3.0.8'
+	implementation 'org.apache.tiles:tiles-servlet:3.0.8'
 	compileOnly 'org.projectlombok:lombok'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	runtimeOnly 'com.mysql:mysql-connector-j'

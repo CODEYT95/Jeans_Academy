@@ -6,7 +6,15 @@
     <select id="selectAll" resultType="NoticeDTO">
         <![CDATA[
         SELECT *
+        FROM notice;
+        ]]>
+    </select>
+    <!--공지사항 상세보기-->
+    <select id="noticeDetail" parameterType="Integer" resultType="NoticeDTO">
+        <![CDATA[
+        SELECT *
         FROM notice
+        WHERE notice_no = #{notice_no};
         ]]>
     </select>
     <!--공지사항 INSERT-->
@@ -16,4 +24,12 @@
         VALUES (#{notice_title}, #{notice_content}, #{member_class});
         ]]>
     </insert>
+    <!--공지사항 isShow-->
+    <update id="isShowNotice" parameterType="Integer">
+        <![CDATA[
+        UPDATE notice
+        SET notice_isshow = 'N'
+        WHERE notice_no = #{notice_no};
+        ]]>
+    </update>
 </mapper>

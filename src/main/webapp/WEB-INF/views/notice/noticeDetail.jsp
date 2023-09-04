@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 pageEncoding="UTF-8"%>
-<html>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<html lang="ko" xmlns:c="http://java.sun.com/JSP/Page">
 <head>
     <meta charset="UTF-8">
     <title>공지사항</title>
@@ -90,7 +91,6 @@ pageEncoding="UTF-8"%>
             </li>
         </ul>
     </div>
-<form>
     <div class="main--content">
         <div class="main-container">
             <!-- Modal -->
@@ -118,10 +118,12 @@ pageEncoding="UTF-8"%>
                 </div>
             </div>
             <div class="content-container">
-                <div class="write-content">
-                    <span class="content-label" disabled>내용</span>
-                    <div class="content" contenteditable="true"></div>
-                </div>
+                <c:if test="${not empty noticeDetail}">
+                    <div class="write-content">
+                        <span class="content-label">${noticeDetail.notice_title}</span>
+                        <div class="content" contenteditable="true"></div>
+                    </div>
+                </c:if>
                 <input type="button" class="insert-reply" value="댓글 등록">
             </div>
             <div class="reply-container">
@@ -145,7 +147,5 @@ pageEncoding="UTF-8"%>
             </div>
         </div>
     </div>
-</form>
-
 </section>
 </body>

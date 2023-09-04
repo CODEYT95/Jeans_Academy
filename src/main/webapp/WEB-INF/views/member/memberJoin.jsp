@@ -9,6 +9,8 @@ pageEncoding="UTF-8"%>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
     <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
     <script type="text/javascript" src="../../../resources/js/member/memberJoin.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </head>
 <body class="form-v10">
 <div class="page-content">
@@ -29,11 +31,17 @@ pageEncoding="UTF-8"%>
                         <span id="idError" style="color: red; font-size: 10px; margin-left: 10px;"></span>
                     </div>
                     <div class="form-row form-row-3">
-                        <input type="password" name="member_pw" id="member_pw" class="input-text" placeholder="비밀번호">
+                        <div class="password-container">
+                            <input type="password" name="member_pw" id="member_pw" class="input-text" placeholder="비밀번호">
+                            <span class="eye-icon"><ion-icon name="eye-outline"></ion-icon></span>
+                        </div>
                         <span id="passwordError" style="color: red; font-size: 10px; margin-left: 10px;"></span>
                     </div>
                     <div class="form-row form-row-4">
-                        <input type="password" name="member_pw2" id="member_pw2" class="input-text" placeholder="비밀번호 확인">
+                        <div class="password-container">
+                            <input type="password" name="member_pw2" id="member_pw2" class="input-text" placeholder="비밀번호 확인">
+                            <span  class="eye-icon2"><ion-icon name="eye-outline"></ion-icon></span>
+                        </div>
                         <span id="passwordMatchError" style="color: red; font-size: 10px; margin-left: 10px;"></span>
                     </div>
                 </div>
@@ -52,7 +60,7 @@ pageEncoding="UTF-8"%>
                     <select name="member_class" required>
                         <option value="" disabled selected>반 선택</option>
                         <option value="1반">1반</option>
-                        <option value="c2반">2반</option>
+                        <option value="2반">2반</option>
                         <option value="3반">3반</option>
                         <option value="4반">4반</option>
                     </select>

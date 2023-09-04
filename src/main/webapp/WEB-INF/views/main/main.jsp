@@ -711,8 +711,7 @@ background-clip: border-box;
 <section class="header">
     <div class="logo">
         <i class="ri-menu-line icon icon-0 menu"></i>
-        <h2>J<span>eans:청바지:</span></h2><h5><span style="color:#5073FB">청</span>춘은 <span style="color:#5073FB">바</span>로
-        <span style="color:#5073FB">지</span>금!</h5>
+        <h2>J<span>eans</span></h2><img src="../../../resources/image/main/로고5.png">
     </div>
     <div class="search--notification--profile">
         <div class="notification--profile">
