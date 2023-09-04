@@ -1,9 +1,14 @@
 package com.project.jeans.controller.admin.notice;
 
+import com.project.jeans.LoginCheckSession;
 import com.project.jeans.domain.admin.notice.dao.NoticeDAO;
 import com.project.jeans.domain.admin.notice.dto.NoticeDTO;
+import com.project.jeans.domain.member.dto.MemberDTO;
 import com.project.jeans.service.admin.notice.NoticeService;
+import com.project.jeans.service.member.MemberService;
+import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -12,12 +17,21 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 public class NoticeController {
+    private final MemberService memberService;
     private final NoticeService noticeService;
     private final NoticeDAO noticeDAO;
 
     //공지사항 조회
     @GetMapping("/noticeList")
-    public ModelAndView noticeList() {
+    public ModelAndView noticeList(HttpSession session, Model model) {
+        LoginCheckSession loginCheck = new LoginCheckSession(memberService);
+        MemberDTO memberInfo = loginCheck.getLoginCheckSession(session, model);
+
+        if (memberInfo == null) {
+            // 로그인이 필요한 경우 리디렉션
+            return new ModelAndView("redirect:/login");
+        }
+
         List<NoticeDTO> noticeList = noticeService.selectAll();
 
         ModelAndView modelAndView = new ModelAndView("notice/noticeList"); // JSP 파일명(user.jsp)
@@ -42,12 +56,21 @@ public class NoticeController {
 
     //공지사항 입력
     @GetMapping("/noticeInsert")
-    public ModelAndView noticeInsert(){
+    public ModelAndView noticeInsert(HttpSession session, Model model) {
+        LoginCheckSession loginCheck = new LoginCheckSession(memberService); // Provide the memberService instance here
+        MemberDTO memberInfo = loginCheck.getLoginCheckSession(session, model);
+
+        if (memberInfo == null) {
+            // 로그인이 필요한 경우 리디렉션
+            return new ModelAndView("redirect:/login");
+        }
+
         return new ModelAndView("notice/noticeInsert");
     }
 
     @PostMapping("/notice_insert")
     public NoticeDTO notice_insert(@RequestParam("title") String title, @RequestParam("content") String content){
+
         NoticeDTO noticeDTO = new NoticeDTO();
         noticeDTO.setNotice_title(title);
         noticeDTO.setNotice_content(content);
