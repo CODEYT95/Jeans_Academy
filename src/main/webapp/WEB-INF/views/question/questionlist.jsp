@@ -113,13 +113,16 @@ pageEncoding="UTF-8"%>
                         <c:out value="${question.question_title}"/>
                     </h2>
                     <span class="clear">
-                        <c:out value="${question.question_content}"/>
+                        <c:out escapeXml="false" value="${question.question_content}"/>
                     </span>
                 <c:if test="${status.index % 4 == 3 or status.last}">
                     <div style="clear: both;"></div>
                 </c:if>
                 </div>
             </c:forEach>
+            <div class="scroll-top" style="--floatHeight:24px;">
+                <button id="scrollTopBtn" class="scrollTopBtn"><i class="fa-solid fa-arrow-up fa-xl" style="color: #ffffff;"></i></button>
+            </div>
         </div>
     </div>
 </section>
