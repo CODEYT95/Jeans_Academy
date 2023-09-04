@@ -338,15 +338,7 @@
   padding-bottom: var(--cardsGap);
   max-width: 100%;
    margin: 0 auto;
-
 }
- .olcards a{
-            font-family: "Poppins", sans-serif;
-            color: #FAFAFA;
-
-          }
-
-
  .olcards li {
  counter-increment: cardCount;
      display: flex;
@@ -374,8 +366,8 @@
   padding-inline: 0.5em;
 }
 .olcards li .content {
-    background-color: var(--cardColor);
-    width: 90%;
+background-color: var(--cardColor);
+    width: 100%;
     display: flex;
     grid-template-areas:
         "icon title"
@@ -405,7 +397,7 @@
   clip-path: polygon(0 0, 100% 0, 0 100%);
   filter: brightness(0.75);
 }
- .olcards li .content::after {
+        .olcards li .content::after {
   content: "";
   position: absolute;
   height: var(--cardsGap);
@@ -414,7 +406,7 @@
   left: 0;
   top: 100%;
 }
- .olcards li .icon {
+        .olcards li .icon {
   margin-left: 25px;
   line-height: 45px;
 }
@@ -422,7 +414,6 @@
   grid-area: title;
   font-size: 1.25em;
   font-weight: 600;
-
 
 }
 .olcards li .content .text {
@@ -438,10 +429,7 @@
 
 
           }
-        .board-class a {
-            font-family: "Poppins", sans-serif;
-            color: #424242;
-          }
+
 
           .class-1{
               width: 100%;
@@ -467,7 +455,7 @@
         .class-1 h1 {
        font-family: "Poppins", sans-serif;
         color: #4A148C;
-#424242
+
     }
 
 
@@ -491,10 +479,10 @@
           }
 
           .class-2 h1 {
-            font-family: "Poppins", sans-serif;
-            color: #EC407A;
+       font-family: "Poppins", sans-serif;
+        color: #EC407A;
 
-          }
+    }
 
          .class-3{
               width: 100%;
@@ -516,10 +504,10 @@
           }
 
           .class-3 h1 {
-          font-family: "Poppins", sans-serif;
-          color: #64B5F6;
+       font-family: "Poppins", sans-serif;
+        color: #64B5F6;
 
-         }
+    }
 
          .class-4{
               width: 100%;
@@ -541,15 +529,14 @@
           }
 
           .class-4 h1 {
-         font-family: "Poppins", sans-serif;
-         color: #4A148C;
+       font-family: "Poppins", sans-serif;
+color: #4A148C;
 
-        }
+    }
 
           .plan-game{
               width: 28%;
               height: 100%;
-
           }
 
             .plan-container{
@@ -591,6 +578,14 @@
                 font-size: 12px;
             }
 
+
+            .game-container{
+                width: 100%;
+                height: 48%;
+                border: 1px solid;
+            }
+
+
       /* body 스타일 */
       .calendar {
         overflow: hidden;
@@ -631,24 +626,6 @@
               width: 100%;
               height: 48%;
               border: 1px solid;
-
-              border: 0px solid rgba(0, 0, 0, 0.125);
-                    border-radius: 1rem;
-                    box-shadow: rgba(0, 0, 0, 0.05) 0rem 1.25rem 1.6875rem 0rem;
-                    overflow-wrap: break-word;
-                    min-width: 0px; /* 최대 너비 제한 */
-                    color: rgba(0, 0, 0, 0.87);
-                    transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-                    overflow: hidden;
-
-                    flex-direction: column;
-                    justify-content: center;
-                    align-items: center;
-                    position: relative;
-
-                    background-color: rgb(255, 255, 255);
-                    background-clip: border-box;
-                    justify-content: flex-start;
           }
         .img-slider{
   position: relative;

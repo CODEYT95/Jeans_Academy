@@ -2,6 +2,7 @@ package com.project.jeans.service.admin.notice;
 
 import com.project.jeans.domain.admin.notice.dao.NoticeDAO;
 import com.project.jeans.domain.admin.notice.dto.NoticeDTO;
+import com.project.jeans.domain.board.board1.dto.Board1DTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -31,4 +32,9 @@ public class NoticeServiceImpl implements NoticeService {
         return noticeDAO.insertNotice(noticeDTO);
     }
 
+    @Override
+    public List<NoticeDTO> getNoticeList() {
+        List<NoticeDTO> noticeDTOList = noticeDAO.findNoticeAll();
+        return noticeDTOList;
+    }
 }

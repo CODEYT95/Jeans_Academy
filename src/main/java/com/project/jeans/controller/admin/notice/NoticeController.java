@@ -2,8 +2,10 @@ package com.project.jeans.controller.admin.notice;
 
 import com.project.jeans.domain.admin.notice.dao.NoticeDAO;
 import com.project.jeans.domain.admin.notice.dto.NoticeDTO;
+import com.project.jeans.domain.board.board1.dto.Board1DTO;
 import com.project.jeans.service.admin.notice.NoticeService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -52,8 +54,11 @@ public class NoticeController {
         return noticeDTO;
     }
 
-    @GetMapping("/test")
-    public ModelAndView test(){
-        return new ModelAndView("notice/abc");
+
+    @GetMapping("/list")
+    public String getNoticeList(Model model){
+        List<NoticeDTO> board1DTOList = noticeService.getNoticeList();
+        model.addAttribute("noticeList", board1DTOList);
+        return "/notice/noticeList";
     }
 }

@@ -54,6 +54,6 @@ public class mainController {
         }
 */
         return "main/main";
-        
+
     }
 }

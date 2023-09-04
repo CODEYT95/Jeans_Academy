@@ -10,4 +10,6 @@ public interface NoticeService {
     public  List<NoticeDTO> selectFive();
     //공지사항 INSERT
     public int insertNotice(NoticeDTO noticeDTO);
+
+   public  List<NoticeDTO> getNoticeList();
 }
