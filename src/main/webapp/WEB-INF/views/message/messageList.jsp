@@ -106,7 +106,7 @@
     <div class="main--content" >
 
         <!-- 모달(쪽지보내기) -->
-        <button type="button" class="btn-modal">쪽지 보내기</button>
+        <button type="button" class="btn-modal" id="send_button">쪽지 보내기</button>
         <div id="modal" class="modal-overlay">
             <div class="modal-window">
                 <div class="close-area">X</div>
@@ -141,7 +141,7 @@
 
         <div class="messageRec--content">
             <h2>받은 쪽지함</h2>
-            <button type="button" class="delete-button">삭제</button>
+            <button type="delete-button" class="delete-button">삭제</button>
             <table class="table">
                 <thead>
                     <tr>
@@ -153,7 +153,7 @@
                 <c:forEach var="messageRecDTO" items="${messageRecDTO}">
                 <tbody>
                     <tr>
-                        <td>
+                        <td class="col-1">
                             <input type="checkbox" name="box2">&nbsp;
                             <label for="box2"><button type="button" class="btn-modal2">${messageRecDTO.message_title}</button></label>
                         </td>
@@ -170,8 +170,8 @@
                                     </div>
                             </div>
                         </div>
-                        <td>${messageRecDTO.message_sender}</td>
-                        <td><fmt:formatDate value="${messageRecDTO.message_date}" pattern="yyyy-MM-dd HH:mm"/></td>
+                        <td class="col-2">${messageRecDTO.message_sender}</td>
+                        <td class="col-3"><fmt:formatDate value="${messageRecDTO.message_date}" pattern="yyyy-MM-dd HH:mm"/></td>
                     </tr>
                 </tbody>
                 </c:forEach>
@@ -180,7 +180,7 @@
 
         <div class="messageSend--content">
             <h2>보낸 쪽지함</h2>
-            <button type="button" class="delete-button">삭제</button>
+            <button type="delete-button" class="delete-button">삭제</button>
             <table>
                 <thead>
                 <tr>
@@ -190,9 +190,9 @@
                 </tr>
                 </thead>
                 <tbody>
-                <c:forEach var="messageSendDTO" items="${messageSendDTO}">
+                <c:forEach var="messageSendDTO" items="${messageSendDTO}" varStatus="loop" begin="0">
                     <tr>
-                        <td>
+                        <td class="col-1">
                             <input type="checkbox" name="box3">&nbsp;
                             <label for="box3"><button type="button" class="btn-modal3">${messageSendDTO.message_title}</button></label>
 
@@ -211,8 +211,8 @@
                             </div>
 
 
-                            <td>${messageSendDTO.message_receiver}</td>
-                            <td><fmt:formatDate value="${messageSendDTO.message_date}" pattern="yyyy-MM-dd HH:mm"/></td>
+                            <td class="col-2">${messageSendDTO.message_receiver}</td>
+                            <td class="col-3"><fmt:formatDate value="${messageSendDTO.message_date}" pattern="yyyy-MM-dd HH:mm"/></td>
                         </td>
                     </tr>
                 </c:forEach>

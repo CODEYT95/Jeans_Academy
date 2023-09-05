@@ -13,6 +13,12 @@ $(document).ready(function() {
     const closeBtn2 = modal2.find(".close-area2");
     const closeBtn3 = modal3.find(".close-area3");
 
+    const modalSenderInput = modal.find("input[name='message_sender']");
+    const modalReceiverInput = modal.find("input[name='message_receiver']");
+    const modalTitleInput = modal.find("input[name='message_title']");
+    const modalContentInput = modal.find("input[name='message_content']");
+    const modalDateInput = modal.find("input[name='message_date']");
+
     function isModalOn() {
         return modal.css("display") === "none";
     }

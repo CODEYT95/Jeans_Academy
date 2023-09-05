@@ -171,7 +171,7 @@
                                         <input type="hidden" name="board1_no" value="${board1DTO.board1_no}"/>
                                         <!-- 관리자와 댓글작성자만 삭제 가능-->
                                         <c:if test="${memberDTO.member_id == comment1DTO.member_id || member_type.equals('관리자')}">
-                                        <button type="submit" class="reply-button-sm">삭제</button>
+                                            <button type="submit" class="reply-button-sm">삭제</button>
                                         </c:if>
                                     </form>
                                 </td >
@@ -179,7 +179,7 @@
                                     <!-- 댓글 작성자만 댓글 수정 가능 -->
                                         <td class="col-4">
                                         <c:if test="${member_id == comment1DTO.member_id}">
-                                        <button class="btn-modal" id="reply-button-sm" data-comment-no="${comment1DTO.comment1_no}">수정</button>
+                                            <button class="btn-modal" id="reply-button-sm" data-comment-no="${comment1DTO.comment1_no}">수정</button>
                                         </c:if>
                                         </td>
                                     <!-- 각 댓글에 대한 고유한 모달 창 -->
