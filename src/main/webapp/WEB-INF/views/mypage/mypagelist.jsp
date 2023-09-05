@@ -10,27 +10,26 @@ pageEncoding="UTF-8"%>
     <link rel="stylesheet" type="text/css" href="../../../resources/css/mypage/mypage.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
-    <script src="http://cdn.jsdelivr.net/mojs/latest/mo.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="../../../resources/js/mypage/mypage.js"></script>
+    <script type="text/javascript" src="../../../../resources/js/common/sidebar.js"></script>
 </head>
-<body>
+<body data-member-class="${member_class}">
 <section class="header">
     <div class="logo">
         <i class="ri-menu-line icon icon-0 menu"></i>
-        <h2>J<span>eans:청바지:</span></h2><h5><span style="color:#5073FB">청</span>춘은 <span style="color:#5073FB">바</span>로
+        <h2>J<span>eans👖</span></h2><h5><span style="color:#5073FB">청</span>춘은 <span style="color:#5073FB">바</span>로
         <span style="color:#5073FB">지</span>금!</h5>
     </div>
     <div class="search--notification--profile">
         <div class="notification--profile">
-            <div class="picon bell">
-                <i class="ri-notification-2-line"></i>
-            </div>
-            <div class="picon chat">
-                <i class="ri-mail-line"></i>
-            </div>
+            <a href="/message/messageList">
+                <div class="picon chat">
+                    <i class="ri-mail-line" ></i>
+                </div>
+            </a>
             <div class="picon profile">
-                <span>???님 오늘도 파이팅하세요:미소짓는_얼굴:</span>
+                <span>${member_class} ${member_name}님 오늘도 파이팅하세요🙂</span>
             </div>
         </div>
     </div>
@@ -39,57 +38,65 @@ pageEncoding="UTF-8"%>
     <div class="sidebar">
         <ul class="sidebar--items">
             <li>
-                <a href="#" id="active--link">
-                    <span class="icon icon-1"><i class="ri-home-4-line"></i></span>
+                <a  href="/main1">
+                    <span class="icon icon-1"><i  style="color:white;" class="ri-home-4-line"></i></span>
                     <span class="sidebar--item">홈</span>
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="/noticeList">
                     <span class="icon icon-2"><i class="ri-megaphone-line"></i></span>
                     <span class="sidebar--item">공지사항</span>
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a class="sideBoard1" href="/board1/list">
                     <span class="icon icon-3"><i class="ri-draft-line"></i></span>
                     <span class="sidebar--item" style="white-space: nowrap;">1반</span>
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a class="sideBoard2" href="/board2/list">
                     <span class="icon icon-4"><i class="ri-draft-line"></i></span>
                     <span class="sidebar--item">2반</span>
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a class="sideBoard3" href="/board3/list">
                     <span class="icon icon-5"><i class="ri-draft-line"></i></span>
                     <span class="sidebar--item">3반</span>
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a class="sideBoard4" href="/board4/list">
                     <span class="icon icon-6"><i class="ri-draft-line"></i></span>
                     <span class="sidebar--item">4반</span>
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="/question/list">
                     <span class="icon icon-7"><i class="ri-questionnaire-line"></i></span>
                     <span class="sidebar--item">QnA</span>
                 </a>
             </li>
+            <c:if test="${member_type == '관리자'}">
+                <li>
+                    <a href="/admin/memberList">
+                        <span class="icon icon-10"><i class="ri-admin-line"></i></span>
+                        <span class="sidebar--item">Admin</span>
+                    </a>
+                </li>
+            </c:if>
         </ul>
         <ul class="sidebar--bottom-items">
             <li>
-                <a href="#">
-                    <span class="icon icon-8"><i class="ri-user-3-line"></i></span>
+                <a href="#"  id="active--link">
+                    <span class="icon icon-8"><i class="ri-user-3-line" style="color;white;"></i></span>
                     <span class="sidebar--item">마이페이지</span>
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="/logout">
                     <span class="icon icon-9"><i class="ri-logout-box-r-line"></i></span>
                     <span class="sidebar--item">로그아웃</span>
                 </a>
@@ -139,17 +146,20 @@ pageEncoding="UTF-8"%>
 
                 <div class="event-form">
                     <div class="c-outer-gird2">
-                    <h3>일정 추가</h3>
-                    <div class="c-title">
-                        <input type="date" name="date" id="event-date">
-                        <input type="text" name="title" id="event-title" placeholder="일정 제목">
-                        <button id="add-event-button">일정 추가</button>
-                    </div>
-                    <!-- 일정 목록 추가 -->
-                    <div class="event-list">
-                        <h4>일정 목록</h4>
-                        <ul id="event-list"></ul>
-                    </div>
+                        <h3>일정 추가</h3>
+                        <div class="c-title">
+                            <!-- 일정 입력 폼 -->
+                                <input type="date" name="date" id="event-date">
+                                <input type="text" name="title" id="event-title" placeholder="일정 제목">
+                                <button type="submit" id="add-event-button">일정 추가</button>
+                        </div>
+                        <!-- 일정 목록 추가 -->
+                        <div class="event-list">
+                            <h4>일정 목록</h4>
+                            <ul>
+                                <li th:each="event : ${events}" th:text="${event.date} + ' - ' + ${event.title}"></li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -158,3 +168,6 @@ pageEncoding="UTF-8"%>
 </section>
 </body>
 </html>
+<script>
+    #add-event-button 버튼 클릭하면 아작스로 #event랑 #event-title을 url "/write" 로 보내기
+</script>

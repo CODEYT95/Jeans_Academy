@@ -1,61 +1,52 @@
-$(document).ready(function() {
-  let menu = $('.menu');
-  let sidebar = $('.sidebar');
-  let mainContent = $('.main--content');
+    $(document).ready(function() {
+      document.querySelector('.save').addEventListener('click', function() {
+        // .content의 내용을 가져옴
+        var content = document.querySelector('.content').innerHTML;
 
-  menu.click(function() {
-    sidebar.toggleClass('active');
-    mainContent.toggleClass('active');
-  });
+        // hidden input 필드에 값 설정
+        var hiddenInput = document.createElement('input');
+        hiddenInput.type = 'hidden';
+        hiddenInput.name = 'content';
+        hiddenInput.value = content;
 
-  document.querySelector('.save').addEventListener('click', function() {
-    // .content의 내용을 가져옴
-    var content = document.querySelector('.content').innerHTML;
+        // form에 hidden input 필드 추가
+         var form = document.querySelector('form');
+         form.appendChild(hiddenInput);
+      });
 
-    // hidden input 필드에 값 설정
-    var hiddenInput = document.createElement('input');
-    hiddenInput.type = 'hidden';
-    hiddenInput.name = 'content';
-    hiddenInput.value = content;
+      // "사진 추가" 버튼 클릭 시 파일 선택 대화상자 열기
+      $('.content-file').click(function() {
+         $('#photo-input').trigger('click');
+       });
 
-    // form에 hidden input 필드 추가
-     var form = document.querySelector('form');
-     form.appendChild(hiddenInput);
-  });
+       // photo-input 변경 이벤트 처리
+       const photoInput = document.getElementById('photo-input');
+       const previewContainer = document.querySelector('.content');
 
-  // "사진 추가" 버튼 클릭 시 파일 선택 대화상자 열기
-  $('.content-file').click(function() {
-     $('#photo-input').trigger('click');
-   });
+       photoInput.addEventListener('change', function(event) {
+         const files = event.target.files;
 
-   // photo-input 변경 이벤트 처리
-   const photoInput = document.getElementById('photo-input');
-   const previewContainer = document.querySelector('.content');
+         for (let i = 0; i < files.length; i++) {
+           const file = files[i];
 
-   photoInput.addEventListener('change', function(event) {
-     const files = event.target.files;
+           if (file.type.startsWith('image/')) {
+             const reader = new FileReader();
 
-     for (let i = 0; i < files.length; i++) {
-       const file = files[i];
+             reader.onload = function(e) {
+               const imageSrc= e.target.result;
+               createPreviewImage(imageSrc);
+             };
 
-       if (file.type.startsWith('image/')) {
-         const reader = new FileReader();
+             reader.readAsDataURL(file);
+           }
+         }
+       });
 
-         reader.onload = function(e) {
-           const imageSrc= e.target.result;
-           createPreviewImage(imageSrc);
-         };
+       function createPreviewImage(imageSrc) {
+         const imageElement= document.createElement( 'img' );
+         imageElement.src= imageSrc;
+         imageElement.classList.add( 'preview-image' );
 
-         reader.readAsDataURL(file);
+         previewContainer.appendChild(imageElement);
        }
-     }
-   });
-
-   function createPreviewImage(imageSrc) {
-     const imageElement= document.createElement( 'img' );
-     imageElement.src= imageSrc;
-     imageElement.classList.add( 'preview-image' );
-
-     previewContainer.appendChild(imageElement);
-   }
-});
+    });

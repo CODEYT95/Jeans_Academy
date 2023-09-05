@@ -66,4 +66,23 @@ document.addEventListener("DOMContentLoaded", function() {
                 });
         }
     });
+
+     window.addEventListener("scroll", function() {
+                    var scrollTopButton = document.getElementById("scrollTopBtn");
+
+                    if (window.pageYOffset > 300) {
+                    scrollTopButton.style.display = "block";
+                    } else {
+                    scrollTopButton.style.display = "none";
+                    }
+                    });
+
+                    function smoothScrollToTop() {
+                    window.scrollTo({
+                    top: 0,
+                    behavior: "smooth"
+                    });
+                    }
+                    var scrollTopButton = document.getElementById("scrollTopBtn");
+                    scrollTopButton.addEventListener("click", smoothScrollToTop);
 });

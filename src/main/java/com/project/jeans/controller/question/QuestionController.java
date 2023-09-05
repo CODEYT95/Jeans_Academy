@@ -34,7 +34,11 @@ public class QuestionController {
         if (memberInfo == null) {
             // 로그인이 필요한 경우 리디렉션
             return "/member/login";
+
         }
+        model.addAttribute("member_name",memberInfo.getMember_name());
+        model.addAttribute("member_class",memberInfo.getMember_class());
+        model.addAttribute("member_type",memberInfo.getMember_type());
         List<QuestionDTO> questionList = questionService.selectQuestionAll();
         model.addAttribute("questionList", questionList);
         return "question/questionlist";
@@ -46,10 +50,14 @@ public class QuestionController {
         LoginCheckSession loginCheck = new LoginCheckSession(memberService);
         MemberDTO memberInfo = loginCheck.getLoginCheckSession(session, model);
 
+
         if (memberInfo == null) {
             // 로그인이 필요한 경우 리디렉션
             return "/member/login";
         }
+        model.addAttribute("member_name",memberInfo.getMember_name());
+        model.addAttribute("member_class",memberInfo.getMember_class());
+        model.addAttribute("member_type",memberInfo.getMember_type());
 
         return "/question/questionWrite";
     }
@@ -59,10 +67,14 @@ public class QuestionController {
         LoginCheckSession loginCheck = new LoginCheckSession(memberService);
         MemberDTO memberInfo = loginCheck.getLoginCheckSession(session, model);
 
+
         if (memberInfo == null) {
             // 로그인이 필요한 경우 리디렉션
-            return new ModelAndView("redirect:member/login");
+            return new ModelAndView("/member/login");
         }
+        model.addAttribute("member_name",memberInfo.getMember_name());
+        model.addAttribute("member_class",memberInfo.getMember_class());
+        model.addAttribute("member_type",memberInfo.getMember_type());
 
         QuestionDTO questionDTO = new QuestionDTO();
         questionDTO.setQuestion_title(title);

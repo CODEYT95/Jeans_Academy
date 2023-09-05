@@ -2,7 +2,7 @@
 <%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<html xmlns="http://www.w3.org/1999/html">
+<html xmlns:c="http://java.sun.com/JSP/Page" xmlns:fmt="">
 <head>
     <meta charset="UTF-8">
     <title>게시글 상세보기</title>
@@ -10,23 +10,24 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
     <link rel="stylesheet" type="text/css" href="../../../../resources/css/board/boardDetail.css">
     <script type="text/javascript" src="../../../../resources/js/board/boardDetail.js"></script>
+    <script type="text/javascript" src="../../../../resources/js/common/sidebar.js"></script>
 </head>
-<body>
+<body data-member-class="${member_class}">
 <section class="header">
     <div class="logo">
         <i class="ri-menu-line icon icon-0 menu"></i>
-        <h2>J<span>eans:청바지:</span></h2><h5><span style="color:#5073FB">청</span>춘은 <span style="color:#5073FB">바</span>로 <span style="color:#5073FB">지</span>금!</h5>
+        <h2>J<span>eans👖</span></h2><h5><span style="color:#5073FB">청</span>춘은 <span style="color:#5073FB">바</span>로
+        <span style="color:#5073FB">지</span>금!</h5>
     </div>
     <div class="search--notification--profile">
         <div class="notification--profile">
-            <div class="picon bell">
-                <i class="ri-notification-2-line"></i>
-            </div>
-            <div class="picon chat">
-                <i class="ri-mail-line"></i>
-            </div>
+            <a href="/message/messageList">
+                <div class="picon chat">
+                    <i class="ri-mail-line" ></i>
+                </div>
+            </a>
             <div class="picon profile">
-                <span>${member_id}님 오늘도 파이팅하세요:미소짓는_얼굴:</span>
+                <span>${member_class} ${member_name}님 오늘도 파이팅하세요🙂</span>
             </div>
         </div>
     </div>
@@ -35,47 +36,55 @@
     <div class="sidebar">
         <ul class="sidebar--items">
             <li>
-                <a href="/main1" id="active--link">
+                <a href="/main1">
                     <span class="icon icon-1"><i class="ri-home-4-line"></i></span>
                     <span class="sidebar--item">홈</span>
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="/noticeList">
                     <span class="icon icon-2"><i class="ri-megaphone-line"></i></span>
                     <span class="sidebar--item">공지사항</span>
                 </a>
             </li>
             <li>
-                <a href="/board1/list">
-                    <span class="icon icon-3"><i class="ri-draft-line"></i></span>
-                    <span class="sidebar--item" style="white-space: nowrap;">1반</span>
+                <a href="/board1/list" id="active--link" class="sideBoard1">
+                    <span class="icon icon-3"><i class="ri-draft-line" style="color:white;"></i></span>
+                    <span class="sidebar--item" style="white-space: nowrap;" >1반</span>
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="/board2/list" class="sideBoard2">
                     <span class="icon icon-4"><i class="ri-draft-line"></i></span>
                     <span class="sidebar--item">2반</span>
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="/board3/list" class="sideBoard3">
                     <span class="icon icon-5"><i class="ri-draft-line"></i></span>
                     <span class="sidebar--item">3반</span>
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="/board4/list" class="sideBoard4">
                     <span class="icon icon-6"><i class="ri-draft-line"></i></span>
                     <span class="sidebar--item">4반</span>
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="/question/list">
                     <span class="icon icon-7"><i class="ri-questionnaire-line"></i></span>
                     <span class="sidebar--item">QnA</span>
                 </a>
             </li>
+            <c:if test="${member_type == '관리자'}">
+                <li>
+                    <a href="/admin/memberList">
+                        <span class="icon icon-10"><i class="ri-admin-line"></i></span>
+                        <span class="sidebar--item">Admin</span>
+                    </a>
+                </li>
+            </c:if>
         </ul>
         <ul class="sidebar--bottom-items">
             <li>
@@ -85,7 +94,7 @@
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="/logout">
                     <span class="icon icon-9"><i class="ri-logout-box-r-line"></i></span>
                     <span class="sidebar--item">로그아웃</span>
                 </a>
@@ -127,7 +136,7 @@
         <div class="content-container">
             <div class="write-content">
                 <span class="content-label">내용</span>
-                <div class="content-textarea" readonly>${board1DTO.board1_content}</div>
+                <p class="content-textarea" readonly>${board1DTO.board1_content}</p>
             </div>
         </div>
 
@@ -170,7 +179,7 @@
                                                     <input type="hidden" name="comment1_no" value="${comment1DTO.comment1_no}">
                                                     <div id="comment_content" class="form-group">
                                                         <h3>댓글 내용</h3>
-                                                        <input type="text" name="comment1_content"/>
+                                                        <input type="text" name="comment1_content" required/>
                                                     </div>
                                                     <br/>
                                                     <button type="submit" class="reply-button">수정</button>
@@ -179,6 +188,7 @@
                                             <div class="modal-footer">
                                             </div>
                                         </div>
+                                    </div>
                                 </label>
                             </table>
                         </li>
@@ -189,6 +199,4 @@
     </div>
 </section>
 </body>
-
-
 </html>

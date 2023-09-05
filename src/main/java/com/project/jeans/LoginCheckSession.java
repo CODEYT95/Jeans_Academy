@@ -26,7 +26,7 @@ public class LoginCheckSession {
             String member_type = memberInfo.getMember_type();
             model.addAttribute("member_name", member_name);
             model.addAttribute("member_class", member_class);
-            model.addAttribute("member_class", member_type);
+            model.addAttribute("member_type", member_type);
         }
         return memberInfo;
     }

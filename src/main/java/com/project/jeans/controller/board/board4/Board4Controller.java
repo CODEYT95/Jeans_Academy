@@ -22,10 +22,14 @@ public class Board4Controller {
         LoginCheckSession loginCheck = new LoginCheckSession(memberService);
         MemberDTO memberInfo = loginCheck.getLoginCheckSession(session, model);
 
+
         if (memberInfo == null) {
             // 로그인이 필요한 경우 리디렉션
-            return "member/login";
+            return "/member/login";
         }
+        model.addAttribute("member_name",memberInfo.getMember_name());
+        model.addAttribute("member_class",memberInfo.getMember_class());
+        model.addAttribute("member_type",memberInfo.getMember_type());
 
         System.out.println("수정중(git에서 수정)");
         return "/board4/board4List";
