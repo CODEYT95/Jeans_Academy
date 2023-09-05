@@ -9,10 +9,7 @@ import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
@@ -51,11 +48,17 @@ public class MessageController {
 
     }
 
+    /* 메시지 상세 조회 */
+    @GetMapping("/read/{message_no}")
+    public String readMessage(@PathVariable("message_no") int message_no, Model model) {
+        MessageDTO messageDTO = messageService.selectMessageDetail(message_no);
+        model.addAttribute("messageDTO",messageDTO);
+        return "/message/messageList";
+    }
+
     /* 메시지 작성(보내기) */
     @PostMapping("/send")
     public ModelAndView sendMessage(@RequestParam Map<String,Object> map, HttpSession session, ModelAndView modelAndView, Model model){
-
-        System.out.println(map);
 
         LoginCheckSession loginCheck = new LoginCheckSession(memberService);
         MemberDTO memberInfo = loginCheck.getLoginCheckSession(session, model);
@@ -76,7 +79,6 @@ public class MessageController {
         }
 
         return modelAndView;
-
     }
 
     /* 메시지 삭제 (수신함) */

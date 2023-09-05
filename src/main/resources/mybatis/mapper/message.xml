@@ -6,7 +6,7 @@
     <!-- 메시지 목록 조회 (수신함)-->
     <select id="selectReceiveMessage" resultType="com.project.jeans.domain.message.dto.MessageDTO">
         <![CDATA[
-        SELECT message_no,message_sender,message_receiver,message_title,message_date,message_rec_isshow
+        SELECT message_no,message_sender,message_receiver,message_title,message_content,message_date,message_rec_isshow
         FROM message
         WHERE message_receiver=#{member_id} AND message_rec_isshow='Y'
         ORDER BY message_no DESC;
@@ -16,7 +16,7 @@
     <!-- 메시지 목록 조회 (발신함)-->
     <select id="selectSendMessage" resultType="com.project.jeans.domain.message.dto.MessageDTO">
         <![CDATA[
-        SELECT message_no,message_sender,message_receiver,message_title,message_date,message_sen_isshow
+        SELECT message_no,message_sender,message_receiver,message_title,message_content,message_date,message_sen_isshow
         FROM message
         WHERE message_sender=#{member_id} AND message_sen_isshow='Y'
         ORDER BY message_no DESC;

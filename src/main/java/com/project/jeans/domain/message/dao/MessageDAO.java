@@ -25,7 +25,7 @@ public interface MessageDAO {
     /* 메시지 작성 (수신자 목록) */
     public List<MemberDTO> selectMessageMemList();
 
-    /* 메시지 작성(내용)*/
+    /* 메시지 작성 (내용)*/
     int insertContentMessage(Map<String,Object> map);
 
 
