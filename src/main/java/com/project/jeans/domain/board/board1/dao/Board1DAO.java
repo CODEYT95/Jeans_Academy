@@ -26,11 +26,4 @@ public interface Board1DAO {
     //게시글 삭제
     int deleteBoard1(Map<String, Object> map);
 
-     /*   진호 구현
-    //게시글 수정
-    Board1DTO board1Modify();
-
-    //게시글 삭제
-    int board1Delete();*/
-
 }

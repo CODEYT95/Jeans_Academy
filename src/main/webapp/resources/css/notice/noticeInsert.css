@@ -179,12 +179,20 @@
         .icon-9 {
                 color: #585858;
         }
+        .icon-10 {
+                color: #00acc1;
+        }
         .sidebar--items a:hover .icon i {
                 color: white;
         }
         .sidebar--bottom-items a:hover .icon i {
                 color: white;
         }
+        #active--link {
+            background-color: #5073FB;
+            color: #fff;
+        }
+
         /* main--content */
         .main--content {
                 position: absolute;

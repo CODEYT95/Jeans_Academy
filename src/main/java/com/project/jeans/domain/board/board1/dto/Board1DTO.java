@@ -18,4 +18,5 @@ public class Board1DTO {
     private String member_id;
     private String member_name;
     private String member_class;
+
 }
