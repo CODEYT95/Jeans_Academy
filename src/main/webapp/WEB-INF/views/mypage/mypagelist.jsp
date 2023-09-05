@@ -9,10 +9,9 @@ pageEncoding="UTF-8"%>
     <title>메인</title>
     <link rel="stylesheet" type="text/css" href="../../../resources/css/mypage/mypage.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.css" rel="stylesheet">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script type="text/javascript" src="../../../resources/js/mypage/mypage.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
     <script type="text/javascript" src="../../../../resources/js/common/sidebar.js"></script>
+    <script type="text/javascript" src="../../../resources/js/mypage/mypage.js"></script>
 </head>
 <body data-member-class="${member_class}">
 <section class="header">
@@ -114,7 +113,22 @@ pageEncoding="UTF-8"%>
                 <div class="board1">
                     <div class="b-outer-gird1">
                         <div class="list-boxtitle1">개인정보</div>
-                        <div class="b-list1">내용</div>
+                        <div class="b-list1">
+                            <div class="list-id">
+                                <p><strong>ID:</strong>
+                                    <span th:text="${member.member_id}"></span></p>
+                            </div>
+                            <div class="list-pw">
+                                <p><strong>PW:</strong>
+                                    <span th:text="${member.member_pw}"></span></p>
+                            </div>
+                            <div class="list-day">
+                                <p><strong>Day:</strong> <span th:text="${member.member_day}"></span></p>
+                            </div>
+                            <div class="list-phon">
+                                <p><strong>Phon_Number:</strong> <span th:text="${member.member_phon}"></span></p>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="board2">
@@ -151,13 +165,15 @@ pageEncoding="UTF-8"%>
                             <!-- 일정 입력 폼 -->
                                 <input type="date" name="date" id="event-date">
                                 <input type="text" name="title" id="event-title" placeholder="일정 제목">
-                                <button type="submit" id="add-event-button">일정 추가</button>
+                                <button class="add-event-button">일정 추가</button>
                         </div>
                         <!-- 일정 목록 추가 -->
                         <div class="event-list">
                             <h4>일정 목록</h4>
                             <ul>
-                                <li th:each="event : ${events}" th:text="${event.date} + ' - ' + ${event.title}"></li>
+                                <c:forEach items="${eventList}" var="eventList">
+                                    <li><c:out value="${eventList.mypage_regdate} - ${eventList.mypage_content}" /></li>
+                                </c:forEach>
                             </ul>
                         </div>
                     </div>
@@ -168,6 +184,3 @@ pageEncoding="UTF-8"%>
 </section>
 </body>
 </html>
-<script>
-    #add-event-button 버튼 클릭하면 아작스로 #event랑 #event-title을 url "/write" 로 보내기
-</script>

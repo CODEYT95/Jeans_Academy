@@ -2,11 +2,12 @@ package com.project.jeans.controller.mypage;
 
 import com.project.jeans.domain.mypage.dto.EventDTO;
 import com.project.jeans.service.mypage.EventService;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -28,16 +29,20 @@ public class EventController {
         return "/mypage/mypagelist";
     }
 
-    @RequestMapping(value = "/write",method = RequestMethod.POST)
-    public ModelAndView addEvent(@RequestParam("content") String content, @RequestParam("Date") Date regdate, ModelAndView modelAndView){
+    @PostMapping("/write")
+    public String addEvent(@RequestParam("date") Date date, @RequestParam("title") String title, HttpSession session, ModelAndView modelAndView) {
+        System.out.println("write컨트롤러 들어옴");
         EventDTO eventDTO = new EventDTO();
-        eventDTO.setMypage_content(content);
-        eventDTO.setMypage_regdate(regdate);
+        eventDTO.setMypage_content(title);
+        eventDTO.setMypage_regdate(date);
+        String member_id = (String) session.getAttribute("member_id");
+        eventDTO.setMember_id(member_id);
         int result = eventService.addEvent(eventDTO);
+        System.out.println(result);
         if(result > 0){
-            modelAndView.setViewName("redirect:/event/list");
+            return "1";
         }
-        return modelAndView;
+        return "/mypage/mypagelist";
     }
 
 }
