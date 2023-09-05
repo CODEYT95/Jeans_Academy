@@ -113,10 +113,10 @@
                 <input type="radio" name="testimonial" id="t-4">
                 <input type="radio" name="testimonial" id="t-5">
                 <div class="testimonials">
-                    <c:forEach var="board" items="${board1List}" varStatus="loop" begin="0" end="4">
+                    <c:forEach var="notice" items="${noticeList}" varStatus="loop" begin="0" end="4">
                         <label class="item"  for="t-${loop.index + 1}">
-                            <h2><a href="/board1/detail/${board.board1_no}">${board.board1_title}</a></h2>
-                            <h3>${board.board1_content}</h3>
+                            <h2><a href="/noticeList/${notice.notice_no}">${notice.notice_title}</a></h2>
+                            <h3>${notice.notice_content}</h3>
                         </label>
                     </c:forEach>
                 </div>
