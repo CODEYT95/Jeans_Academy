@@ -115,7 +115,7 @@
                 <div class="testimonials">
                     <c:forEach var="notice" items="${noticeList}" varStatus="loop" begin="0" end="4">
                         <label class="item"  for="t-${loop.index + 1}">
-                            <h2><a href="/noticeList/${notice.notice_no}">${notice.notice_title}</a></h2>
+                            <h2><a href="/noticeDetail/${notice.notice_no}">${notice.notice_title}</a></h2>
                             <h3>${notice.notice_content}</h3>
                         </label>
                     </c:forEach>
