@@ -37,7 +37,7 @@ public class Board1ServiceImpl implements Board1Service {
         return board1DAO.updateBoard1(map);
     }
 
-    //반결 게시글 삭제
+    //반별 게시글 삭제
     @Override
     public int deleteBoard1(Map<String,Object> map){
         return board1DAO.deleteBoard1(map);

@@ -102,7 +102,10 @@
     </div>
     <div class="main--content">
         <div class = "title--container">
-            <button type="button" class="button" onclick="location.href='/board1/write'">글쓰기</button>
+            <!-- 같은 반일 경우에만 글쓰기 처리 -->
+           <c:if test="${memberDTO.member_class == '1반' || member_type.equals('관리자') || member_type.equals('강사님')}">
+            <button type="button" class="box-button" onclick="location.href='/board1/write'">글쓰기</button>
+        </c:if>
             <div class="title-content"><h1>1반 게시판입니다</h1></div>
         </div>
         <div class="slide-container">
@@ -135,7 +138,7 @@
                     <div class="box">
                         <div>
                             <!-- 반이 같을 경우에만 조회가능하도록 처리-->
-                            <c:if test="${memberDTO.member_class == board1DTO.member_class}">
+                            <c:if test="${memberDTO.member_class == 'board1DTO.member_class'}">
                             <button type="button" class="box-button" onclick="location.href='/board1/detail/${board1List.board1_no}'">상세</button>
                             </c:if>
                         </div>
