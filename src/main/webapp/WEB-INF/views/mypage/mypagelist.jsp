@@ -10,7 +10,6 @@ pageEncoding="UTF-8"%>
     <link rel="stylesheet" type="text/css" href="../../../resources/css/mypage/mypage.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
-    <script src="http://cdn.jsdelivr.net/mojs/latest/mo.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="../../../resources/js/mypage/mypage.js"></script>
     <script type="text/javascript" src="../../../../resources/js/common/sidebar.js"></script>
@@ -147,17 +146,20 @@ pageEncoding="UTF-8"%>
 
                 <div class="event-form">
                     <div class="c-outer-gird2">
-                    <h3>일정 추가</h3>
-                    <div class="c-title">
-                        <input type="date" name="date" id="event-date">
-                        <input type="text" name="title" id="event-title" placeholder="일정 제목">
-                        <button id="add-event-button">일정 추가</button>
-                    </div>
-                    <!-- 일정 목록 추가 -->
-                    <div class="event-list">
-                        <h4>일정 목록</h4>
-                        <ul id="event-list"></ul>
-                    </div>
+                        <h3>일정 추가</h3>
+                        <div class="c-title">
+                            <!-- 일정 입력 폼 -->
+                                <input type="date" name="date" id="event-date">
+                                <input type="text" name="title" id="event-title" placeholder="일정 제목">
+                                <button type="submit" id="add-event-button">일정 추가</button>
+                        </div>
+                        <!-- 일정 목록 추가 -->
+                        <div class="event-list">
+                            <h4>일정 목록</h4>
+                            <ul>
+                                <li th:each="event : ${events}" th:text="${event.date} + ' - ' + ${event.title}"></li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -166,3 +168,6 @@ pageEncoding="UTF-8"%>
 </section>
 </body>
 </html>
+<script>
+    #add-event-button 버튼 클릭하면 아작스로 #event랑 #event-title을 url "/write" 로 보내기
+</script>

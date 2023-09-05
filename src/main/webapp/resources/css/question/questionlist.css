@@ -318,7 +318,7 @@ display: flex;
 
 .clear {
     display: -webkit-box;
-    -webkit-line-clamp: 2;
+    -webkit-line-clamp: 5;
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -387,6 +387,7 @@ padding: 10px;
 border: 1px solid #ccc;
 border-radius: 5px;
 width: 100%;
+height:41px;
 }
 .search-button {
 background-color: #5073FB;
@@ -396,6 +397,7 @@ padding: 10px 15px;
 border-radius: 5px;
 cursor: pointer;
 margin-left: 10px;
+height:41px;
 }
 .write-button{
 display:block;
@@ -407,5 +409,17 @@ padding: 10px 15px;
 border-radius: 5px;
 cursor: pointer;
 margin-left: 10px;
+}
+
+.scroll-top .scrollTopBtn {
+    background: #3b4869;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    box-shadow: 0 8px 20px rgba(0,0,0,.4);
 }
 
