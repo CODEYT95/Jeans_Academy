@@ -389,14 +389,15 @@ a {
 }
 .olcards li .content {
     background-color: var(--cardColor);
-    width: 90%;
+    width: 80%;
     display: flex;
     grid-template-areas:
         "icon title"
         "icon text";
     gap: 0.25em 1em;
-    clip-path: polygon( 0 0, calc(100% - var(--arrowClipSize)) 0, 100% 50%, calc(100% - var(--arrowClipSize)) 100%, calc(100% - var(--arrowClipSize)) calc(100% + var(--cardsGap)), 0 calc(100% + var(--cardsGap)) );
     position: relative;
+    border-top-right-radius:10px;
+    border-bottom-right-radius: 10px;
     justify-content: flex-start;
     flex-direction: row;100% - var(--arrowClipSize)) 0,
     100% 50%,
@@ -603,12 +604,19 @@ a {
             margin-right: 10px;
             margin-left: 10px;
             }
+
             .fc .fc-toolbar {
             display: flex;
                 justify-content: space-between;
                 align-items: center;
                 font-size: 12px;
             }
+            .fc-direction-ltr .fc-button-group>.fc-button:not(:first-child) {
+                margin-left: -2px;
+                border-top-left-radius: 0;
+                border-bottom-left-radius: 0;
+            }
+
 
       /* body 스타일 */
       .calendar {

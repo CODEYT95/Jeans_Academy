@@ -8,7 +8,6 @@ import java.time.LocalDateTime;
 public class CalendarDTO {
 
     private int id;
-    private String groupId;
     private String title;
     private String writer;
     private String content;

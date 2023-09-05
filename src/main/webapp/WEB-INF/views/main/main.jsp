@@ -5,9 +5,8 @@ pageEncoding="UTF-8"%>
 <html xmlns:c="http://java.sun.com/JSP/Page" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset='utf-8'/>
-    <title>메인</title>
+    <title>Jeans</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.css" rel="stylesheet">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
     <!-- 화면 해상도에 따라 글자 크기 대응(모바일 대응) -->
     <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
     <!-- jquery CDN -->
@@ -26,6 +25,9 @@ pageEncoding="UTF-8"%>
     <link rel="stylesheet" type="text/css" href="../../../resources/css/main/main.css">
     <link rel="stylesheet" type="text/css" href="../../../resources/css/game/snakeGame.css">
     <script src="../../../resources/js/game/snakeGame.js" defer></script>
+
+
+
 
     <script>
         $(document).ready(function() {
@@ -165,116 +167,79 @@ pageEncoding="UTF-8"%>
             repeat();
         });
     </script>
-
     <script>
-        (function(){
-          $(function(){
-            // calendar element 취득
-            var calendarEl = $('#calendar')[0];
-            // full-calendar 생성하기
-            var calendar = new FullCalendar.Calendar(calendarEl, {
-              expandRows: true, // 화면에 맞게 높이 재설정
-              slotMinTime: '08:00', // Day 캘린더에서 시작 시간
-              slotMaxTime: '20:00', // Day 캘린더에서 종료 시간
-              // 해더에 표시할 툴바
-              headerToolbar: {
-                left: 'prev,next today',
-                center: 'title',
-                right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
-              },
-              initialView: 'dayGridMonth', // 초기 로드 될때 보이는 캘린더 화면(기본 설정: 달)
-              initialDate: '2023-09-01', // 초기 날짜 설정 (설정하지 않으면 오늘 날짜가 보인다.)
-              navLinks: true, // 날짜를 선택하면 Day 캘린더나 Week 캘린더로 링크
-              editable: true, // 수정 가능?
-              selectable: true, // 달력 일자 드래그 설정가능
-              nowIndicator: true, // 현재 시간 마크
-              dayMaxEventRows: true, // 이벤트가 오버되면 높이 제한 (+ 몇 개식으로 표현)
-              locale: 'ko', // 한국어 설정
-              eventAdd: function(info) { // 이벤트가 추가되면 발생하는 이벤트
-                console.log(info);
-              },
-              eventChange: function(info) { // 이벤트가 수정되면 발생하는 이벤트
-                console.log(info);
-              },
-              eventRemove: function(info){ // 이벤트가 삭제되면 발생하는 이벤트
-                console.log(info);
-              },
-              select: function(info) { // 캘린더에서 드래그로 이벤트를 생성할 수 있다.
-                var title = prompt('Event Title:');
+        document.addEventListener('DOMContentLoaded', function() {
+     var calendarEl = document.getElementById('calendar');
+     var calendar = new FullCalendar.Calendar(calendarEl, {
+         headerToolbar: {
+             left: 'prev,next today',
+             center: 'title',
+             right: 'dayGridMonth,timeGridWeek,timeGridDay'
+         },
+         initialDate: new Date(),
+         navLinks: true,
+         selectable: true,
+         selectMirror: true,
+         select: function(arg) {
+                var title = prompt('입력할 일정:');
                 if (title) {
-                  calendar.addEvent({
-                    title: title,
-                    start: info.startStr,
-                    end: info.endStr,
-                    allDay: info.allDay
-                  });
+                    calendar.addEvent({
+                        title: title,
+                        start: arg.start,
+                        end: arg.end,
+                        allDay: arg.allDay,
+                        backgroundColor: "#FFCDD2",
+                        textColor: "black"
+                    });
+
+                    // 입력된 데이터를 서버로 전송
+                     $.ajax({
+                        type: "POST",
+                        url: "/insertPlan?method=data",
+                        data: JSON.stringify({
+                            title: title,
+                            start: arg.start,
+                            end: arg.end,
+                            allDay: arg.allDay
+                        }), // 데이터를 JSON 형식으로 보냄
+                        contentType: "application/json; charset=UTF-8",
+                        dataType: "text",
+                        success: function (response) {
+                            // 성공적으로 서버에 데이터를 전송한 후 실행할 코드
+                        },
+                        error: function () {
+                            // 오류 처리
+                        }
+                    });
                 }
                 calendar.unselect();
-              },
-              // 이벤트
-              events: [
-                {
-                  title: 'All Day Event',
-                  start: '2023-12-25',
-                },
-                {
-                  title: 'Long Event',
-                  start: '2023-10-07',
-                  end: '2023-10-10'
-                },
-                {
-                  groupId: 999,
-                  title: 'Repeating Event',
-                  start: '2023-11-11T16:00:00'
-                },
-                {
-                  groupId: 999,
-                  title: 'Repeating Event',
-                  start: '2023-12-24T16:00:00'
-                },
-                {
-                  title: '발표',
-                  start: '2023-09-08',
-                  end: '2023-09-08'
-                },
-                {
-                  title: 'Meeting',
-                  start: '2023-09-12T10:30:00',
-                  end: '2023-09-12T12:30:00'
-                },
-                {
-                  title: 'Thanksgiving day',
-                  start: '2023-09-29T12:00:00'
-                },
-                {
-                  title: 'Meeting',
-                  start: '2023-08-01T14:30:00'
-                },
-                {
-                  title: 'Happy Hour',
-                  start: '2023-09-25T17:30:00'
-                },
-                {
-                  title: 'Dinner',
-                  start: '2023-09-12T20:00:00'
-                },
-                {
-                  title: 'Birthday Party',
-                  start: '2023-08-31T07:00:00'
-                },
-                {
-                  title: 'Click for Google',
-                  url: 'http://google.com/', // 클릭시 해당 url로 이동
-                  start: '2023-09-01'
-                }
-              ]
-            });
-            // 캘린더 랜더링
-            calendar.render();
-                });
-        })();
-    </script>
+            },
+         eventClick: function(arg) {
+             if (confirm('해당 일정을 정말로 삭제 하시겠습니까?')) {
+                 arg.event.remove();
+             }
+         },
+         editable: true,
+         locale: 'ko', // 한국 날짜 형식으로 설정
+         events: function(info, successCallback, failureCallback) {
+             $.ajax({
+                 type: "GET",
+                 url: "/selectPlan?method=data",
+                 dataType: "text",
+                 success: function(response) {
+                 console.log(response);
+                     successCallback(JSON.parse(response));
+                 },
+                 error: function() {
+                     failureCallback();
+                 }
+             });
+         }
+     });
+     calendar.render();
+ });
 
+    </script>
     <script type="text/javascript">
         var colour="random"; // in addition to "random" can be set to any valid colour eg "#f0f" or "red"
         var sparkles=50;
@@ -612,7 +577,7 @@ pageEncoding="UTF-8"%>
                                     <a href="/notice/list">
                                         <div class="content">
                                             <ul class="post-list" data-class="notice-1">
-                                                <div class="icon">🌏<a href="/noticeList">◇공지사항(필독)</a></div>
+                                                <div class="icon">🌏<a href="/noticeDetail?notice_no=0">◇이벤트 안내> 이벤트 기간은 09.08~09.08 </a></div>
                                             </ul>
                                         </div>
                                     </a>
@@ -623,7 +588,9 @@ pageEncoding="UTF-8"%>
                                 <li style="--cardColor: #1A237E">
                                     <a href="/notice/list">
                                     <div class="content">
-                                        <div class="icon">🚀<a href="/noticeList">◇공지사항2</a></div>
+                                        <ul class="post-list" data-class="notice-2">
+                                        <div class="icon">🚀<a href="/noticeDetail?notice_no=2">◇학원생활</a></div>
+                                        </ul>
                                     </div>
                                     </a>
                                 </li>
@@ -633,8 +600,9 @@ pageEncoding="UTF-8"%>
                                 <li style="--cardColor: #3F51B5 ">
                                     <a href="/notice/list">
                                         <div class="content">
-                                            <div class="icon">🍧<a href="/noticeList">◇공지사항3</a></div>
-
+                                            <ul class="post-list" data-class="notice-3">
+                                            <div class="icon">🍧<a href="/noticeDetail?notice_no=3">◇공지사항3</a></div>
+                                            </ul>
                                         </div>
                                     </a>
                                 </li>
@@ -644,8 +612,9 @@ pageEncoding="UTF-8"%>
                                 <li style="--cardColor: #1976D2">
                                     <a href="/notice/list">
                                         <div class="content">
-                                            <div class="icon">🛸<a href="/noticeList">◇공지사항4</a></div>
-
+                                            <ul class="post-list" data-class="notice-4">
+                                            <div class="icon">🛸<a href="/noticeDetail?notice_no=4">◇전체 공지</a></div>
+                                            </ul>
                                         </div>
                                     </a>
                                 </li>
@@ -655,7 +624,7 @@ pageEncoding="UTF-8"%>
                                 <li style="--cardColor:	#00ACC1">
                                     <a href="/notice/list">
                                         <div class="content">
-                                            <div class="icon">🐧<a href="/noticeList">◇공지사항5</a></div>
+                                            <div class="icon">🐧<a href="/noticeDetail?notice_no=5">◇학원 사이트</a></div>
                                             <ul>
                                                 <c:forEach items="${noticeList}" var="notice">
                                                     <li>
@@ -683,6 +652,7 @@ pageEncoding="UTF-8"%>
                                 <ul class="board-list" data-class="class-3">
                                     <li><a href="/board1/detail/41">▷궁금한 점이 있어요</a></li>
                                     <li><a href="/board1/detail/31">▷글을 작성해볼게요</a></li>
+                                    <li><a href="/board1/detail/66">▷취업 관련 정보</a></li>
                                 </ul>
                             </div>
 
@@ -696,8 +666,8 @@ pageEncoding="UTF-8"%>
                         </ul>
                         <!-- 1반 게시판 목록 -->
                         <ul class="board-list" data-class="class-2">
-                            <li><a href="#">게시판 1</a></li>
-                            <li><a href="#">게시판 2</a></li>
+                            <li><a href="/board2/detail/1">게시판 1</a></li>
+                            <li><a href="/board2/detail/2">게시판 2</a></li>
                         </ul>
                     </div>
 
@@ -709,8 +679,8 @@ pageEncoding="UTF-8"%>
                         </ul>
                         <!-- 1반 게시판 목록 -->
                         <ul class="board-list" data-class="class-3">
-                            <li><a href="#">게시판 1</a></li>
-                            <li><a href="#">게시판 2</a></li>
+                            <li><a href="/board3/detail/1">게시판 1</a></li>
+                            <li><a href="/board3/detail/2">게시판 2</a></li>
                         </ul>
                     </div>
 
@@ -722,8 +692,8 @@ pageEncoding="UTF-8"%>
                         </ul>
                         <!-- 1반 게시판 목록 -->
                         <ul class="board-list" data-class="class-4">
-                            <li><a href="#">게시판 1</a></li>
-                            <li><a href="#">게시판 2</a></li>
+                            <li><a href="/board4/detail/1">게시판 1</a></li>
+                            <li><a href="/board4/detail/2">게시판 2</a></li>
                         </ul>
                     </div>
                 </div>
