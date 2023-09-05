@@ -11,8 +11,9 @@ pageEncoding="UTF-8"%>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
     <link rel="stylesheet" type="text/css" href="../../../resources/css/notice/noticeDetail.css">
     <script type="text/javascript" src="../../../resources/js/notice/noticeDetail.js"></script>
+    <script type="text/javascript" src="../../../../resources/js/common/sidebar.js"></script>
 </head>
-<body>
+<body data-member-class="${member_class}">
 <section class="header">
     <div class="logo">
         <i class="ri-menu-line icon icon-0 menu"></i>
@@ -21,9 +22,11 @@ pageEncoding="UTF-8"%>
     </div>
     <div class="search--notification--profile">
         <div class="notification--profile">
-            <div class="picon chat">
-                <i class="ri-mail-line"></i>
-            </div>
+            <a href="/message/messageList">
+                <div class="picon chat">
+                    <i class="ri-mail-line" ></i>
+                </div>
+            </a>
             <div class="picon profile">
                 <span>${member_class} ${member_name}님 오늘도 파이팅하세요🙂</span>
             </div>
@@ -35,36 +38,36 @@ pageEncoding="UTF-8"%>
         <ul class="sidebar--items">
             <li>
                 <a href="/main1">
-                    <span class="icon icon-1"><i  style="color:white;" class="ri-home-4-line"></i></span>
+                    <span class="icon icon-1"><i class="ri-home-4-line"></i></span>
                     <span class="sidebar--item">홈</span>
                 </a>
             </li>
             <li>
                 <a href="/noticeList" id="active--link">
-                    <span class="icon icon-2"><i class="ri-megaphone-line"></i></span>
+                    <span class="icon icon-2"><i class="ri-megaphone-line" style="color:white;"></i></span>
                     <span class="sidebar--item">공지사항</span>
                 </a>
             </li>
             <li>
-                <a href="/board1/list">
+                <a href="/board1/list" class="sideBoard1">
                     <span class="icon icon-3"><i class="ri-draft-line"></i></span>
                     <span class="sidebar--item" style="white-space: nowrap;">1반</span>
                 </a>
             </li>
             <li>
-                <a href="/board2/list">
+                <a href="/board2/list" class="sideBoard2">
                     <span class="icon icon-4"><i class="ri-draft-line"></i></span>
                     <span class="sidebar--item">2반</span>
                 </a>
             </li>
             <li>
-                <a href="/board3/list">
+                <a href="/board3/list" class="sideBoard3">
                     <span class="icon icon-5"><i class="ri-draft-line"></i></span>
                     <span class="sidebar--item">3반</span>
                 </a>
             </li>
             <li>
-                <a href="/board4/list">
+                <a href="/board4/list" class="sideBoard4">
                     <span class="icon icon-6"><i class="ri-draft-line"></i></span>
                     <span class="sidebar--item">4반</span>
                 </a>

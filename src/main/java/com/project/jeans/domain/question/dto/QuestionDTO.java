@@ -13,5 +13,4 @@ public class QuestionDTO {
     private String question_isshow;
     private String member_name;
     private String member_class;
-
 }

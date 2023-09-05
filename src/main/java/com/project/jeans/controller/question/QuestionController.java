@@ -28,6 +28,7 @@ public class QuestionController {
 
     @RequestMapping("/list")
     public String questionList(HttpSession session, Model model) {
+        System.out.println("questionList");
         LoginCheckSession loginCheck = new LoginCheckSession(memberService);
         MemberDTO memberInfo = loginCheck.getLoginCheckSession(session, model);
 
@@ -35,8 +36,12 @@ public class QuestionController {
             // 로그인이 필요한 경우 리디렉션
             return "/member/login";
         }
+        model.addAttribute("member_name",memberInfo.getMember_name());
+        model.addAttribute("member_class",memberInfo.getMember_class());
+        model.addAttribute("member_type",memberInfo.getMember_type());
         List<QuestionDTO> questionList = questionService.selectQuestionAll();
         model.addAttribute("questionList", questionList);
+        System.out.println(questionList);
         return "question/questionlist";
     }
 
@@ -46,34 +51,53 @@ public class QuestionController {
         LoginCheckSession loginCheck = new LoginCheckSession(memberService);
         MemberDTO memberInfo = loginCheck.getLoginCheckSession(session, model);
 
+
         if (memberInfo == null) {
             // 로그인이 필요한 경우 리디렉션
             return "/member/login";
         }
+        model.addAttribute("member_name",memberInfo.getMember_name());
+        model.addAttribute("member_class",memberInfo.getMember_class());
+        model.addAttribute("member_type",memberInfo.getMember_type());
 
         return "/question/questionWrite";
     }
 
-    @RequestMapping(value = "/write",method = RequestMethod.POST)
-    public ModelAndView insertQuestion(@RequestParam("title") String title, @RequestParam("content") String content, ModelAndView modelAndView, HttpSession session, Model model){
+    @RequestMapping(value = "/write", method = RequestMethod.POST)
+    public ModelAndView insertQuestion(@RequestParam("title") String title,
+                                       @RequestParam("content") String content,
+                                       @RequestParam("member_name") String memberName,
+                                       @RequestParam("member_class") String memberClass,
+                                       ModelAndView modelAndView, HttpSession session, Model model) {
         LoginCheckSession loginCheck = new LoginCheckSession(memberService);
         MemberDTO memberInfo = loginCheck.getLoginCheckSession(session, model);
 
         if (memberInfo == null) {
             // 로그인이 필요한 경우 리디렉션
-            return new ModelAndView("redirect:member/login");
+            return new ModelAndView("/member/login");
         }
+
+        model.addAttribute("member_name", memberInfo.getMember_name());
+        model.addAttribute("member_class", memberInfo.getMember_class());
+        model.addAttribute("member_type", memberInfo.getMember_type());
 
         QuestionDTO questionDTO = new QuestionDTO();
         questionDTO.setQuestion_title(title);
         questionDTO.setQuestion_content(content);
+        questionDTO.setMember_name(memberName);
+        questionDTO.setMember_class(memberClass);
+
         int result = questionService.insertQuestion(questionDTO);
-        if(result > 0){
+        System.out.println("insert 쿼리 실행 " + result);
+
+        if (result > 0) {
             modelAndView.setViewName("redirect:/question/list");
-        }else{
+        } else {
             modelAndView.setViewName("redirect:/question/write");
         }
+
         return modelAndView;
     }
+
 
 }

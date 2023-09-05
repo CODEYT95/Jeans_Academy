@@ -1,8 +1,10 @@
 package com.project.jeans.service.message;
 
+import com.project.jeans.domain.member.dto.MemberDTO;
 import com.project.jeans.domain.message.dto.MessageDTO;
 
 import java.util.List;
+import java.util.Map;
 
 public interface MessageService {
 
@@ -15,16 +17,18 @@ public interface MessageService {
     /* 메시지 상세 조회 */
     public MessageDTO selectMessageDetail(int message_no);
 
+    /* 메시지 작성(수신자 목록) */
+    public List<MemberDTO> selectMessageMemList();
 
-
+    /* 메시지 작성(내용 작성 및 보내기)*/
+    public int insertContentMessage(Map<String,Object> map);
 
 
 
     /* 메시지 작성(1.유저 정보)*/
 //    public int insertUserMessage();
 
-    /* 메시지 작성(2.내용)*/
-//    public int insertContentMessage();
+
 
     /* 메시지 삭제 (수신함) */
  //   public int deleteReceiveMessage();

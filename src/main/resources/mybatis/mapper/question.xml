@@ -12,8 +12,8 @@
 
     <insert id="insertQuestion" parameterType="com.project.jeans.domain.question.dto.QuestionDTO">
     <![CDATA[
-    INSERT INTO question (question_title, question_content)
-    VALUES (#{question_title}, #{question_content});
+    INSERT INTO question (question_title, question_content, member_name, member_class, question_regdate, question_isshow)
+    VALUES (#{question_title}, #{question_content}, #{member_name} , #{member_class}, now(), 'Y');
     ]]>
     </insert>
 </mapper>

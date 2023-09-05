@@ -9,23 +9,24 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
     <link rel="stylesheet" type="text/css" href="../../../../resources/css/board/boardList.css">
     <script type="text/javascript" src="../../../../resources/js/board/boardList.js"></script>
+    <script type="text/javascript" src="../../../../resources/js/common/sidebar.js"></script>
 </head>
-<body>
+<body data-member-class="${member_class}">
 <section class="header">
     <div class="logo">
         <i class="ri-menu-line icon icon-0 menu"></i>
-        <h2>J<span>eans:청바지:</span></h2><h5><span style="color:#5073FB">청</span>춘은 <span style="color:#5073FB">바</span>로 <span style="color:#5073FB">지</span>금!</h5>
+        <h2>J<span>eans👖</span></h2><h5><span style="color:#5073FB">청</span>춘은 <span style="color:#5073FB">바</span>로
+        <span style="color:#5073FB">지</span>금!</h5>
     </div>
     <div class="search--notification--profile">
         <div class="notification--profile">
-            <div class="picon bell">
-                <i class="ri-notification-2-line"></i>
-            </div>
-            <div class="picon chat">
-                <i class="ri-mail-line"></i>
-            </div>
+            <a href="/message/messageList">
+                <div class="picon chat">
+                    <i class="ri-mail-line" ></i>
+                </div>
+            </a>
             <div class="picon profile">
-                <span>???님 오늘도 파이팅하세요:미소짓는_얼굴:</span>
+                <span>${member_class} ${member_name}님 오늘도 파이팅하세요🙂</span>
             </div>
         </div>
     </div>
@@ -46,25 +47,25 @@
                 </a>
             </li>
             <li>
-                <a href="/board1/list" id="active--link">
+                <a href="/board1/list" id="active--link" class="sideBoard1">
                     <span class="icon icon-3"><i class="ri-draft-line" style="color:white;"></i></span>
-                    <span class="sidebar--item" style="white-space: nowrap;">1반</span>
+                    <span class="sidebar--item" style="white-space: nowrap;" >1반</span>
                 </a>
             </li>
             <li>
-                <a href="/board2/list">
+                <a href="/board2/list" class="sideBoard2">
                     <span class="icon icon-4"><i class="ri-draft-line"></i></span>
                     <span class="sidebar--item">2반</span>
                 </a>
             </li>
             <li>
-                <a href="/board3/list">
+                <a href="/board3/list" class="sideBoard3">
                     <span class="icon icon-5"><i class="ri-draft-line"></i></span>
                     <span class="sidebar--item">3반</span>
                 </a>
             </li>
             <li>
-                <a href="/board4/list">
+                <a href="/board4/list" class="sideBoard4">
                     <span class="icon icon-6"><i class="ri-draft-line"></i></span>
                     <span class="sidebar--item">4반</span>
                 </a>
@@ -101,7 +102,10 @@
     </div>
     <div class="main--content">
         <div class = "title--container">
+            <!-- 같은 반일 경우에만 글쓰기 처리 -->
+            <c:if test="${memberDTO.member_class == '1반' || member_type.equals('관리자') || member_type.equals('강사님')}">
             <button type="button" class="button" onclick="location.href='/board1/write'">글쓰기</button>
+            </c:if>
             <div class="title-content"><h1>1반 게시판입니다</h1></div>
         </div>
         <div class="slide-container">
@@ -112,10 +116,10 @@
                 <input type="radio" name="testimonial" id="t-4">
                 <input type="radio" name="testimonial" id="t-5">
                 <div class="testimonials">
-                    <c:forEach var="board" items="${board1List}" varStatus="loop" begin="0" end="4">
+                    <c:forEach var="notice" items="${noticeList}" varStatus="loop" begin="0" end="4">
                         <label class="item"  for="t-${loop.index + 1}">
-                            <h2><a href="/board1/detail/${board.board1_no}">${board.board1_title}</a></h2>
-                            <h3>${board.board1_content}</h3>
+                            <h2><a href="/noticeDetail/${notice.notice_no}">${notice.notice_title}</a></h2>
+                            <h3>${notice.notice_content}</h3>
                         </label>
                     </c:forEach>
                 </div>

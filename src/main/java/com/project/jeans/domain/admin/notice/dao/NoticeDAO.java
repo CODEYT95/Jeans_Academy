@@ -13,7 +13,7 @@ public interface NoticeDAO {
     //공지사항 전체조회
     List<NoticeDTO> selectAll();
     //공지사항 상세보기
-    List<NoticeDTO> noticeDetail(int notice_no);
+    NoticeDTO noticeDetail(int notice_no);
 
     //공지사항 INSERT
     int insertNotice(NoticeDTO noticeDTO);

@@ -1,13 +1,5 @@
 $(document).ready(function() {
 
-    /* 메뉴 공통 기능 */
-    let menu = $('.menu');
-    let sidebar = $('.sidebar');
-    let mainContent = $('.main--content');
-    menu.click(function() {
-        sidebar.toggleClass('active');
-        mainContent.toggleClass('active');
-    });
 
     /* 모달창 */
     const modal = $("#modal");
@@ -46,4 +38,10 @@ $(document).ready(function() {
             modalOff();
         }
     });
+});
+
+/* 메시지 수신자 선택 */
+document.getElementById("receiver").addEventListener("change", function () {
+    var selectedValue = this.value;
+    document.querySelector("input[name='message_receiver']").value = selectedValue;
 });

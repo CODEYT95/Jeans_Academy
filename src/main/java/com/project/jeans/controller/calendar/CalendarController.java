@@ -35,10 +35,14 @@ public class CalendarController {
         LoginCheckSession loginCheck = new LoginCheckSession(memberService);
         MemberDTO memberInfo = loginCheck.getLoginCheckSession(session, model);
 
+
         if (memberInfo == null) {
             // 로그인이 필요한 경우 리디렉션
             return "/member/login";
         }
+        model.addAttribute("member_name",memberInfo.getMember_name());
+        model.addAttribute("member_class",memberInfo.getMember_class());
+        model.addAttribute("member_type",memberInfo.getMember_type());
 
         return "main/main";
     }
