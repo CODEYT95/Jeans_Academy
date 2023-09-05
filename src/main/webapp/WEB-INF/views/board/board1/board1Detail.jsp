@@ -163,8 +163,9 @@
                         <li>
                             <table>
                                 <td class="col-1"><c:out value="${comment1DTO.comment1_content}"/></td>
-                                <td class="col-2"><fmt:formatDate value="${comment1DTO.comment1_regdate}" pattern="yyyy-MM-dd HH:mm"/></td>
-                                <td class="col-3">
+                                <td class="col-2"><c:out value="${comment1DTO.member_id}"/></td>
+                                <td class="col-3"><fmt:formatDate value="${comment1DTO.comment1_regdate}" pattern="yyyy-MM-dd HH:mm"/></td>
+                                <td class="col-4">
                                     <form action="/comment1/delete" method="post">
                                         <!-- 관리자와 댓글 작성자만 댓글 삭제 가능 -->
                                         <input type="hidden" name="comment1_no" value="${comment1DTO.comment1_no}"/>
