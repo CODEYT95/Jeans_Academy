@@ -8,6 +8,7 @@ import org.apache.logging.log4j.message.Message;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 @Service
 @RequiredArgsConstructor
@@ -36,31 +37,18 @@ public class MessageServiceImpl implements MessageService{
         return messageDTO;
     }
 
-    /* 메시지 작성 (1.수신자 목록) */
+    /* 메시지 작성 (수신자 목록) */
     public List<MemberDTO> selectMessageMemList(){
         List<MemberDTO> memberDTO = messageDAO.selectMessageMemList();
         return memberDTO;
     }
 
-
-
-
-
-
-
-    /* 메시지 작성(1.유저 정보)*/
-//    @Override
-/*    public int insertUserMessage(){
-        return 0;
-    }*/
-
-    /* 메시지 작성(2.내용)*/
+    /* 메시지 작성(내용)*/
     //   @Override
-/*
-    public int insertContentMessage(){
-        return 0;
+    public int insertContentMessage(Map<String,Object> map){
+        return messageDAO.insertContentMessage(map);
     }
-*/
+
 
     /* 메시지 삭제 (수신함) */
  //   @Override
@@ -77,13 +65,5 @@ public class MessageServiceImpl implements MessageService{
         return 0;
     }
 */
-
-
-
-
-
-
-
-
 
 }

@@ -39,3 +39,9 @@ $(document).ready(function() {
         }
     });
 });
+
+/* 메시지 수신자 선택 */
+document.getElementById("receiver").addEventListener("change", function () {
+    var selectedValue = this.value;
+    document.querySelector("input[name='message_receiver']").value = selectedValue;
+});

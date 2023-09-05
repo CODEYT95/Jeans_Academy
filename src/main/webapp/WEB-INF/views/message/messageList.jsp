@@ -104,31 +104,31 @@
     </div>
 
     <div class="main--content" >
-        <button type="button" class="btn-modal">쪽지 보내기</button>
 
+        <button type="button" class="btn-modal">쪽지 보내기</button>
         <div id="modal" class="modal-overlay">
             <div class="modal-window">
                 <div class="close-area">X</div>
-                <form action="/" method="post" id="aaa">
-                <div class="modal-header">
-                    <!-- 수신자 작성(수신자 불러오기) -->
-                    <select id="aaa">
-                        <c:forEach items="${messageMemberDTO}" var="msgMemberDTO" varStatus="loop" begin="0">
-                            <option value="${msgMemberDTO.member_name}"> ${msgMemberDTO.member_name}${loop.index + 1}</option>
-                        </c:forEach>
-                    </select>
-                </div>
-                <div class="modal-body">
-                    <!-- 내용 작성 -->
-                        <input type="hidden" name="message_sender" value=""/>
-                        <span>쪽지 제목</span><input type="text" name"message_title"/>
-                        <span>쪽지 내용</span><input type="text" name="message_content"/>
-                </div>
-                <div class="modal-footer">
-                    <!-- 보내기 버튼, 취소(목록) 버튼 -->
-                    <button type="submit">작성</button>
-                    <button type="submit">목록</button>
-                </div>
+                <form action="/message/send" method="post" id="aaa">
+                    <input type="hidden" value="${member_id}" name="member_id">
+                    <div class="modal-header">
+                        <!-- 수신자 작성(수신자 불러오기) -->
+                        <select id="receiver" name="message_receiver">
+                            <c:forEach items="${messageMemberDTO}" var="msgMemberDTO" varStatus="loop" begin="0">
+                                <option value="${msgMemberDTO.member_id}"> ${msgMemberDTO.member_id}</option>
+                            </c:forEach>
+                        </select>
+                    </div>
+                    <div class="modal-body">
+                        <!-- 내용 작성 -->
+                        <span>제목</span><input type="text" name="message_title"/>
+                        <span>내용</span><input type="text" name="message_content"/>
+                    </div>
+                    <div class="modal-footer">
+                        <!-- 보내기 버튼, 취소(목록) 버튼 -->
+                        <button type="submit">작성</button>
+                        <button type="button" onclick="location.href='/message/messageList'">목록</button>
+                    </div>
                 </form>
             </div>
         </div>
@@ -189,9 +189,7 @@
             </div>
         </div>
 
-
     </div>
-
     </section>
 </body>
 </html>
