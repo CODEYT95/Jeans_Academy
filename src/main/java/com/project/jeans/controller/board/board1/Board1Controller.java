@@ -76,6 +76,8 @@ public class Board1Controller {
             // 로그인이 필요한 경우 리디렉션
             return "/member/login";
         }
+        System.out.println(memberInfo.getMember_id());
+        model.addAttribute("member_id",memberInfo.getMember_id());
         model.addAttribute("member_name",memberInfo.getMember_name());
         model.addAttribute("member_class",memberInfo.getMember_class());
         model.addAttribute("member_type",memberInfo.getMember_type());
@@ -111,6 +113,7 @@ public class Board1Controller {
         LoginCheckSession loginCheck = new LoginCheckSession(memberService);
         MemberDTO memberInfo = loginCheck.getLoginCheckSession(session, model);
 
+        model.addAttribute("member_id",memberInfo.getMember_id());
         model.addAttribute("member_name",memberInfo.getMember_name());
         model.addAttribute("member_class",memberInfo.getMember_class());
         model.addAttribute("member_type",memberInfo.getMember_type());
@@ -126,7 +129,7 @@ public class Board1Controller {
 
     //반별 게시글 수정
     @PostMapping("/modify")
-    public ModelAndView modifyBoard1(HttpSession session, Model model,ModelAndView modelAndView, @RequestParam int board1_no, @RequestParam Map<String,Object> map){
+    public ModelAndView modifyBoard1(HttpSession session, Model model, ModelAndView modelAndView, @RequestParam int board1_no, @RequestParam Map<String,Object> map){
 
         LoginCheckSession loginCheck = new LoginCheckSession(memberService);
         MemberDTO memberInfo = loginCheck.getLoginCheckSession(session, model);
@@ -148,7 +151,8 @@ public class Board1Controller {
 
     //반별 게시글 삭제
     @GetMapping("/delete")
-    public ModelAndView deleteBoard1(HttpSession session, Model model, ModelAndView modelAndView, @RequestParam Map<String,Object> map){
+    public ModelAndView deleteBoard1(HttpSession session, Model model, ModelAndView modelAndView,
+                                     @RequestParam Map<String,Object> map){
         LoginCheckSession loginCheck = new LoginCheckSession(memberService);
         MemberDTO memberInfo = loginCheck.getLoginCheckSession(session, model);
 
@@ -157,37 +161,15 @@ public class Board1Controller {
             return new ModelAndView("redirect:member/login");
         }
 
-        System.out.println(map);
-        int deletetInt = board1Service.deleteBoard1(map);
-        if(deletetInt==1){
+        int deletedBoard1Int = board1Service.deleteBoard1(map);
+        if(deletedBoard1Int==1){
             modelAndView.setViewName("redirect:/board1/list");
-        }else {
+        } else {
             modelAndView.setViewName("redirect:/board1/list");
         }
         return modelAndView;
     }
 
-    /* 진호 구현 */
-/*
-    //반별 게시글 수정(폼)
-    @GetMapping("/board1modify")
-    public Board1DTO Modify(){
-        return board1Service.board1Modify();
-    }
-
-    //반별 게시글 수정
-    @PostMapping("/Modify")
-    public Board1DTO Board1Modify(){
-        return board1Service.board1Modify();
-    }
-
-    //반별 게시글 삭제
-    @GetMapping("/board1Delete")
-    public String board1Delete(){
-        board1Service.board1Delete();
-        return "redirect:/board1/list";
-    }
-*/
     //수빈언니 확인용 컨트롤러 지우지말 것!
     @RequestMapping("/board1.do")
     public String board1(){

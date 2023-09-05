@@ -19,7 +19,7 @@ public interface Board1Service {
     //반별 게시글 수정
     public int modifyBoard1(Map<String,Object> map);
 
-    //반결 게시글 삭제
+    //반별 게시글 삭제
     public int deleteBoard1(Map<String,Object> map);
 
 }

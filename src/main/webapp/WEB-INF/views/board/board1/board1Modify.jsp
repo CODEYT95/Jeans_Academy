@@ -102,8 +102,9 @@
     </div>
     <div class="main--content">
         <form action="/board1/modify" method="post">
-            <input type="hidden" name="member_name" value="${board1DTO.member_name}">
-            <input type="hidden" name="member_class" value="${board1DTO.member_class}">
+            <input type="hidden" name="member_id" value="${member_id}">
+            <input type="hidden" name="member_name" value="${member_name}">
+            <input type="hidden" name="member_class" value="${member_class}">
             <input type="hidden" name="board1_no" value="${board1DTO.board1_no}">
 
             <div class="head-container">
