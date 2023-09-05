@@ -13,6 +13,7 @@ pageEncoding="UTF-8"%>
     <script src="http://cdn.jsdelivr.net/mojs/latest/mo.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="../../../resources/js/mypage/mypage.js"></script>
+    <script type="text/javascript" src="../../../../resources/js/common/sidebar.js"></script>
 </head>
 <body data-member-class="${member_class}">
 <section class="header">

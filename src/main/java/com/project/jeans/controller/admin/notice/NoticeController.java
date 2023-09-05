@@ -70,13 +70,13 @@ public class NoticeController {
     public ModelAndView noticeInsert(HttpSession session, Model model) {
         LoginCheckSession loginCheck = new LoginCheckSession(memberService); // Provide the memberService instance here
         MemberDTO memberInfo = loginCheck.getLoginCheckSession(session, model);
-        model.addAttribute("member_name",memberInfo.getMember_name());
-        model.addAttribute("member_class",memberInfo.getMember_class());
-        model.addAttribute("member_type",memberInfo.getMember_type());
         if (memberInfo == null) {
             // 로그인이 필요한 경우 리디렉션
             return new ModelAndView("redirect:/login");
         }
+        model.addAttribute("member_name",memberInfo.getMember_name());
+        model.addAttribute("member_class",memberInfo.getMember_class());
+        model.addAttribute("member_type",memberInfo.getMember_type());
 
         return new ModelAndView("notice/noticeInsert");
     }
