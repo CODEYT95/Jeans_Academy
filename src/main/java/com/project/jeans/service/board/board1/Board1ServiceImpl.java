@@ -30,10 +30,7 @@ public class Board1ServiceImpl implements Board1Service {
 
     //반별 게시글 작성
     @Override
-    public int writeBoard1(Map<String,Object> map){
-        return board1DAO.insertBoard1(map);
-    }
-
+    public int writeBoard1(Map<String,Object> map){return board1DAO.insertBoard1(map);}
     //반별 게시글 수정
     @Override
     public int modifyBoard1(Map<String,Object> map){

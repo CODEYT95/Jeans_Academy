@@ -84,7 +84,7 @@
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="/logout">
                     <span class="icon icon-9"><i class="ri-logout-box-r-line"></i></span>
                     <span class="sidebar--item">로그아웃</span>
                 </a>
@@ -93,7 +93,10 @@
     </div>
     <div class="main--content">
         <div class = "title--container">
+            <!-- 로그인한 회원만 글쓰기 버튼 활성화-->
+            <c:if test="${sessionScope.member_id != null}">
             <button type="button" class="button" onclick="location.href='/board1/write'">글쓰기</button>
+            </c:if>
             <div class="title-content"><h1>1반 게시판입니다</h1></div>
         </div>
         <div class="slide-container">
@@ -125,7 +128,21 @@
                 <c:forEach var="board1List" items="${board1List}">
                     <div class="box">
                         <div>
+                            <!-- 반이 같을 경우에만 조회가능하도록 처리-->
+                            <c:choose>
+                                <c:when test="${sessionScope.member_id != null  && memberDTO.member_class == board1DTO.member_class}">
                             <button type="button" class="box-button" onclick="location.href='/board1/detail/${board1List.board1_no}'">상세</button>
+                                </c:when>
+                                <c:otherwise>
+                                    <script>
+                                        if (!alertShown) {
+                                       alert("수강중인 반의 게시물만 조회 가능합니다");
+                                       alertShown = true;
+                                       location.href="/board1/list";
+                                        }
+                                    </script>
+                                </c:otherwise>
+                            </c:choose>
                         </div>
                         <div>
                             <h1>${board1List.board1_title}</h1>

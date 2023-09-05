@@ -5,6 +5,7 @@ import com.project.jeans.domain.board.board1.dto.Comment1DTO;
 import com.project.jeans.service.board.board1.Board1Service;
 import com.project.jeans.service.board.board1.Comment1ServiceImpl;
 import com.project.jeans.service.member.MemberService;
+import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,8 +24,9 @@ public class Board1Controller {
     private final Board1Service board1Service;
     private final Comment1ServiceImpl comment1ServiceImpl;
     private final MemberService memberService;
-
+    
     //(주의) 관리자, 작성자만 UD할 수 있도록 수정해야 함!!!
+    /* session에 저장된 member_id를  writer에 저장*/
 
 
     //반별 게시판 목록 조회
@@ -56,7 +58,8 @@ public class Board1Controller {
     /* member_name, member_class 연동되면 삭제할 예정*/
     //반별 게시글 작성(로직)
     @RequestMapping(value="/write", method=RequestMethod.POST)
-    public ModelAndView writeBoard1(ModelAndView modelAndView, @RequestParam Map<String,Object> map){
+    /*public ModelAndView writeBoard1(ModelAndView modelAndView, @RequestParam Map<String,Object> map){*/
+    public ModelAndView writeBoard1(ModelAndView modelAndView,@RequestParam Map<String,Object> map){
         int writeInt = board1Service.writeBoard1(map);
         if(writeInt==1){
             modelAndView.setViewName("redirect:/board1/list");
