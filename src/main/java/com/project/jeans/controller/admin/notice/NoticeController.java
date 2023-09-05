@@ -32,6 +32,8 @@ public class NoticeController {
             return new ModelAndView("redirect:/login");
         }
 
+        model.addAttribute("member_name", memberInfo.getMember_name());
+        model.addAttribute("member_class", memberInfo.getMember_class());
         List<NoticeDTO> noticeList = noticeService.selectAll();
 
         ModelAndView modelAndView = new ModelAndView("notice/noticeList"); // JSP 파일명(user.jsp)

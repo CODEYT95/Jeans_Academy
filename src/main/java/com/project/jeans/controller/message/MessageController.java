@@ -24,21 +24,4 @@ public class MessageController {
     private final MessageService messageService;
 
     /* 메시지 목록 조회(수신함) 및 목록 조회(발신함)*/
-    @GetMapping("/messageList")
-
-    public String selectReceiveMessage(HttpSession session, Model model){
-        LoginCheckSession loginCheck = new LoginCheckSession(memberService);
-        MemberDTO memberInfo = loginCheck.getLoginCheckSession(session, model);
-
-        if (memberInfo == null) {
-            // 로그인이 필요한 경우 리디렉션
-            return "/member/login";
-        }
-        //파라미터 : 로그인한 회원 넘기기 <mapper에서 바꿔주기>
-        List<MessageDTO> messageRecDTO = messageService.selectReceiveMessage();
-        model.addAttribute("messageRecDTO",messageRecDTO);
-        List<MessageDTO> messageSendDTO = messageService.selectSendMessage();
-        model.addAttribute("messageSendDTO",messageSendDTO);
-        return "/message/messageList";
-    }
 }
