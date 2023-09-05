@@ -72,7 +72,6 @@ public class Board1Controller {
         LoginCheckSession loginCheck = new LoginCheckSession(memberService);
         MemberDTO memberInfo = loginCheck.getLoginCheckSession(session, model);
 
-
         if (memberInfo == null) {
             // 로그인이 필요한 경우 리디렉션
             return "/member/login";

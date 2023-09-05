@@ -15,6 +15,8 @@ public class Board1DTO {
     private String board1_content;
     private Timestamp board1_regdate;
     private String board1_isshow;
+    private String member_id;
     private String member_name;
     private String member_class;
+
 }

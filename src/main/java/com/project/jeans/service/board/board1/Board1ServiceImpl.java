@@ -46,33 +46,4 @@ public class Board1ServiceImpl implements Board1Service {
         return board1DAO.deleteBoard1(map);
     }
 
-
-/*
-
-    //반별 게시글 수정
-    @Override
-    public Board1DTO board1Modify() {
-        return board1DAO.board1Modify();
-    }
-
-    //반별 게시글 삭제
-    @Override
-    public int board1Delete() {
-        return board1DAO.board1Delete();
-    }
-*/
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
