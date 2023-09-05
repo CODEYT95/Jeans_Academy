@@ -157,8 +157,9 @@
                         <li>
                             <table>
                                 <td class="col-1"><c:out value="${comment1DTO.comment1_content}"/></td>
-                                <td class="col-2"><fmt:formatDate value="${comment1DTO.comment1_regdate}" pattern="yyyy-MM-dd HH:mm"/></td>
-                                <td class="col-3">
+                                <td class="col-2"><c:out value="${comment1DTO.member_id}"/></td>
+                                <td class="col-3"><fmt:formatDate value="${comment1DTO.comment1_regdate}" pattern="yyyy-MM-dd HH:mm"/></td>
+                                <td class="col-4">
                                     <form action="/comment1/delete" method="post">
                                         <input type="hidden" name="comment1_no" value="${comment1DTO.comment1_no}"/>
                                         <input type="hidden" name="board1_no" value="${board1DTO.board1_no}"/>
