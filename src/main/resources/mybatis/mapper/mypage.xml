@@ -3,7 +3,14 @@
 <mapper namespace="com.project.jeans.domain.mypage.dao.EventDAO">
     <select id="selectMyPageAll" resultType="com.project.jeans.domain.mypage.dto.EventDTO">
         <![CDATA[
-    select mypage_no, mypage_content, mypage_regdate from mypage;
-    ]]>
+        select * from mypage;
+        ]]>
     </select>
+
+    <insert id="addEvent" parameterType="com.project.jeans.domain.mypage.dto.EventDTO">
+        <![CDATA[
+        INSERT INTO mypage (mypage_content, mypage_regdate, member_id)
+        VALUES (#{mypage_content}, #{mypage_regdate}, #{member_id});
+        ]]>
+    </insert>
 </mapper>

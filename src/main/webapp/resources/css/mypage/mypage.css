@@ -310,9 +310,16 @@ font-weight:bold;
 height:40px;
 border-bottom: 1px solid black;
 }
+
+.list-id, .list-pw, .list-day, .list-phon{
+border-bottom:1px solid;
+}
+
 .b-list1{
 margin-top:14px;
+display:grid;
 font-weight:bold;
+ grid-gap: 20px;
 }
 .list-boxtitle2{
 font-size:24px;

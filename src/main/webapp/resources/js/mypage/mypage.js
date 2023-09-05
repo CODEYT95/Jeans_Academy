@@ -9,9 +9,6 @@
     const currentTimeDisplay = document.getElementById("current-time");
     const currentDate = new Date();
 
-    const eventDateInput = document.getElementById("event-date");
-    const eventTitleInput = document.getElementById("event-title");
-    const addEventButton = document.getElementById("add-event-button");
     const eventListElement = document.getElementById("event-list");
 
     let currentMonth = currentDate.getMonth();
@@ -55,11 +52,11 @@ dateCell.addEventListener("click", () => {
 
             attendanceButton.onclick = null; // 이벤트 리스너 해제
         };
-             
+
     } else {
         alert("이미 출석이 완료되었습니다.");
     }
-   
+
 });
         calendarGrid.appendChild(dateCell);
     }
@@ -115,7 +112,7 @@ calendarGrid.addEventListener("click", (event) => {
             openModal();
             toggleAttendance(event.target);
         }
-        
+
     }
 });
 modal.addEventListener("click", closeOnOutsideClick);
@@ -134,32 +131,44 @@ function updateEventList() {
   }
 }
 });
-document.addEventListener("DOMContentLoaded", function() {
-    const addEventButton = document.getElementById("add-event-button");
+function onDocumentReady(callback) {
+    if (document.readyState !== 'loading') {
+        // 문서가 이미 로드되었으면 즉시 콜백 실행
+        callback();
+    } else {
+        // 문서가 로드되지 않았으면 DOMContentLoaded 이벤트를 대기합니다.
+        document.addEventListener('DOMContentLoaded', callback);
+    }
+}
 
-    addEventButton.addEventListener("click", function() {
-        const date = document.getElementById("event-date").value;
-        const title = document.getElementById("event-title").value;
+$(document).ready(function () {
+    const eventDateInput = document.getElementById("event-date");
+    const eventTitleInput = document.getElementById("event-title");
+    const addEventButton = document.querySelector(".add-event-button");
 
-        // 서버로 데이터를 전송합니다.
-        fetch("/add-event.php", {
-            method: "POST",
-            body: JSON.stringify({ date, title }),
-            headers: {
-                "Content-Type": "application/json"
-            }
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.success) {
-                alert("일정이 성공적으로 추가되었습니다.");
-                // 일정 목록 업데이트 로직을 여기에 추가할 수 있습니다.
-            } else {
-                alert("일정 추가 실패: " + data.message);
-            }
-        })
-        .catch(error => {
-            console.error("오류 발생:", error);
+    addEventButton.onclick = function () {
+        // 입력된 날짜와 제목을 가져옵니다.
+        const date = eventDateInput.value;
+        const title = eventTitleInput.value;
+        console.log("dddd");
+
+        // AJAX 요청을 보냅니다.
+        $.ajax({
+            type: "POST",
+            url: "/event/write", // "write"는 실제로 데이터를 처리하는 서버 엔드포인트 URL입니다.
+            data: { date: date, title: title }, // 데이터를 객체로 보냅니다.
+            success: function (response) {
+                // 요청이 성공하면 여기에서 추가적인 처리를 수행할 수 있습니다.
+                if(resonse == "1"){
+                    window.location.href = "/mypage/mypagelist";
+                console.log("일정이 성공적으로 추가되었습니다.");
+                }
+                // 원하는 추가 작업을 수행할 수 있습니다.
+            },
+            error: function (xhr, status, error) {
+                // 요청이 실패한 경우 여기에서 처리할 수 있습니다.
+                console.error("일정 추가 실패:", error);
+            },
         });
-    });
+    };
 });
