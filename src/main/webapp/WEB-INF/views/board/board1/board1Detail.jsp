@@ -110,18 +110,12 @@
             <div class="button-container">
 
                 <form action="/board1/delete" method="get">
-                    <!-- 본인이 작성한 게시물만 삭제 가능 처리 -->
-                    <c:if test="${sessionScope.member_id} == dto.writer}">
                     <input type="hidden" name="board1_no" value="${board1DTO.board1_no}"/>
                     <button type="submit" class="main-del-button">삭제</button>
-                    </c:if>
                 </form>
                 <form action="/board1/modify" method="get">
-                    <!-- 본인이 작성한 게시물만 수정 가능 처리 -->
-                    <c:if test="${sessionScope.member_id} == dto.writer}">
                     <input type="hidden" name="board1_no" value="${board1DTO.board1_no}"/>
                     <button type="submit" class="main-ori-button">수정</button>
-                    </c:if>
                 </form>
                 <button type="button" class="main-ori-button" onclick="location.href='/board1/list'">목록</button>
             </div>
@@ -167,18 +161,14 @@
                                 <td class="col-3"><fmt:formatDate value="${comment1DTO.comment1_regdate}" pattern="yyyy-MM-dd HH:mm"/></td>
                                 <td class="col-4">
                                     <form action="/comment1/delete" method="post">
-                                        <!-- 관리자와 댓글 작성자만 댓글 삭제 가능 -->
                                         <input type="hidden" name="comment1_no" value="${comment1DTO.comment1_no}"/>
                                         <input type="hidden" name="board1_no" value="${board1DTO.board1_no}"/>
                                         <button type="submit" class="reply-button-sm">삭제</button>
                                     </form>
                                 </td >
                                 <label class="item">
-                                    <!-- 관리자와 댓글 작성자만 댓글 수정 가능 -->
-                                    <c:if test="${sessionScope.member_id == MemberDTO.member_id  && sessionScope.member_type =='관리자'}">
                                     <td class="col-4"><button class="btn-modal" id="reply-button-sm" data-comment-no="${comment1DTO.comment1_no}">수정</button></td>
-                                    </c:if>
-                                    </label>
+
                                     <!-- 각 댓글에 대한 고유한 모달 창 -->
                                     <div id="modal" class="modal-overlay">
                                         <div class="modal-window">

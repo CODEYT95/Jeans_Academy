@@ -1,7 +1,6 @@
 package com.project.jeans.service.board.board1;
 
 import com.project.jeans.domain.board.board1.dto.Board1DTO;
-import com.project.jeans.domain.member.dto.MemberDTO;
 
 import java.util.List;
 import java.util.Map;

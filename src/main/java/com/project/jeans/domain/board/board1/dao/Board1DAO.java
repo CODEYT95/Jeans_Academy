@@ -20,6 +20,7 @@ public interface Board1DAO {
 
     //게시글 작성
     int insertBoard1(Map<String, Object> map);
+
     //게시글 수정
     int updateBoard1(Map<String, Object> map);
 
