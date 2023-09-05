@@ -27,6 +27,7 @@ uri="http://java.sun.com/jsp/jstl/core"%>
     <link rel="stylesheet" type="text/css" href="../../../resources/css/main/main.css">
     <link rel="stylesheet" type="text/css" href="../../../resources/css/game/snakeGame.css">
     <script src="../../../resources/js/game/snakeGame.js" defer></script>
+    <script type="text/javascript" src="../../../../resources/js/common/sidebar.js"></script>
 
     <script>
         $(document).ready(function() {

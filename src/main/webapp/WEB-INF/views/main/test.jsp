@@ -7,6 +7,7 @@ pageEncoding="UTF-8"%>
     <title>Jeans</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+    <script type="text/javascript" src="../../../../resources/js/common/sidebar.js"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap');
         @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
