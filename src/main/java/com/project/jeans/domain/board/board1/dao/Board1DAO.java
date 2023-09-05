@@ -25,5 +25,4 @@ public interface Board1DAO {
 
     //게시글 삭제
     int deleteBoard1(Map<String, Object> map);
-
 }

@@ -14,7 +14,7 @@
     <!-- 반별 게시글 상세 조회 -->
     <select id="findBoard1ByNo" resultType="com.project.jeans.domain.board.board1.dto.Board1DTO">
         <![CDATA[
-        SELECT board1_no, board1_title, board1_content, board1_regdate, board1_isshow, memeber_id, member_name, member_class
+        SELECT board1_no, board1_title, board1_content, board1_regdate, board1_isshow, member_id, member_name, member_class
         FROM board1
         WHERE board1_no=#{board1_no}
         ]]>
@@ -35,14 +35,12 @@
         WHERE board1_no=#{board1_no}
         ]]>
     </update>
-    <!-- 게시글 삭제 -->
+    <!-- 게시글 삭제-->
     <delete id="deleteBoard1" parameterType="map">
         <![CDATA[
-        UPDATE board1 AS b
-        JOIN comment1 AS c ON b.board1_no = c.board1_no
-        SET b.board1_isshow = 'N',
-            c.comment1_isshow = 'N'
-        WHERE b.board1_no = #{board1_no};
+        UPDATE board1
+        SET board1_isshow = 'N'
+        WHERE board1_no = #{board1_no};
         ]]>
     </delete>
 

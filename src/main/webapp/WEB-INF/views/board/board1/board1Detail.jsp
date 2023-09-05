@@ -141,7 +141,7 @@
 
         <div class="content-container">
             <div class="write-content">
-                <span class="content-label">내용</span>
+                <span class="co ntent-label">내용</span>
                 <p class="content-textarea" readonly>${board1DTO.board1_content}</p>
             </div>
         </div>
@@ -149,6 +149,9 @@
         <div class="reply-container">
             <div>
                 <form action="/comment1/write" method="post">
+                    <input type="hidden" name="member_id" value="${member_id}">
+                    <input type="hidden" name="member_name" value="${member_name}">
+                    <input type="hidden" name="member_class" value="${member_class}">
                     <input type="hidden" name="board1_no" value="${board1DTO.board1_no}">
                     <button type="submit" class="reply-button">댓글 등록</button>
                     <textarea name="comment1_content" class="reply-insert" maxlength="300"></textarea>
