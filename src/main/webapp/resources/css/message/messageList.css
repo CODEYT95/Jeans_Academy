@@ -415,7 +415,7 @@ th {
   float: right;
   padding-right: 10px;
   cursor: pointer;
-  text-shadow: 1px 1px 2px gray;
+  text-shadow: 3px 3px 5px gray;
   color: white;
 }
 
