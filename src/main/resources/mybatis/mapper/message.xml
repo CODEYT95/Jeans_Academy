@@ -32,13 +32,14 @@
         ]]>
     </select>
 
-    <!-- 메시지 작성 (1. 수신자 리스트)-->
+    <!-- 메시지 작성 (수신자 리스트)-->
     <!-- 회원 목록 읽어오기 (변수 변경 예정)-->
     <select id="selectMessageMemList" resultType="com.project.jeans.domain.member.dto.MemberDTO">
         <![CDATA[
         select member_name, member_id from member;
         ]]>
     </select>
+
     <!-- 메시지 작성 (2.유저 정보)-->
     <!-- 이후 수정할 예정 (1.sender:로그인한 회원)(2.receiver:회원 멤버들)-->
 <!--    <insert id="insertUserMessage" parameterType="map">
@@ -47,14 +48,15 @@
         VALUES(#{message_sender},#{message_receiver})
         ]]>
     </insert>-->
-    <!--메시지 작성 (3.발신 내용)-->
+
+    <!--메시지 작성 (발신 내용)-->
     <!-- 이후 수정할 예정 (1.sender:로그인한 회원)(2.receiver:회원 멤버들)-->
-<!--    <insert id="insertContentMessage" parameterType="map">
+    <insert id="insertContentMessage" parameterType="map">
         <![CDATA[
         INSERT INTO message(message_sender,message_receiver,message_title,message_content,message_date)
-        VALUES(#{message_sender},#{message_receiver},#{message_title},#{message_content},now())
+        VALUES(#{member_id},#{message_receiver},#{message_title},#{message_content},now())
         ]]>
-    </insert>-->
+    </insert>
 
     <!-- 메시지 삭제 (수신함) update-->
 <!--    <delete id="deleteReceiveMessage" parameterType="map">

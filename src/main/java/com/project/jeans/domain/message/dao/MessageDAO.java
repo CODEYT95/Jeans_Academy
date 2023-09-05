@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Map;
 
 @Repository
 @Mapper
@@ -21,14 +22,11 @@ public interface MessageDAO {
     /* 메시지 상세 조회 */
     MessageDTO selectMessageDetail(int message_no);
 
-    /* 메시지 작성 (1.수신자 목록) */
+    /* 메시지 작성 (수신자 목록) */
     public List<MemberDTO> selectMessageMemList();
 
-    /* 메시지 작성(1.유저 정보)*/
-//    int insertUserMessage();
-
-    /* 메시지 작성(2.내용)*/
-//    int insertContentMessage();
+    /* 메시지 작성(내용)*/
+    int insertContentMessage(Map<String,Object> map);
 
 
     /* 메시지 삭제 (수신함) */

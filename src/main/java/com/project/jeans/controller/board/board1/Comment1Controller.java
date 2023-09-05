@@ -41,7 +41,7 @@ public class Comment1Controller {
         return modelAndView;
     }
 
-   //댓글 수정(Controller)
+    //댓글 수정(Controller)
     @PostMapping("/update")
     public ModelAndView updateComment1(HttpSession session, Model model, ModelAndView modelAndView, @RequestParam Map<String, Object> map, @RequestParam int board1_no){
         LoginCheckSession loginCheck = new LoginCheckSession(memberService);
@@ -80,4 +80,5 @@ public class Comment1Controller {
         }
         return modelAndView;
     }
+
 }

@@ -10,10 +10,13 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
+import java.util.Map;
 
 @RequestMapping("/message")
 @RequiredArgsConstructor
@@ -26,31 +29,73 @@ public class MessageController {
     /* 메시지 목록 조회(수신함) 및 목록 조회(발신함)*/
     @GetMapping("/messageList")
     public String selectReceiveMessage(HttpSession session, Model model){
+
         LoginCheckSession loginCheck = new LoginCheckSession(memberService);
         MemberDTO memberInfo = loginCheck.getLoginCheckSession(session, model);
 
+        // 로그인이 필요한 경우 리디렉션
+        if (memberInfo == null) {return "/member/login";}
 
+        model.addAttribute("member_name",memberInfo.getMember_name());
+        model.addAttribute("member_class",memberInfo.getMember_class());
+        model.addAttribute("member_type",memberInfo.getMember_type());
+
+        List<MessageDTO> messageRecDTO = messageService.selectReceiveMessage(memberInfo.getMember_id());
+        model.addAttribute("messageRecDTO",messageRecDTO);
+        List<MessageDTO> messageSendDTO = messageService.selectSendMessage(memberInfo.getMember_id());
+        model.addAttribute("messageSendDTO",messageSendDTO);
+        List<MemberDTO> messageMemberDTO = messageService.selectMessageMemList();
+        model.addAttribute("messageMemberDTO",messageMemberDTO);
+
+        return "/message/messageList";
+
+    }
+
+    /* 메시지 작성(보내기) */
+    @PostMapping("/send")
+    public ModelAndView sendMessage(@RequestParam Map<String,Object> map, HttpSession session, ModelAndView modelAndView, Model model){
+
+        System.out.println(map);
+
+        LoginCheckSession loginCheck = new LoginCheckSession(memberService);
+        MemberDTO memberInfo = loginCheck.getLoginCheckSession(session, model);
         if (memberInfo == null) {
             // 로그인이 필요한 경우 리디렉션
-            return "/member/login";
+            return new ModelAndView("redirect:/member/login");
         }
         model.addAttribute("member_name",memberInfo.getMember_name());
         model.addAttribute("member_class",memberInfo.getMember_class());
         model.addAttribute("member_type",memberInfo.getMember_type());
-        //파라미터 : 로그인한 회원 넘기기 <mapper에서 바꿔주기>
-        List<MessageDTO> messageRecDTO = messageService.selectReceiveMessage(memberInfo.getMember_id());
-        model.addAttribute("messageRecDTO",messageRecDTO);
 
-        List<MessageDTO> messageSendDTO = messageService.selectSendMessage(memberInfo.getMember_id());
-        model.addAttribute("messageSendDTO",messageSendDTO);
+        int sendMessage = messageService.insertContentMessage(map);
 
-        List<MemberDTO> messageMemberDTO = messageService.selectMessageMemList();
+        if(sendMessage == 1){
+            modelAndView.setViewName("redirect:/message/messageList");
+        } else {
+            modelAndView.setViewName("redirect:/message/messageList");
+        }
 
-        System.out.println(messageMemberDTO);
+        return modelAndView;
 
-        model.addAttribute("messageMemberDTO",messageMemberDTO);
-        return "/message/messageList";
     }
+
+    /* 메시지 삭제 (수신함) */
+    //   @Override
+/*
+    public int deleteReceiveMessage(){
+        return 0;
+    }
+*/
+
+    /* 메시지 삭제 (발신함) */
+    //   @Override
+/*
+    public int deleteSendMessage(){
+        return 0;
+    }
+*/
+
+
 
 
 
