@@ -105,7 +105,6 @@
 
     <div class="main--content" >
 
-        <!-- 쪽지 보내기 버튼 -->
         <button type="button" class="btn-modal">쪽지 보내기</button>
         <div id="modal" class="modal-overlay">
             <div class="modal-window">

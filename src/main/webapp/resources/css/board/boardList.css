@@ -345,7 +345,6 @@ slide--container{
 	width: 300px;
 	padding: 30px;
 	border-radius: 5px;
-/*	background: linear-gradient(180deg,#5164da 0%,#FFFFFE 5% 99%,black 99%);*/
 	background: linear-gradient(90deg,#5164da 5%,#FFFFFE 5%); /* slider 내 item 색상  */
 	position: absolute;
 	border:1px black;
@@ -398,7 +397,7 @@ slide--container{
 #t-3:checked ~ .testimonials label[for="t-5"],
 #t-4:checked ~ .testimonials label[for="t-1"],
 #t-5:checked ~ .testimonials label[for="t-2"]{
-	transform: translate3d(600px, 0, -180px) rotateY(-25deg);
+	transform: translate3d(670px, 0, -180px);
 	z-index: 2;
 }
 #t-1:checked ~ .testimonials label[for="t-2"],
@@ -406,7 +405,7 @@ slide--container{
 #t-3:checked ~ .testimonials label[for="t-4"],
 #t-4:checked ~ .testimonials label[for="t-5"],
 #t-5:checked ~ .testimonials label[for="t-1"]{
-	transform: translate3d(300px, 0, -90px) rotateY(-15deg);
+	transform: translate3d(320px, 0, -90px);
 	z-index: 3;
 }
 #t-2:checked ~ .testimonials label[for="t-1"],
@@ -414,7 +413,7 @@ slide--container{
 #t-4:checked ~ .testimonials label[for="t-3"],
 #t-5:checked ~ .testimonials label[for="t-4"],
 #t-1:checked ~ .testimonials label[for="t-5"]{
-	transform: translate3d(-300px, 0, -90px) rotateY(15deg);
+	transform: translate3d(-320px, 0, -90px);
 	z-index: 3;
 }
 #t-3:checked ~ .testimonials label[for="t-1"],
@@ -422,7 +421,7 @@ slide--container{
 #t-5:checked ~ .testimonials label[for="t-3"],
 #t-2:checked ~ .testimonials label[for="t-5"],
 #t-1:checked ~ .testimonials label[for="t-4"]{
-	transform: translate3d(-600px, 0, -180px) rotateY(25deg);
+	transform: translate3d(-670px, 0, -180px);
 
 }
 #t-1:checked ~ .testimonials label[for="t-1"],

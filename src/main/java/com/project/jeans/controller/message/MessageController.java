@@ -79,7 +79,21 @@ public class MessageController {
 
     }
 
+    /* 메시지 삭제 (수신함) */
+    //   @Override
+/*
+    public int deleteReceiveMessage(){
+        return 0;
+    }
+*/
 
+    /* 메시지 삭제 (발신함) */
+    //   @Override
+/*
+    public int deleteSendMessage(){
+        return 0;
+    }
+*/
 
 
 

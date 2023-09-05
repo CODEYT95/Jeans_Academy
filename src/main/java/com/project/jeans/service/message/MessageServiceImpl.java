@@ -50,18 +50,6 @@ public class MessageServiceImpl implements MessageService{
     }
 
 
-
-
-
-
-    /* 메시지 작성(1.유저 정보)*/
-//    @Override
-/*    public int insertUserMessage(){
-        return 0;
-    }*/
-
-
-
     /* 메시지 삭제 (수신함) */
  //   @Override
 /*
@@ -77,13 +65,5 @@ public class MessageServiceImpl implements MessageService{
         return 0;
     }
 */
-
-
-
-
-
-
-
-
 
 }
