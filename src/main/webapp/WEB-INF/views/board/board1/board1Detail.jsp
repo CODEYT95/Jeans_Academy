@@ -154,7 +154,7 @@
                     <input type="hidden" name="member_class" value="${member_class}">
                     <input type="hidden" name="board1_no" value="${board1DTO.board1_no}">
                     <button type="submit" class="reply-button">댓글 등록</button>
-                    <textarea name="comment1_content" class="reply-insert" maxlength="300"></textarea>
+                    <textarea name="comment1_content" class="reply-insert" maxlength="300"  placeholder="댓글을 작성하세요" required></textarea>
                 </form>
             </div>
             <div class="reply-content-container">
