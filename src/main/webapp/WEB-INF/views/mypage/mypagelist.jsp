@@ -114,7 +114,22 @@ pageEncoding="UTF-8"%>
                 <div class="board1">
                     <div class="b-outer-gird1">
                         <div class="list-boxtitle1">개인정보</div>
-                        <div class="b-list1">내용</div>
+                        <div class="b-list1">
+                            <div class="list-id">
+                        <p><strong>ID:</strong>
+                            <span th:text="${member.member_id}"></span></p>
+                        </div>
+                            <div class="list-pw">
+                        <p><strong>PW:</strong>
+                            <span th:text="${member.member_pw}"></span></p>
+                        </div>
+                            <div class="list-day">
+                        <p><strong>BirthDay:</strong> <span th:text="${member.member_day}"></span></p>
+                            </div>
+                            <div class="list-phon">
+                        <p><strong>Phon_Number:</strong> <span th:text="${member.member_phon}"></span></p>
+                            </div>
+                    </div>
                     </div>
                 </div>
                 <div class="board2">

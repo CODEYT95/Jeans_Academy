@@ -14,7 +14,10 @@ public interface NoticeDAO {
     List<NoticeDTO> selectAll();
     //공지사항 상세보기
     NoticeDTO noticeDetail(int notice_no);
-
+    //공지사항 댓글
+    NoticeDTO nreplyDetail(int notice_no);
+    //공지사항 조회수 카운트
+    int noticeCountUp(int notice_no);
     //공지사항 INSERT
     int insertNotice(NoticeDTO noticeDTO);
     //공지사항 isShow 'N'으로 바꾸기

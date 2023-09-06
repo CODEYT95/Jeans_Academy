@@ -35,10 +35,12 @@ public class NoticeController {
             // 로그인이 필요한 경우 리디렉션
             return new ModelAndView("redirect:/login");
         }
+        String category = "notice";
+        model.addAttribute("category", category);
         model.addAttribute("member_name",memberInfo.getMember_name());
         model.addAttribute("member_class",memberInfo.getMember_class());
         model.addAttribute("member_type",memberInfo.getMember_type());
-
+        System.out.println(memberInfo.getMember_class());
         model.addAttribute("member_name", memberInfo.getMember_name());
         model.addAttribute("member_class", memberInfo.getMember_class());
         List<NoticeDTO> noticeList = noticeService.selectAll();
@@ -58,14 +60,19 @@ public class NoticeController {
             // 로그인이 필요한 경우 리디렉션
             return "/member/login";
         }
+        String category = "notice";
+        model.addAttribute("category", category);
         model.addAttribute("member_name",memberInfo.getMember_name());
         model.addAttribute("member_class",memberInfo.getMember_class());
         model.addAttribute("member_type",memberInfo.getMember_type());
         System.out.println(noticeNo);
-        NoticeDTO noticeDTO = noticeService.noticeDetail(noticeNo);
+        noticeService.noticeCountUp(noticeNo);
+        NoticeDTO noticeDetail = noticeService.noticeDetail(noticeNo);
+        NoticeDTO nreplyDetail = noticeService.nreplyDetail(noticeNo);
 
         // 공지사항 정보를 모델에 추가합니다.
-        model.addAttribute("noticeDTO", noticeDTO);
+        model.addAttribute("noticeDetail", noticeDetail);
+        model.addAttribute("nreplyDetail",nreplyDetail);
         return "notice/noticeDetail";
     }
 

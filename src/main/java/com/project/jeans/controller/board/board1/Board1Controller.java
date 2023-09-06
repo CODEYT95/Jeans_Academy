@@ -37,6 +37,13 @@ public class Board1Controller {
             // 로그인이 필요한 경우 리디렉션
             return "/member/login";
         }
+
+        String memberClass = memberInfo.getMember_class();
+        if (!memberClass.equals("1반") && !memberClass.equals("\uD83D\uDC93")) {
+            // "1반"이 아니고 "\uD83D\uDC93"도 아닌 경우 리디렉션 또는 처리할 내용 추가
+            return "/main/main";
+        }
+
         model.addAttribute("member_name",memberInfo.getMember_name());
         model.addAttribute("member_class",memberInfo.getMember_class());
         model.addAttribute("member_type",memberInfo.getMember_type());
@@ -58,6 +65,13 @@ public class Board1Controller {
             // 로그인이 필요한 경우 리디렉션
             return "/member/login";
         }
+
+        String memberClass = memberInfo.getMember_class();
+        if (!memberClass.equals("1반") && !memberClass.equals("\uD83D\uDC93")) {
+            // "1반"이 아니고 "\uD83D\uDC93"도 아닌 경우 리디렉션 또는 처리할 내용 추가
+            return "/main/main";
+        }
+
 
         Board1DTO board1DTO = board1Service.getBoard1Detail(board1_no);
         model.addAttribute("board1DTO", board1DTO);

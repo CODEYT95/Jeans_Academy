@@ -21,6 +21,11 @@ public class NoticeServiceImpl implements NoticeService {
     public NoticeDTO noticeDetail(int notice_no){
      return noticeDAO.noticeDetail(notice_no);
     }
+    //공지사항 댓글
+    @Override
+    public NoticeDTO nreplyDetail(int notice_no) { return noticeDAO.nreplyDetail(notice_no); }
+    //공지사항 조회수 카운트
+    public int noticeCountUp(int notice_no){return noticeDAO.noticeCountUp(notice_no);}
 
     //공지사항 INSERT
     @Override

@@ -508,3 +508,6 @@ h4{
   margin-bottom:10px;
   height:auto;
 }
+.list-id, .list-pw, .list-day, .list-phon{
+border-bottom:1px solid;
+}
