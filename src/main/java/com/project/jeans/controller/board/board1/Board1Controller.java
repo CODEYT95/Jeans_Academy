@@ -98,6 +98,8 @@ public class Board1Controller {
         LoginCheckSession loginCheck = new LoginCheckSession(memberService);
         MemberDTO memberInfo = loginCheck.getLoginCheckSession(session, model);
 
+        System.out.println(memberInfo);
+
         if (memberInfo == null) {
             System.out.println("테스트");
             // 로그인이 필요한 경우 리디렉션

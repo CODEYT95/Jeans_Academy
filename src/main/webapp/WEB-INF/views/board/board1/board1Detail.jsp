@@ -29,7 +29,7 @@
                 <form action="/board1/modify" method="get">
                     <!-- 본인이 작성한 게시물만 수정 가능 처리 -->
                     <input type="hidden" name="board1_no" value="${board1DTO.board1_no}"/>
-                    <c:if test="${memberDTO.member_id == board1DTO.member_id || member_type.equals('관리자')}">
+                    <c:if test="${memberDTO.member_id == board1DTO.member_id}">
                     <button type="submit" class="main-ori-button">수정</button>
                     </c:if>
                 </form>
@@ -111,8 +111,8 @@
                                     <form action="/comment1/delete" method="post">
                                         <input type="hidden" name="comment1_no" value="${comment1DTO.comment1_no}"/>
                                         <input type="hidden" name="board1_no" value="${board1DTO.board1_no}"/>
-                                        <!-- 관리자와 댓글작성자만 삭제 가능-->
-                                        <c:if test="${memberDTO.member_id == comment1DTO.member_id || member_type.equals('관리자')}">
+                                        <!-- 관리자와 댓글 작성자만 삭제 가능-->
+                                        <c:if test="${member_id == comment1DTO.member_id || member_type.equals('관리자')}">
                                             <button type="submit" class="reply-button-sm">삭제</button>
                                         </c:if>
                                     </form>

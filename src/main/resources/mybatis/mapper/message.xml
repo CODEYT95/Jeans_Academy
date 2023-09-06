@@ -36,7 +36,7 @@
     <!-- 회원 목록 읽어오기 (변수 변경 예정)-->
     <select id="selectMessageMemList" resultType="com.project.jeans.domain.member.dto.MemberDTO">
         <![CDATA[
-        select member_name, member_id from member;
+        select member_name, member_id, member_class from member;
         ]]>
     </select>
 

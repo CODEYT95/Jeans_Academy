@@ -115,21 +115,20 @@
                         </td>
                         <div id="modal3-${loop.index}" class="modal-overlay3">
                             <div class="modal-window">
-                                    <div class="close-area3">X</div>
-                                    <div class="modal-header">
-                                    </div>
-                                    <div class="modal-body">
-                                        <div>제목: ${messageSendDTO.message_title}</div>
-                                        <div>받은 사람: ${messageSendDTO.message_sender}</div>
-                                        <div>보낸 사람: ${messageSendDTO.message_receiver}</div>
-                                        <div>날짜: ${messageSendDTO.message_date}</div>
-                                        <div>내용: ${messageSendDTO.message_content}</div>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="submit">삭제</button>
-                                        <button type="button" class="close-area3">목록</button>
-                                    </div>
-                                </form>
+                                <div class="close-area3">X</div>
+                                <div class="modal-header">
+                                </div>
+                                <div class="modal-body">
+                                    <div>제목: ${messageSendDTO.message_title}</div>
+                                    <div>받은 사람: ${messageSendDTO.message_sender}</div>
+                                    <div>보낸 사람: ${messageSendDTO.message_receiver}</div>
+                                    <div>날짜: ${messageSendDTO.message_date}</div>
+                                    <div>내용: ${messageSendDTO.message_content}</div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="submit">삭제</button>
+                                    <button type="button" class="close-area3">목록</button>
+                                </div>
                             </div>
                         </div>
                         <td class="col-2">${messageSendDTO.message_receiver}</td>
@@ -138,9 +137,8 @@
                 </c:forEach>
                 </tbody>
             </table>
-            </div>
+            </form>
         </div>
-
     </div>
 </body>
 </html>

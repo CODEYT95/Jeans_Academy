@@ -106,7 +106,7 @@ document.getElementById("receiver").addEventListener("change", function () {
     document.querySelector("input[name='message_receiver']").value = selectedValue;
 });
 
-/* 삭제 버튼 눌렀을 때 null값 방지 */
+/* 삭제 버튼(수신함) 눌렀을 때 null값 방지 */
 function checkData() {
     var checkbox = document.getElementsByName("message_no");
     var checked = false;

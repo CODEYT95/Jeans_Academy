@@ -5,14 +5,16 @@
     <!-- 댓글 목록 조회 -->
     <select id="getComment1List" parameterType="int" resultType="com.project.jeans.domain.board.board1.dto.Comment1DTO">
         <![CDATA[
-        SELECT comment1_no, board1_no, comment1_content, comment1_regdate, comment1_isshow, member_id, member_name, member_class FROM comment1 WHERE board1_no=${board1_no} AND comment1_isshow='Y' ORDER BY comment1_no DESC
+        SELECT comment1_no, board1_no, member_id, comment1_content, comment1_regdate, comment1_isshow
+        FROM comment1
+        WHERE board1_no = #{board1_no} AND comment1_isshow = 'Y' ORDER BY comment1_no DESC
         ]]>
     </select>
     <!-- 댓글 작성 -->
     <insert id="insertComment1" parameterType="map">
         <![CDATA[
-        INSERT INTO comment1(board1_no, comment1_content, comment1_regdate, comment1_isshow, member_id, member_name, member_class)
-        VALUES(#{board1_no},#{comment1_content},now(),'Y',#{member_id},#{member_name},#{member_class})
+        INSERT INTO comment1(board1_no, comment1_content, comment1_regdate, comment1_isshow, member_id)
+        VALUES(#{board1_no},#{comment1_content},now(),'Y',#{member_id})
         ]]>
     </insert>
     <!-- 댓글 수정 -->

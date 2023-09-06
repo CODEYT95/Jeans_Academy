@@ -6,7 +6,7 @@
     <!-- 반별 게시판 목록 조회 -->
     <select id="findBoard1All" resultType="com.project.jeans.domain.board.board1.dto.Board1DTO">
         <![CDATA[
-        SELECT board1_no, board1_title, board1_content, board1_regdate, board1_isshow, member_id, member_name, member_class
+        SELECT board1_no, board1_title, board1_content, board1_regdate, board1_isshow, member_id
         FROM board1
         WHERE board1_isshow='Y' ORDER BY board1_no DESC
         ]]>
@@ -14,7 +14,7 @@
     <!-- 반별 게시글 상세 조회 -->
     <select id="findBoard1ByNo" resultType="com.project.jeans.domain.board.board1.dto.Board1DTO">
         <![CDATA[
-        SELECT board1_no, board1_title, board1_content, board1_regdate, board1_isshow, member_id, member_name, member_class
+        SELECT board1_no, board1_title, board1_content, board1_regdate, board1_isshow, member_id
         FROM board1
         WHERE board1_no=#{board1_no}
         ]]>
@@ -23,8 +23,8 @@
     <!-- 로그인한 회원이 작성하게끔 바꿔줘야 함-->
     <insert id="insertBoard1" parameterType="map">
         <![CDATA[
-        INSERT INTO board1(board1_title, board1_content, board1_regdate, board1_isshow, member_id, member_name, member_class)
-        values(#{board1_title},#{board1_content},now(),'Y',#{member_id},#{member_name},#{member_class})
+        INSERT INTO board1(board1_title, board1_content, board1_regdate, board1_isshow, member_id)
+        values(#{board1_title},#{board1_content},now(),'Y',#{member_id})
         ]]>
     </insert>
     <!-- 게시글 수정 -->

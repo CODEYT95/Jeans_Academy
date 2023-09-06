@@ -54,8 +54,6 @@ public class MessageServiceImpl implements MessageService{
     public int deleteReceiveMessage(List<Integer> message_no){
 
         for (int i = 0; i < message_no.size() ; i++) {
-            System.out.println("i="+i);
-            System.out.println("message_no="+message_no.get(i));
             int msgDelete = messageDAO.deleteReceiveMessage(message_no.get(i));
             if(msgDelete != 1){
                 return 2;
