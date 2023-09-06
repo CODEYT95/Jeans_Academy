@@ -49,21 +49,34 @@ public class MessageServiceImpl implements MessageService{
         return messageDAO.insertContentMessage(map);
     }
 
-
     /* 메시지 삭제 (수신함) */
- //   @Override
-/*
-    public int deleteReceiveMessage(){
-        return 0;
+    @Override
+    public int deleteReceiveMessage(List<Integer> message_no){
+
+        for (int i = 0; i < message_no.size() ; i++) {
+            System.out.println("i="+i);
+            System.out.println("message_no="+message_no.get(i));
+            int msgDelete = messageDAO.deleteReceiveMessage(message_no.get(i));
+            if(msgDelete != 1){
+                return 2;
+            }
+        }
+        return 1;
     }
-*/
 
     /* 메시지 삭제 (발신함) */
- //   @Override
-/*
-    public int deleteSendMessage(){
-        return 0;
+    @Override
+    public int deleteSendMessage(List<Integer> message_no){
+
+        for (int i = 0; i < message_no.size() ; i++) {
+            System.out.println("i="+i);
+            System.out.println("message_no="+message_no.get(i));
+            int msgDelete = messageDAO.deleteSendMessage(message_no.get(i));
+            if(msgDelete != 1){
+                return 2;
+            }
+        }
+        return 1;
     }
-*/
 
 }

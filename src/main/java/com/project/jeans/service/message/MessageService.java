@@ -23,13 +23,10 @@ public interface MessageService {
     /* 메시지 작성 (내용)*/
     public int insertContentMessage(Map<String,Object> map);
 
-
-
-
     /* 메시지 삭제 (수신함) */
- //   public int deleteReceiveMessage();
+    public int deleteReceiveMessage(List<Integer> message_no);
 
     /* 메시지 삭제 (발신함) */
- //   public int deleteSendMessage();
+    public int deleteSendMessage(List<Integer> message_no);
 
 }

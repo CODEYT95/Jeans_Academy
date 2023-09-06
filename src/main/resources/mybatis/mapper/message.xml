@@ -40,15 +40,6 @@
         ]]>
     </select>
 
-    <!-- 메시지 작성 (2.유저 정보)-->
-    <!-- 이후 수정할 예정 (1.sender:로그인한 회원)(2.receiver:회원 멤버들)-->
-<!--    <insert id="insertUserMessage" parameterType="map">
-        <![CDATA[
-        INSERT INTO message_user(message_sender,message_receiver)
-        VALUES(#{message_sender},#{message_receiver})
-        ]]>
-    </insert>-->
-
     <!--메시지 작성 (발신 내용)-->
     <!-- 이후 수정할 예정 (1.sender:로그인한 회원)(2.receiver:회원 멤버들)-->
     <insert id="insertContentMessage" parameterType="map">
@@ -59,21 +50,21 @@
     </insert>
 
     <!-- 메시지 삭제 (수신함) update-->
-<!--    <delete id="deleteReceiveMessage" parameterType="map">
+    <delete id="deleteReceiveMessage" parameterType="int">
         <![CDATA[
         UPDATE message
         SET message_rec_isshow='N'
         WHERE message_no=#{message_no};
         ]]>
-    </delete>-->
+    </delete>
 
     <!-- 메시지 삭제 (발신함) update-->
-<!--    <delete id="deleteSendMessage" parameterType="map">
+    <delete id="deleteSendMessage" parameterType="int">
         <![CDATA[
         UPDATE message
         SET message_sen_isshow='N'
         WHERE message_no=#{message_no};
         ]]>
-    </delete>-->
+    </delete>
 
 </mapper>

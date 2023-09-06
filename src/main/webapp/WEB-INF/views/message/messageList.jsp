@@ -12,6 +12,16 @@
     <script type="text/javascript" src="../../../resources/js/message/messageList.js"></script>
     <script type="text/javascript" src="../../../../resources/js/common/sidebar.js"></script>
 
+
+    <script>
+
+
+
+
+    </script>
+
+
+
 </head>
 <body data-member-class="${member_class}">
 <section class="header">
@@ -138,8 +148,9 @@
         </div>
 
         <div class="messageRec--content">
+            <form action="/message/deleteRecMsg" method="get">
             <h2>받은 쪽지함</h2>
-            <button type="delete-button" class="delete-button">삭제</button>
+            <button type="submit" class="delete-button">삭제</button>
             <table class="table">
                 <thead>
                     <tr>
@@ -152,23 +163,24 @@
                 <c:forEach var="messageRecDTO" items="${messageRecDTO}" varStatus="loop" begin="0">
                     <tr>
                         <td class="col-1">
-                            <input type="checkbox" name="box2">&nbsp;
-                            <label for="box2"><button type="button" class="btn-modal2" data-modal-id2="modal2-${loop.index}">${messageRecDTO.message_title}</button></label>
+                            <input type="checkbox" name="message_no" value="${messageRecDTO.message_no}"/>
+                            <label for="message_no"><button type="button" class="btn-modal2" data-modal-id2="modal2-${loop.index}">${messageRecDTO.message_title}</button></label>
                         </td>
                         <div id="modal2-${loop.index}" class="modal-overlay2">
                             <div class="modal-window">
-                                <div class="close-area2">X</div>
-                                <div class="modal-header">
-                                </div>
-                                <div class="modal-body">
-                                    <div>제목: ${messageRecDTO.message_title}</div>
-                                    <div>보낸 사람: ${messageRecDTO.message_receiver}</div>
-                                    <div>받은 사람: ${messageRecDTO.message_sender}</div>
-                                    <div>날짜: ${messageRecDTO.message_date}</div>
-                                    <div>내용: ${messageRecDTO.message_content}</div>
-                                </div>
-                                <div class="modal-footer">
-                                </div>
+                                    <div class="close-area2">X</div>
+                                    <div class="modal-header">
+                                    </div>
+                                    <div class="modal-body">
+                                        <div>제목: ${messageRecDTO.message_title}</div>
+                                        <div>보낸 사람: ${messageRecDTO.message_receiver}</div>
+                                        <div>받은 사람: ${messageRecDTO.message_sender}</div>
+                                        <div>날짜: ${messageRecDTO.message_date}</div>
+                                        <div>내용: ${messageRecDTO.message_content}</div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="close-area2">목록</button>
+                                    </div>
                             </div>
                         </div>
                         <td class="col-2">${messageRecDTO.message_sender}</td>
@@ -178,9 +190,11 @@
                 </tbody>
 
             </table>
+            </form>
         </div>
 
         <div class="messageSend--content">
+            <form action="/message/deleteSendMsg" method="get">
             <h2>보낸 쪽지함</h2>
             <button type="delete-button" class="delete-button">삭제</button>
             <table>
@@ -195,28 +209,30 @@
                 <c:forEach var="messageSendDTO" items="${messageSendDTO}" varStatus="loop" begin="0">
                     <tr>
                         <td class="col-1">
-                            <input type="checkbox" name="box3">&nbsp;
-                            <label for="box3"><button type="button" class="btn-modal3" data-modal-id3="modal3-${loop.index}">${messageSendDTO.message_title}</button></label>
+                            <input type="checkbox" name="message_no" value="${messageSendDTO.message_no}">&nbsp;
+                            <label for="message_no"><button type="button" class="btn-modal3" data-modal-id3="modal3-${loop.index}">${messageSendDTO.message_title}</button></label>
                         </td>
                         <div id="modal3-${loop.index}" class="modal-overlay3">
                             <div class="modal-window">
-                                <div class="close-area3">X</div>
-                                <div class="modal-header">
-                                </div>
-                                <div class="modal-body">
-                                    <div>제목: ${messageSendDTO.message_title}</div>
-                                    <div>받은 사람: ${messageSendDTO.message_sender}</div>
-                                    <div>보낸 사람: ${messageSendDTO.message_receiver}</div>
-                                    <div>날짜: ${messageSendDTO.message_date}</div>
-                                    <div>내용: ${messageSendDTO.message_content}</div>
-                                </div>
-                                <div class="modal-footer">
-                                </div>
+                                    <div class="close-area3">X</div>
+                                    <div class="modal-header">
+                                    </div>
+                                    <div class="modal-body">
+                                        <div>제목: ${messageSendDTO.message_title}</div>
+                                        <div>받은 사람: ${messageSendDTO.message_sender}</div>
+                                        <div>보낸 사람: ${messageSendDTO.message_receiver}</div>
+                                        <div>날짜: ${messageSendDTO.message_date}</div>
+                                        <div>내용: ${messageSendDTO.message_content}</div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="submit">삭제</button>
+                                        <button type="button" class="close-area3">목록</button>
+                                    </div>
+                                </form>
                             </div>
                         </div>
-                            <td class="col-2">${messageSendDTO.message_receiver}</td>
-                            <td class="col-3"><fmt:formatDate value="${messageSendDTO.message_date}" pattern="yyyy-MM-dd HH:mm"/></td>
-                        </td>
+                        <td class="col-2">${messageSendDTO.message_receiver}</td>
+                        <td class="col-3"><fmt:formatDate value="${messageSendDTO.message_date}" pattern="yyyy-MM-dd HH:mm"/></td>
                     </tr>
                 </c:forEach>
                 </tbody>

@@ -28,12 +28,11 @@ public interface MessageDAO {
     /* 메시지 작성 (내용)*/
     int insertContentMessage(Map<String,Object> map);
 
-
     /* 메시지 삭제 (수신함) */
-//    int deleteReceiveMessage();
+    int deleteReceiveMessage(int message_no);
 
     /* 메시지 삭제 (발신함) */
-//    int deleteSendMessage();
+    int deleteSendMessage(int message_no);
 
 
 }

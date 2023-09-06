@@ -44,8 +44,6 @@ public class MessageController {
         List<MemberDTO> messageMemberDTO = messageService.selectMessageMemList();
         model.addAttribute("messageMemberDTO",messageMemberDTO);
 
-        System.out.println(messageRecDTO);
-
         return "/message/messageList";
 
     }
@@ -84,24 +82,32 @@ public class MessageController {
     }
 
     /* 메시지 삭제 (수신함) */
-    //   @Override
-/*
-    public int deleteReceiveMessage(){
-        return 0;
+    @GetMapping("/deleteRecMsg")
+    public ModelAndView deleteReceiveMessage(@RequestParam List<Integer> message_no, ModelAndView modelAndView){
+
+        int deleteRecMsg = messageService.deleteReceiveMessage(message_no);
+
+        if(deleteRecMsg==1){
+            modelAndView.setViewName("redirect:/message/messageList");
+        } else {
+            modelAndView.setViewName("redirect:/message/messageList");
+        }
+
+        return modelAndView;
     }
-*/
 
     /* 메시지 삭제 (발신함) */
-    //   @Override
-/*
-    public int deleteSendMessage(){
-        return 0;
+    @GetMapping("/deleteSendMsg")
+    public ModelAndView deleteSendMessage(@RequestParam List<Integer> message_no, ModelAndView modelAndView){
+
+        int deleteSendMsg = messageService.deleteSendMessage(message_no);
+
+        if(deleteSendMsg==1){
+            modelAndView.setViewName("redirect:/message/messageList");
+        } else {
+            modelAndView.setViewName("redirect:/message/messageList");
+        }
+
+        return modelAndView;
     }
-*/
-
-
-
-
-
-
 }
