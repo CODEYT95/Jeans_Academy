@@ -44,13 +44,15 @@ public class MessageController {
         List<MemberDTO> messageMemberDTO = messageService.selectMessageMemList();
         model.addAttribute("messageMemberDTO",messageMemberDTO);
 
+        System.out.println(messageRecDTO);
+
         return "/message/messageList";
 
     }
 
     /* 메시지 상세 조회 */
-    @GetMapping("/read/{message_no}")
-    public String readMessage(@PathVariable("message_no") int message_no, Model model) {
+    @GetMapping("/read")
+    public String readMessage(@RequestParam int message_no, Model model) {
         MessageDTO messageDTO = messageService.selectMessageDetail(message_no);
         model.addAttribute("messageDTO",messageDTO);
         return "/message/messageList";

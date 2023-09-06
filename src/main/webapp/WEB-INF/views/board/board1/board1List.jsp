@@ -139,7 +139,7 @@
                         <div>
                             <!-- 반이 같을 경우에만 조회가능하도록 처리-->
                             <c:if test="${member_class.equals('1반') || member_type.equals('관리자') || member_type.equals('강사님')}">
-                            <button type="button" class="box-button" onclick="location.href='/board1/detail/${board1List.board1_no}'">상세</button>
+                                <button type="button" class="box-button" onclick="location.href='/board1/detail/${board1List.board1_no}'">상세</button>
                             </c:if>
                         </div>
                         <div>
