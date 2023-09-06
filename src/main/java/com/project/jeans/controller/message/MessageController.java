@@ -85,6 +85,12 @@ public class MessageController {
     @GetMapping("/deleteRecMsg")
     public ModelAndView deleteReceiveMessage(@RequestParam List<Integer> message_no, ModelAndView modelAndView){
 
+        System.out.println(message_no.get(0));
+
+        if(message_no.isEmpty() || message_no.get(0) == null){
+            return new ModelAndView("redirect:/message/messageList");
+        }
+
         int deleteRecMsg = messageService.deleteReceiveMessage(message_no);
 
         if(deleteRecMsg==1){
@@ -99,6 +105,10 @@ public class MessageController {
     /* 메시지 삭제 (발신함) */
     @GetMapping("/deleteSendMsg")
     public ModelAndView deleteSendMessage(@RequestParam List<Integer> message_no, ModelAndView modelAndView){
+
+        if(message_no.isEmpty() || message_no.get(0) == null){
+            return new ModelAndView("redirect:/message/messageList");
+        }
 
         int deleteSendMsg = messageService.deleteSendMessage(message_no);
 
