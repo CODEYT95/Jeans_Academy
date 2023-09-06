@@ -41,7 +41,7 @@
             <div class="write-title">
                 <label>
                     <h2>제목</h2>
-                    <h4>by ${board1DTO.member_name}</h4>
+                    <h4>by ${board1DTO.member_id}</h4>
                     <textarea name="board1_title" readonly>${board1DTO.board1_title}</textarea>
                 </label>
 
