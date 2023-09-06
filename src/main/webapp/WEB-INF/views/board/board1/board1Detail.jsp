@@ -3,7 +3,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <html xmlns:c="http://java.sun.com/JSP/Page">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8">z
     <title>메시지 수신함</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
@@ -75,16 +75,6 @@
                                 <td class="col-1"><c:out value="${comment1DTO.comment1_content}"/></td>
                                 <td class="col-2"><c:out value="${comment1DTO.member_id}"/></td>
                                 <td class="col-3"><fmt:formatDate value="${comment1DTO.comment1_regdate}" pattern="yyyy-MM-dd HH:mm"/></td>
-                                <td class="col-4">
-                                    <form action="/comment1/delete" method="post">
-                                        <input type="hidden" name="comment1_no" value="${comment1DTO.comment1_no}"/>
-                                        <input type="hidden" name="board1_no" value="${board1DTO.board1_no}"/>
-                                        <!-- 관리자와 댓글작성자만 삭제 가능-->
-                                        <c:if test="${memberDTO.member_id == comment1DTO.member_id || member_type.equals('관리자')}">
-                                            <button type="submit" class="reply-button-sm">삭제</button>
-                                        </c:if>
-                                    </form>
-                                </td >
                                 <label class="item">
                                     <!-- 댓글 작성자만 댓글 수정 가능 -->
                                         <td class="col-4">
@@ -117,6 +107,16 @@
                                         </div>
                                     </div>
                                 </label>
+                                <td class="col-5">
+                                    <form action="/comment1/delete" method="post">
+                                        <input type="hidden" name="comment1_no" value="${comment1DTO.comment1_no}"/>
+                                        <input type="hidden" name="board1_no" value="${board1DTO.board1_no}"/>
+                                        <!-- 관리자와 댓글작성자만 삭제 가능-->
+                                        <c:if test="${memberDTO.member_id == comment1DTO.member_id || member_type.equals('관리자')}">
+                                            <button type="submit" class="reply-button-sm">삭제</button>
+                                        </c:if>
+                                    </form>
+                                </td >
                             </table>
                         </li>
                     </c:forEach>
