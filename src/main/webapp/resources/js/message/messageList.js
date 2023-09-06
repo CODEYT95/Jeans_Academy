@@ -1,7 +1,19 @@
 $(document).ready(function() {
 
+    /* modal창 공통 */
+    $(window).on("keyup", function(e) {
+        if (isModalOn() && e.key === "Escape") {
+            modalOff();
+        }
+        if (isModal2On() && e.key === "Escape") {
+            modal2Off();
+        }
+        if (isModal3On() && e.key === "Escape") {
+            modal3Off();
+        }
+    });
 
-    /* 모달창 */
+    /* Modal1(쪽지 작성) */
     const modal = $("#modal");
     const btnModal = $(".btn-modal");
     const closeBtn = modal.find(".close-area");
@@ -9,23 +21,18 @@ $(document).ready(function() {
     function isModalOn() {
         return modal.css("display") === "none";
     }
-
     function modalOn() {
         modal.css("display", "flex");
     }
-
     function modalOff() {
         modal.css("display", "none");
     }
-
     btnModal.on("click", function() {
         modalOn();
     });
-
     closeBtn.on("click", function() {
         modalOff();
     });
-
     modal.on("click", function(e) {
         const evTarget = $(e.target);
         if (evTarget.hasClass("modal-overlay")) {
@@ -33,9 +40,68 @@ $(document).ready(function() {
         }
     });
 
-    $(window).on("keyup", function(e) {
-        if (isModalOn() && e.key === "Escape") {
-            modalOff();
+    /* Modal2(받은 쪽지함) */
+    var modalList2 = $(".modal-overlay2");
+    const btnModal2 = $(".btn-modal2");
+    const closeBtn2 = modalList2.find(".close-area2");
+
+    function isModal2On() {
+        return modalList2.css("display") === "none";
+    }
+    function modal2On() {
+        modalList2.css("display", "flex");
+    }
+    function modal2Off() {
+        modalList2.css("display", "none");
+    }
+    btnModal2.on("click", function() {
+        const modalId = $(this).data("modal-id2");
+        modalList2 = $("#" + modalId);
+        modal2On();
+    });
+    closeBtn2.on("click", function() {
+        modal2Off();
+    });
+    modalList2.on("click", function(e) {
+        const evTarget = $(e.target);
+        if (evTarget.hasClass("modal-overlay2")) {
+            modal2Off();
         }
     });
+
+    /* Modal3(보낸 쪽지함) */
+    var modalList3 = $(".modal-overlay3");
+    const btnModal3 = $(".btn-modal3");
+    const closeBtn3 = modalList3.find(".close-area3");
+
+    function isModal3On() {
+        return modalList3.css("display") === "none";
+    }
+    function modal3On() {
+        modalList3.css("display", "flex");
+    }
+    function modal3Off() {
+        modalList3.css("display", "none");
+    }
+    btnModal3.on("click", function() {
+        const modalId = $(this).data("modal-id3");
+        modalList3 = $("#" + modalId);
+        modal3On();
+    });
+    closeBtn3.on("click", function() {
+        modal3Off();
+    });
+    modalList3.on("click", function(e) {
+        const evTarget = $(e.target);
+        if (evTarget.hasClass("modal-overlay3")) {
+            modal3Off();
+        }
+    });
+
+});
+
+/* 메시지 수신자 선택 */
+document.getElementById("receiver").addEventListener("change", function () {
+    var selectedValue = this.value;
+    document.querySelector("input[name='message_receiver']").value = selectedValue;
 });

@@ -3,7 +3,6 @@ package com.project.jeans.controller.admin.notice;
 import com.project.jeans.LoginCheckSession;
 import com.project.jeans.domain.admin.notice.dao.NoticeDAO;
 import com.project.jeans.domain.admin.notice.dto.NoticeDTO;
-import com.project.jeans.domain.board.board1.dto.Board1DTO;
 import com.project.jeans.domain.member.dto.MemberDTO;
 import com.project.jeans.service.admin.notice.NoticeService;
 import com.project.jeans.service.member.MemberService;
@@ -11,7 +10,10 @@ import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
@@ -28,6 +30,7 @@ public class NoticeController {
     public ModelAndView noticeList(HttpSession session, Model model) {
         LoginCheckSession loginCheck = new LoginCheckSession(memberService);
         MemberDTO memberInfo = loginCheck.getLoginCheckSession(session, model);
+        System.out.println(memberInfo.getMember_class());
         if (memberInfo == null) {
             // 로그인이 필요한 경우 리디렉션
             return new ModelAndView("redirect:/login");

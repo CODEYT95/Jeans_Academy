@@ -13,7 +13,7 @@ public interface Comment1Service {
     //댓글 입력
     public int writeComment1(Map<String,Object> map);
 
-   //댓글 수정
+    //댓글 수정
     public int updateComment1(Map<String,Object> map);
 
     //댓글 삭제

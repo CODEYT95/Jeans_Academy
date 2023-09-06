@@ -281,19 +281,19 @@ margin-top: 60px;
 /* message-content */
 
 .messageRec--content{
-    margin-top: 22px;
-    margin-bottom: 10px;
-    max-height: 48%;
+    margin-top: 8%;
+    margin-bottom: 5px;
+    max-height: 100%;
     max-width: 100%;
     display: flow-root;
     padding-left: 30px;
     padding-right: 30px;
 }
 
-.messageSend--container{
-    margin-top: 22px;
-    margin-bottom: 10px;
-    max-height: 50%;
+.messageSend--content{
+    margin-top: 5%;
+    margin-bottom: 5px;
+    max-height: 100%;
     max-width: 100%;
     display: flow-root;
     padding-left: 30px;
@@ -318,13 +318,59 @@ th {
     color: #fff;
 }
 
+.col-1 {
+   width: 70%;
+}
 
+.col-2{
+   width: 15%;
+}
 
+.col-3{
+   width: 15%;
+}
 
+.write-button, #send_button{
+    float: right;
+    width: 85px;
+    margin-top: 13px;
+    margin-bottom: 15px;
+    height: 34px;
+    outline: none;
+    border-top-left-radius: 30px 25px;
+    border-top-right-radius: 0px 5px;
+    border-bottom-left-radius: 0px 5px;
+    border-bottom-right-radius: 30px 25px;
+    border: none;
+    background-color: blue ;
+    font-weight: bold;
+    font-size: 15px;
+    color: white;
+    cursor: pointer;
+}
+
+.delete-button{
+    float: right;
+    width: 85px;
+    margin-top: 13px;
+    margin-bottom: 15px;
+    height: 34px;
+    outline: none;
+    border-top-left-radius: 30px 25px;
+    border-top-right-radius: 0px 5px;
+    border-bottom-left-radius: 0px 5px;
+    border-bottom-right-radius: 30px 25px;
+    border: none;
+    background-color: #db6354 ;
+    font-weight: bold;
+    font-size: 15px;
+    color: white;
+    cursor: pointer;
+}
 
 
 /* modal */
-#modal.modal-overlay {
+#modal.modal-overlay, .modal-overlay2, .modal-overlay3  {
   width: 100%;
   height: 108.5%;
   position: absolute;
@@ -338,11 +384,9 @@ th {
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
   backdrop-filter: blur(1.5px);
   -webkit-backdrop-filter: blur(1.5px);
-
-/*  border-radius: 20px; (필요하면)*/
   border: 1px solid rgba(255, 255, 255, 0.18);
 }
-#modal .modal-window {
+#modal .modal-window, .modal-window, .modal-window {
   background: linear-gradient(270deg,#5164da 7%,#FFFFFE 7%);
   box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
   backdrop-filter: blur( 13.5px );
@@ -355,28 +399,27 @@ th {
   top: -100px;
   padding: 10px;
 }
-#modal .title {
+#modal .title, .title, .title {
   padding-left: 10px;
   display: inline;
   text-shadow: 1px 1px 2px gray;
   color: white;
 }
-#modal .title h2 {
+#modal .title h2, .title h2, .title h2 {
   display: inline;
 }
-#modal .close-area {
+#modal .close-area, .close-area2, .close-area3 {
   display: inline;
   float: right;
   padding-right: 10px;
   cursor: pointer;
-  text-shadow: 1px 1px 2px gray;
+  text-shadow: 3px 3px 5px gray;
   color: white;
 }
 
-#modal .content {
+#modal .content, .content, .content {
   margin-top: 20px;
   padding: 0px 10px;
   text-shadow: 1px 1px 2px gray;
   color: white;
 }
-

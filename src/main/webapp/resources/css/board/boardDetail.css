@@ -448,7 +448,7 @@ margin-top: 60px;
     outline: none;
 }
 .reply-content-container{
-margin-bottom: 25px;
+    margin-bottom: 25px;
 }
 .reply-content-container p{
     width: 100%;
@@ -491,15 +491,15 @@ table {
 }
 
 .col-2{
-    width: 20%
+    width: 8%
 }
 
 .col-3{
-    width: 5%
+    width: 12%
 }
 
 .col-4{
-    width: 5%
+    width: 10%
 }
 
 

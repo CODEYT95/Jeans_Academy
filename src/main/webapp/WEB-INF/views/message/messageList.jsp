@@ -12,6 +12,16 @@
     <script type="text/javascript" src="../../../resources/js/message/messageList.js"></script>
     <script type="text/javascript" src="../../../../resources/js/common/sidebar.js"></script>
 
+
+    <script>
+
+
+
+
+    </script>
+
+
+
 </head>
 <body data-member-class="${member_class}">
 <section class="header">
@@ -104,40 +114,43 @@
     </div>
 
     <div class="main--content" >
-        <button type="button" class="btn-modal">쪽지 보내기</button>
 
+        <button type="button" class="btn-modal" id="send_button">쪽지 보내기</button>
         <div id="modal" class="modal-overlay">
             <div class="modal-window">
                 <div class="close-area">X</div>
-                <form action="/" method="post" id="aaa">
-                <div class="modal-header">
-                    <!-- 수신자 작성(수신자 불러오기) -->
-                    <select id="aaa">
-                        <c:forEach items="${messageMemberDTO}" var="msgMemberDTO" varStatus="loop" begin="0">
-                            <option value="${msgMemberDTO.member_name}"> ${msgMemberDTO.member_name}${loop.index + 1}</option>
-                        </c:forEach>
-                    </select>
-                </div>
-                <div class="modal-body">
-                    <!-- 내용 작성 -->
-                        <input type="hidden" name="message_sender" value=""/>
-                        <span>쪽지 제목</span><input type="text" name"message_title"/>
-                        <span>쪽지 내용</span><input type="text" name="message_content"/>
-                </div>
-                <div class="modal-footer">
-                    <!-- 보내기 버튼, 취소(목록) 버튼 -->
-                    <button type="submit">작성</button>
-                    <button type="submit">목록</button>
-                </div>
+                <form action="/message/send" method="post" id="aaa">
+                    <input type="hidden" value="${member_id}" name="member_id">
+                    <div class="modal-header">
+                        <!-- 수신자 작성(수신자 불러오기) -->
+                        <select id="receiver" name="message_receiver">
+                            <c:forEach items="${messageMemberDTO}" var="msgMemberDTO" varStatus="loop" begin="0">
+                                <option value="${msgMemberDTO.member_id}"> ${msgMemberDTO.member_id}</option>
+                            </c:forEach>
+                        </select>
+                    </div>
+                    <div class="modal-body">
+                        <div>
+                            <!-- 내용 작성 -->
+                            <h2>제목</h2><input type="text" name="message_title"/>
+                        </div>
+                        <div>
+                            <h2>내용</h2><input type="text" name="message_content"/>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <!-- 보내기 버튼, 취소(목록) 버튼 -->
+                        <button type="submit" class="write-button">작성</button>
+                        <button type="button" class="list-button" onclick="location.href='/message/messageList'">목록</button>
+                    </div>
                 </form>
             </div>
         </div>
 
-
         <div class="messageRec--content">
+            <form action="/message/deleteRecMsg" method="get">
             <h2>받은 쪽지함</h2>
-            <button type="button" class="#">수정</button>
-            <button type="button" class="#">삭제</button>
+            <button type="submit" class="delete-button">삭제</button>
             <table class="table">
                 <thead>
                     <tr>
@@ -146,25 +159,44 @@
                         <th>날짜</th>
                     </tr>
                 </thead>
-                <c:forEach var="messageRecDTO" items="${messageRecDTO}">
                 <tbody>
+                <c:forEach var="messageRecDTO" items="${messageRecDTO}" varStatus="loop" begin="0">
                     <tr>
-                        <td>
-                            <input type="checkbox" name="box1">&nbsp;
-                            <label for="box1">"${messageRecDTO.message_title}"</label>
+                        <td class="col-1">
+                            <input type="checkbox" name="message_no" value="${messageRecDTO.message_no}"/>
+                            <label for="message_no"><button type="button" class="btn-modal2" data-modal-id2="modal2-${loop.index}">${messageRecDTO.message_title}</button></label>
                         </td>
-                        <td>${messageRecDTO.message_sender}</td>
-                        <td><fmt:formatDate value="${messageRecDTO.message_date}" pattern="yyyy-MM-dd HH:mm"/></td>
+                        <div id="modal2-${loop.index}" class="modal-overlay2">
+                            <div class="modal-window">
+                                    <div class="close-area2">X</div>
+                                    <div class="modal-header">
+                                    </div>
+                                    <div class="modal-body">
+                                        <div>제목: ${messageRecDTO.message_title}</div>
+                                        <div>보낸 사람: ${messageRecDTO.message_receiver}</div>
+                                        <div>받은 사람: ${messageRecDTO.message_sender}</div>
+                                        <div>날짜: ${messageRecDTO.message_date}</div>
+                                        <div>내용: ${messageRecDTO.message_content}</div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="close-area2">목록</button>
+                                    </div>
+                            </div>
+                        </div>
+                        <td class="col-2">${messageRecDTO.message_sender}</td>
+                        <td class="col-3"><fmt:formatDate value="${messageRecDTO.message_date}" pattern="yyyy-MM-dd HH:mm"/></td>
                     </tr>
-                </tbody>
                 </c:forEach>
+                </tbody>
+
             </table>
+            </form>
         </div>
 
         <div class="messageSend--content">
+            <form action="/message/deleteSendMsg" method="get">
             <h2>보낸 쪽지함</h2>
-            <button type="button" class="#">수정</button>
-            <button type="button" class="#">삭제</button>
+            <button type="delete-button" class="delete-button">삭제</button>
             <table>
                 <thead>
                 <tr>
@@ -174,14 +206,33 @@
                 </tr>
                 </thead>
                 <tbody>
-                <c:forEach var="messageSendDTO" items="${messageSendDTO}">
+                <c:forEach var="messageSendDTO" items="${messageSendDTO}" varStatus="loop" begin="0">
                     <tr>
-                        <td>
-                            <input type="checkbox" name="box1">&nbsp;
-                            <label for="box1">"${messageSendDTO.message_title}"</label>
-                            <td>${messageSendDTO.message_receiver}</td>
-                            <td><fmt:formatDate value="${messageSendDTO.message_date}" pattern="yyyy-MM-dd HH:mm"/></td>
+                        <td class="col-1">
+                            <input type="checkbox" name="message_no" value="${messageSendDTO.message_no}">&nbsp;
+                            <label for="message_no"><button type="button" class="btn-modal3" data-modal-id3="modal3-${loop.index}">${messageSendDTO.message_title}</button></label>
                         </td>
+                        <div id="modal3-${loop.index}" class="modal-overlay3">
+                            <div class="modal-window">
+                                    <div class="close-area3">X</div>
+                                    <div class="modal-header">
+                                    </div>
+                                    <div class="modal-body">
+                                        <div>제목: ${messageSendDTO.message_title}</div>
+                                        <div>받은 사람: ${messageSendDTO.message_sender}</div>
+                                        <div>보낸 사람: ${messageSendDTO.message_receiver}</div>
+                                        <div>날짜: ${messageSendDTO.message_date}</div>
+                                        <div>내용: ${messageSendDTO.message_content}</div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="submit">삭제</button>
+                                        <button type="button" class="close-area3">목록</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <td class="col-2">${messageSendDTO.message_receiver}</td>
+                        <td class="col-3"><fmt:formatDate value="${messageSendDTO.message_date}" pattern="yyyy-MM-dd HH:mm"/></td>
                     </tr>
                 </c:forEach>
                 </tbody>
@@ -189,9 +240,7 @@
             </div>
         </div>
 
-
     </div>
-
     </section>
 </body>
 </html>

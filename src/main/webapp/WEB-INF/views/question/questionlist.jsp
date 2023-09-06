@@ -12,6 +12,7 @@ pageEncoding="UTF-8"%>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
     <script type="text/javascript" src="../../../resources/js/question/question.js"></script>
     <script type="text/javascript" src="../../../../resources/js/common/sidebar.js"></script>
+
 </head>
 <body data-member-class="${member_class}">
 <section class="header">
@@ -24,7 +25,7 @@ pageEncoding="UTF-8"%>
         <div class="notification--profile">
             <a href="/message/messageList">
                 <div class="picon chat">
-                    <i class="ri-mail-line" ></i>
+                    <i class="ri-mail-line"></i>
                 </div>
             </a>
             <div class="picon profile">
@@ -117,15 +118,26 @@ pageEncoding="UTF-8"%>
         <div class="box-list">
             <c:forEach items="${questionList}" var="question" varStatus="status">
                 <div class="box box${(status.index % 4) + 1}">
-                    <h2>
-                        <c:out value="${question.question_title}"/>
-                    </h2>
+                    <div class="header-content">
+                    <div class="header-title">
+                        <span>${question.question_title}</span>
+                    </div>
+                        <div class="header-class">
+                            <span>${question.member_class}</span></br>
+                        </div>
+                        <div class="header-name">
+                        <span>${question.member_name}</span></br>
+                    </div>
+                    <div class="header-date">
+                        <span class="postdate" data-timestamp=="${question.question_regdate}"></span></br>
+                    </div>
+                    </div>
                     <span class="clear">
                        ${question.question_content}
                     </span>
-                <c:if test="${status.index % 4 == 3 or status.last}">
-                    <div style="clear: both;"></div>
-                </c:if>
+                    <c:if test="${status.index % 4 == 3 or status.last}">
+                        <div style="clear: both;"></div>
+                    </c:if>
                 </div>
             </c:forEach>
         </div>

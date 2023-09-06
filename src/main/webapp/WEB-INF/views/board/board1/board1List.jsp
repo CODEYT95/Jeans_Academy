@@ -102,7 +102,10 @@
     </div>
     <div class="main--content">
         <div class = "title--container">
+            <!-- 같은 반일 경우에만 글쓰기 처리 -->
+            <c:if test="${member_class.equals('1반') || member_type.equals('관리자') || member_type.equals('강사님')}">
             <button type="button" class="button" onclick="location.href='/board1/write'">글쓰기</button>
+            </c:if>
             <div class="title-content"><h1>1반 게시판입니다</h1></div>
         </div>
         <div class="slide-container">
@@ -113,10 +116,10 @@
                 <input type="radio" name="testimonial" id="t-4">
                 <input type="radio" name="testimonial" id="t-5">
                 <div class="testimonials">
-                    <c:forEach var="board" items="${board1List}" varStatus="loop" begin="0" end="4">
+                    <c:forEach var="notice" items="${noticeList}" varStatus="loop" begin="0" end="4">
                         <label class="item"  for="t-${loop.index + 1}">
-                            <h2><a href="/board1/detail/${board.board1_no}">${board.board1_title}</a></h2>
-                            <h3>${board.board1_content}</h3>
+                            <h2><a href="/noticeDetail/${notice.notice_no}">${notice.notice_title}</a></h2>
+                            <h3>${notice.notice_content}</h3>
                         </label>
                     </c:forEach>
                 </div>
@@ -134,7 +137,10 @@
                 <c:forEach var="board1List" items="${board1List}">
                     <div class="box">
                         <div>
-                            <button type="button" class="box-button" onclick="location.href='/board1/detail/${board1List.board1_no}'">상세</button>
+                            <!-- 반이 같을 경우에만 조회가능하도록 처리-->
+                            <c:if test="${member_class.equals('1반') || member_type.equals('관리자') || member_type.equals('강사님')}">
+                                <button type="button" class="box-button" onclick="location.href='/board1/detail/${board1List.board1_no}'">상세</button>
+                            </c:if>
                         </div>
                         <div>
                             <h1>${board1List.board1_title}</h1>

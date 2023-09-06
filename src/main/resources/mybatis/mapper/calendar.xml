@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.project.jeans.domain.calendar.dao">
+<mapper namespace="com.project.jeans.domain.calendar.dao.CalendarDAO">
     <resultMap type="com.project.jeans.domain.calendar.dto.CalendarDTO" id="calendarResultMap">
         <result property="start" column="start1"/>
         <result property="end" column="end1"/>
@@ -9,12 +9,16 @@
 
     <select id="calenList" resultMap="calendarResultMap">
         SELECT id, title,
-        DATE_FORMAT(start_date, '%Y-%m-%dT%H:%i:%s') AS start1,
-        DATE_FORMAT(end_date, '%Y-%m-%dT%H:%i:%s') AS end1,
-        all_day AS allDay,
+        DATE_FORMAT(start, '%Y-%m-%dT%H:%i:%s') as start1,
+        DATE_FORMAT(end, '%Y-%m-%dT%H:%i:%s') as end1,
+        allday,
         text_color AS textColor,
         background_color AS backgroundColor,
         border_color AS borderColor
         FROM calendar
     </select>
+    <insert id="insertPlan" parameterType="com.project.jeans.domain.calendar.dto.CalendarDTO">
+        INSERT INTO calendar (title, start, end, allDay)
+        VALUES (#{title}, #{start} , #{end} ,#{allday})
+    </insert>
 </mapper>
