@@ -31,37 +31,39 @@ public class AdminController {
         }
         String category = "admin";
         model.addAttribute("category", category);
-        model.addAttribute("member_name",memberInfo.getMember_name());
-        model.addAttribute("member_class",memberInfo.getMember_class());
-        model.addAttribute("member_type",memberInfo.getMember_type());
+        model.addAttribute("member_name", memberInfo.getMember_name());
+        model.addAttribute("member_class", memberInfo.getMember_class());
+        model.addAttribute("member_type", memberInfo.getMember_type());
 
-        PageCreate pageCreate  = new PageCreate();
-        pageCreate.setPaging(pageDTO);
-        pageCreate.setArticleTotalCount(memberService.getShowMemberCount(pageDTO));
-
-        PageCreate pageCreateHidden = new PageCreate();
-        pageCreateHidden.setPaging(pageDTO);
-        pageCreateHidden.setArticleTotalCount(memberService.getHiddenMemberCount(pageDTO));
-
-        PageCreate pageCreateAccept = new PageCreate();
-        pageCreateAccept.setPaging(pageDTO);
-        pageCreateAccept.setArticleTotalCount(memberService.getNoAcceptMemberCount(pageDTO));
-
-
-        //목록 조회
+        // 목록 조회
         List<MemberDTO> showMembers = memberService.getShowMember(pageDTO);
         List<MemberDTO> hiddenMembers = memberService.getHiddenMember(pageDTO);
         List<MemberDTO> acceptMembers = memberService.getNoAcceptMember(pageDTO);
 
-        //페이징
+        // 각 페이지별 페이징 처리를 위한 PageCreate 객체 생성 및 설정
+        PageCreate pageCreateShow = new PageCreate();
+        pageCreateShow.setPaging1(pageDTO);
+        pageCreateShow.setArticleTotalCount1(memberService.getShowMemberCount(pageDTO));
+
+
+        PageCreate pageCreateAccept = new PageCreate();
+        pageCreateAccept.setPaging2(pageDTO); // 다른 PageDTO를 사용하므로 setPaging2 호출
+        pageCreateAccept.setArticleTotalCount2(memberService.getNoAcceptMemberCount(pageDTO));
+
+        PageCreate pageCreateHidden = new PageCreate();
+        pageCreateHidden.setPaging3(pageDTO); // 다른 PageDTO를 사용하므로 setPaging3 호출
+        pageCreateHidden.setArticleTotalCount3(memberService.getHiddenMemberCount(pageDTO));
+
+        // 각 페이지별 모델에 추가
         model.addAttribute("showMembers", showMembers);
-        model.addAttribute("pageCreate",pageCreate);
+        model.addAttribute("pageCreateShow", pageCreateShow);
+
+        model.addAttribute("acceptMembers", acceptMembers);
+        model.addAttribute("pageCreateAccept", pageCreateAccept);
 
         model.addAttribute("hiddenMembers", hiddenMembers);
         model.addAttribute("pageCreateHidden", pageCreateHidden);
 
-        model.addAttribute("acceptMembers", acceptMembers);
-        model.addAttribute("pageCreateAccept", pageCreateAccept);
         return "admin/memberList";
     }
 
