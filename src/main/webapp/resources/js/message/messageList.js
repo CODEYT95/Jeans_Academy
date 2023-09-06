@@ -105,3 +105,20 @@ document.getElementById("receiver").addEventListener("change", function () {
     var selectedValue = this.value;
     document.querySelector("input[name='message_receiver']").value = selectedValue;
 });
+
+/* 삭제 버튼 눌렀을 때 null값 방지 */
+function checkData() {
+    var checkbox = document.getElementsByName("message_no");
+    var checked = false;
+    for (var i = 0; i < checkbox.length; i++) {
+        if (checkbox[i].checked) {
+            checked = true;
+            break;
+        }
+    }
+    if (!checked) {
+        alert("삭제할 내용을 선택해주세요.");
+        return false;
+    }
+    return true;
+}

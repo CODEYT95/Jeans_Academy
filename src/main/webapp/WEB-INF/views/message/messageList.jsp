@@ -51,7 +51,7 @@
         <div class="messageRec--content">
             <form action="/message/deleteRecMsg" method="get">
             <h2>받은 쪽지함</h2>
-            <button type="submit" class="delete-button">삭제</button>
+            <button type="submit" class="delete-button" onclick="return checkData()">삭제</button>
             <table class="table">
                 <thead>
                     <tr>
@@ -97,7 +97,7 @@
         <div class="messageSend--content">
             <form action="/message/deleteSendMsg" method="get">
             <h2>보낸 쪽지함</h2>
-            <button type="delete-button" class="delete-button">삭제</button>
+            <button type="delete-button" class="delete-button" onclick="return checkData()">삭제</button>
             <table>
                 <thead>
                 <tr>

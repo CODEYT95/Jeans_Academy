@@ -83,9 +83,7 @@ public class MessageController {
 
     /* 메시지 삭제 (수신함) */
     @GetMapping("/deleteRecMsg")
-    public ModelAndView deleteReceiveMessage(@RequestParam List<Integer> message_no, ModelAndView modelAndView){
-
-        System.out.println(message_no.get(0));
+    public ModelAndView deleteReceiveMessage(@PathVariable int check, @RequestParam List<Integer> message_no, ModelAndView modelAndView){
 
         if(message_no.isEmpty() || message_no.get(0) == null){
             return new ModelAndView("redirect:/message/messageList");
