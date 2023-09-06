@@ -1,5 +1,6 @@
 package com.project.jeans.service.member;
 
+import com.project.jeans.domain.common.paging.dto.PageDTO;
 import com.project.jeans.domain.member.dao.MemberDAO;
 import com.project.jeans.domain.member.dto.MemberDTO;
 import lombok.RequiredArgsConstructor;
@@ -17,18 +18,7 @@ public class MemberServiceImpl implements MemberService{
     @Autowired
     private final MemberDAO memberDAO;
 
-    //현재 회원 조회
-    @Override
-    public List<HashMap<String, Object>> getShowMember(HashMap<String, Object> map) {
-        return memberDAO.getShowMember(map);
-    }
-
-    //탈퇴 회원 조회
-    @Override
-    public List<HashMap<String, Object>> getHiddenMember(HashMap<String, Object> map) {
-        return memberDAO.getHiddenMember(map);
-    }
-
+    /*회원가입 관련------------------------------------------------------*/
     //수강생 회원가입
     @Override
     public int insertStudent(MemberDTO memberDTO) {
@@ -39,41 +29,6 @@ public class MemberServiceImpl implements MemberService{
     @Override
     public int insertTeacher(MemberDTO memberDTO) {
         return memberDAO.insertTeacher(memberDTO);
-    }
-
-    //회원 타입 조회
-    @Override
-    public String memberType(String member_id) {
-        return memberDAO.memberType(member_id);
-    }
-
-    //수강생 로그인 처리
-    @Override
-    public int loginStudent(MemberDTO memberDTO) {
-        return memberDAO.loginStudent(memberDTO);
-    }
-
-    @Override
-    public String findId(MemberDTO memberDTO) {
-        return memberDAO.findId(memberDTO);
-    }
-
-    //강사님 로그인 처리
-    @Override
-    public int loginTeacher(MemberDTO memberDTO) {
-        return memberDAO.loginTeacher(memberDTO);
-    }
-
-    //정보 가져오기
-    @Override
-    public MemberDTO getMemberInfo(String member_id) {
-        return memberDAO.getMemberInfo(member_id);
-    }
-
-    //요청 처리중인 회원 조회
-    @Override
-    public int noAccept(String member_id) {
-        return memberDAO.noAccept(member_id);
     }
 
     //아이디 중복체크
@@ -105,10 +60,80 @@ public class MemberServiceImpl implements MemberService{
         return memberDAO.codeCheck(code);
     }
 
+
+    /*로그인 관련---------------------------------------------------------*/
+    //회원 타입 조회
+    @Override
+    public String memberType(String member_id) {
+        return memberDAO.memberType(member_id);
+    }
+
+    //수강생 로그인 처리
+    @Override
+    public int loginStudent(MemberDTO memberDTO) {
+        return memberDAO.loginStudent(memberDTO);
+    }
+
+    //요청 처리중인 회원 조회
+    @Override
+    public int noAccept(String member_id) {
+        return memberDAO.noAccept(member_id);
+    }
+
+    //id찾기
+    @Override
+    public String findId(MemberDTO memberDTO) {
+        return memberDAO.findId(memberDTO);
+    }
+
+    //강사님 로그인 처리
+    @Override
+    public int loginTeacher(MemberDTO memberDTO) {
+        return memberDAO.loginTeacher(memberDTO);
+    }
+
+    //정보 가져오기(세션)
+    @Override
+    public MemberDTO getMemberInfo(String member_id) {
+        return memberDAO.getMemberInfo(member_id);
+    }
+
+
+    /*관리자 관련---------------------------------------------------------*/
+    //현재 회원 조회
+
+    @Override
+    public List<MemberDTO> getShowMember(PageDTO pageDTO) {
+        return memberDAO.getShowMember(pageDTO);
+    }
+    //현재 회원 수
+    @Override
+    public int getShowMemberCount(PageDTO pageDTO) {
+        return memberDAO.getShowMemberCount(pageDTO);
+    }
+
+    //탈퇴 회원 조회
+    @Override
+    public List<MemberDTO> getHiddenMember(PageDTO pageDTO) {
+        return memberDAO.getHiddenMember(pageDTO);
+    }
+
+    //탈퇴회원 수
+    @Override
+    public int getHiddenMemberCount(PageDTO pageDTO) {
+        return memberDAO.getHiddenMemberCount(pageDTO);
+    }
+
     //회원 가입 요청 회원 조회
     @Override
-    public List<HashMap<String, Object>> getNoAccept(HashMap<String, Object> map) {
-        return memberDAO.getNoAccept(map);
+    public List<MemberDTO> getNoAcceptMember(PageDTO pageDTO) {
+        return memberDAO.getNoAcceptMember(pageDTO);
+    }
+
+    //요청 회원 수
+    @Override
+    public int getNoAcceptMemberCount(PageDTO pageDTO) {
+        return memberDAO.getNoAcceptMemberCount(pageDTO);
     }
 
     //회원 가입 요청 처리
