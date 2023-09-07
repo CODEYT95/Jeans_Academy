@@ -56,7 +56,7 @@ pageEncoding="UTF-8"%>
             </li>
             <li>
                 <a href="/map" id="${category == 'map' ? 'active--link' : ''}">
-                    <span class="icon icon-8"><i class="ri-questionnaire-line" style="${category == 'board4' ? 'color:white;' : ''}"></i></span>
+                    <span class="icon icon-8"><i class="ri-map-fill" style="${category == 'board4' ? 'color:white;' : ''}"></i></span>
                     <span class="sidebar--item">찾아오시는 길</span>
                 </a>
             </li>

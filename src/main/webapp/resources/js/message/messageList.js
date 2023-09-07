@@ -100,6 +100,7 @@ $(document).ready(function() {
 
 });
 
+/* 받는 사람 리스트 (그룹별) */
 $(document).ready(function(){
     $(".member_class").on('change',function(){
         let byClass = document.getElementById("member_class").value;
