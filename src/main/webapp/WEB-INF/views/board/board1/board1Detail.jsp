@@ -22,15 +22,15 @@
                 <form action="/board1/delete" method="get">
                     <!-- 본인이 작성한 게시물만 삭제 가능 처리 -->
                     <input type="hidden" name="board1_no" value="${board1DTO.board1_no}"/>
-                    <c:if test="${memberDTO.member_id == board1DTO.member_id || member_type.equals('관리자')}">
+                    <c:if test="${member_id == board1DTO.member_id || member_type.equals('관리자')}">
                     <button type="submit" class="main-del-button">삭제</button>
                     </c:if>
                 </form>
                 <form action="/board1/modify" method="get">
                     <!-- 본인이 작성한 게시물만 수정 가능 처리 -->
                     <input type="hidden" name="board1_no" value="${board1DTO.board1_no}"/>
-                    <c:if test="${memberDTO.member_id == board1DTO.member_id}">
-                    <button type="submit" class="main-ori-button">수정</button>
+                    <c:if test="${member_id == board1DTO.member_id}">
+                        <button type="submit" class="main-ori-button">수정</button>
                     </c:if>
                 </form>
                 <button type="button" class="main-ori-button" onclick="location.href='/board1/list'">목록</button>
