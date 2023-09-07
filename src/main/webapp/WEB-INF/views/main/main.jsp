@@ -22,7 +22,6 @@ pageEncoding="UTF-8"%>
     <link rel="stylesheet" type="text/css" href="../../../resources/css/main/main.css">
     <link rel="stylesheet" type="text/css" href="../../../resources/css/game/snakeGame.css">
     <script src="../../../resources/js/game/snakeGame.js" defer></script>
-    <script type="text/javascript" src="../../../../resources/js/common/sidebar.js"></script>
     <script type="text/javascript" src="../../../resources/js/main/main.js"></script>
 
 
@@ -141,6 +140,7 @@ pageEncoding="UTF-8"%>
 
                 <div class="board-class">
                             <div class="class-1">
+                                <input type="hidden" class="checkClass1" value="1반">
                                 <a href="/board1/list"><h1>1반</h1></a>
                                 <!-- 게시글 목록 링크 -->
                                 <!-- 1반 게시판 목록 -->
@@ -155,6 +155,7 @@ pageEncoding="UTF-8"%>
 
 
                     <div class="class-2">
+                        <input type="hidden" class="checkClass2" value="2반">
                         <a href="/board2/list"><h1>2반</h1></a>
                         <!-- 게시글 목록 링크 -->
                         <!-- 1반 게시판 목록 -->
@@ -163,9 +164,10 @@ pageEncoding="UTF-8"%>
                                 <li><a href="/board2/detail/${board2Item.board2_no}">${board2Item.board2_title}</a></li>
                             </c:forEach>
                         </ul>
-                    </div>
+                    </div>ㅏ
 
                     <div class="class-3">
+                        <input type="hidden" class="checkClass3" value="3반">
                         <a href="/board3/list"><h1>3반</h1></a>
                         <!-- 게시글 목록 링크 -->
                         <!-- 1반 게시판 목록 -->
@@ -177,6 +179,7 @@ pageEncoding="UTF-8"%>
                     </div>
 
                     <div class="class-4">
+                        <input type="hidden" class="checkClass4" value="4반">
                         <a href="/board4/list"><h1>4반</h1></a>
                         <!-- 게시글 목록 링크 -->
                         <!-- 1반 게시판 목록 -->
