@@ -77,12 +77,12 @@ pageEncoding="UTF-8"%>
                         <div class="list-boxtitle2">내가 작성한 글</div>
                             <div class="b-list2">
 
-                                <c:forEach items="${board}" var="board">
+                                <c:forEach items="${board}" var="writeList">
                                     <div class="boardlist">
-                                        <a href="/board1/detail/${board.board1_no}" class="class1">${board.board1_title}</a>
-                                        <a href="/board2/detail/${board.board2_no}" class="class1">${board.board2_title}</a>
-                                        <a href="/board3/detail/${board.board3_no}" class="class1">${board.board3_title}</a>
-                                        <a href="/board4/detail/${board.board4_no}" class="class1">${board.board4_title}</a>
+                                        <a href="/board1/detail/${writeList.board1_no}" class="class1">${writeList.board1_title}</a>
+                                        <a href="/board2/detail/${writeList.board2_no}" class="class1">${writeList.board2_title}</a>
+                                        <a href="/board3/detail/${writeList.board3_no}" class="class1">${writeList.board3_title}</a>
+                                        <a href="/board4/detail/${writeList.board4_no}" class="class1">${writeList.board4_title}</a>
                                     </div>
                                 </c:forEach>
 
