@@ -29,7 +29,7 @@ pageEncoding="UTF-8"%>
                         <h3 class="board-title">제목</h3>
                         <h3 class="board-writer">작성자</h3>
                         <h3 class="board-reg">작성날짜</h3>
-                        <h3 class="board-count">조회수</h3>
+                        <h3 class="board-count">조회수1</h3>
                     </div>
                 </header>
                 <ul>
