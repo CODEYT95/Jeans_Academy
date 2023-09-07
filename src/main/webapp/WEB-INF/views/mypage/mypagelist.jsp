@@ -11,10 +11,7 @@ pageEncoding="UTF-8"%>
     <link rel="stylesheet" type="text/css" href="../../../resources/css/mypage/mypage.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.css" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
-    <script type="text/javascript" src="../../../../resources/js/common/sidebar.js"></script>
     <script type="text/javascript" src="../../../resources/js/mypage/mypage.js"></script>
-
-
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             document.getElementById('attendance-button').addEventListener('click', function() {

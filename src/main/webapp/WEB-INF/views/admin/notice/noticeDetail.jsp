@@ -6,12 +6,11 @@ pageEncoding="UTF-8"%>
 <head>
     <meta charset="UTF-8">
     <title>공지사항</title>
+    <script type="text/javascript" src="../../../../resources/js/admin/notice/noticeDetail.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"/>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
     <link rel="stylesheet" type="text/css" href="../../../../resources/css/admin/notice/noticeDetail.css">
-    <script type="text/javascript" src="../../../../resources/js/admin/notice/noticeDetail.js"></script>
-    <script type="text/javascript" src="../../../../resources/js/common/sidebar.js"></script>
 </head>
 <body data-member-class="${member_class}" data-category="${category}">
 <%@ include file="/WEB-INF/views/common/header.jsp"%>
@@ -24,7 +23,7 @@ pageEncoding="UTF-8"%>
               <div id="myModal" class="modal">
                 <div class="modal-content">
                     <span class="close">&times;</span>
-                    <p>정말 삭제하시겠습니까???</p>
+                    <p>정말 삭제하시겠습니까?</p>
                     <!-- 삭제 확인 및 취소 버튼 -->
                     <div class="confirm-container">
                       <button id="confirmDelete">확인</button>
@@ -39,7 +38,7 @@ pageEncoding="UTF-8"%>
                 <div class="write-title">
                     <label>
                         <span>제목</span>
-                        <textarea name="title"></textarea>
+                        <textarea name="title">${noticeDetail.notice_title}</textarea>
                     </label>
                 </div>
             </div>
@@ -47,7 +46,7 @@ pageEncoding="UTF-8"%>
                 <c:if test="${not empty noticeDetail}">
                     <div class="write-content">
                         <span class="content-label">내용</span>
-                        <div class="content" contenteditable="false" >${noticeDetail.notice_title}</div>
+                        <div class="content" contenteditable="false">${noticeDetail.notice_content}</div>
                     </div>
                 </c:if>
                 <input type="button" class="insert-reply" value="댓글 등록">

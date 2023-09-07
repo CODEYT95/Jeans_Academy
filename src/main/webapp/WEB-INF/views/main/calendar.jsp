@@ -11,7 +11,6 @@
     <script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.8.0/main.min.js'></script>
     <!-- fullcalendar 언어 CDN -->
     <script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.8.0/locales-all.min.js'></script>
-    <script type="text/javascript" src="../../../../resources/js/common/sidebar.js"></script>
     <style>
         /* body 스타일 */
         body {

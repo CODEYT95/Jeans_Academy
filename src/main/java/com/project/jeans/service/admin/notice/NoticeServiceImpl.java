@@ -40,6 +40,8 @@ public class NoticeServiceImpl implements NoticeService {
     public int insertNotice(NoticeDTO noticeDTO) {
         return noticeDAO.insertNotice(noticeDTO);
     }
+    //
+    public int recentWrite(String member_id){return noticeDAO.recentWrite(member_id);}
 
     //공지사항 isShow 'N'으로 바꾸기
     @Override

@@ -26,6 +26,7 @@
         WHERE notice_no = #{notice_no};
         ]]>
     </select>
+    <!--공지사항 조회수-->
     <update id="noticeCountUp" parameterType="Integer">
         UPDATE notice
         SET notice_count = notice_count + 1
@@ -39,14 +40,22 @@
         WHERE notice_no = #{notice_no};
         ]]>
     </select>
-
     <!--공지사항 INSERT-->
     <insert id="insertNotice" parameterType="com.project.jeans.domain.admin.notice.dto.NoticeDTO">
         <![CDATA[
-        INSERT INTO notice (notice_title, notice_content
-        VALUES (#{notice_title}, #{notice_content});
+        INSERT INTO notice (member_id, notice_title, notice_content)
+        VALUES (#{member_id}, #{notice_title}, #{notice_content});
         ]]>
     </insert>
+    <select id="recentWrite" parameterType="String" resultType="Integer">
+        <![CDATA[
+        SELECT notice_no
+        FROM notice
+        WHERE member_id = #{member_id}
+        ORDER BY notice_regdate DESC
+        LIMIT 1;
+        ]]>
+    </select>
     <!--공지사항 isShow-->
     <update id="isShowNotice" parameterType="Integer">
         <![CDATA[
