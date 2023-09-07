@@ -11,7 +11,6 @@ pageEncoding="UTF-8"%>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
     <link rel="stylesheet" type="text/css" href="../../../../resources/css/admin/notice/noticeDetail.css">
     <script type="text/javascript" src="../../../../resources/js/admin/notice/noticeDetail.js"></script>
-    <script type="text/javascript" src="../../../../resources/js/common/sidebar.js"></script>
 </head>
 <body data-member-class="${member_class}" data-category="${category}">
 <%@ include file="/WEB-INF/views/common/header.jsp"%>
@@ -35,21 +34,22 @@ pageEncoding="UTF-8"%>
             </div>
             <button class="delete">삭제</button>
             <button class="edit">수정</button>
+            <c:if test="${not empty noticeDetail}">
             <div class="title-container">
                 <div class="write-title">
                     <label>
                         <span>제목</span>
-                        <textarea name="title"></textarea>
+                        <textarea name="title">${noticeDetail.notice_title}</textarea>
                     </label>
                 </div>
-            </div>
-            <div class="content-container">
-                <c:if test="${not empty noticeDetail}">
+
                     <div class="write-content">
                         <span class="content-label">내용</span>
-                        <div class="content" contenteditable="false" >${noticeDetail.notice_title}</div>
+                        <div class="content" contenteditable="false" >${noticeDetail.notice_content}</div>
                     </div>
-                </c:if>
+            </div>
+            </c:if>
+            <div class="content-container">
                 <input type="button" class="insert-reply" value="댓글 등록">
             </div>
             <div class="reply-container">
@@ -75,5 +75,4 @@ pageEncoding="UTF-8"%>
             </div>
         </div>
     </div>
-
 </body>

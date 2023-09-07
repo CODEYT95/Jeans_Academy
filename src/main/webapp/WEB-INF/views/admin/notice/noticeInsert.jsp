@@ -10,7 +10,6 @@ pageEncoding="UTF-8"%>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
     <link rel="stylesheet" type="text/css" href="../../../../resources/css/admin/notice/noticeInsert.css">
     <script type="text/javascript" src="../../../../resources/js/admin/notice/noticeInsert.js"></script>
-    <script type="text/javascript" src="../../../../resources/js/common/sidebar.js"></script>
 </head>
 <body data-member-class="${member_class}" data-category="${category}">
 <%@ include file="/WEB-INF/views/common/header.jsp"%>
