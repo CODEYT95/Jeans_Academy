@@ -86,6 +86,18 @@ public class MemberServiceImpl implements MemberService{
         return memberDAO.findId(memberDTO);
     }
 
+    //비밀번호 찾기
+    @Override
+    public String findPw(MemberDTO memberDTO) {
+        return memberDAO.findPw(memberDTO);
+    }
+
+    //비밀번호 수정
+    @Override
+    public int updatePw(MemberDTO memberDTO) {
+        return memberDAO.updatePw(memberDTO);
+    }
+
     //강사님 로그인 처리
     @Override
     public int loginTeacher(MemberDTO memberDTO) {

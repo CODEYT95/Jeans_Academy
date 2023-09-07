@@ -16,20 +16,113 @@ input {
 }
 
 button {
-	border-radius: 20px;
-	border: 1px solid #5073FB;
-	background-color: #5073FB;
-	color: #FFFFFF;
-	font-size: 12px;
-	font-weight: bold;
-	padding: 12px 45px;
-	letter-spacing: 1px;
-	text-transform: uppercase;
-	transition: transform 80ms ease-in;
-    margin-bottom: 20px;
+    border-radius: 10px;
+    border: none;
+    background-color: #9497a1;
+    color: #FFFFFF;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 12px 45px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin: 10px 0 10px 0;
+    transition: transform 80ms ease-in;
 }
-
+#modifyBtn{
+    background-color: #9497a1;
+}
 button:hover {
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.1);
-	cursor:pointer;
+}
+ .modal {
+    display: none;
+    position: fixed;
+    z-index: 999999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.modal-content {
+    position: relative;
+    border-radius: 20px;
+    display: flex;
+    box-shadow: 0px 0px 7px 0px;
+    background-color: #fff;
+    margin-top: 83px;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: space-around;
+    margin-left: auto;
+    height: 155px;
+    margin-right: auto;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    width: 255px;
+    align-items: center;
+}
+
+.close {
+   position:absolute;
+   right:-10px;/*원하는 위치조정*/
+}
+.confirm-container{
+   display: flex;
+   height: 22%;
+   margin-top: 20px;
+   justify-content: space-around;
+}
+#confirmDelete{
+    display: flex;
+    height: 0px;
+    bottom: 10px;
+    position: relative;
+    width: 39%;
+    text-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row-reverse;
+}
+
+a.pw {
+    color: #959ec0;
+    text-decoration: none ;
+}
+
+a.pw :visited {
+    color: #5073FB ;
+}
+
+a.pw:hover{
+    color:#5073FB ;
+}
+
+.result{
+    margin-bottom: 10px;
+}
+
+.eye-icon, .eye-icon2{
+    position: absolute;
+    transform: translateY(0%);
+    display: none;
+    margin-right: 10px;
+    padding: 0px;
+    cursor: pointer;
+}
+
+.eye-icon ion-icon, .eye-icon2 ion-icon{
+    width: 20px;
+    height: 20px;
+}
+
+.passwordCheck, .password{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+#member_pw, #check_new_pw{
+    padding-right: 40px;
 }
