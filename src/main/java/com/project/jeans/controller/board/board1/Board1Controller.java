@@ -86,7 +86,6 @@ public class Board1Controller {
             // 로그인이 필요한 경우 리디렉션
             return "/member/login";
         }
-        System.out.println(memberInfo.getMember_id());
         model.addAttribute("member_id",memberInfo.getMember_id());
         model.addAttribute("member_name",memberInfo.getMember_name());
         model.addAttribute("member_class",memberInfo.getMember_class());
@@ -101,6 +100,8 @@ public class Board1Controller {
     public ModelAndView writeBoard1(HttpSession session, Model model,ModelAndView modelAndView, @RequestParam Map<String,Object> map){
         LoginCheckSession loginCheck = new LoginCheckSession(memberService);
         MemberDTO memberInfo = loginCheck.getLoginCheckSession(session, model);
+
+        System.out.println(memberInfo);
 
         if (memberInfo == null) {
             System.out.println("테스트");

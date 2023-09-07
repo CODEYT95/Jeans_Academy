@@ -32,7 +32,7 @@ public class Board4Controller {
         model.addAttribute("member_type",memberInfo.getMember_type());
 
         System.out.println("수정중(git에서 수정)");
-        return "/board4/board4List";
+        return "/board/board4/board4List";
     }
 
 

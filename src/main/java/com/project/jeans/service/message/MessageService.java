@@ -17,23 +17,20 @@ public interface MessageService {
     /* 메시지 상세 조회 */
     public MessageDTO selectMessageDetail(int message_no);
 
-    /* 메시지 작성(수신자 목록) */
+    /* 메시지 작성 (수신자 목록) */
     public List<MemberDTO> selectMessageMemList();
 
-    /* 메시지 작성(내용 작성 및 보내기)*/
+    /* 메시지 작성 (내용)*/
     public int insertContentMessage(Map<String,Object> map);
 
-
-
-    /* 메시지 작성(1.유저 정보)*/
-//    public int insertUserMessage();
-
-
-
     /* 메시지 삭제 (수신함) */
- //   public int deleteReceiveMessage();
+    public int deleteReceiveMessage(List<Integer> message_no);
 
     /* 메시지 삭제 (발신함) */
- //   public int deleteSendMessage();
+    public int deleteSendMessage(List<Integer> message_no);
+
+    /* 반별 멤버 조회 */
+    public List<MemberDTO> selectMemByClass(String member_class);
+
 
 }
