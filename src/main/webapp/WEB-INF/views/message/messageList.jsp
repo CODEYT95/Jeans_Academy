@@ -140,7 +140,6 @@
                                     <div>내용: ${messageSendDTO.message_content}</div>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="submit">삭제</button>
                                     <button type="button" class="close-area3">목록</button>
                                 </div>
                             </div>
