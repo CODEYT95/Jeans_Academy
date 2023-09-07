@@ -5,7 +5,7 @@ pageEncoding="UTF-8"%>
 <html lang="ko" xmlns:c="http://java.sun.com/JSP/Page" xmlns="http://www.w3.org/1999/html">
 <head>
     <link rel="stylesheet" type="text/css" href="../../../resources/css/common/sidebar.css">
-    <script type="text/javascript" src="../../../../resources/js/common/sidebar.js"></script>
+    <script type="text/javascript" src="../../../resources/js/common/sidebar.js"></script>
     <meta charset="UTF-8">
     <title></title>
 </head>

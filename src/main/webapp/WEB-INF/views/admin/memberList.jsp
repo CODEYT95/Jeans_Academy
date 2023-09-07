@@ -14,7 +14,7 @@
     <style>
     </style>
 </head>
-<body data-member-class="${member_class}">
+<body data-member-class="${member_class}"  data-category="${category}">
 <%@ include file="/WEB-INF/views/common/header.jsp"%>
 <%@ include file="/WEB-INF/views/common/sidebar.jsp"%>
 <div class="main--content">
@@ -110,16 +110,6 @@
                 success: function(data) {
                     $("#showTableBody").empty(); // 기존 데이터 삭제
                     $.each(data.showMembers, function(index, show) {
-                        var formattedDate = new Date(show.member_day).toLocaleDateString(); // 날짜 포맷팅
-                        var newRow = "<tr>" +
-                            "<td>" + show.member_id + "</td>" +
-                            "<td>" + show.member_name + "</td>" +
-                            "<td>" + formattedDate + "</td>" +
-                            "<td>" + show.member_phone + "</td>" +
-                            "<td>" + show.member_type + "</td>" +
-                            "<td>" + show.member_code+ "</td>"+
-                            // ... 추가 필드 및 버튼 등 ...
-                            "</tr>";
                         $("#showTableBody").append(newRow);
                     });
                 },

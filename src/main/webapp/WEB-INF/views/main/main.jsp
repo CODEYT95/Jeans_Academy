@@ -164,7 +164,7 @@ pageEncoding="UTF-8"%>
                                 <li><a href="/board2/detail/${board2Item.board2_no}">${board2Item.board2_title}</a></li>
                             </c:forEach>
                         </ul>
-                    </div>ㅏ
+                    </div>
 
                     <div class="class-3">
                         <input type="hidden" class="checkClass3" value="3반">
