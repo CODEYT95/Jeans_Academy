@@ -1,5 +1,6 @@
 package com.project.jeans.service.board.board4;
 
+import com.project.jeans.domain.board.board1.dto.Board1DTO;
 import com.project.jeans.domain.board.board4.dao.Board4DAO;
 import com.project.jeans.domain.board.board4.dto.Board4DTO;
 import lombok.RequiredArgsConstructor;
@@ -19,6 +20,12 @@ public class Board4ServiceImpl implements Board4Service {
     public List<Board4DTO> getBoard4List(){
         List<Board4DTO> board4DTOList = board4DAO.findBoard4All();
         return board4DTOList;
+    }
+
+    //반별 게시글 4개 조회
+    @Override
+    public List<Board4DTO> findBoard4List() {
+        return board4DAO.findBoard4List();
     }
 
     //반별 게시글 상세 조회

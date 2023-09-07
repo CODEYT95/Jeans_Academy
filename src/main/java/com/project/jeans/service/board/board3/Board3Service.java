@@ -1,5 +1,6 @@
 package com.project.jeans.service.board.board3;
 
+import com.project.jeans.domain.board.board1.dto.Board1DTO;
 import com.project.jeans.domain.board.board3.dto.Board3DTO;
 
 import java.util.List;
@@ -9,6 +10,9 @@ public interface Board3Service {
 
     //반별 게시글 목록 조회
     public List<Board3DTO> getBoard3List();
+
+    //게시글 4개 조회
+    List<Board3DTO> findBoard3List();
 
     //반별 게시글 상세 조회
     public Board3DTO getBoard3Detail(int board3_no);

@@ -11,6 +11,16 @@
         WHERE board4_isshow='Y' ORDER BY board4_no DESC
         ]]>
     </select>
+    <!-- 반별 게시판 목록 4개 조회 -->
+    <select id="findBoard4List" resultType="com.project.jeans.domain.board.board4.dto.Board4DTO">
+        <![CDATA[
+        SELECT board4_no, board4_title, board4_content, board4_regdate, board4_isshow, member_id
+        FROM board4
+        WHERE board4_isshow='Y'
+        ORDER BY board4_no DESC
+        LIMIT 4;
+        ]]>
+    </select>
     <!-- 반별 게시글 상세 조회 -->
     <select id="findBoard4ByNo" resultType="com.project.jeans.domain.board.board4.dto.Board4DTO">
         <![CDATA[
