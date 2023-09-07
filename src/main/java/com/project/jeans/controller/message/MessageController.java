@@ -118,4 +118,13 @@ public class MessageController {
 
         return modelAndView;
     }
+
+    /* 클래스별 멤버 조회 */
+    @ResponseBody
+    @GetMapping("/selectMemByClass")
+    public Object selectMemByClass(@RequestParam("member_class") String member_class){
+        List<MemberDTO> memberByClass = messageService.selectMemByClass(member_class);
+        return memberByClass;
+    }
+
 }

@@ -100,10 +100,33 @@ $(document).ready(function() {
 
 });
 
-/* 메시지 수신자 선택 */
-document.getElementById("receiver").addEventListener("change", function () {
-    var selectedValue = this.value;
-    document.querySelector("input[name='message_receiver']").value = selectedValue;
+$(document).ready(function(){
+    $(".member_class").on('change',function(){
+        let byClass = document.getElementById("member_class").value;
+        if(member_class === ""){
+            document.getElementById("member_class").focus();
+            return;
+        }
+        $.ajax({
+            type:"get",
+            url: "/message/selectMemByClass",
+            data: {member_class: byClass},
+            success:
+                function(response){
+                    var receiver = document.getElementById("receiver");
+                    receiver.innerHTML = "";
+                    for (var i = 0; i < response.length; i++) {
+                        var option = document.createElement("option");
+                        option.value = response[i].member_id;
+                        option.text = response[i].member_id;
+                        receiver.appendChild(option);
+                    }
+                },
+            error:function(request,status,error){
+                alert("에러입니다");
+            }
+        });
+    });
 });
 
 /* 삭제 버튼(수신함) 눌렀을 때 null값 방지 */
@@ -122,3 +145,5 @@ function checkData() {
     }
     return true;
 }
+
+

@@ -77,4 +77,10 @@ public class MessageServiceImpl implements MessageService{
         return 1;
     }
 
+    /* 반별 멤버 조회 */
+    public List<MemberDTO> selectMemByClass(String member_class){
+        List<MemberDTO> memberDTO = messageDAO.selectMemByClass(member_class);
+        return memberDTO;
+    }
+
 }

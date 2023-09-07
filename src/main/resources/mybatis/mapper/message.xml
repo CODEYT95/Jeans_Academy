@@ -67,4 +67,13 @@
         ]]>
     </delete>
 
+    <!-- 반별 멤버 조회 -->
+    <select id="selectMemByClass" parameterType="String" resultType="com.project.jeans.domain.member.dto.MemberDTO">
+        <![CDATA[
+        SELECT member_id, member_class
+        FROM member
+        WHERE member_class = #{member_class}
+        ]]>
+    </select>
+    
 </mapper>

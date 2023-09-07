@@ -29,4 +29,8 @@ public interface MessageService {
     /* 메시지 삭제 (발신함) */
     public int deleteSendMessage(List<Integer> message_no);
 
+    /* 반별 멤버 조회 */
+    public List<MemberDTO> selectMemByClass(String member_class);
+
+
 }
