@@ -7,7 +7,6 @@
     <title></title>
 </head>
 <link rel="stylesheet" type="text/css" href="../../../resources/css/common/header.css">
-<script type="text/javascript" src="../../../../resources/js/common/sidebar.js"></script>
 <body data-member-class="${member_class}" data-category="${category}">
 <section class="header">
     <div class="logo">
