@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <html xmlns:c="http://java.sun.com/JSP/Page" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
@@ -117,6 +118,7 @@
                 <input type="radio" name="testimonial" id="t-5">
                 <div class="testimonials">
                     <c:forEach var="notice" items="${noticeList}" varStatus="loop" begin="0" end="4">
+                        <input type="radio" name="testimonial" id="t-${loop.index + 1}" checked>
                         <label class="item"  for="t-${loop.index + 1}">
                             <h2><a href="/noticeDetail/${notice.notice_no}">${notice.notice_title}</a></h2>
                             <h3>${notice.notice_content}</h3>

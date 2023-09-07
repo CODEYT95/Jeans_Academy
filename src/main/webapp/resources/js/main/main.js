@@ -1,3 +1,16 @@
+
+       $(document).ready(function() {
+               // 각 게시물 항목을 순회하며 제목 정보를 가져와서 표시합니다.
+               $('.box-notice ul li').each(function() {
+                   var title = $(this).data('title'); // 데이터 속성에서 제목 정보 가져오기
+                   if (title) {
+                       // 게시물 항목 아래에 제목 정보를 추가합니다.
+                       $(this).find('.icon').append('<div class="post-title">' + title + '</div>');
+                   }
+               });
+           });
+
+
     $(document).ready(function() {
         let menu = $('.menu');
         let sidebar = $('.sidebar');
@@ -252,4 +265,140 @@
         return("rgb("+c[0]+", "+c[1]+", "+c[2]+")");
     }
 
+
+  //반별로 게시판 권한 주기
+    document.addEventListener("DOMContentLoaded", function() {
+    var member_class = "${member_class}";
+    console.log(member_class);
+
+    // 클릭 이벤트 캔슬 함수
+    function cancelClickEvent(links) {
+    links.forEach(function(link) {
+    link.addEventListener("click", function(event) {
+    event.preventDefault(); // 클릭 이벤트를 캔슬합니다.
+    });
+    });
+    }
+
+    var class1Links = document.querySelectorAll(".class-1 a");
+    var class2Links = document.querySelectorAll(".class-2 a");
+    var class3Links = document.querySelectorAll(".class-3 a");
+    var class4Links = document.querySelectorAll(".class-4 a");
+    var sideClass1 = document.querySelectorAll(".sideBoard1")
+    var sideClass2 = document.querySelectorAll(".sideBoard2")
+    var sideClass3 = document.querySelectorAll(".sideBoard3")
+    var sideClass4 = document.querySelectorAll(".sideBoard4")
+
+
+    if (member_class === "1반") {
+    cancelClickEvent(class2Links);
+    cancelClickEvent(class3Links);
+    cancelClickEvent(class4Links);
+    cancelClickEvent(sideClass2);
+    cancelClickEvent(sideClass3);
+    cancelClickEvent(sideClass4);
+    } else if (member_class === "2반") {
+    cancelClickEvent(class1Links);
+    cancelClickEvent(class3Links);
+    cancelClickEvent(class4Links);
+    cancelClickEvent(sideClass1);
+    cancelClickEvent(sideClass3);
+    cancelClickEvent(sideClass4);
+    } else if (member_class === "3반") {
+    cancelClickEvent(class1Links);
+    cancelClickEvent(class2Links);
+    cancelClickEvent(class4Links);
+    cancelClickEvent(sideClass1);
+    cancelClickEvent(sideClass2);
+    cancelClickEvent(sideClass4);
+    } else if (member_class === "4반") {
+    cancelClickEvent(class1Links);
+    cancelClickEvent(class2Links);
+    cancelClickEvent(class3Links);
+    cancelClickEvent(sideClass1);
+    cancelClickEvent(sideClass2);
+    cancelClickEvent(sideClass3);
+    }
+    });
+
+    // calendar
+           document.addEventListener('DOMContentLoaded', function() {
+         var calendarEl = document.getElementById('calendar');
+         var calendar = new FullCalendar.Calendar(calendarEl, {
+             headerToolbar: {
+                 left: 'prev,next today',
+                 center: 'title',
+                 right: 'dayGridMonth,timeGridWeek,timeGridDay'
+             },
+             initialDate: new Date(),
+             navLinks: true,
+             selectable: true,
+             selectMirror: true,
+             select: function(arg) {
+                    var title = prompt('입력할 일정:');
+                    if (title) {
+                        calendar.addEvent({
+                            title: title,
+                            start: arg.start,
+                            end: arg.end,
+                            allDay: arg.allDay,
+                            backgroundColor: "#FFCDD2",
+                            textColor: "black"
+
+                        });
+
+                        // 입력된 데이터를 서버로 전송
+                         $.ajax({
+                            type: "POST",
+                            url: "/insertPlan?method=data",
+                            data: JSON.stringify({
+                                title: title,
+                                start: arg.start,
+                                end: arg.end,
+                                allDay: arg.allDay
+                            }), // 데이터를 JSON 형식으로 보냄
+                            contentType: "application/json; charset=UTF-8",
+                            dataType: "text",
+                            success: function (response) {
+                                // 성공적으로 서버에 데이터를 전송한 후 실행할 코드
+                            },
+                            error: function () {
+                                // 오류 처리
+                            }
+                        });
+                    }
+                    calendar.unselect();
+                },
+             eventClick: function(arg) {
+                 if (confirm('해당 일정을 정말로 삭제 하시겠습니까?')) {
+                     arg.event.remove();
+                 }
+             },
+
+             editable: true,
+             locale: 'ko', // 한국 날짜 형식으로 설정
+               eventRender: function(info) {
+                var eventTitle = info.event.title;
+                // 이벤트를 렌더링할 때 시간 대신 타이틀을 사용하도록 설정합니다.
+                info.el.innerHTML = eventTitle;
+            },
+             events: function(info, successCallback, failureCallback) {
+
+                 $.ajax({
+                     type: "GET",
+                     url: "/selectPlan?method=data",
+                     dataType: "text",
+                     success: function(response) {
+                     console.log(response);
+                         successCallback(JSON.parse(response));
+                     },
+                     error: function() {
+                         failureCallback();
+                     }
+                 });
+             }
+         });
+
+         calendar.render();
+     });
 

@@ -2,15 +2,15 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.project.jeans.domain.calendar.dao.CalendarDAO">
     <resultMap type="com.project.jeans.domain.calendar.dto.CalendarDTO" id="calendarResultMap">
-        <result property="start" column="start1"/>
-        <result property="end" column="end1"/>
+        <result property="start" column="start"/>
+        <result property="end" column="end"/>
         <!-- 다른 필드들을 여기에 추가 -->
     </resultMap>
 
     <select id="calenList" resultMap="calendarResultMap">
         SELECT id, title,
-        DATE_FORMAT(start, '%Y-%m-%dT%H:%i:%s') as start1,
-        DATE_FORMAT(end, '%Y-%m-%dT%H:%i:%s') as end1,
+        DATE_FORMAT(start, '%Y-%m-%dT%H:%i:%s') as start,
+        DATE_FORMAT(end, '%Y-%m-%dT%H:%i:%s') as end,
         allday,
         text_color AS textColor,
         background_color AS backgroundColor,
@@ -19,6 +19,6 @@
     </select>
     <insert id="insertPlan" parameterType="com.project.jeans.domain.calendar.dto.CalendarDTO">
         INSERT INTO calendar (title, start, end, allDay)
-        VALUES (#{title}, #{start} , #{end} ,#{allday})
+        VALUES (#{title}, DATE_ADD(#{start}, INTERVAL 1 DAY), DATE_ADD(#{end}, INTERVAL 1 DAY), #{allday});
     </insert>
 </mapper>

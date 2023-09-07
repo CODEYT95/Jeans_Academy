@@ -836,4 +836,7 @@ a {
    table {
               text-align: left;
           }
-
+}
+.fc-event-time{
+    display: none;
+}
