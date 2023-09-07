@@ -38,17 +38,13 @@ public class mainController {
 
         if (memberInfo == null) {
             // 로그인이 필요한 경우 리디렉션
-            return "member/login";
+            return "/member/login";
         }
-
-        memberInfo = memberService.getMemberInfo(member_id);
-        if(memberInfo != null){
-            String member_name = memberInfo.getMember_name();
-            String member_class = memberInfo.getMember_class();
-
-            model.addAttribute("member_name", member_name);
-            model.addAttribute("member_class", member_class);
-        }
+        String category = "main";
+        model.addAttribute("category", category);
+        model.addAttribute("member_name",memberInfo.getMember_name());
+        model.addAttribute("member_class",memberInfo.getMember_class());
+        model.addAttribute("member_type",memberInfo.getMember_type());
         /*
         List<NoticeDTO> recentNotices = noticeService.selectFive();
         calendarService.selectCalendar(member_id);

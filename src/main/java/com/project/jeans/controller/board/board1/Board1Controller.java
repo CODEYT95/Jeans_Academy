@@ -1,10 +1,13 @@
 package com.project.jeans.controller.board.board1;
 
 import com.project.jeans.LoginCheckSession;
+import com.project.jeans.domain.admin.notice.dto.NoticeDTO;
 import com.project.jeans.domain.board.board1.dto.Board1DTO;
 import com.project.jeans.domain.board.board1.dto.Comment1DTO;
 import com.project.jeans.domain.member.dto.MemberDTO;
+import com.project.jeans.service.admin.notice.NoticeService;
 import com.project.jeans.service.board.board1.Board1Service;
+import com.project.jeans.service.board.board1.Comment1Service;
 import com.project.jeans.service.board.board1.Comment1ServiceImpl;
 import com.project.jeans.service.member.MemberService;
 import jakarta.servlet.http.HttpSession;
@@ -23,7 +26,8 @@ import java.util.Map;
 public class Board1Controller {
     private final MemberService memberService;
     private final Board1Service board1Service;
-    private final Comment1ServiceImpl comment1ServiceImpl;
+    private final NoticeService noticeService;
+    private final Comment1Service comment1Service;
 
     //(주의) 관리자, 작성자만 UD할 수 있도록 수정해야 함!!!
 
@@ -43,7 +47,8 @@ public class Board1Controller {
             // "1반"이 아니고 "\uD83D\uDC93"도 아닌 경우 리디렉션 또는 처리할 내용 추가
             return "/main/main";
         }
-
+        String category = "board1";
+        model.addAttribute("category", category);
         model.addAttribute("member_name",memberInfo.getMember_name());
         model.addAttribute("member_class",memberInfo.getMember_class());
         model.addAttribute("member_type",memberInfo.getMember_type());
@@ -69,6 +74,8 @@ public class Board1Controller {
             // 로그인이 필요한 경우 리디렉션
             return "/member/login";
         }
+        String category = "board1";
+        model.addAttribute("category", category);
         model.addAttribute("member_name",memberInfo.getMember_name());
         model.addAttribute("member_class",memberInfo.getMember_class());
         model.addAttribute("member_type",memberInfo.getMember_type());
@@ -99,6 +106,8 @@ public class Board1Controller {
             return "/member/login";
         }
         System.out.println(memberInfo.getMember_id());
+        String category = "board1";
+        model.addAttribute("category", category);
         model.addAttribute("member_id", memberInfo.getMember_id());
         model.addAttribute("member_name", memberInfo.getMember_name());
         model.addAttribute("member_class", memberInfo.getMember_class());
@@ -135,15 +144,17 @@ public class Board1Controller {
         LoginCheckSession loginCheck = new LoginCheckSession(memberService);
         MemberDTO memberInfo = loginCheck.getLoginCheckSession(session, model);
 
-        model.addAttribute("member_id", memberInfo.getMember_id());
-        model.addAttribute("member_name", memberInfo.getMember_name());
-        model.addAttribute("member_class", memberInfo.getMember_class());
-        model.addAttribute("member_type", memberInfo.getMember_type());
         if (memberInfo == null) {
             // 로그인이 필요한 경우 리디렉션
             return "redirect:member/login";
         }
 
+        String category = "board1";
+        model.addAttribute("category", category);
+        model.addAttribute("member_id", memberInfo.getMember_id());
+        model.addAttribute("member_name", memberInfo.getMember_name());
+        model.addAttribute("member_class", memberInfo.getMember_class());
+        model.addAttribute("member_type", memberInfo.getMember_type());
         Board1DTO board1DTO = board1Service.getBoard1Detail(board1_no);
         model.addAttribute("board1DTO", board1DTO);
         return "/board/board1/board1Modify";

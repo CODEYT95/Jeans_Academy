@@ -144,7 +144,7 @@
         <![CDATA[
         SELECT * FROM member WHERE member_isshow='Y'
         ORDER BY member_type, member_id
-        LIMIT #{pageNum1} , #{countPerPage1};
+        LIMIT #{pageNum} , #{countPerPage};
         ]]>
     </select>
 
@@ -159,7 +159,7 @@
         <![CDATA[
         SELECT * FROM member WHERE member_isshow='N'
         ORDER BY member_type, member_id
-        LIMIT #{pageNum3} , #{countPerPage3};
+        LIMIT #{pageNum} , #{countPerPage};
         ]]>
     </select>
     <!--탈퇴 회원 수-->
@@ -174,7 +174,7 @@
         <![CDATA[
         SELECT * FROM member WHERE member_accept='N'
         ORDER BY member_type, member_id
-        LIMIT #{pageNum2} , #{countPerPage2};
+        LIMIT #{pageNum} , #{countPerPage};
         ]]>
     </select>
 

@@ -40,7 +40,7 @@ pageEncoding="UTF-8"%>
         });
     </script>
 </head>
-<body data-member-class="${member_class}">
+<body data-member-class="${member_class}" data-category="${category}">
 <%@ include file="/WEB-INF/views/common/header.jsp"%>
 <%@ include file="/WEB-INF/views/common/sidebar.jsp"%>
     <div class="main--content">

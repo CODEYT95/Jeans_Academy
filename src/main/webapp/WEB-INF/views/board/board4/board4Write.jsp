@@ -9,7 +9,7 @@
     <link rel="stylesheet" type="text/css" href="../../../../resources/css/board/boardWrite.css">
     <script type="text/javascript" src="../../../../resources/js/board/boardWrite.js"></script>
 </head>
-<body>
+<body data-member-class="${member_class}" data-category="${category}">
 <%@ include file="/WEB-INF/views/common/header.jsp"%>
 <%@ include file="/WEB-INF/views/common/sidebar.jsp"%>
 <div class="main--content">

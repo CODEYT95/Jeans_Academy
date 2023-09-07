@@ -8,7 +8,7 @@
     <link rel="stylesheet" type="text/css" href="../../../resources/css/message/messageList.css">
     <script type="text/javascript" src="../../../resources/js/message/messageList.js"></script>
 </head>
-<body>
+<body data-member-class="${member_class}" data-category="${category}">
 <%@ include file="/WEB-INF/views/common/header.jsp"%>
 <%@ include file="/WEB-INF/views/common/sidebar.jsp"%>
 

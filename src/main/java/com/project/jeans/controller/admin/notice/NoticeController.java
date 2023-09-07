@@ -71,7 +71,6 @@ public class NoticeController {
         NoticeDTO nreplyDetail = noticeService.nreplyDetail(noticeNo);
 
         // 공지사항 정보를 모델에 추가합니다.
-        model.addAttribute("noticeDTO", noticeDTO);
         model.addAttribute("noticeDetail", noticeDetail);
         model.addAttribute("nreplyDetail",nreplyDetail);
         return "admin/notice/noticeDetail";
