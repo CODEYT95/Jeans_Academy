@@ -27,19 +27,19 @@ pageEncoding="UTF-8"%>
                         <span id="nameError" style="color: red; font-size: 14px;"></span>
                     </div>
                     <div class="form-row form-row-2">
-                        <input type="text" name="member_id" id="id" class="input-text" placeholder="아이디" autocomplete="off">
+                        <input type="text" name="member_id" id="id" class="input-text" placeholder="아이디" autocomplete="off" minlength="3" maxlength="12">
                         <span id="idError" style="color: red; font-size: 14px;"></span>
                     </div>
                     <div class="form-row form-row-3">
                         <div class="password-container">
-                            <input type="password" name="member_pw" id="member_pw" class="input-text" placeholder="비밀번호">
+                            <input type="password" name="member_pw" id="member_pw" class="input-text" placeholder="비밀번호" minlength="6" maxlength="20">
                             <span class="eye-icon"><ion-icon name="eye-outline"></ion-icon></span>
                         </div>
                         <span id="passwordError" style="color: red; font-size: 14px;"></span>
                     </div>
                     <div class="form-row form-row-4">
                         <div class="password-container">
-                            <input type="password" name="member_pw2" id="member_pw2" class="input-text" placeholder="비밀번호 확인">
+                            <input type="password" name="member_pw2" id="member_pw2" class="input-text" placeholder="비밀번호 확인" minlength="6" maxlength="20">
                             <span  class="eye-icon2"><ion-icon name="eye-outline"></ion-icon></span>
                         </div>
                         <span id="passwordMatchError" style="color: red; font-size: 14px;"></span>

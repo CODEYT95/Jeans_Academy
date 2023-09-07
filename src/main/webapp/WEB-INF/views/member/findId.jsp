@@ -7,10 +7,10 @@ pageEncoding="UTF-8"%>
     <title>jeans|FindId</title>
     <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
     <link rel="stylesheet" type="text/css" href="../../../resources/css/member/find.css">
-    <script type="text/javascript" src="../../../resources/js/member/find.js"></script>
+    <script type="text/javascript" src="../../../resources/js/member/findId.js"></script>
 </head>
 <body>
-<h1>Id 찾기</h1>
+<h1>아이디 찾기</h1>
 <div>
     <form method="post" action="/findId" id="findForm">
     <input type="text" id="member_name" name="member_name" placeholder="이름을 입력해주세요.">
@@ -20,6 +20,9 @@ pageEncoding="UTF-8"%>
         </div>
     </form>
 </div>
-🔍  <span id="result"></span>
+<div class="result">
+🔍  <span id="result"></span><br>
+</div>
+<span><a href="/findPw" class="pw">비밀번호 찾기</a></span>
 </body>
 </html>

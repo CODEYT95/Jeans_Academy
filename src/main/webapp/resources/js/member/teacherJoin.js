@@ -95,7 +95,7 @@
             }
 
             // 정규식을 이용하여 아이디 형식 체크
-            if (!/^[a-zA-Z0-9]{6,20}$/.test(member_id)) {
+            if (!/^[a-zA-Z0-9]{3,12}$/.test(member_id)) {
                 $("#idError").text("영어와 숫자를 조합한 6~20자를 입력해주세요.").css("color", "red");
                 return;
             }
@@ -138,7 +138,7 @@
         });
             $("#member_pw").keyup(function() {
                 var password = $(this).val();
-                var validPassword = /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[@#$%^&+=!]).{8,25}$/;
+                var validPassword = /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[@#$%^&+=!]).{6,20}$/;
 
                 if (!validPassword.test(password)) {
                     $("#passwordError").text("영어, 숫자, @#$%^&+=! 를 조합한 8~25자 비밀번호를 입력해주세요.").css("color", "red");

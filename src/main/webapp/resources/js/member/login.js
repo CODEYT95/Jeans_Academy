@@ -155,10 +155,13 @@
             });
         });
 
-    function new_window() {
-      window.open(
-        "find",
-        "findId",
-        "width=400, height=300, top=400, left=750"
-      );
-    }
+function new_window(type) {
+  let windowName = type;
+  let left = (type === 'findId') ? 750 : 850;
+
+  window.open(
+    "/" + type,  // URL 수정
+    windowName,
+    "width=400, height=350, top=400, left=" + left
+  );
+}

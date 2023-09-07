@@ -7,19 +7,12 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
     <link rel="stylesheet" type="text/css" href="../../../resources/css/message/messageList.css">
     <script type="text/javascript" src="../../../resources/js/message/messageList.js"></script>
-
-    <script>
-
-    </script>
-
-
 </head>
 <body>
 <%@ include file="/WEB-INF/views/common/header.jsp"%>
 <%@ include file="/WEB-INF/views/common/sidebar.jsp"%>
 
 <div class="main--content" >
-
     <button type="button" class="btn-modal" id="send_button">쪽지 보내기</button>
     <div id="modal" class="modal-overlay">
         <div class="modal-window">
@@ -140,7 +133,6 @@
                                     <div>내용: ${messageSendDTO.message_content}</div>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="submit">삭제</button>
                                     <button type="button" class="close-area3">목록</button>
                                 </div>
                             </div>

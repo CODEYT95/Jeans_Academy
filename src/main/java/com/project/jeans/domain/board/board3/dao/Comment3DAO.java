@@ -11,12 +11,8 @@ import java.util.Map;
 @Mapper
 public interface Comment3DAO {
 
-    //댓글수정-진호오빠 구현
-
-
     //댓글 조회
     List<Comment3DTO> getComment3List(int board3_no);
-
 
     //댓글 상세 조회
     Map<String,Object> getComment3Detail(Map<String,Object> map);

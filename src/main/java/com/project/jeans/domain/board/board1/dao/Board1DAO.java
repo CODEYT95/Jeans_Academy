@@ -15,8 +15,9 @@ public interface Board1DAO {
     //게시판 목록 조회
     List<Board1DTO> findBoard1All();
 
-    //게시판 목록 5개 조회
+    //게시글 4개 조회
     List<Board1DTO> findBoard1List();
+
     //게시글 상세 조회
     Board1DTO findBoard1ByNo(int board1_no);
 

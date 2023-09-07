@@ -13,6 +13,32 @@ pageEncoding="UTF-8"%>
     <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
     <script type="text/javascript" src="../../../../resources/js/common/sidebar.js"></script>
     <script type="text/javascript" src="../../../resources/js/mypage/mypage.js"></script>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('attendance-button').addEventListener('click', function() {
+                // 출석체크 버튼 클릭 시 실행되는 코드
+                var eventDate = document.getElementById('event-date').value;
+                var eventTitle = document.getElementById('event-title').value;
+
+                // 데이터를 서버로 전송하는 AJAX 요청
+               $.ajax({
+    type: "POST",
+    url: "http://localhost:8090/addEvent",
+    data: { key1: "value1", key2: "value2" }, // 실제 데이터로 대체해야 합니다
+    success: function(response) {
+        // 성공한 응답을 여기서 처리합니다
+        console.log("성공:", response);
+    },
+    error: function(xhr, status, error) {
+        // 오류를 여기서 처리합니다
+        console.log("오류:", status, error);
+    }
+});
+            });
+        });
+    </script>
 </head>
 <body data-member-class="${member_class}">
 <%@ include file="/WEB-INF/views/common/header.jsp"%>
