@@ -168,7 +168,7 @@ pageEncoding="UTF-8"%>
                                     <a href="/notice/list">
                                         <div class="content">
                                             <ul class="post-list" data-class="notice-1">
-                                                <div class="icon">🌏<a href="/noticeDetail?notice_no=0">◇이벤트 안내> 이벤트 기간은 09.08~09.08 </a></div>
+                                                <div class="icon">🌏<a href="/noticeDetail/0">◇이벤트 안내> 이벤트 기간은 09.08~09.08 </a></div>
                                             </ul>
                                         </div>
                                     </a>
@@ -180,7 +180,7 @@ pageEncoding="UTF-8"%>
                                     <a href="/notice/list">
                                     <div class="content">
                                         <ul class="post-list" data-class="notice-2">
-                                        <div class="icon">🚀<a href="/noticeDetail?notice_no=2">◇학원생활</a></div>
+                                        <div class="icon">🚀<a href="/noticeDetail/2">◇학원생활</a></div>
                                         </ul>
                                     </div>
                                     </a>
@@ -192,7 +192,7 @@ pageEncoding="UTF-8"%>
                                     <a href="/notice/list">
                                         <div class="content">
                                             <ul class="post-list" data-class="notice-3">
-                                            <div class="icon">🍧<a href="/noticeDetail?notice_no=3">◇공지사항3</a></div>
+                                            <div class="icon">🍧<a href="/noticeDetail/3">◇공지사항3</a></div>
                                             </ul>
                                         </div>
                                     </a>
@@ -204,7 +204,7 @@ pageEncoding="UTF-8"%>
                                     <a href="/notice/list">
                                         <div class="content">
                                             <ul class="post-list" data-class="notice-4">
-                                            <div class="icon">🛸<a href="/noticeDetail?notice_no=4">◇전체 공지</a></div>
+                                            <div class="icon">🛸<a href="/noticeDetail/4">◇전체 공지</a></div>
                                             </ul>
                                         </div>
                                     </a>
@@ -215,17 +215,7 @@ pageEncoding="UTF-8"%>
                                 <li style="--cardColor:	#00ACC1">
                                     <a href="/notice/list">
                                         <div class="content">
-                                            <div class="icon">🐧<a href="/noticeDetail?notice_no=5">◇학원 사이트</a></div>
-                                            <ul>
-                                                <c:forEach items="${noticeList}" var="notice">
-                                                    <li>
-                                                        <a href="#"><span class="no">${notice.notice_no}</span></a>
-                                                        <a class="view-link">
-                                                            <span class="title">${notice.notice_content}</span>
-                                                        </a>
-                                                    </li>
-                                                </c:forEach>
-                                            </ul>
+                                            <div class="icon">🐧<a href="/noticeDetail/5">◇학원 사이트</a></div>
                                         </div>
                                     </a>
                                 </li>
@@ -242,58 +232,43 @@ pageEncoding="UTF-8"%>
                                 <!-- 1반 게시판 목록 -->
                                 <ul class="board1List" data-class="boardList">
                                     <c:forEach items="${board1List}" var="board1Item">
-                                        <li><a href="/board1/detail/{board1Item.board1_no}">${board1Item.board1_title}</a></li>
+                                        <li><a href="/board1/detail/${board1Item.board1_no}">${board1Item.board1_title}</a></li>
                                     </c:forEach>
                                 </ul>
 
-
-                             <!--   <ul class="board-list" data-class="class-3">
-                                    <li><a href="/board1/detail/41">▷궁금한 점이 있어요</a></li>
-                                    <li><a href="/board1/detail/31">▷글을 작성해볼게요</a></li>
-                                    <li><a href="/board1/detail/66">▷취업 관련 정보</a></li>
-                                </ul>-->
                             </div>
 
 
 
                     <div class="class-2">
-                        <a href="/board2/list"><h1>2반</h1></a> <!-- 수정된 부분 -->
+                        <a href="/board2/list"><h1>2반</h1></a>
                         <!-- 게시글 목록 링크 -->
-                        <ul class="post-list" data-class="class-2">
-                            <li data-post-id="2"><a href="#">◇게시글 목록</a></li>
-                        </ul>
-                        <!-- 2반 게시판 목록 -->
+                        <!-- 1반 게시판 목록 -->
                         <ul class="board2List" data-class="boardList">
                             <c:forEach items="${board2List}" var="board2Item">
-                                <li>${board2Item.title}</li>
+                                <li><a href="/board2/detail/${board2Item.board2_no}">${board2Item.board2_title}</a></li>
                             </c:forEach>
                         </ul>
                     </div>
 
                     <div class="class-3">
-                        <a href="/board3/list"><h1>3반</h1></a> <!-- 수정된 부분 -->
+                        <a href="/board3/list"><h1>3반</h1></a>
                         <!-- 게시글 목록 링크 -->
-                        <ul class="post-list" data-class="class-3">
-                            <li data-post-id="3"><a href="#">◇게시글 목록</a></li>
-                        </ul>
-                        <!-- 3반 게시판 목록 -->
+                        <!-- 1반 게시판 목록 -->
                         <ul class="board3List" data-class="boardList">
                             <c:forEach items="${board3List}" var="board3Item">
-                                <li>${board3Item.title}</li>
+                                <li><a href="/board3/detail/${board3Item.board3_no}">${board3Item.board3_title}</a></li>
                             </c:forEach>
                         </ul>
                     </div>
 
                     <div class="class-4">
-                        <a href="/board4/list"><h1>4반</h1></a> <!-- 수정된 부분 -->
+                        <a href="/board4/list"><h1>4반</h1></a>
                         <!-- 게시글 목록 링크 -->
-                        <ul class="post-list" data-class="class-4">
-                            <li data-post-id="4"><a href="#">◇게시글 목록</a></li>
-                        </ul>
-                        <!-- 4반 게시판 목록 -->
+                        <!-- 1반 게시판 목록 -->
                         <ul class="board4List" data-class="boardList">
                             <c:forEach items="${board4List}" var="board4Item">
-                                <li>${board4Item.title}</li>
+                                <li><a href="/board4/detail/${board4Item.board4_no}">${board4Item.board4_title}</a></li>
                             </c:forEach>
                         </ul>
                     </div>

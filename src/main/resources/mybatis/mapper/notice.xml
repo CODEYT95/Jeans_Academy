@@ -9,6 +9,14 @@
         FROM notice ORDER BY notice_no desc;
         ]]>
     </select>
+    <!--5개 조회-->
+    <select id="selectFive" resultType="com.project.jeans.domain.admin.notice.dto.NoticeDTO">
+        <![CDATA[
+        SELECT *
+        FROM notice ORDER BY notice_no desc
+        LIMIT 5;
+        ]]>
+    </select>
     <!--공지사항 상세보기-->
     <select id="noticeDetail" parameterType="Integer" resultType="com.project.jeans.domain.admin.notice.dto.NoticeDTO">
         <![CDATA[

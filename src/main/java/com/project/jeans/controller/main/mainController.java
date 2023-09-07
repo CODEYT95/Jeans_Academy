@@ -72,7 +72,7 @@ public class mainController {
 
 
         List<Board1DTO> board1List = board1Service.findBoard1List();
-        List<NoticeDTO> noticeList = noticeService.selectAll();
+        List<NoticeDTO> noticeList = noticeService.selectFive();
 
         model.addAttribute("board1List", board1List);
         model.addAttribute("noticeList", noticeList);
