@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html xmlns:c="http://java.sun.com/JSP/Page" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
-    <title>메시지 수신함</title>
+    <title>1반 게시글 목록</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
     <link rel="stylesheet" type="text/css" href="../../../../resources/css/board/boardList.css">
     <script type="text/javascript" src="../../../../resources/js/board/boardList.js"></script>
+    <script type="text/javascript" src="../../../../resources/js/common/sidebar.js"></script>
 </head>
 <body>
 <%@ include file="/WEB-INF/views/common/header.jsp"%>

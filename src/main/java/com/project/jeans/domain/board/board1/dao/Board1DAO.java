@@ -14,6 +14,8 @@ public interface Board1DAO {
 
     //게시판 목록 조회
     List<Board1DTO> findBoard1All();
+    //게시글 5개조회
+    List<Board1DTO> findBoard1List();
 
     //게시글 상세 조회
     Board1DTO findBoard1ByNo(int board1_no);
@@ -26,4 +28,5 @@ public interface Board1DAO {
 
     //게시글 삭제
     int deleteBoard1(Map<String, Object> map);
+
 }
