@@ -80,8 +80,11 @@
                             }
                             return;
                         } else if(intValue === 3){
-                            alert("회원가입 요청중이에요! 잠시만 기다려주세요🙏");
-                            return;
+                            if (form.attr('id') === 'teacherForm') {
+                                $("#ErrorTeacher").text("회원 가입 요청 처리중이거나 탈퇴한 회원입니다.");
+                            } else if (form.attr('id') === 'studentForm') {
+                                $("#ErrorStudent").text("회원 가입 요청 처리중이거나 탈퇴한 회원입니다.");
+                            }
                         } else if(intValue === 2){
                             if (form.attr('id') === 'teacherForm') {
                                 $("#ErrorTeacher").text("강사님이나 관리자가 아닙니다.");

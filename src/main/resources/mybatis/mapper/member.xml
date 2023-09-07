@@ -3,46 +3,20 @@
 
 <mapper namespace="com.project.jeans.domain.member.dao.MemberDAO">
 
-    <!--회원정보 불러오기-->
-    <select id="getMemberInfo" resultType="com.project.jeans.domain.member.dto.MemberDTO" parameterType="String">
-        <![CDATA[
-        SELECT * FROM member WHERE member_id = #{member_id};
-        ]]>
-    </select>
-
-    <select id="findId" resultType="String" parameterType="com.project.jeans.domain.member.dto.MemberDTO">
-        <![CDATA[
-        SELECT member_id FROM MEMBER WHERE member_name= #{member_name} AND member_phone = #{member_phone};
-        ]]>
-    </select>
-
-    <!--회원 조회 관련 쿼리문-->
-    <!--현재 회원 조회-->
-    <select id="getShowMember" resultType="com.project.jeans.domain.member.dto.MemberDTO">
-        <![CDATA[
-        SELECT * FROM member WHERE member_isshow='Y' ORDER BY member_type, member_id;
-        ]]>
-    </select>
-
-    <!--탈퇴 회원 조회-->
-    <select id="getHiddenMember" resultType="com.project.jeans.domain.member.dto.MemberDTO">
-        <![CDATA[
-        SELECT * FROM member WHERE member_isshow='N' ORDER BY member_type, member_id;
-        ]]>
-    </select>
-
-    <!--요청 수강생 조회-->
-    <select id="getAcceptMember" resultType="com.project.jeans.domain.member.dto.MemberDTO">
-        <![CDATA[
-        SELECT * FROM member WHERE member_accept='N' ORDER BY member_type, member_id;
-        ]]>
-    </select>
-
     <!--로그인 시 유효성 검사-->
     <select id="noAccept" resultType="Integer" parameterType="String">
         <![CDATA[
         SELECT COUNT(*) FROM member WHERE member_id = #{member_id}
-        AND member_accept = 'Y';
+        AND member_accept = 'Y'
+        AND member_isshow = 'Y';
+        ]]>
+    </select>
+
+    <!--member_type 조회하기-->
+    <select id="memberType" parameterType="String" resultType="String">
+        <![CDATA[
+        SELECT member_type FROM MEMBER
+        WHERE member_id = #{member_id};
         ]]>
     </select>
 
@@ -68,22 +42,6 @@
         ]]>
     </insert>
 
-    <!--요청 회원 등록-->
-    <update id="acceptMember" parameterType="String">
-        <![CDATA[
-        UPDATE MEMBER SET member_accept='Y'
-        WHERE member_id=#{member_id};
-        ]]>
-    </update>
-
-    <!--member_type 조회하기-->
-    <select id="memberType" parameterType="String" resultType="String">
-        <![CDATA[
-        SELECT member_type FROM MEMBER
-        WHERE member_id = #{member_id};
-        ]]>
-    </select>
-
     <!--강사님 로그인 처리-->
     <select id="loginTeacher" parameterType="String" resultType="Integer">
     <![CDATA[
@@ -102,6 +60,12 @@
         ]]>
     </select>
 
+    <!--id찾기-->
+    <select id="findId" resultType="String" parameterType="com.project.jeans.domain.member.dto.MemberDTO">
+        <![CDATA[
+        SELECT member_id FROM MEMBER WHERE member_name= #{member_name} AND member_phone = #{member_phone};
+        ]]>
+    </select>
 
     <!--유효성 관련 쿼리문///////////////////////////////////////////////////////////////////////////////////////-->
     <!--전화번호 중복 체크-->
@@ -143,4 +107,68 @@
         WHERE member_id=#[member_id];
         ]]>
     </delete>
+
+    <!--요청 회원 등록-->
+    <update id="acceptMember" parameterType="String">
+        <![CDATA[
+        UPDATE MEMBER SET member_accept='Y'
+        WHERE member_id=#{member_id};
+        ]]>
+    </update>
+
+    <!--회원 조회 관련 쿼리문-->
+
+    <!--회원정보 불러오기(세션관련)-->
+    <select id="getMemberInfo" resultType="com.project.jeans.domain.member.dto.MemberDTO" parameterType="String">
+        <![CDATA[
+        SELECT * FROM member WHERE member_id = #{member_id};
+        ]]>
+    </select>
+
+    <!--//관리자 관련 회원 조회 쿼리문////////////////////////////////////////////////////-->
+    <!--현재 회원 조회-->
+    <select id="getShowMember" resultType="com.project.jeans.domain.member.dto.MemberDTO">
+        <![CDATA[
+        SELECT * FROM member WHERE member_isshow='Y'
+        ORDER BY member_type, member_id
+        LIMIT #{pageNum} , #{countPerPage};
+        ]]>
+    </select>
+
+    <select id="getShowMemberCount" resultType="Integer">
+        <![CDATA[
+        SELECT COUNT(*) FROM member WHERE member_isshow='Y';
+        ]]>
+    </select>
+
+    <!--탈퇴 회원 조회-->
+    <select id="getHiddenMember" resultType="com.project.jeans.domain.member.dto.MemberDTO">
+        <![CDATA[
+        SELECT * FROM member WHERE member_isshow='N'
+        ORDER BY member_type, member_id
+        LIMIT #{pageNum} , #{countPerPage};
+        ]]>
+    </select>
+    <!--탈퇴 회원 수-->
+    <select id="getHiddenMemberCount" resultType="Integer">
+        <![CDATA[
+        SELECT COUNT(*) FROM member WHERE member_isshow='N';
+        ]]>
+    </select>
+
+    <!--요청 수강생 조회-->
+    <select id="getNoAcceptMember" resultType="com.project.jeans.domain.member.dto.MemberDTO">
+        <![CDATA[
+        SELECT * FROM member WHERE member_accept='N'
+        ORDER BY member_type, member_id
+        LIMIT #{pageNum} , #{countPerPage};
+        ]]>
+    </select>
+
+    <!--요청 수강생 수-->
+    <select id="getNoAcceptMemberCount" resultType="Integer">
+        <![CDATA[
+        SELECT COUNT(*) FROM member WHERE member_accept='N';
+        ]]>
+    </select>
 </mapper>

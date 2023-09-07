@@ -33,7 +33,7 @@ public class Board1Controller {
 
     //반별 게시판 목록 조회
     @GetMapping("/list")
-    public String getBoard1List(HttpSession session, Model model) {
+    public String getBoard1List(HttpSession session, Model model){
         LoginCheckSession loginCheck = new LoginCheckSession(memberService);
         MemberDTO memberInfo = loginCheck.getLoginCheckSession(session, model);
         if (memberInfo == null) {

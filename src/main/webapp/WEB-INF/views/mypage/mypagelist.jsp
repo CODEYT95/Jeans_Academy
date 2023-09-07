@@ -189,9 +189,9 @@ pageEncoding="UTF-8"%>
                         <h3>일정 추가</h3>
                         <div class="c-title">
                             <!-- 일정 입력 폼 -->
-                                <input type="date" name="date" id="event-date">
-                                <input type="text" name="title" id="event-title" placeholder="일정 제목">
-                                <button class="add-event-button">일정 추가</button>
+                            <input type="date" name="date" id="event-date">
+                            <input type="text" name="title" id="event-title" placeholder="일정 제목">
+                            <button class="add-event-button">일정 추가</button>
                         </div>
                         <!-- 일정 목록 추가 -->
                         <div class="event-list">
