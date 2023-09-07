@@ -120,6 +120,8 @@ pageEncoding="UTF-8"%>
                     <div class="write-content">
                         <span class="content-label">내용</span>
                         <input type="file" id="photo-input" accept="image/gif, image/jpeg, image/png, image/webp" multiple style="display: none;">
+                        <input type="hidden" name="member_name" value="${member_name}">
+                        <input type="hidden" name="member_class" value="${member_class}">
                         <div class="content" name="content" contenteditable="true"></div>
                         <input type="button" class="content-file" value="사진추가">
                     </div>

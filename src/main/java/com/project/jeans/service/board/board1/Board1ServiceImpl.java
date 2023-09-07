@@ -20,6 +20,18 @@ public class Board1ServiceImpl implements Board1Service {
         List<Board1DTO> board1DTOList = board1DAO.findBoard1All();
         return board1DTOList;
     }
+    //반별 게시글 목록 5개 조회
+    @Override
+    public List<Board1DTO> findBoard1List() {
+        List<Board1DTO> findBoard1List = board1DAO.findBoard1List();
+        return findBoard1List;
+    }
+
+    //반별 게시글 4개 조회
+    @Override
+    public List<Board1DTO> findBoard1List() {
+        return board1DAO.findBoard1List();
+    }
 
     //반별 게시글 상세 조회
     @Override
@@ -45,34 +57,5 @@ public class Board1ServiceImpl implements Board1Service {
     public int deleteBoard1(Map<String,Object> map){
         return board1DAO.deleteBoard1(map);
     }
-
-
-/*
-
-    //반별 게시글 수정
-    @Override
-    public Board1DTO board1Modify() {
-        return board1DAO.board1Modify();
-    }
-
-    //반별 게시글 삭제
-    @Override
-    public int board1Delete() {
-        return board1DAO.board1Delete();
-    }
-*/
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 }

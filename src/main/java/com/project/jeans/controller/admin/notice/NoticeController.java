@@ -45,7 +45,7 @@ public class NoticeController {
         model.addAttribute("member_class", memberInfo.getMember_class());
         List<NoticeDTO> noticeList = noticeService.selectAll();
 
-        ModelAndView modelAndView = new ModelAndView("notice/noticeList"); // JSP 파일명(user.jsp)
+        ModelAndView modelAndView = new ModelAndView("admin/notice/noticeList"); // JSP 파일명(user.jsp)
         modelAndView.addObject("noticeList", noticeList); // "noticeList"라는 이름으로 데이터 전달
 
         return modelAndView;
@@ -71,9 +71,10 @@ public class NoticeController {
         NoticeDTO nreplyDetail = noticeService.nreplyDetail(noticeNo);
 
         // 공지사항 정보를 모델에 추가합니다.
+        model.addAttribute("noticeDTO", noticeDTO);
         model.addAttribute("noticeDetail", noticeDetail);
         model.addAttribute("nreplyDetail",nreplyDetail);
-        return "notice/noticeDetail";
+        return "admin/notice/noticeDetail";
     }
 
 
@@ -90,7 +91,7 @@ public class NoticeController {
         model.addAttribute("member_class",memberInfo.getMember_class());
         model.addAttribute("member_type",memberInfo.getMember_type());
 
-        return new ModelAndView("notice/noticeInsert");
+        return new ModelAndView("admin/notice/noticeInsert");
     }
 
     @PostMapping("/notice_insert")

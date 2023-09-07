@@ -1,20 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-
 <mapper namespace="com.project.jeans.domain.board.board1.dao.Board1DAO">
+
     <!-- 반별 게시판 목록 조회 -->
     <select id="findBoard1All" resultType="com.project.jeans.domain.board.board1.dto.Board1DTO">
         <![CDATA[
-        SELECT board1_no, board1_title, board1_content, board1_regdate, board1_isshow, member_name, member_class
+        SELECT board1_no, board1_title, board1_content, board1_regdate, board1_isshow, member_id
         FROM board1
         WHERE board1_isshow='Y' ORDER BY board1_no DESC
+        ]]>
+    </select>
+    <!-- 반별 게시판 목록 5개조회 -->
+    <select id="findBoard1List" resultType="com.project.jeans.domain.board.board1.dto.Board1DTO" parameterType="Integer">
+        <![CDATA[
+        SELECT board1_no, board1_title, board1_content, board1_regdate, board1_isshow, member_id
+        FROM board1
+        WHERE board1_isshow='Y' ORDER BY board1_no DESC
+        LIMIT 5;
         ]]>
     </select>
     <!-- 반별 게시글 상세 조회 -->
     <select id="findBoard1ByNo" resultType="com.project.jeans.domain.board.board1.dto.Board1DTO">
         <![CDATA[
-        SELECT board1_no, board1_title, board1_content, board1_regdate, board1_isshow, member_name, member_class
+        SELECT board1_no, board1_title, board1_content, board1_regdate, board1_isshow, member_id
         FROM board1
         WHERE board1_no=#{board1_no}
         ]]>
@@ -23,8 +32,8 @@
     <!-- 로그인한 회원이 작성하게끔 바꿔줘야 함-->
     <insert id="insertBoard1" parameterType="map">
         <![CDATA[
-        INSERT INTO board1(board1_title, board1_content, board1_regdate, board1_isshow, member_name, member_class)
-        values(#{board1_title},#{board1_content},now(),'Y','John Doe','A')
+        INSERT INTO board1(board1_title, board1_content, board1_regdate, board1_isshow, member_id)
+        values(#{board1_title},#{board1_content},now(),'Y',#{member_id})
         ]]>
     </insert>
     <!-- 게시글 수정 -->
@@ -35,39 +44,13 @@
         WHERE board1_no=#{board1_no}
         ]]>
     </update>
-    <!-- 게시글 삭제 -->
+    <!-- 게시글 삭제-->
     <delete id="deleteBoard1" parameterType="map">
         <![CDATA[
-        UPDATE board1 AS b
-        JOIN comment1 AS c ON b.board1_no = c.board1_no
-        SET b.board1_isshow = 'N',
-            c.comment1_isshow = 'N'
-        WHERE b.board1_no = #{board1_no};
+        UPDATE board1
+        SET board1_isshow = 'N'
+        WHERE board1_no = #{board1_no};
         ]]>
     </delete>
-
-
-    <!--    <![CDATA[
-            UPDATE board1
-            SET board1_isshow='N'
-            WHERE board1_no=#{board1_no}
-        ]]>-->
-
-    <!-- 진호 구현 -->
-    <!-- 게시글 수정 -->
-    <!-- <update id="board1Modify" parameterType="com.project.jeans.board1.dto.Board1DTO">
-        <![CDATA[
-        update board1
-        set board1_title = #{title}, board1_contents = #{contents}, board1_regdate = now()
-        where board1_no=#{no}
-        ]]>
-         </update>-->
-    <!-- 게시글 삭제 -->
-    <!--<update id="board1Delete" parameterType="int">
-        <![CDATA[
-        update board1 set board1_isshow ='N'
-        where board1_no=#{no}
-        ]]>
-    </update>-->
 
 </mapper>

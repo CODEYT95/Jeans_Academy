@@ -9,6 +9,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.xml.transform.Result;
+
 @Controller
 @RequiredArgsConstructor
 public class LoginController {
@@ -23,11 +25,53 @@ public class LoginController {
     }
 
     //아이디 찾기
-    @GetMapping("/find")
+    @GetMapping("/findId")
     public String findId() {
-        return "member/find";
+        return "member/findId";
     }
 
+    //비밀번호 찾기
+    @GetMapping("/findPw")
+    public String findPw() {
+        return "member/findPw";
+    }
+
+    //비밀번호 찾기
+    @PostMapping("/findPw")
+    @ResponseBody
+    public String findPw(@RequestParam("member_id") String member_id,
+                                        @RequestParam("member_phone") String member_phone){
+        MemberDTO memberDTO = new MemberDTO();
+        memberDTO.setMember_id(member_id);
+        memberDTO.setMember_phone(member_phone);
+
+        String member_pw = memberService.findPw(memberDTO);
+        if (member_pw != null) {
+            return member_id; // member_id를 리턴
+        } else {
+            return "fail";
+        }
+    }
+    //비밀번호 수정
+    @PostMapping("/updatePw")
+    @ResponseBody
+    public int updatePw(@RequestParam("member_id") String member_id,
+                                        @RequestParam("member_pw") String member_pw){
+
+        MemberDTO memberDTO = new MemberDTO();
+        memberDTO.setMember_id(member_id);
+        memberDTO.setMember_pw(member_pw);
+
+        int updatePw = memberService.updatePw( memberDTO);
+        System.out.println(updatePw);
+        if(updatePw == 1){
+            return 1;
+        }else{
+            return 0;
+        }
+    }
+
+    //아이디찾기
     @PostMapping("/findId")
     @ResponseBody
     public String findId(@RequestParam String member_name,
@@ -38,7 +82,6 @@ public class LoginController {
 
         String member_id = memberService.findId(memberDTO);
 
-        System.out.println(member_id);
         if (member_id != null) {
             return member_id;
         } else {

@@ -1,14 +1,19 @@
 package com.project.jeans.controller.main;
 
 import com.project.jeans.LoginCheckSession;
+import com.project.jeans.domain.admin.notice.dto.NoticeDTO;
+import com.project.jeans.domain.board.board1.dto.Board1DTO;
 import com.project.jeans.domain.member.dto.MemberDTO;
 import com.project.jeans.service.admin.notice.NoticeService;
+import com.project.jeans.service.board.board1.Board1Service;
 import com.project.jeans.service.calendar.CalendarService;
 import com.project.jeans.service.member.MemberService;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+
+import java.util.List;
 
 @Controller
 public class mainController {
@@ -17,10 +22,13 @@ public class mainController {
     private  final CalendarService calendarService;
     private final MemberService memberService;
 
-    public mainController(NoticeService noticeService, CalendarService calendarService, MemberService memberService) {
+    private final Board1Service board1Service;
+
+    public mainController(NoticeService noticeService, CalendarService calendarService, MemberService memberService, Board1Service board1Service) {
         this.noticeService = noticeService;
         this.calendarService = calendarService;
         this.memberService = memberService;
+        this.board1Service = board1Service;
     }
     @GetMapping("/main1")
     public String main(Model model, HttpSession session) {
@@ -61,6 +69,14 @@ public class mainController {
             model.addAttribute("notice5", recentNotices.get(4));
         }
 */
+
+
+        List<Board1DTO> board1List = board1Service.findBoard1List();
+        List<NoticeDTO> noticeList = noticeService.selectFive();
+
+        model.addAttribute("board1List", board1List);
+        model.addAttribute("noticeList", noticeList);
+
         return "main/main";
 
     }

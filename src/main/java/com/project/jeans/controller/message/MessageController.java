@@ -9,11 +9,11 @@ import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
+import java.util.Map;
 
 @RequestMapping("/message")
 @RequiredArgsConstructor
@@ -26,33 +26,105 @@ public class MessageController {
     /* 메시지 목록 조회(수신함) 및 목록 조회(발신함)*/
     @GetMapping("/messageList")
     public String selectReceiveMessage(HttpSession session, Model model){
+
         LoginCheckSession loginCheck = new LoginCheckSession(memberService);
         MemberDTO memberInfo = loginCheck.getLoginCheckSession(session, model);
 
+        // 로그인이 필요한 경우 리디렉션
+        if (memberInfo == null) {return "/member/login";}
 
+        model.addAttribute("member_name",memberInfo.getMember_name());
+        model.addAttribute("member_class",memberInfo.getMember_class());
+        model.addAttribute("member_type",memberInfo.getMember_type());
+
+        List<MessageDTO> messageRecDTO = messageService.selectReceiveMessage(memberInfo.getMember_id());
+        model.addAttribute("messageRecDTO",messageRecDTO);
+        List<MessageDTO> messageSendDTO = messageService.selectSendMessage(memberInfo.getMember_id());
+        model.addAttribute("messageSendDTO",messageSendDTO);
+        List<MemberDTO> messageMemberDTO = messageService.selectMessageMemList();
+        model.addAttribute("messageMemberDTO",messageMemberDTO);
+
+        return "/message/messageList";
+
+    }
+
+    /* 메시지 상세 조회 */
+    @GetMapping("/read")
+    public String readMessage(@RequestParam int message_no, Model model) {
+        MessageDTO messageDTO = messageService.selectMessageDetail(message_no);
+        model.addAttribute("messageDTO",messageDTO);
+        return "/message/messageList";
+    }
+
+    /* 메시지 작성(보내기) */
+    @PostMapping("/send")
+    public ModelAndView sendMessage(@RequestParam Map<String,Object> map, HttpSession session, ModelAndView modelAndView, Model model){
+
+        LoginCheckSession loginCheck = new LoginCheckSession(memberService);
+        MemberDTO memberInfo = loginCheck.getLoginCheckSession(session, model);
         if (memberInfo == null) {
             // 로그인이 필요한 경우 리디렉션
-            return "/member/login";
+            return new ModelAndView("redirect:/member/login");
         }
         model.addAttribute("member_name",memberInfo.getMember_name());
         model.addAttribute("member_class",memberInfo.getMember_class());
         model.addAttribute("member_type",memberInfo.getMember_type());
-        //파라미터 : 로그인한 회원 넘기기 <mapper에서 바꿔주기>
-        List<MessageDTO> messageRecDTO = messageService.selectReceiveMessage(memberInfo.getMember_id());
-        model.addAttribute("messageRecDTO",messageRecDTO);
 
-        List<MessageDTO> messageSendDTO = messageService.selectSendMessage(memberInfo.getMember_id());
-        model.addAttribute("messageSendDTO",messageSendDTO);
+        int sendMessage = messageService.insertContentMessage(map);
 
-        List<MemberDTO> messageMemberDTO = messageService.selectMessageMemList();
+        if(sendMessage == 1){
+            modelAndView.setViewName("redirect:/message/messageList");
+        } else {
+            modelAndView.setViewName("redirect:/message/messageList");
+        }
 
-        System.out.println(messageMemberDTO);
-
-        model.addAttribute("messageMemberDTO",messageMemberDTO);
-        return "/message/messageList";
+        return modelAndView;
     }
 
+    /* 메시지 삭제 (수신함) */
+    @GetMapping("/deleteRecMsg")
+    public ModelAndView deleteReceiveMessage(@RequestParam List<Integer> message_no, ModelAndView modelAndView){
 
+        if(message_no.isEmpty() || message_no.get(0) == null){
+            return new ModelAndView("redirect:/message/messageList");
+        }
 
+        int deleteRecMsg = messageService.deleteReceiveMessage(message_no);
+
+        if(deleteRecMsg==1){
+            modelAndView.setViewName("redirect:/message/messageList");
+        } else {
+            modelAndView.setViewName("redirect:/message/messageList");
+        }
+
+        return modelAndView;
+    }
+
+    /* 메시지 삭제 (발신함) */
+    @GetMapping("/deleteSendMsg")
+    public ModelAndView deleteSendMessage(@RequestParam List<Integer> message_no, ModelAndView modelAndView){
+
+        if(message_no.isEmpty() || message_no.get(0) == null){
+            return new ModelAndView("redirect:/message/messageList");
+        }
+
+        int deleteSendMsg = messageService.deleteSendMessage(message_no);
+
+        if(deleteSendMsg==1){
+            modelAndView.setViewName("redirect:/message/messageList");
+        } else {
+            modelAndView.setViewName("redirect:/message/messageList");
+        }
+
+        return modelAndView;
+    }
+
+    /* 클래스별 멤버 조회 */
+    @ResponseBody
+    @GetMapping("/selectMemByClass")
+    public Object selectMemByClass(@RequestParam("member_class") String member_class){
+        List<MemberDTO> memberByClass = messageService.selectMemByClass(member_class);
+        return memberByClass;
+    }
 
 }

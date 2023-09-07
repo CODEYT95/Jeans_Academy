@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html lang="ko" xmlns:c="http://java.sun.com/JSP/Page">
 <head>
@@ -9,8 +8,8 @@ pageEncoding="UTF-8"%>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="../../../resources/css/notice/noticeList.css">
-    <script type="text/javascript" src="../../../resources/js/notice/noticeList.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../../../resources/css/admin/notice/noticeList.css">
+    <script type="text/javascript" src="../../../../resources/js/admin/notice/noticeList.js"></script>
     <script type="text/javascript" src="../../../../resources/js/common/sidebar.js"></script>
 
 </head>

@@ -8,4 +8,5 @@ public interface QuestionService {
     List<QuestionDTO> selectQuestionAll();
 
     public int insertQuestion(QuestionDTO questionDTO);
+
 }

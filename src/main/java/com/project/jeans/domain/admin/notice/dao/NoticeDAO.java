@@ -12,6 +12,10 @@ public interface NoticeDAO {
 
     //공지사항 전체조회
     List<NoticeDTO> selectAll();
+
+    //공지사항 5개
+    public List<NoticeDTO> selectFive();
+    
     //공지사항 상세보기
     NoticeDTO noticeDetail(int notice_no);
     //공지사항 댓글

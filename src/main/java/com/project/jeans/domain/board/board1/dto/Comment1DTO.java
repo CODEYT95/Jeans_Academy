@@ -14,6 +14,5 @@ public class Comment1DTO {
     private String comment1_isshow;
     private int comment1_no;
     private Timestamp comment1_regdate;
-    private String member_class;
-    private String member_name;
+    private String member_id;
 }

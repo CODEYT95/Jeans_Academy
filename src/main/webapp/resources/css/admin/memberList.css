@@ -1,0 +1,111 @@
+@charset "UTF-8";
+caption{
+    font-size:30px;
+    font-weight:bold;
+    margin: 20px 0 20px 0;
+}
+.table-icon{
+    display: flex;
+    column-gap: 10px;
+    justify-content: center;
+}
+table{
+    width: 100%;
+    font-size:20px;
+    margin-bottom:20px;
+}
+.modifyBtn i {
+    color: #6b6be8;
+    font-size:26px;
+}
+.updateBtn i {
+    color: red;
+    font-size:26px;
+}
+th, td {
+  text-align: center;
+  padding: 2px;
+}
+thead{
+    background: #cadef7;
+}
+
+button{
+    border:none;
+    background :none;
+    cursor:pointer;
+    border-radius:5px;
+}
+
+/* 마우스 호버 시 배경색 변경 */
+.updateBtn:hover {
+    background-color: #e74c3c;
+}
+
+/* 마우스 호버 시 아이콘 색 변경 */
+.updateBtn:hover i {
+    color: #fff;
+}
+
+/* 마우스 호버 시 배경색 변경 */
+.modifyBtn:hover {
+    background-color: #7171f2;
+}
+
+/* 마우스 호버 시 아이콘 색 변경 */
+.modifyBtn:hover i {
+    color: #fff;
+}
+
+tr:nth-child(even) {background-color: #f2f7fb;}
+
+.search-box {
+    padding: initial;
+    display: flex;
+    align-items: center;
+    margin: 30px;
+    width: 600px;
+    margin-left:auto;
+    margin-right:auto;
+}
+.search-input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+    height:41px;
+    font-size:18px;
+}
+.search-button {
+    background-color: #5073FB;
+    border: none;
+    color: #fff;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 10px;
+    height:41px;
+}
+
+.pagination-container a {
+    color: black;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+}
+
+.pagination-container a:hover:not(.active) {
+    background-color: #ddd;
+    border-radius : 8px;
+}
+
+.showPage ,.acceptPage, .hiddenPage{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 45px;
+}
+
+.currentPage1, .currentPage2, .currentPage3 {
+    background: #e156db36;
+    border-radius: 8px;
+}

@@ -1,9 +1,57 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.project.jeans.domain.mypage.dao.EventDAO">
-    <select id="selectMyPageAll" resultType="com.project.jeans.domain.mypage.dto.EventDTO">
+<mapper namespace="com.project.jeans.domain.mypage.dao.MyPageDAO">
+
+    <!--    일정 추가     -->
+    <insert id="addEvent" parameterType="com.project.jeans.domain.mypage.dto.MyPageDTO">
         <![CDATA[
-    select mypage_no, mypage_content, mypage_regdate from mypage;
+        INSERT INTO mypage (mypage_content, mypage_regdate, member_id)
+        VALUES (#{mypage_content}, #{mypage_regdate}, #{member_id});
+        ]]>
+    </insert>
+
+    <select id="selectEvent" parameterType="String" resultType="com.project.jeans.domain.mypage.dto.MyPageDTO">
+        <![CDATA[
+    SELECT mypage_content, mypage_regdate
+    FROM mypage
+    WHERE member_id = #{member_id};
     ]]>
     </select>
+    <!--    일정 추가 끝     -->
+
+
+    <select id="selectMember" parameterType="String" resultType="com.project.jeans.domain.member.dto.MemberDTO">
+        <![CDATA[
+        select member_id, member_pw, member_day, member_phone from member
+        where member_id=#{member_id};
+        ]]>
+    </select>
+
+    <select id="selectboard" parameterType="String" resultType="com.project.jeans.domain.mypage.dto.MyPageDTO">
+        <![CDATA[
+    SELECT
+        b1.board1_no,
+        b2.board2_no,
+        b3.board3_no,
+        b4.board4_no,
+        b1.board1_title,
+        b2.board2_title,
+        b3.board3_title,
+        b4.board4_title
+    FROM
+        member m
+    LEFT JOIN
+        board1 b1 ON m.member_id = b1.member_id
+    LEFT JOIN
+        board2 b2 ON m.member_id = b2.member_id
+    LEFT JOIN
+        board3 b3 ON m.member_id = b3.member_id
+    LEFT JOIN
+        board4 b4 ON m.member_id = b4.member_id
+    WHERE
+        m.member_id = #{member_id}
+    LIMIT 4;
+    ]]>
+    </select>
+
 </mapper>
