@@ -23,11 +23,7 @@ pageEncoding="UTF-8"%>
     <link rel="stylesheet" type="text/css" href="../../../resources/css/game/snakeGame.css">
     <script src="../../../resources/js/game/snakeGame.js" defer></script>
     <script type="text/javascript" src="../../../resources/js/main/main.js"></script>
-
-
-
 </head>
-
 <body data-member-class="${member_class}" data-category="${category}">
 <%@ include file="/WEB-INF/views/common/header.jsp"%>
 <%@ include file="/WEB-INF/views/common/sidebar.jsp"%>

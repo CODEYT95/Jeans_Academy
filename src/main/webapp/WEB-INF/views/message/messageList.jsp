@@ -11,7 +11,6 @@
 <body data-member-class="${member_class}" data-category="${category}">
 <%@ include file="/WEB-INF/views/common/header.jsp"%>
 <%@ include file="/WEB-INF/views/common/sidebar.jsp"%>
-
 <div class="main--content" >
     <button type="button" class="btn-modal" id="send_button">쪽지 보내기</button>
     <div id="modal" class="modal-overlay">
