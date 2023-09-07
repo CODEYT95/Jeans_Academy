@@ -34,5 +34,8 @@ public interface MessageDAO {
     /* 메시지 삭제 (발신함) */
     int deleteSendMessage(int message_no);
 
+    /* 반별 멤버 조회 */
+    List<MemberDTO> selectMemByClass(String member_class);
+
 
 }

@@ -54,6 +54,12 @@ pageEncoding="UTF-8"%>
                     <span class="sidebar--item">QnA</span>
                 </a>
             </li>
+            <li>
+                <a href="/map" id="${category == 'map' ? 'active--link' : ''}">
+                    <span class="icon icon-8"><i class="ri-map-fill" style="${category == 'board4' ? 'color:white;' : ''}"></i></span>
+                    <span class="sidebar--item">찾아오시는 길</span>
+                </a>
+            </li>
             <c:if test="${member_type == '관리자'}">
                 <li>
                     <a href="/admin/memberList" id="${category == 'admin' ? 'active--link' : ''}">

@@ -85,6 +85,10 @@ public class MessageController {
     @GetMapping("/deleteRecMsg")
     public ModelAndView deleteReceiveMessage(@RequestParam List<Integer> message_no, ModelAndView modelAndView){
 
+        if(message_no.isEmpty() || message_no.get(0) == null){
+            return new ModelAndView("redirect:/message/messageList");
+        }
+
         int deleteRecMsg = messageService.deleteReceiveMessage(message_no);
 
         if(deleteRecMsg==1){
@@ -100,6 +104,10 @@ public class MessageController {
     @GetMapping("/deleteSendMsg")
     public ModelAndView deleteSendMessage(@RequestParam List<Integer> message_no, ModelAndView modelAndView){
 
+        if(message_no.isEmpty() || message_no.get(0) == null){
+            return new ModelAndView("redirect:/message/messageList");
+        }
+
         int deleteSendMsg = messageService.deleteSendMessage(message_no);
 
         if(deleteSendMsg==1){
@@ -110,4 +118,13 @@ public class MessageController {
 
         return modelAndView;
     }
+
+    /* 클래스별 멤버 조회 */
+    @ResponseBody
+    @GetMapping("/selectMemByClass")
+    public Object selectMemByClass(@RequestParam("member_class") String member_class){
+        List<MemberDTO> memberByClass = messageService.selectMemByClass(member_class);
+        return memberByClass;
+    }
+
 }

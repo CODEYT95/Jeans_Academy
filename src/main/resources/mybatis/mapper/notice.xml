@@ -21,8 +21,8 @@
     <!--공지사항 INSERT-->
     <insert id="insertNotice" parameterType="com.project.jeans.domain.admin.notice.dto.NoticeDTO">
         <![CDATA[
-        INSERT INTO notice (notice_title, notice_content, member_class)
-        VALUES (#{notice_title}, #{notice_content}, #{member_class});
+        INSERT INTO notice (notice_title, notice_content
+        VALUES (#{notice_title}, #{notice_content});
         ]]>
     </insert>
     <!--공지사항 isShow-->

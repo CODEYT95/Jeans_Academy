@@ -100,8 +100,51 @@ $(document).ready(function() {
 
 });
 
-/* 메시지 수신자 선택 */
-document.getElementById("receiver").addEventListener("change", function () {
-    var selectedValue = this.value;
-    document.querySelector("input[name='message_receiver']").value = selectedValue;
+/* 받는 사람 리스트 (그룹별) */
+$(document).ready(function(){
+    $(".member_class").on('change',function(){
+        let byClass = document.getElementById("member_class").value;
+        if(member_class === ""){
+            document.getElementById("member_class").focus();
+            return;
+        }
+        $.ajax({
+            type:"get",
+            url: "/message/selectMemByClass",
+            data: {member_class: byClass},
+            success:
+                function(response){
+                    var receiver = document.getElementById("receiver");
+                    receiver.innerHTML = "";
+                    for (var i = 0; i < response.length; i++) {
+                        var option = document.createElement("option");
+                        option.value = response[i].member_id;
+                        option.text = response[i].member_id;
+                        receiver.appendChild(option);
+                    }
+                },
+            error:function(request,status,error){
+                alert("에러입니다");
+            }
+        });
+    });
 });
+
+/* 삭제 버튼(수신함) 눌렀을 때 null값 방지 */
+function checkData() {
+    var checkbox = document.getElementsByName("message_no");
+    var checked = false;
+    for (var i = 0; i < checkbox.length; i++) {
+        if (checkbox[i].checked) {
+            checked = true;
+            break;
+        }
+    }
+    if (!checked) {
+        alert("삭제할 내용을 선택해주세요.");
+        return false;
+    }
+    return true;
+}
+
+

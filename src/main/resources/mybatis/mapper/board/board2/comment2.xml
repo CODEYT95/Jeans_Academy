@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.project.jeans.domain.board.board2.dao.Comment2DAO">
+    <!-- 댓글 목록 조회 -->
+    <select id="getComment2List" parameterType="int" resultType="com.project.jeans.domain.board.board2.dto.Comment2DTO">
+        <![CDATA[
+        SELECT comment2_no, board2_no, comment2_content, comment2_regdate, comment2_isshow, member_id FROM comment2 WHERE board2_no=${board2_no} AND comment2_isshow='Y' ORDER BY comment2_no DESC
+        ]]>
+    </select>
+    <!-- 댓글 작성 -->
+    <insert id="insertComment2" parameterType="map">
+        <![CDATA[
+        INSERT INTO comment2(board2_no, comment2_content, comment2_regdate, comment2_isshow, member_id)
+        VALUES(#{board2_no},#{comment2_content},now(),'Y',#{member_id},#{member_name},#{member_class})
+        ]]>
+    </insert>
+    <!-- 댓글 수정 -->
+    <update id="updateComment2" parameterType="map">
+        <![CDATA[
+        UPDATE comment2 SET comment2_content=#{comment2_content} WHERE comment2_no=#{comment2_no}
+        ]]>
+    </update>
+    <!-- 댓글 삭제(update) -->
+    <update id="deleteComment2" parameterType="map">
+        <![CDATA[
+        UPDATE comment2 SET comment2_isshow='N' WHERE comment2_no = #{comment2_no}
+        ]]>
+    </update>
+</mapper>
