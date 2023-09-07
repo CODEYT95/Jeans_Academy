@@ -71,7 +71,7 @@ pageEncoding="UTF-8"%>
         </ul>
         <ul class="sidebar--bottom-items">
             <li>
-                <a href="#" id="${category == 'mypage' ? 'active--link' : ''}">
+                <a href="/mypage/list" id="${category == 'mypage' ? 'active--link' : ''}">
                     <span class="icon icon-8"><i class="ri-user-3-line" style="${category == 'mypage' ? 'color:white;' : ''}"></i></span>
                     <span class="sidebar--item">마이페이지</span>
                 </a>

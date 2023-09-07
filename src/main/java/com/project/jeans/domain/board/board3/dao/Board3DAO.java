@@ -13,6 +13,8 @@ public interface Board3DAO {
 
     //게시판 목록 조회
     List<Board3DTO> findBoard3All();
+    //게시판 목록 5개 조회
+    List<Board3DTO> findBoard3List();
 
     //게시글 상세 조회
     Board3DTO findBoard3ByNo(int board3_no);

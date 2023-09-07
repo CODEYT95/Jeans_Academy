@@ -9,7 +9,8 @@ public interface Board1Service {
 
     //반별 게시글 목록 조회
     public List<Board1DTO> getBoard1List();
-
+    //반별 게시글 목록 5개 조회
+    public List<Board1DTO> findBoard1List();
     //반별 게시글 상세 조회
     public Board1DTO getBoard1Detail(int board1_no);
 

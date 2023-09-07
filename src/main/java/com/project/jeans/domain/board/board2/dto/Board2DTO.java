@@ -3,14 +3,12 @@ package com.project.jeans.domain.board.board2.dto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.ToString;
 
 import java.sql.Timestamp;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@ToString
 public class Board2DTO {
 
     private int board2_no;

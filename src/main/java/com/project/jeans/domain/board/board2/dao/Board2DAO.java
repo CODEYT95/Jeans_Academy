@@ -13,7 +13,8 @@ public interface Board2DAO {
 
     //게시판 목록 조회
     List<Board2DTO> findBoard2All();
-
+    //게시판 목록 5개 조회
+    List<Board2DTO> findBoard2List();
     //게시글 상세 조회
     Board2DTO findBoard2ByNo(int board2_no);
 

@@ -143,8 +143,8 @@ function onDocumentReady(callback) {
 }
 //----------------------------cell끝--------------------------------
 $(document).ready(function () {
-    const eventDateInput = document.getElementById("event-date");
-    const eventTitleInput = document.getElementById("event-title");
+    const eventDateInput = document.querySelector("#event-date");
+    const eventTitleInput = document.querySelector("#event-title");
     const addEventButton = document.querySelector(".add-event-button");
 
 
@@ -152,17 +152,18 @@ $(document).ready(function () {
         // 입력된 날짜와 제목을 가져옵니다.
         const date = eventDateInput.value;
         const title = eventTitleInput.value;
-
+        console.log(date);
         // AJAX 요청을 보냅니다.
         $.ajax({
             type: "POST",
-            url: "http://localhost:8090/mypage/write", // "write"는 실제로 데이터를 처리하는 서버 엔드포인트 URL입니다.
+            url: "/mypage/write", // "write"는 실제로 데이터를 처리하는 서버 엔드포인트 URL입니다.
             data: { date: date, title: title }, // 데이터를 객체로 보냅니다.
-            success: function (data) {
-                console.log(data);
-                // 요청이 성공하면 여기에서 추가적인 처리를 수행할 수 있습니다.
-                console.log("일정이 성공적으로 추가되었습니다.");
-                // 원하는 추가 작업을 수행할 수 있습니다.
+            success: function (response) {
+                if(response==="1"){
+                    location.reload();
+                }else{
+                    alert("일정 입력에 실패하셨습니다.");
+                }
             },
             error: function (error) {
                 // 요청이 실패한 경우 여기에서 처리할 수 있습니다.

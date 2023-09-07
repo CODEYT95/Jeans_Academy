@@ -1,13 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.project.jeans.domain.mypage.dao.MyPageDAO">
-    <select id="selectMyPageAll" parameterType="String" resultType="com.project.jeans.domain.mypage.dto.MyPageDTO">
-        <![CDATA[
-        select * from mypage
-        where member_id=#{member_id};
-        ]]>
-    </select>
 
+    <!--    일정 추가     -->
     <insert id="addEvent" parameterType="com.project.jeans.domain.mypage.dto.MyPageDTO">
         <![CDATA[
         INSERT INTO mypage (mypage_content, mypage_regdate, member_id)
@@ -15,12 +10,23 @@
         ]]>
     </insert>
 
+    <select id="selectEvent" parameterType="String" resultType="com.project.jeans.domain.mypage.dto.MyPageDTO">
+        <![CDATA[
+    SELECT mypage_content, mypage_regdate
+    FROM mypage
+    WHERE member_id = #{member_id};
+    ]]>
+    </select>
+    <!--    일정 추가 끝     -->
+
+
     <select id="selectMember" parameterType="String" resultType="com.project.jeans.domain.member.dto.MemberDTO">
         <![CDATA[
         select member_id, member_pw, member_day, member_phone from member
         where member_id=#{member_id};
         ]]>
     </select>
+
     <select id="selectboard" parameterType="String" resultType="com.project.jeans.domain.mypage.dto.MyPageDTO">
         <![CDATA[
     SELECT
@@ -43,7 +49,8 @@
     LEFT JOIN
         board4 b4 ON m.member_id = b4.member_id
     WHERE
-        m.member_id = #{member_id};
+        m.member_id = #{member_id}
+    LIMIT 4;
     ]]>
     </select>
 
