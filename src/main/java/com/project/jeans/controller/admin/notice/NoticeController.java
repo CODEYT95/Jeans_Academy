@@ -94,18 +94,32 @@ public class NoticeController {
     }
 
     @PostMapping("/notice_insert")
-    public NoticeDTO notice_insert(@RequestParam("title") String title, @RequestParam("content") String content,
+    public String notice_insert(@RequestParam("title") String title, @RequestParam("content") String content,
                                                             HttpSession session, Model model){
 
+        LoginCheckSession loginCheck = new LoginCheckSession(memberService); // Provide the memberService instance here
+        MemberDTO memberInfo = loginCheck.getLoginCheckSession(session, model);
+        if (memberInfo == null) {
+            // 로그인이 필요한 경우 리디렉션
+            return "redirect:/login";
+        }
+        model.addAttribute("member_name",memberInfo.getMember_name());
+        model.addAttribute("member_class",memberInfo.getMember_class());
+        model.addAttribute("member_type",memberInfo.getMember_type());
+
         NoticeDTO noticeDTO = new NoticeDTO();
+        noticeDTO.setMember_id(memberInfo.getMember_id());
         noticeDTO.setNotice_title(title);
         noticeDTO.setNotice_content(content);
-        noticeDTO.setMember_name("관리자 윤지");
-        noticeDTO.setMember_class("1반");
 
-        noticeDAO.insertNotice(noticeDTO);
+        int result = noticeDAO.insertNotice(noticeDTO);
 
-        return noticeDTO;
+        if(result == 1){
+            int notice_no = noticeService.recentWrite(memberInfo.getMember_id());
+            System.out.println(notice_no);
+            return "redirect:/noticeDetail/" + notice_no;
+        }
+        return "/notice_insert";
     }
 
     //공지사항 isshow 'N'으로 바꾸기

@@ -18,6 +18,8 @@ public interface NoticeService {
 
     //공지사항 INSERT
     public int insertNotice(NoticeDTO noticeDTO);
+    //
+    public int recentWrite(String member_id);
 
     //공지사항 isShow 'N'으로 바꾸기
     public int isShowNotice(int notice_no);

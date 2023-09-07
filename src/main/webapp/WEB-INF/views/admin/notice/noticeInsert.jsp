@@ -24,7 +24,7 @@ pageEncoding="UTF-8"%>
                     <div class="write-title">
                         <label>
                             <span>제목</span>
-                            <textarea name="title" required></textarea>
+                            <textarea name="title" required maxlength="50" placeholder="제목을 입력해주세요."></textarea>
                         </label>
                     </div>
                 </div>

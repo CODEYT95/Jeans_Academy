@@ -38,10 +38,10 @@
                                 <span class="title">${notice.notice_content}</span>
                             </a>
                             <div class="writer-container">
-                                <span class="writer">${notice.member_name}</span>
+                                <span class="writer">${notice.member_id}</span>
                             </div>
                             <span class="reg">${notice.notice_regdate}</span>
-                            <span class="count">111</span>
+                            <span class="count">${notice.notice_count}</span>
                         </li>
                     </c:forEach>
                     <div class="container">

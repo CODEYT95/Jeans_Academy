@@ -1,6 +1,4 @@
 $(document).ready(function() {
-
-
    // Delete 버튼 클릭 시 이벤트 핸들러
    $('.delete').click(function() {
      // Modal 보이기
@@ -25,6 +23,4 @@ $(document).ready(function() {
      // Modal 숨기기
      $('#myModal').css('display', 'none');
    });
-
-
 });
