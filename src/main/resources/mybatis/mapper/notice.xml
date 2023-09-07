@@ -6,7 +6,8 @@
     <select id="selectAll" resultType="com.project.jeans.domain.admin.notice.dto.NoticeDTO">
         <![CDATA[
         SELECT *
-        FROM notice ORDER BY notice_no desc;
+        FROM notice
+        ORDER BY notice_no desc;
         ]]>
     </select>
     <!--5개 조회-->
@@ -22,6 +23,19 @@
         <![CDATA[
         SELECT *
         FROM notice
+        WHERE notice_no = #{notice_no};
+        ]]>
+    </select>
+    <update id="noticeCountUp" parameterType="Integer">
+        UPDATE notice
+        SET notice_count = notice_count + 1
+        WHERE notice_no = #{notice_no};
+    </update>
+    <!--댓글 상세보기-->
+    <select id="nreplyDetail" parameterType="Integer" resultType="com.project.jeans.domain.admin.notice.dto.NReplyDTO">
+        <![CDATA[
+        SELECT *
+        FROM notice_comment
         WHERE notice_no = #{notice_no};
         ]]>
     </select>

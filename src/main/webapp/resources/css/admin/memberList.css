@@ -1,19 +1,8 @@
 @charset "UTF-8";
-.main-container{
-    height: auto;
-    margin-top: 22px;
-    margin-bottom: 10px;
-    max-width: 100%;
-    display: flow-root;
-    padding-left: 30px;
-    padding-right: 30px;
-}
-/*header-sidebar 끝*/
-
 caption{
     font-size:30px;
     font-weight:bold;
-    margin-bottom:20px;
+    margin: 20px 0 20px 0;
 }
 .table-icon{
     display: flex;
@@ -23,6 +12,7 @@ caption{
 table{
     width: 100%;
     font-size:20px;
+    margin-bottom:20px;
 }
 .modifyBtn i {
     color: #6b6be8;
@@ -115,7 +105,7 @@ tr:nth-child(even) {background-color: #f2f7fb;}
     margin-bottom: 45px;
 }
 
-.currentPage {
+.currentPage1, .currentPage2, .currentPage3 {
     background: #e156db36;
     border-radius: 8px;
 }

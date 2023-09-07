@@ -9,7 +9,8 @@ public interface Board2Service {
 
     //반별 게시글 목록 조회
     public List<Board2DTO> getBoard2List();
-
+    //반별 게시글 목록 5개 조회
+    public List<Board2DTO> findBoard2List();
     //반별 게시글 상세 조회
     public Board2DTO getBoard2Detail(int board2_no);
 

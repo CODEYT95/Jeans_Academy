@@ -21,9 +21,7 @@ public class Board1ServiceImpl implements Board1Service {
         return board1DTOList;
     }
 
-    //5개조회
-
-
+    //반별 게시글 4개 조회
     @Override
     public List<Board1DTO> findBoard1List() {
         return board1DAO.findBoard1List();

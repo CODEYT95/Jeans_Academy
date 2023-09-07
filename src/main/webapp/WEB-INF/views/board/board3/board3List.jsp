@@ -11,7 +11,7 @@
     <script type="text/javascript" src="../../../../resources/js/board/boardList.js"></script>
     <script type="text/javascript" src="../../../../resources/js/common/sidebar.js"></script>
 </head>
-<body>
+<body data-member-class="${member_class}" data-category="${category}">
 <%@ include file="/WEB-INF/views/common/header.jsp"%>
 <%@ include file="/WEB-INF/views/common/sidebar.jsp"%>
 

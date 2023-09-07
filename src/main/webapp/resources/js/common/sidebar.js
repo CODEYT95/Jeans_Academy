@@ -10,7 +10,6 @@ $(document).ready(function() {
                });
            });
        }
-
        var sideClass1 = document.querySelectorAll(".sideBoard1")
        var sideClass2 = document.querySelectorAll(".sideBoard2")
        var sideClass3 = document.querySelectorAll(".sideBoard3")
@@ -38,12 +37,4 @@ $(document).ready(function() {
            cancelClickEvent(sideClass2);
            cancelClickEvent(sideClass3);
        }
-       /* 메뉴 공통 기능 */
-           let menu = $('.menu');
-           let sidebar = $('.sidebar');
-           let mainContent = $('.main--content');
-           menu.click(function() {
-               sidebar.toggleClass('active');
-               mainContent.toggleClass('active');
-           });
    });

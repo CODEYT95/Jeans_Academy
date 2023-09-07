@@ -12,7 +12,7 @@
     <insert id="insertComment2" parameterType="map">
         <![CDATA[
         INSERT INTO comment2(board2_no, comment2_content, comment2_regdate, comment2_isshow, member_id)
-        VALUES(#{board2_no},#{comment2_content},now(),'Y',#{member_id},#{member_name},#{member_class})
+        VALUES(#{board2_no},#{comment2_content},now(),'Y',#{member_id})
         ]]>
     </insert>
     <!-- 댓글 수정 -->

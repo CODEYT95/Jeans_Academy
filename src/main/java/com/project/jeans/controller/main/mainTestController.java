@@ -26,6 +26,11 @@ public class mainTestController {
             // 로그인이 필요한 경우 리디렉션
             return "/member/login";
         }
+        String category = "main";
+        model.addAttribute("category", category);
+        model.addAttribute("member_name",memberInfo.getMember_name());
+        model.addAttribute("member_class",memberInfo.getMember_class());
+        model.addAttribute("member_type",memberInfo.getMember_type());
         return"test";
     }
 

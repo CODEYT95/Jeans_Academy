@@ -37,7 +37,7 @@
                     <th>수정/삭제</th>
                 </tr>
                 </thead>
-                <tbody>
+                <tbody id="showTableBody">
                 <c:choose>
                     <c:when test="${showMembers.size() > 0}">
                         <c:forEach items="${showMembers}" var="show">
@@ -66,193 +66,68 @@
             </table>
             <div class="pagination">
                 <div class="paging">
-                    <form action="<c:url value='/admin/memberList' />" name="pageForm">
-                        <div class="text-center clearfix">
-                            <ul class="pagination-container" id="pagination">
-                                <div class="showPage">
-                                    <c:if test="${pageCreate.prev}">
-                                        <li class="page-item "><a  class="page-link" href="#" data-pageNum="${pageCreate.beginPage-1}">Prev</a></li>
-                                    </c:if>
-                                    <c:forEach var="num" begin="${pageCreate.beginPage}" end="${pageCreate.endPage}">
-                                        <li class="${pageCreate.paging.pageNum == num ? 'currentPage' : ''}" page-item><a class="page-link" href="#" data-pageNum="${num}">${num}</a></li>
-                                    </c:forEach>
-                                     <c:if test="${pageCreate.next}">
-                                        <li class="page-item"><a class="page-link" href="#" data-pageNum="${pageCreate.endPage+1}">Next</a></li>
-                                    </c:if>
-                                </div>
-                            </ul>
-                        </div>
-                            <!-- 페이지 관련 버튼을 클릭 시 같이 숨겨서 보낼 값 -->
-                            <input type="hidden" name="pageNum" value="${pageCreate.paging.pageNum}">
-                            <input type="hidden" name="countPerPage" value="${pageCreate.paging.countPerPage}">
-                            <input type="hidden" name="keyword" value="${pageCreate.paging.keyword}">
-                            <input type="hidden" name="condition" value="${pageCreate.paging.condition}">
-                    </form>
-                </div>
-            </div>
-            </div>
-        <hr>
-            <div class="acceptTable">
-                <table>
-                    <caption class="table1">요청 처리 회원</caption>
-                    <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>이름</th>
-                        <th>생일</th>
-                        <th>전화번호</th>
-                        <th>유형</th>
-                        <th>코드</th>
-                        <th>승인/삭제</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <c:choose>
-                        <c:when test="${acceptMembers.size() > 0}">
-                            <c:forEach items="${acceptMembers}" var="accept">
-                                <tr>
-                                    <td>${accept.member_id}</td>
-                                    <td>${accept.member_name}</td>
-                                    <td><fmt:formatDate value="${accept.member_day}" pattern="yyyy-MM-dd" /></td>
-                                    <td>${accept.member_phone}</td>
-                                    <td>${accept.member_type}</td>
-                                    <td>${accept.member_code}</td>
-                                    <td>
-                                        <div class="table-icon">
-                                            <button class="modifyBtn">
-                                                <i class="ri-pencil-line" id="accept"></i>
-                                            </button>
-                                            <button class= "updateBtn">
-                                                <i class="ri-delete-bin-6-line" id="reject"></i>
-                                            </button>
-                                        </div>
-                                    </td>
-                                </tr>
-                            </c:forEach>
-                        </c:when>
-                    </c:choose>
-                    </tbody>
-                </table>
-                <div class="pagination">
-                    <div class="paging">
-                        <form action="<c:url value='/admin/memberList' />" name="pageForm2">
-                            <div class="text-center clearfix">
-                                <ul class="pagination-container" id="pagination2">
-                                    <div class="acceptPage">
-                                        <c:if test="${pageCreateAccept.prev}">
-                                            <li class="page-item "><a  class="page-link" href="#" data-pageNum="${pageCreateAccept.beginPage-1}">Prev</a></li>
-                                        </c:if>
-                                        <c:forEach var="num" begin="${pageCreateAccept.beginPage}" end="${pageCreateAccept.endPage}">
-                                            <li class="${pageCreateAccept.paging.pageNum == num ? ' currentPage' : ''}" page-item><a class="page-link" href="#" data-pageNum="${num}">${num}</a></li>
-                                        </c:forEach>
-                                        <c:if test="${pageCreateAccept.next}">
-                                            <li class="page-item"><a class="page-link" href="#" data-pageNum="${pageCreateAccept.endPage+1}">Next</a></li>
-                                        </c:if>
-                                    </div>
-                                </ul>
+                    <div class="text-center clearfix">
+                        <ul class="pagination-container" id="pagination">
+                            <div class="showPage" id="showPage" data-countperpage="${pageCreateShow.paging.countPerPage}">
+                                <c:if test="${pageCreateShow.prev}">
+                                    <li class="page-item"><a class="page-link" href="#" data-pageNum="${pageCreateShow.beginPage-1}">Prev</a></li>
+                                </c:if>
+                                <c:forEach var="num" begin="${pageCreateShow.beginPage}" end="${pageCreateShow.endPage}">
+                                    <li class="${pageCreateShow.paging.pageNum == num ? 'currentPage' : ''}" page-item><a class="page-link" href="#" data-pageNum="${num}">${num}</a></li>
+                                </c:forEach>
+                                <c:if test="${pageCreateShow.next}">
+                                    <li class="page-item"><a class="page-link" href="#" data-pageNum="${pageCreateShow.endPage+1}">Next</a></li>
+                                </c:if>
                             </div>
-                                <!-- 페이지 관련 버튼을 클릭 시 같이 숨겨서 보낼 값 -->
-                                <input type="hidden" name="pageNum" value="${pageCreateAccept.paging.pageNum}">
-                                <input type="hidden" name="countPerPage" value="${pageCreateAccept.paging.countPerPage}">
-                                <input type="hidden" name="keyword" value="${pageCreateAccept.paging.keyword}">
-                                <input type="hidden" name="condition" value="${pageCreateAccept.paging.condition}">
-
-                        </form>
+                        </ul>
                     </div>
-                </div>
-            </div>
-            <div class="hiddenTable">
-                <table>
-                    <caption class="table1">탈퇴 회원 관리</caption>
-                    <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>이름</th>
-                        <th>생일</th>
-                        <th>전화번호</th>
-                        <th>유형</th>
-                        <th>코드</th>
-                        <th>삭제</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <c:choose>
-                        <c:when test="${hiddenMembers.size() > 0}">
-                            <c:forEach items="${hiddenMembers}" var="hidden">
-                                <tr>
-                                    <td>${hidden.member_id}</td>
-                                    <td>${hidden.member_name}</td>
-                                    <td><fmt:formatDate value="${show.member_day}" pattern="yyyy-MM-dd" /></td>
-                                    <td>${hidden.member_phone}</td>
-                                    <td>${hidden.member_type}</td>
-                                    <td>${hidden.member_code}</td>
-                                    <td>
-                                        <div class="table-icon">
-                                            <button class="modifyBtn">
-                                                <i class="ri-pencil-line" id="delete"></i>
-                                            </button>
-                                        </div>
-                                    </td>
-                                </tr>
-                            </c:forEach>
-                        </c:when>
-                    </c:choose>
-                    </tbody>
-                </table>
-                <div class="pagination">
-                    <div class="paging">
-                        <form action="<c:url value='/admin/memberList' />" name="pageForm3">
-                            <div class="text-center clearfix">
-                                <ul class="pagination-container" id="pagination3">
-                                    <div class="hiddenPage">
-                                    <c:if test="${pageCreateHidden.prev}">
-                                        <li class="page-item "><a  class="page-link" href="#" data-pageNum="${pageCreateHidden.beginPage-1}">Prev</a></li>
-                                    </c:if>
-                                        <c:forEach var="num" begin="${pageCreateHidden.beginPage}" end="${pageCreateHidden.endPage}">
-                                            <li class="${pageCreateHidden.paging.pageNum == num ? 'currentPage' : ''}" page-item><a class="page-link" href="#" data-pageNum="${num}">${num}</a></li>
-                                        </c:forEach>
-                                        <c:if test="${pageCreateHidden.next}">
-                                            <li class="page-item"><a class="page-link" href="#" data-pageNum="${pageCreateHidden.endPage+1}">Next</a></li>
-                                        </c:if>
-                                    </div>
-                                </ul>
-                            </div>
-                                <!-- 페이지 관련 버튼을 클릭 시 같이 숨겨서 보낼 값 -->
-                                <input type="hidden" name="pageNum" value="${pageCreateHidden.paging.pageNum}">
-                                <input type="hidden" name="countPerPage" value="${pageCreateHidden.paging.countPerPage}">
-                                <input type="hidden" name="keyword" value="${pageCreateHidden.paging.keyword}">
-                                <input type="hidden" name="condition" value="${pageCreateHidden.paging.condition}">
-                        </form>
-                    </div>
+                    <!-- 페이지 관련 버튼을 클릭 시 같이 숨겨서 보낼 값 -->
+                    <input type="hidden" name="pageNum" id="pageNumShow" value="${pageCreateShow.paging.pageNum}">
+                    <input type="hidden" name="countPerPage" value="${pageCreateShow.paging.countPerPage}">
                 </div>
             </div>
         </div>
+        <hr>
+
     </div>
+    <hr>
+</div>
 </body>
 </html>
 <script>
-    $(function() {
-
-        $('#pagination').on('click', 'a', function(e) {
+    $(document).ready(function() {
+        $(document).on("click", "#pagination .showPage a", function(e) {
             e.preventDefault();
-            const value = $(this).data('pagenum');
-            document.pageForm.pageNum.value = value;
-            document.pageForm.submit();
+            var value = $(this).attr("data-pageNum");
+            console.log(value);
+            $.ajax({
+                type: "POST",
+                url: "/admin/memberList",
+                data: {
+                    pageNum: value,
+                    countPerPage: $("#showPage").data("countperpage")
+                },
+                success: function(data) {
+                    $("#showTableBody").empty(); // 기존 데이터 삭제
+                    $.each(data.showMembers, function(index, show) {
+                        var formattedDate = new Date(show.member_day).toLocaleDateString(); // 날짜 포맷팅
+                        var newRow = "<tr>" +
+                            "<td>" + show.member_id + "</td>" +
+                            "<td>" + show.member_name + "</td>" +
+                            "<td>" + formattedDate + "</td>" +
+                            "<td>" + show.member_phone + "</td>" +
+                            "<td>" + show.member_type + "</td>" +
+                            "<td>" + show.member_code+ "</td>"+
+                            // ... 추가 필드 및 버튼 등 ...
+                            "</tr>";
+                        $("#showTableBody").append(newRow);
+                    });
+                },
+                error: function(error) {
+                    console.error("Error:", error);
+                }
+            });
         });
-
-    $('#pagination2').on('click', 'a', function(e) {
-        e.preventDefault();
-        const value = $(this).data('pagenum');
-        document.pageForm2.pageNum.value = value;
-        document.pageForm2.submit();
     });
-
-    $('#pagination3').on('click', 'a', function(e) {
-        e.preventDefault();
-        const value = $(this).data('pagenum');
-        document.pageForm3.pageNum.value = value;
-        document.pageForm3.submit();
-    });
-
-    })
 </script>
+

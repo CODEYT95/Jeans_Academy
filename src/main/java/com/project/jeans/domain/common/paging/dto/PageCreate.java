@@ -34,9 +34,9 @@ public class PageCreate {
         }
 
     }
-
     public void setArticleTotalCount(int articleTotalCount) {
         this.articleTotalCount = articleTotalCount;
         calcDataOfPage();
     }
+
 }
