@@ -31,12 +31,16 @@ public class MyPageController {
         LoginCheckSession loginCheck = new LoginCheckSession(memberService);
         MemberDTO memberInfo = loginCheck.getLoginCheckSession(session, model);
 
-        System.out.println(member_id);
-
         if (memberInfo == null) {
             // 로그인이 필요한 경우 리디렉션
-            return "member/login";
+            return "/member/login";
         }
+        String category = "mypage";
+        model.addAttribute("category", category);
+        model.addAttribute("member_name",memberInfo.getMember_name());
+        model.addAttribute("member_class",memberInfo.getMember_class());
+        model.addAttribute("member_type",memberInfo.getMember_type());
+
         System.out.println("2"+member_id);
         //개인정보 조회
         MemberDTO member = myPageService.selectMember(member_id);

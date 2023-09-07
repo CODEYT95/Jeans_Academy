@@ -65,6 +65,10 @@ public class Board3Controller {
             // 로그인이 필요한 경우 리디렉션
             return "/member/login";
         }
+        model.addAttribute("member_name", memberInfo.getMember_name());
+        model.addAttribute("member_class", memberInfo.getMember_class());
+        model.addAttribute("member_type", memberInfo.getMember_type());
+
 
         Board3DTO board3DTO = board3Service.getBoard3Detail(board3_no);
         model.addAttribute("board3DTO", board3DTO);

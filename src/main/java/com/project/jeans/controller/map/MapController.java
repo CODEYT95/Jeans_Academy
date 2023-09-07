@@ -21,9 +21,12 @@ public class MapController {
         LoginCheckSession loginCheck = new LoginCheckSession(memberService);
         MemberDTO memberInfo = loginCheck.getLoginCheckSession(session, model);
 
-        // 로그인이 필요한 경우 리디렉션
-        if (memberInfo == null) {return "/member/login";}
-
+        if (memberInfo == null) {
+            // 로그인이 필요한 경우 리디렉션
+            return "/member/login";
+        }
+        String category = "map";
+        model.addAttribute("category", category);
         model.addAttribute("member_name",memberInfo.getMember_name());
         model.addAttribute("member_class",memberInfo.getMember_class());
         model.addAttribute("member_type",memberInfo.getMember_type());

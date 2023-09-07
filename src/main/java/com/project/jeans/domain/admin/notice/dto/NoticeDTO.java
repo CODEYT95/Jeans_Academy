@@ -9,12 +9,12 @@ import java.sql.Timestamp;
 public class NoticeDTO {
 
     private int notice_no;
-    @Getter
     private String notice_title;
     private String notice_content;
     private Timestamp notice_regdate;
     private String member_name;
     private String member_class;
     private String notice_isshow;
+    private int notice_count;
 
 }
