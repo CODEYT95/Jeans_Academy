@@ -16,6 +16,14 @@ public class NoticeServiceImpl implements NoticeService {
         return noticeDAO.selectAll();
     }
 
+    //5개 보기
+
+
+    @Override
+    public List<NoticeDTO> selectFive() {
+        return noticeDAO.selectFive();
+    }
+
     //공지사항 상세보기
     @Override
     public NoticeDTO noticeDetail(int notice_no){

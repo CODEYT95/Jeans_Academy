@@ -91,8 +91,8 @@
                                                 <br/><br/>
                                             </div>
                                             <div class="modal-body">
-                                                <form action="/comment2/update" method="post">
-                                                    <input type="hidden" name="board2_no" value="${board2DTO.board2_no}"/>
+                                                <form action="/comment1/update" method="post">
+                                                    <input type="hidden" name="board2_no" value="${board1DTO.board2_no}"/>
                                                     <input type="hidden" name="comment2_no" value="${comment2DTO.comment2_no}">
                                                     <div id="comment_content" class="form-group">
                                                         <h3>댓글 내용</h3>

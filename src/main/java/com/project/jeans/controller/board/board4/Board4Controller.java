@@ -33,7 +33,7 @@ public class Board4Controller {
 
     //반별 게시판 목록 조회
     @GetMapping("/list")
-    public String getBoard4List(HttpSession session, Model model){
+    public String getBoard2List(HttpSession session, Model model){
         LoginCheckSession loginCheck = new LoginCheckSession(memberService);
         MemberDTO memberInfo = loginCheck.getLoginCheckSession(session, model);
         if (memberInfo == null) {
@@ -116,7 +116,7 @@ public class Board4Controller {
 
     //반별 게시글 수정(폼)
     @GetMapping("/modify")
-    public String modifyBoard4Form(@RequestParam int board4_no, Model model, HttpSession session) {
+    public String modifyBoard1Form(@RequestParam int board4_no, Model model, HttpSession session) {
         LoginCheckSession loginCheck = new LoginCheckSession(memberService);
         MemberDTO memberInfo = loginCheck.getLoginCheckSession(session, model);
 

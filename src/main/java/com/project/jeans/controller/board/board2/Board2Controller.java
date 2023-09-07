@@ -116,7 +116,7 @@ public class Board2Controller {
 
     //반별 게시글 수정(폼)
     @GetMapping("/modify")
-    public String modifyBoard2Form(@RequestParam int board2_no, Model model, HttpSession session) {
+    public String modifyBoard1Form(@RequestParam int board2_no, Model model, HttpSession session) {
         LoginCheckSession loginCheck = new LoginCheckSession(memberService);
         MemberDTO memberInfo = loginCheck.getLoginCheckSession(session, model);
 

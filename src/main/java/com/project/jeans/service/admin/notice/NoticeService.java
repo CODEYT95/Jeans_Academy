@@ -7,6 +7,8 @@ import java.util.List;
 public interface NoticeService {
     //공지사항 전체조회
     public List<NoticeDTO> selectAll();
+    //공지사항 5개
+    public List<NoticeDTO> selectFive();
     //공지사항 상세보기
     public NoticeDTO noticeDetail(int notice_no);
 
