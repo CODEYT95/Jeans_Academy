@@ -2,11 +2,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
-<html lang="ko" xmlns:c="http://java.sun.com/JSP/Page">
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<html lang="ko" xmlns:c="http://java.sun.com/JSP/Page"xmlns:fmt="http://java.sun.com/JSP/Page">
 <head>
     <meta charset="UTF-8">
     <title>메인</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" type="text/css" href="../../../resources/css/mypage/mypage.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.css" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
@@ -110,39 +111,48 @@ pageEncoding="UTF-8"%>
         </div>
         <div class="mypage-list">
             <div class="outer-gird">
-                <div class="board1">
+                <div class="mypage-board1">
                     <div class="b-outer-gird1">
                         <div class="list-boxtitle1">개인정보</div>
                         <div class="b-list1">
                             <div class="list-id">
                                 <p><strong>ID:</strong>
-                                    <span th:text="${member.member_id}"></span></p>
+                                    <span>${member.member_id}</span></p>
                             </div>
                             <div class="list-pw">
                                 <p><strong>PW:</strong>
-                                    <span th:text="${member.member_pw}"></span></p>
+                                    <span>${member.member_pw}</span></p>
                             </div>
                             <div class="list-day">
-                                <p><strong>Day:</strong> <span th:text="${member.member_day}"></span></p>
+                                <p><strong>Day:</strong><span><fmt:formatDate value="${member.member_day}" pattern="yyyy-MM-dd"/></span></p>
                             </div>
                             <div class="list-phon">
-                                <p><strong>Phon_Number:</strong> <span th:text="${member.member_phon}"></span></p>
+                                <p><strong>Phon_Number:</strong><span>${member.member_phone}</span></p>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="board2">
+                <div class="mypage-board2">
                     <div class="b-outer-gird2">
                         <div class="list-boxtitle2">내가 작성한 글</div>
-                        <div class="b-list2">내용</div>
+                            <div class="b-list2">
+                                <c:forEach items="${board}" var="board">
+                                    <div class="boardlist">
+                                    <a href="/board1/detail/${board.board1_no}" class="class1">${board.board1_title}</a>
+                                    <a href="/board1/detail/${board.board2_no}" class="class1">${board.board2_title}</a>
+                                    <a href="/board1/detail/${board.board3_no}" class="class1">${board.board3_title}</a>
+                                    <a href="/board1/detail/${board.board4_no}" class="class1">${board.board4_title}</a>
+                                    </div>
+                                </c:forEach>
+                            </div>
                     </div>
                 </div>
                 <div class="calendar">
                     <div class="c-outer-gird">
                         <div class="calendar-header">
-                            <button id="prev-month">이전</button>
+                            <button id="prev-month"><i class="fa-solid fa-angle-left fa-xl"></i></button>
                             <h2 id="month-year">2023년 8월</h2>
-                            <button id="next-month">다음</button>
+                            <button id="next-month"><i class="fa-solid fa-angle-left fa-rotate-180 fa-xl"></i></button>
                         </div>
                         <div class="calendar-board">
                             <div class="calendar-grid" id="calendar-grid">
