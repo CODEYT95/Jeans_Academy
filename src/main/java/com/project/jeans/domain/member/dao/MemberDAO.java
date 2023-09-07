@@ -44,6 +44,12 @@ public interface MemberDAO {
     //아이디 찾기
     public String findId(MemberDTO memberDTO);
 
+    //비밀번호 찾기
+    public String findPw(MemberDTO memberDTO);
+
+    // 비밀번호 수정
+    int updatePw(MemberDTO memberDTO);
+
     //강사님 로그인 처리
     public int loginTeacher(MemberDTO memberDTO);
 

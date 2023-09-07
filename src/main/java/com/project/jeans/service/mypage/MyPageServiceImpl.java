@@ -16,13 +16,13 @@ public class MyPageServiceImpl implements MyPageService {
     private MyPageDAO myPageDAO;
 
     @Override
-    public List<MyPageDTO> selectMyPageAll(String member_id) {
-        return myPageDAO.selectMyPageAll(member_id);
+    public int addEvent(MyPageDTO myPageDTO) {
+        return myPageDAO.addEvent(myPageDTO);
     }
 
     @Override
-    public int addEvent(MyPageDTO myPageDTO) {
-        return myPageDAO.addEvent(myPageDTO);
+    public List<MyPageDTO> selectEvent(String member_id) {
+        return myPageDAO.selectEvent(member_id);
     }
 
     @Override

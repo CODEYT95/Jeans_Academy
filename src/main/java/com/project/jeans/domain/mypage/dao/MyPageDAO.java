@@ -10,9 +10,8 @@ import java.util.List;
 @Mapper
 @Repository
 public interface MyPageDAO {
-    List<MyPageDTO> selectMyPageAll(String member_id);
-
     int addEvent(MyPageDTO myPageDTO);
+    List<MyPageDTO> selectEvent(String member_id);
 
     MemberDTO selectMember(String member_id);
 

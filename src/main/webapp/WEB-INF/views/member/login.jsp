@@ -42,7 +42,14 @@ pageEncoding="UTF-8"%>
                     <span  class="eye-icon2"><ion-icon name="eye-outline"></ion-icon></span>
                 </div>
                 <span id="ErrorStudent" style="color: red;"></span>
-                <a onclick="new_window();">아이디 찾기</a>
+                <div class="findField">
+                    <div class="find">
+                        <a onclick="new_window('findId');">아이디 찾기</a>
+                    </div>
+                    <div class="find">
+                        <a onclick="new_window('findPw');">비밀번호 찾기</a>
+                    </div>
+                </div>
                 <div>
                     <button type="submit" class="login">로그인</button>
                     <button id="studentSignup">회원가입</button>

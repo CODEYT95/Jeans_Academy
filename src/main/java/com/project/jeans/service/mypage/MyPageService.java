@@ -7,9 +7,9 @@ import java.util.List;
 
 public interface MyPageService {
 
-    List<MyPageDTO> selectMyPageAll(String member_id);
-
     int addEvent(MyPageDTO myPageDTO);
+    List<MyPageDTO> selectEvent(String member_id);
+
     MemberDTO selectMember(String member_id);
 
     List<MyPageDTO> selectboard (String member_id);

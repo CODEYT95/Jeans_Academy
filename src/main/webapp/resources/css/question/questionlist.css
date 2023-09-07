@@ -1,10 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poor+Story&family=Single+Day&display=swap');
 * {
 margin: 0;
 padding: 0;
 box-sizing: border-box;
-font-family: 'Roboto', sans-serif;
+font-family: 'Do Hyeon', sans-serif;
+}
+.main *{
+font-family: 'Poor Story', cursive;
+font-size:18px;
 }
 body {
 position: relative;
@@ -61,15 +66,15 @@ overflow: auto;
 font-family: 'Do Hyeon', sans-serif;
 }
 img {
-    position: relative;
-    top: 0;
-    left: 0;
-    width: 60%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
+position: relative;
+top: 0;
+left: 0;
+width: 60%;
+height: 100%;
+object-fit: cover;
+display: block;
+margin-left: auto;
+margin-right: auto;
 }
 .main {
 position: relative;
@@ -295,14 +300,14 @@ font-size:50px;
 }
 .box-list {
 column-count: 2;
-    display: block;
-    margin-top: 50px;
-    height: auto;
-    width: 90%;
-    margin-right: auto;
-    margin-left: auto;
-    gap: 10px;
-    colum-gap:0px;
+display: block;
+margin-top: 50px;
+height: auto;
+width: 90%;
+margin-right: auto;
+margin-left: auto;
+gap: 100px;
+colum-gap:0px;
 }
 
 .header-content{
@@ -315,9 +320,13 @@ display: flex;
 margin-left: auto;
 margin-right: auto;
 display: inline-block;
-font-size:30px;
-height: max-content;
+font-size:22px;
+max-width:200px;
 margin-left: 14px;
+font-weight:bold;
+white-space: nowrap;  /* 텍스트를 한 줄로 표시 */
+overflow: hidden;     /* 넘치는 텍스트를 숨김 */
+text-overflow: ellipsis;  /* 넘치는 텍스트를 ...으로 표시 */
 }
 .header-name{
 height: max-content;
@@ -333,13 +342,13 @@ font-size:16px;
 }
 
 .header-date{
-    width: max-content;
-    height: max-content;
-    margin-top: 6px;
-    margin-left: -15px;
-    text-align: end;
-    font-size: 10px;
-    margin-right: 22px;
+width: max-content;
+height: max-content;
+margin-top: 6px;
+margin-left: -15px;
+text-align: end;
+font-size: 10px;
+margin-right: 5px;
 }
 
 
@@ -356,13 +365,13 @@ margin-bottom: 10px;
 }
 
 .clear {
-    display: -webkit-box;
-    -webkit-line-clamp: 5;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    height: auto;
-    margin-top: 10px;
+display: -webkit-box;
+-webkit-line-clamp: 5;
+-webkit-box-orient: vertical;
+overflow: hidden;
+text-overflow: ellipsis;
+height: auto;
+margin-top: 18px;
 }
 
 .box .read-more {
@@ -392,12 +401,14 @@ flex: auto;
 }
 .box1, .box2, .box3, .box4{
 margin-right: auto;
-    margin-left: auto;
-    height: auto;
-    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
-    border-radius: 8px;
-    width: 540px;
-    margin-top:30px
+margin-left: auto;
+height: auto;
+box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+border-radius: 8px;
+margin-top:30px
+font-family: 'Poor Story', cursive;
+font-weight:bold;
+font-size:18px;
 }
 .box1{
 background-color:rgba(211, 248, 245, 1);
@@ -452,24 +463,24 @@ cursor: pointer;
 margin-left: 10px;
 }
 .scroll-to-top {
-    position: fixed;
-    bottom: 50px;
-    right: 40px;
-    display: none;
-    width:154px;
+position: fixed;
+bottom: 50px;
+right: 40px;
+display: none;
+width:154px;
 }
 
 .scroll-to-top a {
-    text-decoration: none;
-    padding: 10px 15px;
-    background-color: #5073FB;
-    color: white;
-    border-radius: 45px;
-    font-size: 24px;
+text-decoration: none;
+padding: 10px 15px;
+background-color: #5073FB;
+color: white;
+border-radius: 45px;
+font-size: 24px;
 }
 
 .scroll-to-top a:hover {
-    background-color: #395cdd;
+background-color: #395cdd;
 }
 
 

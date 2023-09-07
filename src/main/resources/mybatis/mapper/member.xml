@@ -67,6 +67,19 @@
         ]]>
     </select>
 
+    <!--비밀번호 찾기-->
+    <select id="findPw" resultType="String" parameterType="com.project.jeans.domain.member.dto.MemberDTO">
+        <![CDATA[
+        SELECT member_pw FROM MEMBER WHERE member_id=#{member_id} AND member_phone=#{member_phone};
+        ]]>
+    </select>
+    <!--비밀번호 수정-->
+    <update id="updatePw" parameterType="com.project.jeans.domain.member.dto.MemberDTO">
+        <![CDATA[
+        UPDATE MEMBER SET member_pw=#{member_pw} WHERE member_id=#{member_id};
+        ]]>
+    </update>
+
     <!--유효성 관련 쿼리문///////////////////////////////////////////////////////////////////////////////////////-->
     <!--전화번호 중복 체크-->
     <select id="phoneDuplicate" parameterType="String" resultType="Integer">
@@ -131,7 +144,7 @@
         <![CDATA[
         SELECT * FROM member WHERE member_isshow='Y'
         ORDER BY member_type, member_id
-        LIMIT #{pageNum} , #{countPerPage};
+        LIMIT #{pageNum1} , #{countPerPage1};
         ]]>
     </select>
 
@@ -146,7 +159,7 @@
         <![CDATA[
         SELECT * FROM member WHERE member_isshow='N'
         ORDER BY member_type, member_id
-        LIMIT #{pageNum} , #{countPerPage};
+        LIMIT #{pageNum3} , #{countPerPage3};
         ]]>
     </select>
     <!--탈퇴 회원 수-->
@@ -161,7 +174,7 @@
         <![CDATA[
         SELECT * FROM member WHERE member_accept='N'
         ORDER BY member_type, member_id
-        LIMIT #{pageNum} , #{countPerPage};
+        LIMIT #{pageNum2} , #{countPerPage2};
         ]]>
     </select>
 

@@ -1,15 +1,19 @@
 package com.project.jeans.domain.mypage.dto;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.Date;
 
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class MyPageDTO {
     private int mypage_no;
-    private String mypage_content;
-    private Date mypage_regdate;
     private String member_id;
+    private Date mypage_regdate;
+    private String mypage_content;
     private int board1_no;
     private int board2_no;
     private int board3_no;
@@ -18,7 +22,6 @@ public class MyPageDTO {
     private String board2_title;
     private String board3_title;
     private String board4_title;
-
 }
 
 
