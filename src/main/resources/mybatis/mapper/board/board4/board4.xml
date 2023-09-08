@@ -10,7 +10,7 @@
                 b.board4_regdate as board4_regdate, b.board4_isshow as board4_isshow, b.member_id as member_id
         FROM board4 as b INNER JOIN member as m
         ON b.member_id = m.member_id
-        WHERE b.board4_isshow='Y' AND m.member_type = '수강생'
+        WHERE b.board4_isshow='Y' AND m.member_type in ('강사님', '관리자')
         GROUP BY b.board4_regdate
         ORDER BY b.board4_no DESC;
         ]]>

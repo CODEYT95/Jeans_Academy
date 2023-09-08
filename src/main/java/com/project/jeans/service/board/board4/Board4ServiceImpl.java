@@ -33,6 +33,7 @@ public class Board4ServiceImpl implements Board4Service {
         List<Board4DTO> findBoard4List = board4DAO.findBoard4List();
         return findBoard4List;
     }
+
     //반별 게시글 상세 조회
     @Override
     public Board4DTO getBoard4Detail(int board4_no){

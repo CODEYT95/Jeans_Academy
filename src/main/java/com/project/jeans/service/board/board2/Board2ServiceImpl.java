@@ -34,6 +34,7 @@ public class Board2ServiceImpl implements Board2Service {
         List<Board2DTO> findBoard2List = board2DAO.findBoard2List();
         return findBoard2List;
     }
+
     //반별 게시글 상세 조회
     @Override
     public Board2DTO getBoard2Detail(int board2_no){

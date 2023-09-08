@@ -12,8 +12,10 @@ public interface Board3Service {
 
     //게시판 목록 조회(강사님)
     public List<Board3DTO> findBoard3ByTutor();
+
     //반별 게시글 목록 5개 조회
     public List<Board3DTO> findBoard3List();
+
     //반별 게시글 상세 조회
     public Board3DTO getBoard3Detail(int board3_no);
 

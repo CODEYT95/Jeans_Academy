@@ -22,7 +22,7 @@
                 b.board2_regdate as board2_regdate, b.board2_isshow as board2_isshow, b.member_id as member_id
         FROM board2 as b INNER JOIN member as m
         ON b.member_id = m.member_id
-        WHERE b.board2_isshow='Y' AND m.member_type = '강사님'
+        WHERE b.board2_isshow='Y' AND m.member_type in ('강사님', '관리자')
         GROUP BY b.board2_regdate
         ORDER BY b.board2_no DESC;
         ]]>

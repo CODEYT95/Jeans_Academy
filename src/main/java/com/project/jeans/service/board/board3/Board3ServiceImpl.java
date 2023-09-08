@@ -33,6 +33,7 @@ public class Board3ServiceImpl implements Board3Service {
         List<Board3DTO> findBoard3List = board3DAO.findBoard3List();
         return findBoard3List;
     }
+
     //반별 게시글 상세 조회
     @Override
     public Board3DTO getBoard3Detail(int board3_no){

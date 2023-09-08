@@ -1,7 +1,6 @@
 package com.project.jeans.controller.board.board4;
 
 import com.project.jeans.LoginCheckSession;
-import com.project.jeans.domain.admin.notice.dao.NoticeDAO;
 import com.project.jeans.domain.board.board4.dto.Board4DTO;
 import com.project.jeans.domain.board.board4.dto.Comment4DTO;
 import com.project.jeans.domain.member.dto.MemberDTO;
@@ -25,10 +24,6 @@ public class Board4Controller {
     private final MemberService memberService;
     private final Board4Service board4Service;
     private final Comment4Service comment4Service;
-    private final NoticeDAO noticeService;
-
-    //(주의) 관리자, 작성자만 UD할 수 있도록 수정해야 함!!!
-
 
     //반별 게시판 목록 조회
     @GetMapping("/list")
@@ -39,9 +34,19 @@ public class Board4Controller {
             // 로그인이 필요한 경우 리디렉션
             return "/member/login";
         }
-        model.addAttribute("member_name", memberInfo.getMember_name());
-        model.addAttribute("member_class", memberInfo.getMember_class());
-        model.addAttribute("member_type", memberInfo.getMember_type());
+
+        String memberClass = memberInfo.getMember_class();
+        if (!memberClass.equals("4반") && !memberClass.equals("\uD83D\uDC93")) {
+            // "4반"이 아니고 "\uD83D\uDC93"도 아닌 경우 리디렉션 또는 처리할 내용 추가
+            return "/main/main";
+        }
+
+        String category = "board4";
+        model.addAttribute("category", category);
+        model.addAttribute("member_id", memberInfo.getMember_id());
+        model.addAttribute("member_name",memberInfo.getMember_name());
+        model.addAttribute("member_class",memberInfo.getMember_class());
+        model.addAttribute("member_type",memberInfo.getMember_type());
 
         List<Board4DTO> board4DTOList = board4Service.getBoard4List();
         List<Board4DTO> board4DTOBYTutor = board4Service.findBoard4ByTutor();
@@ -59,10 +64,22 @@ public class Board4Controller {
     public String readBoard4(@PathVariable("board4_no") int board4_no, HttpSession session, Model model) {
         LoginCheckSession loginCheck = new LoginCheckSession(memberService);
         MemberDTO memberInfo = loginCheck.getLoginCheckSession(session, model);
-
         if (memberInfo == null) {
             // 로그인이 필요한 경우 리디렉션
             return "/member/login";
+        }
+
+        String category = "board4";
+        model.addAttribute("category", category);
+        model.addAttribute("member_id", memberInfo.getMember_id());
+        model.addAttribute("member_name",memberInfo.getMember_name());
+        model.addAttribute("member_class",memberInfo.getMember_class());
+        model.addAttribute("member_type",memberInfo.getMember_type());
+
+        String memberClass = memberInfo.getMember_class();
+        if (!memberClass.equals("4반") && !memberClass.equals("\uD83D\uDC93")) {
+            // "4반"이 아니고 "\uD83D\uDC93"도 아닌 경우 리디렉션 또는 처리할 내용 추가
+            return "/main/main";
         }
 
         Board4DTO board4DTO = board4Service.getBoard4Detail(board4_no);
@@ -82,7 +99,9 @@ public class Board4Controller {
             // 로그인이 필요한 경우 리디렉션
             return "/member/login";
         }
-        System.out.println(memberInfo.getMember_id());
+
+        String category = "board4";
+        model.addAttribute("category", category);
         model.addAttribute("member_id", memberInfo.getMember_id());
         model.addAttribute("member_name", memberInfo.getMember_name());
         model.addAttribute("member_class", memberInfo.getMember_class());
@@ -91,13 +110,11 @@ public class Board4Controller {
         return "/board/board4/board4Write";
     }
 
-    /* member_name, member_class 연동되면 삭제할 예정*/
     //반별 게시글 작성(로직)
     @RequestMapping(value = "/write", method = RequestMethod.POST)
     public ModelAndView writeBoard4(HttpSession session, Model model, ModelAndView modelAndView, @RequestParam Map<String, Object> map) {
         LoginCheckSession loginCheck = new LoginCheckSession(memberService);
         MemberDTO memberInfo = loginCheck.getLoginCheckSession(session, model);
-
         if (memberInfo == null) {
             System.out.println("테스트");
             // 로그인이 필요한 경우 리디렉션
@@ -118,15 +135,17 @@ public class Board4Controller {
     public String modifyBoard1Form(@RequestParam int board4_no, Model model, HttpSession session) {
         LoginCheckSession loginCheck = new LoginCheckSession(memberService);
         MemberDTO memberInfo = loginCheck.getLoginCheckSession(session, model);
-
-        model.addAttribute("member_id", memberInfo.getMember_id());
-        model.addAttribute("member_name", memberInfo.getMember_name());
-        model.addAttribute("member_class", memberInfo.getMember_class());
-        model.addAttribute("member_type", memberInfo.getMember_type());
         if (memberInfo == null) {
             // 로그인이 필요한 경우 리디렉션
             return "redirect:member/login";
         }
+
+        String category = "board4";
+        model.addAttribute("category", category);
+        model.addAttribute("member_id", memberInfo.getMember_id());
+        model.addAttribute("member_name", memberInfo.getMember_name());
+        model.addAttribute("member_class", memberInfo.getMember_class());
+        model.addAttribute("member_type", memberInfo.getMember_type());
 
         Board4DTO board4DTO = board4Service.getBoard4Detail(board4_no);
         model.addAttribute("board4DTO", board4DTO);
@@ -136,10 +155,8 @@ public class Board4Controller {
     //반별 게시글 수정
     @PostMapping("/modify")
     public ModelAndView modifyBoard4(HttpSession session, Model model, ModelAndView modelAndView, @RequestParam int board4_no, @RequestParam Map<String, Object> map) {
-
         LoginCheckSession loginCheck = new LoginCheckSession(memberService);
         MemberDTO memberInfo = loginCheck.getLoginCheckSession(session, model);
-
         if (memberInfo == null) {
             // 로그인이 필요한 경우 리디렉션
             return new ModelAndView("redirect:member/login");
@@ -153,7 +170,6 @@ public class Board4Controller {
         }
         return modelAndView;
     }
-
 
     //반별 게시글 삭제
     @GetMapping("/delete")
@@ -175,5 +191,4 @@ public class Board4Controller {
         }
         return modelAndView;
     }
-
 }
