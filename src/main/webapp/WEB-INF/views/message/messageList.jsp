@@ -60,7 +60,7 @@
                     </div>
                     <div class="modal-footer">
                         <!-- 보내기 버튼, 취소(목록) 버튼 -->
-                        <button type="submit" class="write-button">작성</button>
+                        <button type="submit" id = "write" class="write-button">작성</button>
                         <button type="button" class="list-button" onclick="location.href='/message/messageList'">목록</button>
                     </div>
                 </form>

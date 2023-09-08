@@ -143,4 +143,28 @@ function checkData() {
     return true;
 }
 
+/* 삭제(수신함, 발신함) */
+$(document).ready(function() {
+    $("#delete").click(function() {
+        var confirmed = confirm("삭제하시겠습니까?");
+        if (confirmed) {
+            $("form").submit();
+            alert("쪽지가 삭제되었습니다.");
+        } else {
+            return false;
+        }
+    });
+});
 
+/* 쪽지 작성 */
+$(document).ready(function() {
+    $("#write").click(function() {
+        var confirmed = confirm("쪽지를 보내시겠습니까?");
+        if (confirmed) {
+            $("form").submit();
+            alert("쪽지가 발송되었습니다.");
+        } else {
+            return false;
+        }
+    });
+});

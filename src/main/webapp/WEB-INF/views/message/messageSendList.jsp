@@ -16,7 +16,7 @@
 
 <div class="messageSend--content">
     <form action="/message/deleteSendMsg" method="get">
-        <button type="delete-button" class="delete-button" onclick="return checkData()">삭제</button>
+        <button type="delete-button" id="delete" class="delete-button" onclick="return checkData()">삭제</button>
         <table>
             <thead>
             <tr>

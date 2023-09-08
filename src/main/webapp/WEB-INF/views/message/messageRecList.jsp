@@ -10,13 +10,14 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
     <link rel="stylesheet" type="text/css" href="../../../resources/css/message/messageListContent.css">
     <script type="text/javascript" src="../../../resources/js/message/messageList.js"></script>
+
 </head>
 <body>
 <body data-member-class="${member_class}" data-category="${category}">
 
 <div class="messageRec--content">
     <form action="/message/deleteRecMsg" method="get">
-        <button type="submit" class="delete-button" onclick="return checkData()">삭제</button>
+        <button type="submit" id="delete" class="delete-button" onclick="return checkData()">삭제</button>
         <table class="table">
             <thead>
             <tr>
