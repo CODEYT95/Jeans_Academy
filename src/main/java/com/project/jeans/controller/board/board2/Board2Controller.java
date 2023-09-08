@@ -1,8 +1,6 @@
 package com.project.jeans.controller.board.board2;
 
 import com.project.jeans.LoginCheckSession;
-import com.project.jeans.domain.admin.notice.dao.NoticeDAO;
-import com.project.jeans.domain.admin.notice.dto.NoticeDTO;
 import com.project.jeans.domain.board.board2.dto.Board2DTO;
 import com.project.jeans.domain.board.board2.dto.Comment2DTO;
 import com.project.jeans.domain.member.dto.MemberDTO;
@@ -26,7 +24,6 @@ public class Board2Controller {
     private final MemberService memberService;
     private final Board2Service board2Service;
     private final Comment2Service comment2Service;
-    private final NoticeDAO noticeService;
 
     //(주의) 관리자, 작성자만 UD할 수 있도록 수정해야 함!!!
 
@@ -45,10 +42,10 @@ public class Board2Controller {
         model.addAttribute("member_type", memberInfo.getMember_type());
 
         List<Board2DTO> board2DTOList = board2Service.getBoard2List();
-        List<NoticeDTO> noticeList = noticeService.selectAll();
+        List<Board2DTO> board2DTOBYTutor = board2Service.findBoard2ByTutor();
 
         model.addAttribute("board2List", board2DTOList);
-        model.addAttribute("noticeList", noticeList);
+        model.addAttribute("board2DTOBYTutor", board2DTOBYTutor);
 
         return "/board/board2/board2List";
     }

@@ -1,14 +1,11 @@
 package com.project.jeans.controller.board.board1;
 
 import com.project.jeans.LoginCheckSession;
-import com.project.jeans.domain.admin.notice.dto.NoticeDTO;
 import com.project.jeans.domain.board.board1.dto.Board1DTO;
 import com.project.jeans.domain.board.board1.dto.Comment1DTO;
 import com.project.jeans.domain.member.dto.MemberDTO;
-import com.project.jeans.service.admin.notice.NoticeService;
 import com.project.jeans.service.board.board1.Board1Service;
 import com.project.jeans.service.board.board1.Comment1Service;
-import com.project.jeans.service.board.board1.Comment1ServiceImpl;
 import com.project.jeans.service.member.MemberService;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
@@ -26,7 +23,6 @@ import java.util.Map;
 public class Board1Controller {
     private final MemberService memberService;
     private final Board1Service board1Service;
-    private final NoticeService noticeService;
     private final Comment1Service comment1Service;
 
     //(주의) 관리자, 작성자만 UD할 수 있도록 수정해야 함!!!
@@ -49,15 +45,16 @@ public class Board1Controller {
         }
         String category = "board1";
         model.addAttribute("category", category);
+        model.addAttribute("member_id", memberInfo.getMember_id());
         model.addAttribute("member_name",memberInfo.getMember_name());
         model.addAttribute("member_class",memberInfo.getMember_class());
         model.addAttribute("member_type",memberInfo.getMember_type());
 
         List<Board1DTO> board1DTOList = board1Service.getBoard1List();
-        List<NoticeDTO> noticeList = noticeService.selectAll();
+        List<Board1DTO> board1DTOBYTutor = board1Service.findBoard1ByTutor();
 
         model.addAttribute("board1List", board1DTOList);
-        model.addAttribute("noticeList", noticeList);
+        model.addAttribute("board1DTOBYTutor", board1DTOBYTutor);
 
         return "/board/board1/board1List";
     }
@@ -76,6 +73,7 @@ public class Board1Controller {
         }
         String category = "board1";
         model.addAttribute("category", category);
+        model.addAttribute("member_id", memberInfo.getMember_id());
         model.addAttribute("member_name",memberInfo.getMember_name());
         model.addAttribute("member_class",memberInfo.getMember_class());
         model.addAttribute("member_type",memberInfo.getMember_type());

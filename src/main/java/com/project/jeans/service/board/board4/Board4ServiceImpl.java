@@ -20,6 +20,13 @@ public class Board4ServiceImpl implements Board4Service {
         List<Board4DTO> board4DTOList = board4DAO.findBoard4All();
         return board4DTOList;
     }
+
+    //게시판 목록 조회(강사님)
+    public List<Board4DTO> findBoard4ByTutor(){
+        List<Board4DTO> board4DTOList = board4DAO.findBoard4ByTutor();
+        return board4DTOList;
+    }
+
     //반별 게시글 목록 5개 조회
     @Override
     public List<Board4DTO> findBoard4List() {

@@ -30,13 +30,15 @@
             <input type="radio" name="testimonial" id="t-4">
             <input type="radio" name="testimonial" id="t-5">
             <div class="testimonials">
-                <c:forEach var="notice" items="${noticeList}" varStatus="loop" begin="0" end="4">
-                    <input type="radio" name="testimonial" id="t-${loop.index + 1}" checked>
-                    <label class="item"  for="t-${loop.index + 1}">
-                        <h2><a href="/noticeDetail/${notice.notice_no}">${notice.notice_title}</a></h2>
-                        <h3>${notice.notice_content}</h3>
-                    </label>
-                </c:forEach>
+                <c:if test="${member_class.equals('3반') || member_type.equals('관리자') || member_type.equals('강사님')}">
+                    <c:forEach var="tutor" items="${board3DTOBYTutor}" varStatus="loop" begin="0" end="4">
+                        <input type="radio" name="testimonial" id="t-${loop.index + 1}">
+                        <label class="item"  for="t-${loop.index + 1}">
+                            <h2><a href="/board3/detail/${tutor.board3_no}">${tutor.board3_title}</a></h2>
+                            <h3>${tutor.board3_content}</h3>
+                        </label>
+                    </c:forEach>
+                </c:if>
             </div>
             <div class="dots">
                 <label for="t-1"></label>
