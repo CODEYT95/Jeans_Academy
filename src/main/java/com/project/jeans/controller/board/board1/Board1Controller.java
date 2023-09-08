@@ -84,7 +84,6 @@ public class Board1Controller {
             return "/main/main";
         }
 
-
         Board1DTO board1DTO = board1Service.getBoard1Detail(board1_no);
         model.addAttribute("board1DTO", board1DTO);
         List<Comment1DTO> comment1DTO = comment1Service.getComment1List(board1_no);

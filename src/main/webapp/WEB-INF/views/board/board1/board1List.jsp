@@ -45,13 +45,6 @@
                         </c:forEach>
                     </c:if>
                 </div>
-                <div class="dots">
-                    <label for="t-1"></label>
-                    <label for="t-2"></label>
-                    <label for="t-3"></label>
-                    <label for="t-4"></label>
-                    <label for="t-5"></label>
-                </div>
             </div>
         </div>
         <div class = "box-container">
