@@ -12,8 +12,7 @@ public class NoticeDTO {
     private String notice_title;
     private String notice_content;
     private Timestamp notice_regdate;
-    private String member_name;
-    private String member_class;
+    private String member_id;
     private String notice_isshow;
     private int notice_count;
 

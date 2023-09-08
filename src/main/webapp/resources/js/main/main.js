@@ -9,18 +9,6 @@
                    }
                });
            });
-
-
-    $(document).ready(function() {
-        let menu = $('.menu');
-        let sidebar = $('.sidebar');
-        let mainContent = $('.main--content');
-        menu.click(function() {
-            sidebar.toggleClass('active');
-            mainContent.toggleClass('active');
-        });
-    });
-
     document.addEventListener('DOMContentLoaded', function() {
         const slides = document.querySelectorAll('.slide');
         const btns = document.querySelectorAll('.btn');

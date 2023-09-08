@@ -290,6 +290,7 @@ margin-top: 60px;
     display: flow-root;
     padding-left: 30px;
     padding-right: 30px;
+    background-color: white;
 }
 
 .main-ori-button{
@@ -349,7 +350,7 @@ margin-top: 60px;
     line-height: 30px;
     font-size: 15px;
     border-radius: 30px;
-    box-shadow: 4px 7px 10px -14px;
+    box-shadow: 0 0 3px 0 rgba(0,0,0,0.3);
     border: 1px solid #D9E0E3;
     outline: none;
     resize: none;
@@ -377,6 +378,7 @@ margin-top: 60px;
     border-top-left-radius: 7px;
     border-top-right-radius: 7px;
     font-weight: bold;
+    background-color: white
 }
 
 .content{
@@ -412,6 +414,7 @@ margin-top: 60px;
     border: 1px solid #D9E0E3;
     outline: none;
     resize: none;
+    background-color: white
 }
 
 /* reply */

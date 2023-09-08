@@ -10,6 +10,7 @@
 body {
     position: relative;
     width: 100%;
+    overflow: hidden;
 }
 .header {
             position: fixed;
@@ -840,3 +841,4 @@ a {
 .fc-event-time{
     display: none;
 }
+

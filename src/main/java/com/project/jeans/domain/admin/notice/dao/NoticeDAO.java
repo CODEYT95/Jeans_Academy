@@ -24,6 +24,8 @@ public interface NoticeDAO {
     int noticeCountUp(int notice_no);
     //공지사항 INSERT
     int insertNotice(NoticeDTO noticeDTO);
+    //
+    int recentWrite(String member_id);
     //공지사항 isShow 'N'으로 바꾸기
     int isShowNotice(int notice_no);
 
