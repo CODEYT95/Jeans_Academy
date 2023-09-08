@@ -13,6 +13,7 @@ body {
    width: 100%;
 }
 .header {
+   top:0;
    position: fixed;
    z-index: 9999;
    height: 60px;
@@ -375,7 +376,7 @@ a {
 /* message-content */
 
 .button-content {
-    margin-top: 0;
+    margin-top: -30.5px;
     margin-bottom: 1%;
     display: flow-root;
     padding-left: 30px;

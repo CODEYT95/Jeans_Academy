@@ -12,7 +12,7 @@
         ON b.member_id = m.member_id
         WHERE b.board1_isshow='Y' AND m.member_type = '수강생'
         GROUP BY b.board1_regdate
-        ORDER BY b.board1_no DESC;
+        ORDER BY b.board1_no DESC
         ]]>
     </select>
     <!-- 반별 게시글 상세 조회 (강사님) -->
@@ -22,9 +22,9 @@
                 b.board1_regdate as board1_regdate, b.board1_isshow as board1_isshow, b.member_id as member_id
         FROM board1 as b INNER JOIN member as m
         ON b.member_id = m.member_id
-        WHERE b.board1_isshow='Y' AND m.member_type = '강사님'
+        WHERE b.board1_isshow='Y' AND m.member_type in ('강사님', '관리자')
         GROUP BY b.board1_regdate
-        ORDER BY b.board1_no DESC;
+        ORDER BY b.board1_no DESC
         ]]>
     </select>
     <!-- 반별 게시판 목록 5개조회 -->
@@ -33,7 +33,7 @@
         SELECT board1_no, board1_title, board1_content, board1_regdate, board1_isshow, member_id
         FROM board1
         WHERE board1_isshow='Y' ORDER BY board1_no DESC
-        LIMIT 5;
+        LIMIT 5
         ]]>
     </select>
     <!-- 반별 게시글 상세 조회 -->

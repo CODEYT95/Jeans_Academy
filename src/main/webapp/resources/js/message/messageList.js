@@ -97,7 +97,6 @@ $(document).ready(function() {
             modal3Off();
         }
     });
-
 });
 
 /* 받는 사람 리스트 (그룹별) */
