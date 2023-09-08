@@ -2,6 +2,7 @@ package com.project.jeans.controller.admin.notice;
 
 import com.project.jeans.LoginCheckSession;
 import com.project.jeans.domain.admin.notice.dao.NoticeDAO;
+import com.project.jeans.domain.admin.notice.dto.NReplyDTO;
 import com.project.jeans.domain.admin.notice.dto.NoticeDTO;
 import com.project.jeans.domain.member.dto.MemberDTO;
 import com.project.jeans.service.admin.notice.NoticeService;
@@ -30,10 +31,9 @@ public class NoticeController {
     public ModelAndView noticeList(HttpSession session, Model model) {
         LoginCheckSession loginCheck = new LoginCheckSession(memberService);
         MemberDTO memberInfo = loginCheck.getLoginCheckSession(session, model);
-        System.out.println(memberInfo.getMember_class());
-        if (memberInfo == null) {
+        if (memberInfo.equals("null")) {
             // 로그인이 필요한 경우 리디렉션
-            return new ModelAndView("redirect:/login");
+            return new ModelAndView("redirect:/member/login");
         }
         String category = "notice";
         model.addAttribute("category", category);
@@ -58,7 +58,7 @@ public class NoticeController {
         MemberDTO memberInfo = loginCheck.getLoginCheckSession(session, model);
         if (memberInfo == null) {
             // 로그인이 필요한 경우 리디렉션
-            return "/member/login";
+            return "redirect:/member/login";
         }
         String category = "notice";
         model.addAttribute("category", category);
@@ -68,7 +68,8 @@ public class NoticeController {
         System.out.println(noticeNo);
         noticeService.noticeCountUp(noticeNo);
         NoticeDTO noticeDetail = noticeService.noticeDetail(noticeNo);
-        NoticeDTO nreplyDetail = noticeService.nreplyDetail(noticeNo);
+        NReplyDTO nreplyDetail = noticeService.nreplyDetail(noticeNo);
+        System.out.println(nreplyDetail);
 
         // 공지사항 정보를 모델에 추가합니다.
         model.addAttribute("noticeDetail", noticeDetail);
@@ -80,11 +81,11 @@ public class NoticeController {
     //공지사항 입력
     @GetMapping("/noticeInsert")
     public ModelAndView noticeInsert(HttpSession session, Model model) {
-        LoginCheckSession loginCheck = new LoginCheckSession(memberService); // Provide the memberService instance here
+        LoginCheckSession loginCheck = new LoginCheckSession(memberService);
         MemberDTO memberInfo = loginCheck.getLoginCheckSession(session, model);
         if (memberInfo == null) {
             // 로그인이 필요한 경우 리디렉션
-            return new ModelAndView("redirect:/login");
+            return new ModelAndView("redirect:/member/login");
         }
         model.addAttribute("member_name",memberInfo.getMember_name());
         model.addAttribute("member_class",memberInfo.getMember_class());
@@ -96,12 +97,11 @@ public class NoticeController {
     @PostMapping("/notice_insert")
     public String notice_insert(@RequestParam("title") String title, @RequestParam("content") String content,
                                                             HttpSession session, Model model){
-
-        LoginCheckSession loginCheck = new LoginCheckSession(memberService); // Provide the memberService instance here
+        LoginCheckSession loginCheck = new LoginCheckSession(memberService);
         MemberDTO memberInfo = loginCheck.getLoginCheckSession(session, model);
         if (memberInfo == null) {
             // 로그인이 필요한 경우 리디렉션
-            return "redirect:/login";
+            return "redirect:/member/login";
         }
         model.addAttribute("member_name",memberInfo.getMember_name());
         model.addAttribute("member_class",memberInfo.getMember_class());
@@ -121,9 +121,48 @@ public class NoticeController {
         }
         return "/notice_insert";
     }
+    //공지사항 댓글 입력
+    @PostMapping("/nReply_insert")
+    public String notice_insert(@RequestParam("notice_no") int notice_no, @RequestParam("content") String reply_content, HttpSession session, Model model){
+        LoginCheckSession loginCheck = new LoginCheckSession(memberService);
+        MemberDTO memberInfo = loginCheck.getLoginCheckSession(session, model);
+        if (memberInfo == null) {
+            // 로그인이 필요한 경우 리디렉션
+            return "redirect:/member/login";
+        }
+        model.addAttribute("member_name",memberInfo.getMember_name());
+        model.addAttribute("member_class",memberInfo.getMember_class());
+        model.addAttribute("member_type",memberInfo.getMember_type());
+
+        NReplyDTO nReplyDTO = new NReplyDTO();
+        nReplyDTO.setNotice_no(notice_no);
+        nReplyDTO.setComment_content(reply_content);
+        nReplyDTO.setMember_id((String) session.getAttribute("member_id"));
+
+        int response = noticeService.insertNReply(nReplyDTO);
+        if(response == 1){
+            return "success";
+
+        }else {
+            return "fail";
+        }
+    }
 
     //공지사항 isshow 'N'으로 바꾸기
-    public int isShowNotice(){
-    return 0;
+    @PostMapping("/isShowNotice")
+    public String isShowNotice(@RequestParam("notice_no") int notice_no, HttpSession session, Model model){
+        LoginCheckSession loginCheck = new LoginCheckSession(memberService);
+        MemberDTO memberInfo = loginCheck.getLoginCheckSession(session, model);
+        if (memberInfo == null) {
+            // 로그인이 필요한 경우 리디렉션
+            return "redirect:/member/login";
+        }
+        int result = noticeService.isShowNotice(notice_no);
+
+        if (result == 1){
+            return "success";
+        }else{
+            return "fail";
+        }
     }
 }

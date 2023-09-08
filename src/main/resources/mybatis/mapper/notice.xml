@@ -7,6 +7,7 @@
         <![CDATA[
         SELECT *
         FROM notice
+        WHERE notice_isshow = 'Y'
         ORDER BY notice_no desc;
         ]]>
     </select>
@@ -32,12 +33,18 @@
         SET notice_count = notice_count + 1
         WHERE notice_no = #{notice_no};
     </update>
-    <!--댓글 상세보기-->
+    <!--댓글 INSERT-->
+    <insert id="insertNReply" parameterType="com.project.jeans.domain.admin.notice.dto.NReplyDTO">
+        INSERT INTO notice_comment (notice_no, comment_content, member_id)
+        VALUES (#{notice_no}, #{comment_content}, #{member_id});
+    </insert>
+    <!--댓글 목록-->
     <select id="nreplyDetail" parameterType="Integer" resultType="com.project.jeans.domain.admin.notice.dto.NReplyDTO">
         <![CDATA[
-        SELECT *
-        FROM notice_comment
-        WHERE notice_no = #{notice_no};
+        SELECT nc.*, m.member_name, m.member_class
+        FROM notice_comment nc
+        JOIN member m ON nc.member_id = m.member_id
+        WHERE nc.notice_no = #{noticeNo};
         ]]>
     </select>
     <!--공지사항 INSERT-->
@@ -47,6 +54,7 @@
         VALUES (#{member_id}, #{notice_title}, #{notice_content});
         ]]>
     </insert>
+    <!--최근 작성한 공지사항-->
     <select id="recentWrite" parameterType="String" resultType="Integer">
         <![CDATA[
         SELECT notice_no

@@ -1,5 +1,6 @@
 package com.project.jeans.domain.admin.notice.dao;
 
+import com.project.jeans.domain.admin.notice.dto.NReplyDTO;
 import com.project.jeans.domain.admin.notice.dto.NoticeDTO;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
@@ -19,7 +20,9 @@ public interface NoticeDAO {
     //공지사항 상세보기
     NoticeDTO noticeDetail(int notice_no);
     //공지사항 댓글
-    NoticeDTO nreplyDetail(int notice_no);
+    NReplyDTO nreplyDetail(int notice_no);
+    //공지사항 댓글 입력
+    int insertNReply(NReplyDTO nReplyDTO);
     //공지사항 조회수 카운트
     int noticeCountUp(int notice_no);
     //공지사항 INSERT
