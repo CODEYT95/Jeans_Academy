@@ -1,29 +1,46 @@
 package com.project.jeans.domain.common.paging.dto;
 
+import com.project.jeans.domain.member.dto.MemberDTO;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+
+import java.util.List;
 
 @Getter
 @Setter
 @ToString
 public class PageDTO {
 
-    //사용자가 선택한 페이지 정보를 담을 변수.
-    private  int pageNum;
-    private int countPerPage;
-    private int pagecnt;
+    private int total;  //총게시글수
+    private List<MemberDTO> memberList;  // 목록 데이터
+    private int currentPage; // 현재 페이지 번호
+    private int totalPages;  // 총 페이지 수
+    private int startPage;   // 시작 페이지 번호
+    private int endPage;     // 끝 페이지 번호
 
-    public int getPageStart(){
-        return (pageNum-1) *countPerPage;
-    }
 
-    //검색에 필요한 데이터를 변수로 선언.
-    private String keyword;
-    private String condition;
+    public PageDTO(int total, int currentPage, int size, List<MemberDTO> memberList){
+        this.total=total;		//총게시글수
+        this.currentPage=currentPage; //보고싶은 페이지=>현재 페이지
+        this.memberList=memberList;	//board목록
+        if(total==0) { //게시글이 존재하지 않는 경우
+            totalPages=0;
+            startPage=0;
+            endPage=0;
+        }else { //게시글이 존재하는 경우
 
-    public PageDTO() {
-        this.pageNum = 1;
-        this.countPerPage = 5;
+            totalPages=total/size;	//총페이지수
+            if(total%size>0) {
+                totalPages++;
+            }
+
+            int modVal = currentPage%5;	//현재페이지를 5로 나눈 나머지=> 5의 배수 5,10,15~
+            startPage=currentPage/5*5+1;
+            if(modVal==0)  startPage=startPage-5;
+
+            endPage=startPage+4;	//끝페이지-p649 33라인
+            if(endPage>totalPages) endPage=totalPages;
+        }//게시글이 존재하는 경우의 끝
     }
 }

@@ -3,10 +3,9 @@ package com.project.jeans.domain.member.dao;
 import com.project.jeans.domain.common.paging.dto.PageDTO;
 import com.project.jeans.domain.member.dto.MemberDTO;
 import org.apache.ibatis.annotations.Mapper;
-import org.springframework.data.repository.query.Param;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -67,8 +66,8 @@ public interface MemberDAO {
 
     //페이징 처리 관련 코드-----------------------------------------------
     //현재 회원 조회
-    List<MemberDTO> getShowMember( PageDTO pageDTO);
-    int getShowMemberCount(PageDTO pageDTO);
+    List<MemberDTO> getShowMember(@Param("page") int page, @Param("size") int size);
+    int getShowMemberCount();
 
 
     //탈퇴 회원 조회
