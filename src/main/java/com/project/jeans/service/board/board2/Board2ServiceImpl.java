@@ -1,5 +1,6 @@
 package com.project.jeans.service.board.board2;
 
+import com.project.jeans.domain.board.board1.dto.Board1DTO;
 import com.project.jeans.domain.board.board2.dao.Board2DAO;
 import com.project.jeans.domain.board.board2.dto.Board2DTO;
 import lombok.RequiredArgsConstructor;
@@ -20,12 +21,20 @@ public class Board2ServiceImpl implements Board2Service {
         List<Board2DTO> board2DTOList = board2DAO.findBoard2All();
         return board2DTOList;
     }
+
+    //게시판 목록 조회(강사님)
+    public List<Board2DTO> findBoard2ByTutor(){
+        List<Board2DTO> board2DTOList = board2DAO.findBoard2ByTutor();
+        return board2DTOList;
+    }
+
     //반별 게시글 목록 5개 조회
     @Override
     public List<Board2DTO> findBoard2List() {
         List<Board2DTO> findBoard2List = board2DAO.findBoard2List();
         return findBoard2List;
     }
+
     //반별 게시글 상세 조회
     @Override
     public Board2DTO getBoard2Detail(int board2_no){

@@ -1,5 +1,6 @@
 package com.project.jeans.domain.board.board4.dao;
 
+import com.project.jeans.domain.board.board1.dto.Board1DTO;
 import com.project.jeans.domain.board.board2.dto.Board2DTO;
 import com.project.jeans.domain.board.board4.dto.Board4DTO;
 import org.apache.ibatis.annotations.Mapper;
@@ -12,8 +13,11 @@ import java.util.Map;
 @Mapper
 public interface Board4DAO {
 
-    //게시판 목록 조회
+    //게시판 목록 조회(수강생)
     List<Board4DTO> findBoard4All();
+
+    //게시판 목록 조회(강사님)
+    List<Board4DTO> findBoard4ByTutor();
 
     //게시글 5개조회
     List<Board4DTO> findBoard4List();

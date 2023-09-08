@@ -3,12 +3,28 @@
 
 <mapper namespace="com.project.jeans.domain.board.board3.dao.Board3DAO">
 
-    <!-- 반별 게시판 목록 조회 -->
+    <!-- 반별 게시판 목록 조회(수강생) -->
     <select id="findBoard3All" resultType="com.project.jeans.domain.board.board3.dto.Board3DTO">
         <![CDATA[
-        SELECT board3_no, board3_title, board3_content, board3_regdate, board3_isshow, member_id
-        FROM board3
-        WHERE board3_isshow='Y' ORDER BY board3_no DESC
+        SELECT b.board3_no as board3_no, b.board3_title as board3_title, b.board3_content as board3_content,
+                b.board3_regdate as board3_regdate, b.board3_isshow as board3_isshow, b.member_id as member_id
+        FROM board3 as b INNER JOIN member as m
+        ON b.member_id = m.member_id
+        WHERE b.board3_isshow='Y' AND m.member_type = '수강생'
+        GROUP BY b.board3_regdate
+        ORDER BY b.board3_no DESC;
+        ]]>
+    </select>
+    <!-- 반별 게시글 상세 조회 (강사님) -->
+    <select id="findBoard3ByTutor" resultType="com.project.jeans.domain.board.board3.dto.Board3DTO">
+        <![CDATA[
+        SELECT b.board3_no as board3_no, b.board3_title as board3_title, b.board3_content as board3_content,
+                b.board3_regdate as board3_regdate, b.board3_isshow as board3_isshow, b.member_id as member_id
+        FROM board3 as b INNER JOIN member as m
+        ON b.member_id = m.member_id
+        WHERE b.board3_isshow='Y' AND m.member_type in ('강사님', '관리자')
+        GROUP BY b.board3_regdate
+        ORDER BY b.board3_no DESC;
         ]]>
     </select>
     <!-- 반별 게시판 목록 5개조회 -->

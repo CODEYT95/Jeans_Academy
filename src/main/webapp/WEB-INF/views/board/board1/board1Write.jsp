@@ -8,6 +8,11 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
     <link rel="stylesheet" type="text/css" href="../../../../resources/css/board/boardWrite.css">
     <script type="text/javascript" src="../../../../resources/js/board/boardWrite.js"></script>
+    <style>
+        body{
+        background-color: rgba(186, 225, 245, 0.3);
+        }
+    </style>
 </head>
 <body data-member-class="${member_class}" data-category="${category}">
 <%@ include file="/WEB-INF/views/common/header.jsp"%>
@@ -16,7 +21,7 @@
     <form action="/board1/write" method="post">
         <input type="hidden" name="member_id" value="${member_id}">
             <div class="head-container">
-                <button type="submit" class="main-ori-button">저장</button>
+                <button id="save" class="main-ori-button">저장</button>
                 <button type="button" class="main-ori-button" onclick="location.href='/board1/list'">취소/목록</button>
                 <div class="title-container">
                     <div class="write-title">

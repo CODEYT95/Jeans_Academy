@@ -75,6 +75,7 @@ img {
     position: relative;
     width: 100%;
     min-height: calc(100vh - 60px);
+    background-color: rgba(223, 240, 245, 0.5);
 }
 /* sidebar */
 .sidebar--item{
@@ -277,6 +278,48 @@ margin-top: 60px;
         padding: 10px;
     }
 }
+#t-1:checked ~ .testimonials label[for="t-3"],
+#t-2:checked ~ .testimonials label[for="t-4"],
+#t-3:checked ~ .testimonials label[for="t-5"],
+#t-4:checked ~ .testimonials label[for="t-1"],
+#t-5:checked ~ .testimonials label[for="t-2"]{
+	transform: translate3d(670px, 0, -180px);
+	z-index: 2;
+}
+#t-1:checked ~ .testimonials label[for="t-2"],
+#t-2:checked ~ .testimonials label[for="t-3"],
+#t-3:checked ~ .testimonials label[for="t-4"],
+#t-4:checked ~ .testimonials label[for="t-5"],
+#t-5:checked ~ .testimonials label[for="t-1"]{
+	transform: translate3d(320px, 0, -90px);
+	z-index: 3;
+}
+#t-2:checked ~ .testimonials label[for="t-1"],
+#t-3:checked ~ .testimonials label[for="t-2"],
+#t-4:checked ~ .testimonials label[for="t-3"],
+#t-5:checked ~ .testimonials label[for="t-4"],
+#t-1:checked ~ .testimonials label[for="t-5"]{
+	transform: translate3d(-320px, 0, -90px);
+	z-index: 3;
+}
+#t-3:checked ~ .testimonials label[for="t-1"],
+#t-4:checked ~ .testimonials label[for="t-2"],
+#t-5:checked ~ .testimonials label[for="t-3"],
+#t-2:checked ~ .testimonials label[for="t-5"],
+#t-1:checked ~ .testimonials label[for="t-4"]{
+	transform: translate3d(-670px, 0, -180px);
+
+}
+#t-1:checked ~ .testimonials label[for="t-1"],
+#t-2:checked ~ .testimonials label[for="t-2"],
+#t-3:checked ~ .testimonials label[for="t-3"],
+#t-4:checked ~ .testimonials label[for="t-4"],
+#t-5:checked ~ .testimonials label[for="t-4"],
+#t-5:checked ~ .testimonials label[for="t-5"]{
+	z-index: 4;
+}
+
+
 
 /* title */
 .title--container{
@@ -345,95 +388,24 @@ slide--container{
 	width: 300px;
 	padding: 30px;
 	border-radius: 5px;
-	background: linear-gradient(90deg,#5164da 5%,#FFFFFE 5%); /* slider 내 item 색상  */
+	background: linear-gradient(180deg,#5164da 5%,#FFFFFE 5%); /* slider 내 item 색상  */
 	position: absolute;
 	border:1px black;
 	top: 0;
 	box-sizing: border-box;
 	text-align: center;
 	transition: transform 0.2s;
-	box-shadow: 10px 20px 7px 0 rgba(0,0,0,0.3);
+	box-shadow: 0 0 3px 0 rgba(0,0,0,0.3);
 	user-select: none;
 	cursor: pointer;
     overflow: hidden;
 }
 .testimonials .item h2{
-    font-size: 40px; color: white;
+    font-size: 40px; color: black;
 }
 .testimonial .item p{
-    font-size: 30px; color: white;
+    font-size: 25px; color: black;
 }
-.dots{display: flex; justify-content: center;align-items: center;}
-.dots label{
-	height: 10px;
-	width: 10px;
-	border-radius: 50%;
-	cursor: pointer;
-	background-color: #413B52;
-	margin: 7px;
-	transition-duration: 0.2s;
-}
-#t-1:checked ~ .dots label[for="t-1"],
-#t-2:checked ~ .dots label[for="t-2"],
-#t-3:checked ~ .dots label[for="t-3"],
-#t-4:checked ~ .dots label[for="t-4"],
-#t-5:checked ~ .dots label[for="t-5"]{
-	transform: scale(2);
-	background-color: #fff;
-	box-shadow: 0px 0px 0px 3px #dddddd24;
-}
-#t-1:checked ~ .dots label[for="t-2"],
-#t-2:checked ~ .dots label[for="t-1"],
-#t-2:checked ~ .dots label[for="t-3"],
-#t-3:checked ~ .dots label[for="t-2"],
-#t-3:checked ~ .dots label[for="t-4"],
-#t-4:checked ~ .dots label[for="t-3"],
-#t-4:checked ~ .dots label[for="t-5"],
-#t-5:checked ~ .dots label[for="t-4"]{
-	transform: scale(1.5);
-}
-#t-1:checked ~ .testimonials label[for="t-3"],
-#t-2:checked ~ .testimonials label[for="t-4"],
-#t-3:checked ~ .testimonials label[for="t-5"],
-#t-4:checked ~ .testimonials label[for="t-1"],
-#t-5:checked ~ .testimonials label[for="t-2"]{
-	transform: translate3d(670px, 0, -180px);
-	z-index: 2;
-}
-#t-1:checked ~ .testimonials label[for="t-2"],
-#t-2:checked ~ .testimonials label[for="t-3"],
-#t-3:checked ~ .testimonials label[for="t-4"],
-#t-4:checked ~ .testimonials label[for="t-5"],
-#t-5:checked ~ .testimonials label[for="t-1"]{
-	transform: translate3d(320px, 0, -90px);
-	z-index: 3;
-}
-#t-2:checked ~ .testimonials label[for="t-1"],
-#t-3:checked ~ .testimonials label[for="t-2"],
-#t-4:checked ~ .testimonials label[for="t-3"],
-#t-5:checked ~ .testimonials label[for="t-4"],
-#t-1:checked ~ .testimonials label[for="t-5"]{
-	transform: translate3d(-320px, 0, -90px);
-	z-index: 3;
-}
-#t-3:checked ~ .testimonials label[for="t-1"],
-#t-4:checked ~ .testimonials label[for="t-2"],
-#t-5:checked ~ .testimonials label[for="t-3"],
-#t-2:checked ~ .testimonials label[for="t-5"],
-#t-1:checked ~ .testimonials label[for="t-4"]{
-	transform: translate3d(-670px, 0, -180px);
-
-}
-#t-1:checked ~ .testimonials label[for="t-1"],
-#t-2:checked ~ .testimonials label[for="t-2"],
-#t-3:checked ~ .testimonials label[for="t-3"],
-#t-4:checked ~ .testimonials label[for="t-4"],
-#t-5:checked ~ .testimonials label[for="t-4"],
-#t-5:checked ~ .testimonials label[for="t-5"]{
-	z-index: 4;
-}
-
-
 
 /* box */
 .box-container{
@@ -458,8 +430,13 @@ slide--container{
     border: 1px white;
     padding: 20px;
     box-sizing: border-box;
-    box-shadow: 8px 9px 30px -18px;
+    box-shadow: 0 0 3px 0 rgba(0,0,0,0.3);
     overflow: hidden;
+    background-color: white;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
 }
 
 .box-button{
