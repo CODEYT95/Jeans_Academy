@@ -16,6 +16,7 @@ public interface Board4Service {
 
     //반별 게시글 목록 5개 조회
     public List<Board4DTO> findBoard4List();
+
     //반별 게시글 상세 조회
     public Board4DTO getBoard4Detail(int board4_no);
 
