@@ -2,7 +2,6 @@ package com.project.jeans.controller.board.board4;
 
 import com.project.jeans.LoginCheckSession;
 import com.project.jeans.domain.admin.notice.dao.NoticeDAO;
-import com.project.jeans.domain.admin.notice.dto.NoticeDTO;
 import com.project.jeans.domain.board.board4.dto.Board4DTO;
 import com.project.jeans.domain.board.board4.dto.Comment4DTO;
 import com.project.jeans.domain.member.dto.MemberDTO;
@@ -45,10 +44,10 @@ public class Board4Controller {
         model.addAttribute("member_type", memberInfo.getMember_type());
 
         List<Board4DTO> board4DTOList = board4Service.getBoard4List();
-        List<NoticeDTO> noticeList = noticeService.selectAll();
+        List<Board4DTO> board4DTOBYTutor = board4Service.findBoard4ByTutor();
 
         model.addAttribute("board4List", board4DTOList);
-        model.addAttribute("noticeList", noticeList);
+        model.addAttribute("board4DTOBYTutor", board4DTOBYTutor);
 
         return "/board/board4/board4List";
     }

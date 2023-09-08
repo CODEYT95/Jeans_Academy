@@ -13,6 +13,7 @@ body {
    width: 100%;
 }
 .header {
+   top:0;
    position: fixed;
    z-index: 9999;
    height: 60px;
@@ -375,7 +376,7 @@ a {
 /* message-content */
 
 .button-content {
-    margin-top: 0;
+    margin-top: -30.5px;
     margin-bottom: 1%;
     display: flow-root;
     padding-left: 30px;
@@ -473,9 +474,9 @@ th {
 #modal .modal-window, .modal-window, .modal-window {
   position: relative;
   width: 50vw;
-  height: 30vh;
+  height: 40vw;
   top: auto;
-  padding: 15px;
+  padding: 42px;
   background: linear-gradient(180deg,#5164da 5%,#FFFFFE 5%);
   box-shadow: 0 0px 2px 0 rgba( 31, 38, 135, 0.37 );
   border-radius: 15px;
@@ -513,7 +514,7 @@ th {
 .modal-content{
     overflow-x: hidden;
 	overflow-y: scroll;
-	height: 25vh;
+	height: 20vh;
 }
 
 .inputContent{

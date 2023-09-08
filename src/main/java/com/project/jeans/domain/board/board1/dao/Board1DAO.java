@@ -12,8 +12,11 @@ import java.util.Map;
 @Mapper
 public interface Board1DAO {
 
-    //게시판 목록 조회
+    //게시판 목록 조회(수강생)
     List<Board1DTO> findBoard1All();
+
+    //게시판 목록 조회(강사님)
+    List<Board1DTO> findBoard1ByTutor();
 
     //게시글 4개 조회
     List<Board1DTO> findBoard1List();

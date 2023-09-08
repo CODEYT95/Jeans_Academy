@@ -28,7 +28,7 @@
                     <!-- 본인이 작성한 게시물만 삭제 가능 처리 -->
                     <input type="hidden" name="board1_no" value="${board1DTO.board1_no}"/>
                     <c:if test="${member_id == board1DTO.member_id || member_type.equals('관리자')}">
-                    <button type="submit" class="main-del-button">삭제</button>
+                    <button id="delete" class="main-del-button">삭제</button>
                     </c:if>
                 </form>
                 <form action="/board1/modify" method="get">
@@ -90,7 +90,7 @@
                                     <!-- 각 댓글에 대한 고유한 모달 창 -->
                                     <div id="modal" class="modal-overlay">
                                         <div class="modal-window">
-                                            <div class="close-area">X</div>
+                                            <div class="close-area"><h2>X</h2></div>
                                             <div class="modal-header">
                                                 <h1>댓글 수정</h1>
                                                 <br/><br/>
