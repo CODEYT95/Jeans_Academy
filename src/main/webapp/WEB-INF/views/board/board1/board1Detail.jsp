@@ -85,7 +85,7 @@
                                     <!-- 각 댓글에 대한 고유한 모달 창 -->
                                     <div id="modal" class="modal-overlay">
                                         <div class="modal-window">
-                                            <div class="close-area">X</div>
+                                            <div class="close-area"><h2>X</h2></div>
                                             <div class="modal-header">
                                                 <h1>댓글 수정</h1>
                                                 <br/><br/>

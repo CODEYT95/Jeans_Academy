@@ -35,7 +35,7 @@
         <button type="button" class="btn-modal" id="send_button">쪽지 보내기</button>
         <div id="modal" class="modal-overlay">
             <div class="modal-window">
-                <div class="close-area">X</div>
+                <div class="close-area"><h2>X</h2></div>
                 <form action="/message/send" method="post" id="aaa">
                     <input type="hidden" value="${member_id}" name="member_id">
                     <div class="modal-header">
@@ -47,19 +47,15 @@
                             <option value="3반">3반</option>
                             <option value="4반">4반</option>
                         </select>
-                        <script>
-                            var selectedClass = document.getElementById("member_class");
-                        </script>
                         <select id="receiver" class="memberId" name="message_receiver">
                         </select>
                     </div>
                     <div class="modal-body">
                         <div>
-                            <!-- 내용 작성 -->
-                            <h2>제목</h2><input type="text" name="message_title"/>
+                            <h2>제목</h2><input type="text" name="message_title" placeholder="제목을 작성해주세요" required/>
                         </div>
                         <div>
-                            <h2>내용</h2><input type="text" name="message_content"/>
+                            <h2>내용</h2><input type="text" name="message_content" placeholder="내용을 작성해주세요" required/>
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -76,13 +72,8 @@
     <div class="call-content">
         안녕하세요! ${member_id}님. 쪽지함입니다 :)
         아직 @건 읽지 않으셨습니다.
-        <div id="msgAllList">
-
-
-
-        </div>
+        <div id="msgAllList"></div>
     </div>
-
 </div>
 </body>
 </html>

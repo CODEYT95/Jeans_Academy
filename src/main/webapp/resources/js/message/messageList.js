@@ -34,9 +34,8 @@ $(document).ready(function() {
         modalOff();
     });
     modal.on("click", function(e) {
-        const evTarget = $(e.target);
-        if (evTarget.hasClass("modal-overlay")) {
-            modalOff();
+        if (!$(e.target).closest(".modal-overlay").length) {
+            modal1Off();
         }
     });
 
@@ -63,9 +62,8 @@ $(document).ready(function() {
         modal2Off();
     });
     modalList2.on("click", function(e) {
-        const evTarget = $(e.target);
-        if (evTarget.hasClass("modal-overlay2")) {
-            modal2Off();
+        if (!$(e.target).closest(".modal-overlay2").length) {
+            modal1Off();
         }
     });
 
@@ -92,9 +90,8 @@ $(document).ready(function() {
         modal3Off();
     });
     modalList3.on("click", function(e) {
-        const evTarget = $(e.target);
-        if (evTarget.hasClass("modal-overlay3")) {
-            modal3Off();
+        if (!$(e.target).closest(".modal-overlay3").length) {
+            modal1Off();
         }
     });
 });

@@ -36,7 +36,7 @@
                     </td>
                     <div id="modal2-${loop.index}" class="modal-overlay2">
                         <div class="modal-window">
-                            <div class="close-area2">X</div>
+                            <div class="close-area2"><h2>X</h2></div>
                             <div class="modal-header">
                             </div>
                             <div class="modal-body">

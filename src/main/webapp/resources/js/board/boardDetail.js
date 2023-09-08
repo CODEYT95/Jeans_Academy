@@ -46,9 +46,8 @@ $(document).ready(function() {
     });
 
     modal.on("click", function(e) {
-        const evTarget = $(e.target);
-        if (evTarget.hasClass("modal-overlay")) {
-            modalOff();
+        if (!$(e.target).closest(".modal-overlay").length) {
+            modal1Off();
         }
     });
 
@@ -57,5 +56,6 @@ $(document).ready(function() {
             modalOff();
         }
     });
+
 });
 
