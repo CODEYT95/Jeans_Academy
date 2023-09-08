@@ -1,5 +1,16 @@
 
 $(document).ready(function() {
+    /* 글 삭제 */
+    $("#delete").click(function() {
+        var confirmed = confirm("삭제하시겠습니까?");
+        if (confirmed) {
+            $("form").submit();
+            alert("글이 삭제되었습니다.");
+        } else {
+            return false;
+        }
+    });
+
     /* 모달창 */
     const modal = $("#modal");
     const btnModal = $(".btn-modal");
