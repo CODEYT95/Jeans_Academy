@@ -388,7 +388,7 @@ slide--container{
 	width: 300px;
 	padding: 30px;
 	border-radius: 5px;
-	background: linear-gradient(90deg,#5164da 5%,#FFFFFE 5%); /* slider 내 item 색상  */
+	background: linear-gradient(180deg,#5164da 5%,#FFFFFE 5%); /* slider 내 item 색상  */
 	position: absolute;
 	border:1px black;
 	top: 0;
@@ -401,10 +401,10 @@ slide--container{
     overflow: hidden;
 }
 .testimonials .item h2{
-    font-size: 40px; color: white;
+    font-size: 40px; color: black;
 }
 .testimonial .item p{
-    font-size: 30px; color: white;
+    font-size: 25px; color: black;
 }
 
 /* box */
