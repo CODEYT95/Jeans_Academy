@@ -405,7 +405,24 @@ slide--container{
 .testimonial .item p{
     font-size: 25px; color: black;
 }
-
+h2{
+white-space: nowrap;
+overflow: hidden;
+text-overflow: ellipsis;
+word-break: break-word;
+margin-top: -10px;
+margin-bottom: 10px;
+}
+h3{
+overflow: hidden;
+text-overflow: ellipsis;
+max-height: none;
+display: -webkit-box;
+-webkit-line-clamp: 8;
+-webkit-box-orient: vertical;
+font-weight: normal;
+height: 187px;
+}
 /* box */
 .box-container{
     height: auto;

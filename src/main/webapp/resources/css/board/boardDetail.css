@@ -415,7 +415,8 @@ margin-top: 60px;
     border: 1px solid #D9E0E3;
     outline: none;
     resize: none;
-    background-color: white
+    background-color: white;
+    word-break: break-word;
 }
 
 /* reply */

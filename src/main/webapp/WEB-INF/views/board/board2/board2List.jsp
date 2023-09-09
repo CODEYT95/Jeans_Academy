@@ -38,7 +38,7 @@
                 <c:forEach var="tutor" items="${board2DTOBYTutor}" varStatus="loop" begin="0" end="4">
                     <input type="radio" name="testimonial" id="t-${loop.index + 1}">
                     <label class="item"  for="t-${loop.index + 1}">
-                        <h2><a href="/board1/detail/${tutor.board2_no}">${tutor.board2_title}</a></h2>
+                        <h2><a href="/board2/detail/${tutor.board2_no}">${tutor.board2_title}</a></h2>
                         <h3>${tutor.board2_content}</h3>
                     </label>
                 </c:forEach>
