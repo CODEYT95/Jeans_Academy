@@ -11,7 +11,7 @@
     <script type="text/javascript" src="../../../../resources/js/board/boardDetail.js"></script>
     <style>
         body{
-         background-color: rgba(120, 141, 245, 0.2);
+         background-color : rgba(243, 249, 216, 0.6);
         }
     </style>
 </head>

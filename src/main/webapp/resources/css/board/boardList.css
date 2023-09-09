@@ -386,7 +386,7 @@ slide--container{
     max-width: 300px;
 	width: 300px;
 	padding: 30px;
-	border-radius: 5px;
+	border-radius: 10px;
 	background: linear-gradient(180deg,#5164da 5%,#FFFFFE 5%); /* slider 내 item 색상  */
 	position: absolute;
 	border:1px black;
@@ -394,7 +394,7 @@ slide--container{
 	box-sizing: border-box;
 	text-align: center;
 	transition: transform 0.2s;
-	box-shadow: 0 0 3px 0 rgba(0,0,0,0.3);
+	box-shadow: 1px 1px 2px 0 rgba(0,0,0,0.1);
 	user-select: none;
 	cursor: pointer;
     overflow: hidden;
@@ -429,7 +429,7 @@ slide--container{
     border: 1px white;
     padding: 20px;
     box-sizing: border-box;
-    box-shadow: 0 0 3px 0 rgba(0,0,0,0.3);
+    box-shadow: 1px 1px 2px 0 rgba(0,0,0,0.1);
     overflow: hidden;
     background-color: white;
     border-top-left-radius: 20px;
