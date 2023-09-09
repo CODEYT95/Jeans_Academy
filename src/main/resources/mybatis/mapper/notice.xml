@@ -24,7 +24,7 @@
         <![CDATA[
         SELECT *
         FROM notice
-        WHERE notice_no = #{notice_no};
+        WHERE notice_no = #{notice_no} AND notice_isshow = 'Y';
         ]]>
     </select>
     <!--공지사항 조회수-->
@@ -41,10 +41,18 @@
     <!--댓글 목록-->
     <select id="nreplyDetail" parameterType="Integer" resultType="com.project.jeans.domain.admin.notice.dto.NReplyDTO">
         <![CDATA[
-        SELECT nc.*, m.member_name, m.member_class
+        SELECT nc.*, m.member_id, m.member_name, m.member_class
         FROM notice_comment nc
         JOIN member m ON nc.member_id = m.member_id
-        WHERE nc.notice_no = #{noticeNo};
+        WHERE nc.notice_no = #{notice_no} AND nc.comment_isshow = 'Y';
+        ]]>
+    </select>
+    <!--댓글 갯수-->
+    <select id="nreplyCount" parameterType="Integer">
+        <![CDATA[
+        SELECT count(*)
+        FROM notice_comment
+        WHERE notice_no = #{notice};
         ]]>
     </select>
     <!--공지사항 INSERT-->
@@ -70,6 +78,30 @@
         UPDATE notice
         SET notice_isshow = 'N'
         WHERE notice_no = #{notice_no};
+        ]]>
+    </update>
+    <!--댓글 isshow-->
+    <update id="isShowNreply" parameterType="Integer">
+        <![CDATA[
+        UPDATE notice_comment
+        SET comment_isshow = 'N'
+        WHERE comment_no = #{comment_no};
+        ]]>
+    </update>
+    <!--공지사항 수정-->
+    <update id="noticeUpdate" parameterType="com.project.jeans.domain.admin.notice.dto.NoticeDTO">
+        <![CDATA[
+        UPDATE notice
+        SET notice_title = #{notice_title} AND notice_content = #{notice_content}
+        WHERE notice_no = #{notice_no};
+        ]]>
+    </update>
+    <!--댓글 수정-->
+    <update id="nreplyUpdate" parameterType="com.project.jeans.domain.admin.notice.dto.NReplyDTO">
+        <![CDATA[
+        UPDATE notice_comment
+        SET comment_content = #{comment_content}
+        WHERE comment_no = #{comment_no};
         ]]>
     </update>
 </mapper>

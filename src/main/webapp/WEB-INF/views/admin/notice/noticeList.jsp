@@ -20,6 +20,11 @@
             <div class="notice-title">
                 <h1>공지사항</h1>
             </div>
+            <c:if test="${member_class eq '💓'}">
+                <a class="insertBtn" href="/noticeInsert">
+                    <button>글쓰기</button>
+                </a>
+            </c:if>
             <div class="subject-line">
                 <header class="line">
                     <div class="subject-name">
@@ -35,7 +40,7 @@
                         <li>
                             <span class="no">${notice.notice_no}</span>
                             <a class="view-link" href="/noticeDetail/${notice.notice_no}">
-                                <span class="title">${notice.notice_content}</span>
+                                <span class="title">${notice.notice_title}</span>
                             </a>
                             <div class="writer-container">
                                 <span class="writer">${notice.member_id}</span>
