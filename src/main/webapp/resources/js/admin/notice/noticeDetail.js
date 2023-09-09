@@ -118,18 +118,35 @@ $(document).ready(function() {
     });
     $(".reply-edit").click(function() {
       // 댓글 내용 가져오기
-      var replyContent = $(this).closest('.reply-info').find('.reply-content').data("reply-content");
-
+      const replyContent = $(this).closest('.reply-info').find('.reply-content').data("reply-content");
+      const replyNo = $(this).closest('.reply-info').data("reply-no");
+        console.log(replyContent);
+        console.log(replyNo);
       // 댓글 내용을 textarea로 이동
       $(".reply-insert").val(replyContent);
 
       // textarea에 포커스 설정
       $(".reply-insert").focus();
-    });
-    //댓글 수정
+      //댓글 수정
       $("#update-reply").click(function() {
-          const replyNo = $(".reply-insert").val();
-          const notice_no = $(".param-notice_no").val();
+          const replyUpdateContent = $(".reply-insert").val();
             console.log(replyNo);
-        });
+            $.ajax({
+                url: "/isShowNreply",
+                type: "POST",
+                data: { comment_no: replyNo },
+                success: function(response) {
+                  if(response==="success"){
+                      console.log("댓글 삭제 성공");
+                      window.location.href="/noticeDetail/"+notice_no;
+                  }else{
+                      console.log("댓글 삭제 실패");
+                  }
+                },
+                error: function(xhr, status, error) {
+                  console.log("댓글 삭제 중 에러발생");
+                }
+            });
+      });
+    });
 });
