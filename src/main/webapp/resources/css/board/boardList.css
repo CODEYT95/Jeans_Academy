@@ -454,13 +454,12 @@ height: 187px;
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
 }
-
 .box-button{
   float: right;
   width: 70px;
   height: 33px;
-  margin-bottom: 16px;
-  margin-top: 14px;
+  margin-bottom: 10px;
+  margin-top: -10px;
   margin-left: 5px;
   border: none;
   font-size: 15px;
@@ -473,3 +472,21 @@ height: 187px;
   background: #5164da ;
   cursor: pointer;
 }
+h1{
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-word;
+  margin-top: -10px;
+  margin-bottom: 10px;
+  }
+p{
+ overflow: hidden;
+ text-overflow: ellipsis;
+ max-height: none;
+ display: -webkit-box;
+ -webkit-line-clamp: 8;
+ -webkit-box-orient: vertical;
+ font-weight: normal;
+ height: 160px;
+ }
