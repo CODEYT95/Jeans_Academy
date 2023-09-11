@@ -2,8 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<c:set var="cPath" value="<%=request.getContextPath() %>" />
-<html>
+<html lang="ko"  value="<%=request.getContextPath() %>" xmlns="http://www.w3.org/1999/html"/>
 <head>
     <meta charset="UTF-8">
     <title>메시지 수신함</title>
@@ -18,14 +17,21 @@
                 $("#msgAllList").load("${cPath}/message/sendMsgList");
             });
         });
-
         $(function(){
             $("#recMsgList").click(function(){
                 $("#msgAllList").load("${cPath}/message/recMsgList");
             });
         });
     </script>
+    <script>
+        var inputElement = document.getElementById("content");
 
+        // 입력 요소에 포커스가 맞추어질 때
+        inputElement.addEventListener("focus", function () {
+            // 입력 커서를 입력란의 맨 위로 이동시킴
+            inputElement.setSelectionRange(10, 20);
+        });
+    </script>
 </head>
 <body data-member-class="${member_class}" data-category="${category}">
 <%@ include file="/WEB-INF/views/common/header.jsp"%>
@@ -33,6 +39,14 @@
 <div class="main--content" >
     <div class="button-content">
         <button type="button" class="btn-modal" id="send_button">쪽지 보내기</button>
+        <button id="sendMsgList">보낸 쪽지함</button>
+        <button id="recMsgList">받은 쪽지함</button>
+    </div>
+        <div class="call-content">
+            안녕하세요! ${member_id}님. 쪽지함입니다 :)
+            아직 @건 읽지 않으셨습니다.
+            <div id="msgAllList"></div>
+        </div>
         <div id="modal" class="modal-overlay">
             <div class="modal-window">
                 <div class="close-area"><h2>X</h2></div>
@@ -51,29 +65,21 @@
                         </select>
                     </div>
                     <div class="modal-body">
-                        <div>
-                            <h2>제목</h2><input type="text" name="message_title" placeholder="제목을 작성해주세요" required/>
+                        <div class="message-title">
+                            <h2>제목</h2><input id="title" type="text" name="message_title" placeholder="제목을 작성해주세요" required/>
                         </div>
-                        <div>
-                            <h2>내용</h2><input type="text" name="message_content" placeholder="내용을 작성해주세요" required/>
+                        <div class="message-content">내용
+                            <textarea id="content" type="text" name="message_content" placeholder="내용을 작성해주세요" required/></textarea>
                         </div>
                     </div>
                     <div class="modal-footer">
                         <!-- 보내기 버튼, 취소(목록) 버튼 -->
-                        <button type="submit" id = "write" class="write-button">작성</button>
-                        <button type="button" class="list-button" onclick="location.href='/message/messageList'">목록</button>
+                        <button type="submit" id = "write" class="button">작성</button>
+                        <button type="button" class="button" onclick="location.href='/message/messageList'">목록</button>
                     </div>
                 </form>
             </div>
         </div>
-        <button id="sendMsgList">보낸 쪽지함</button>
-        <button id="recMsgList">받은 쪽지함</button>
-
-    <div class="call-content">
-        안녕하세요! ${member_id}님. 쪽지함입니다 :)
-        아직 @건 읽지 않으셨습니다.
-        <div id="msgAllList"></div>
-    </div>
 </div>
 </body>
 </html>
