@@ -36,8 +36,8 @@ public class Board2Controller {
         }
 
         String memberClass = memberInfo.getMember_class();
-        if (!memberClass.equals("2반") && !memberClass.equals("\uD83D\uDC93")) {
-            // "2반"이 아니고 "\uD83D\uDC93"도 아닌 경우 리디렉션 또는 처리할 내용 추가
+        String memberType = memberInfo.getMember_type();
+        if (!memberClass.equals("2반") && memberType.equals("수강생")) {
             return "/main/main";
         }
 
@@ -69,18 +69,18 @@ public class Board2Controller {
             return "/member/login";
         }
 
+        String memberClass = memberInfo.getMember_class();
+        String memberType = memberInfo.getMember_type();
+        if (!memberClass.equals("2반") && memberType.equals("수강생")) {
+            return "/main/main";
+        }
+
         String category = "board2";
         model.addAttribute("category", category);
         model.addAttribute("member_id", memberInfo.getMember_id());
         model.addAttribute("member_name",memberInfo.getMember_name());
         model.addAttribute("member_class",memberInfo.getMember_class());
         model.addAttribute("member_type",memberInfo.getMember_type());
-
-        String memberClass = memberInfo.getMember_class();
-        if (!memberClass.equals("2반") && !memberClass.equals("\uD83D\uDC93")) {
-            // "2반"이 아니고 "\uD83D\uDC93"도 아닌 경우 리디렉션 또는 처리할 내용 추가
-            return "/main/main";
-        }
 
         Board2DTO board2DTO = board2Service.getBoard2Detail(board2_no);
         model.addAttribute("board2DTO", board2DTO);
@@ -97,6 +97,12 @@ public class Board2Controller {
         if (memberInfo == null) {
             // 로그인이 필요한 경우 리디렉션
             return "/member/login";
+        }
+
+        String memberClass = memberInfo.getMember_class();
+        String memberType = memberInfo.getMember_type();
+        if (!memberClass.equals("2반") && memberType.equals("수강생")) {
+            return "/main/main";
         }
 
         String category = "board2";
@@ -118,6 +124,12 @@ public class Board2Controller {
             System.out.println("테스트");
             // 로그인이 필요한 경우 리디렉션
             return new ModelAndView("redirect:/member/login");
+        }
+
+        String memberClass = memberInfo.getMember_class();
+        String memberType = memberInfo.getMember_type();
+        if (!memberClass.equals("2반") && memberType.equals("수강생")) {
+            return  new ModelAndView("redirect:/main/main");
         }
 
         if(map.isEmpty()){
@@ -149,6 +161,12 @@ public class Board2Controller {
             return "redirect:member/login";
         }
 
+        String memberClass = memberInfo.getMember_class();
+        String memberType = memberInfo.getMember_type();
+        if (!memberClass.equals("2반") && memberType.equals("수강생")) {
+            return "/main/main";
+        }
+
         String category = "board2";
         model.addAttribute("category", category);
         model.addAttribute("member_id", memberInfo.getMember_id());
@@ -169,6 +187,12 @@ public class Board2Controller {
         if (memberInfo == null) {
             // 로그인이 필요한 경우 리디렉션
             return new ModelAndView("redirect:member/login");
+        }
+
+        String memberClass = memberInfo.getMember_class();
+        String memberType = memberInfo.getMember_type();
+        if (!memberClass.equals("2반") && memberType.equals("수강생")) {
+            return  new ModelAndView("redirect:/main/main");
         }
 
         if(map.isEmpty()){
@@ -199,6 +223,12 @@ public class Board2Controller {
         if (memberInfo == null) {
             // 로그인이 필요한 경우 리디렉션
             return new ModelAndView("redirect:member/login");
+        }
+
+        String memberClass = memberInfo.getMember_class();
+        String memberType = memberInfo.getMember_type();
+        if (!memberClass.equals("2반") && memberType.equals("수강생")) {
+            return  new ModelAndView("redirect:/main/main");
         }
 
         int deletedBoard2Int = board2Service.deleteBoard2(map);

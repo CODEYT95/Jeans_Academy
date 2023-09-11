@@ -7,7 +7,7 @@
     <title></title>
 </head>
 <link rel="stylesheet" type="text/css" href="../../../resources/css/common/header.css">
-<body data-member-class="${member_class}" data-category="${category}">
+<body data-member-class="${member_class}" data-category="${category}" data-member-type="${member_type}">
 <section class="header">
     <div class="logo">
         <i class="ri-menu-line icon icon-0 menu"></i>

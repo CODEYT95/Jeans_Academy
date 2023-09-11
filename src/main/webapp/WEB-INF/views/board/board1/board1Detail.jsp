@@ -15,7 +15,7 @@
          }
     </style>
 </head>
-<body data-member-class="${member_class}" data-category="${category}">
+<body data-member-class="${member_class}" data-category="${category}" data-member-type="${member_type}">
 <%@ include file="/WEB-INF/views/common/header.jsp"%>
 <%@ include file="/WEB-INF/views/common/sidebar.jsp"%>
 
