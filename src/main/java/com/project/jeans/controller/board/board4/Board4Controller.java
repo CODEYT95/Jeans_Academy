@@ -36,8 +36,8 @@ public class Board4Controller {
         }
 
         String memberClass = memberInfo.getMember_class();
-        if (!memberClass.equals("4반") && !memberClass.equals("\uD83D\uDC93")) {
-            // "4반"이 아니고 "\uD83D\uDC93"도 아닌 경우 리디렉션 또는 처리할 내용 추가
+        String memberType = memberInfo.getMember_type();
+        if (!memberClass.equals("4반") && memberType.equals("수강생")) {
             return "/main/main";
         }
 
@@ -69,18 +69,18 @@ public class Board4Controller {
             return "/member/login";
         }
 
+        String memberClass = memberInfo.getMember_class();
+        String memberType = memberInfo.getMember_type();
+        if (!memberClass.equals("4반") && memberType.equals("수강생")) {
+            return "/main/main";
+        }
+
         String category = "board4";
         model.addAttribute("category", category);
         model.addAttribute("member_id", memberInfo.getMember_id());
         model.addAttribute("member_name",memberInfo.getMember_name());
         model.addAttribute("member_class",memberInfo.getMember_class());
         model.addAttribute("member_type",memberInfo.getMember_type());
-
-        String memberClass = memberInfo.getMember_class();
-        if (!memberClass.equals("4반") && !memberClass.equals("\uD83D\uDC93")) {
-            // "4반"이 아니고 "\uD83D\uDC93"도 아닌 경우 리디렉션 또는 처리할 내용 추가
-            return "/main/main";
-        }
 
         Board4DTO board4DTO = board4Service.getBoard4Detail(board4_no);
         model.addAttribute("board4DTO", board4DTO);
@@ -98,6 +98,12 @@ public class Board4Controller {
         if (memberInfo == null) {
             // 로그인이 필요한 경우 리디렉션
             return "/member/login";
+        }
+
+        String memberClass = memberInfo.getMember_class();
+        String memberType = memberInfo.getMember_type();
+        if (!memberClass.equals("4반") && memberType.equals("수강생")) {
+            return "/main/main";
         }
 
         String category = "board4";
@@ -119,6 +125,12 @@ public class Board4Controller {
             System.out.println("테스트");
             // 로그인이 필요한 경우 리디렉션
             return new ModelAndView("redirect:/member/login");
+        }
+
+        String memberClass = memberInfo.getMember_class();
+        String memberType = memberInfo.getMember_type();
+        if (!memberClass.equals("4반") && memberType.equals("수강생")) {
+            return  new ModelAndView("redirect:/main/main");
         }
 
         if(map.isEmpty()){
@@ -150,6 +162,12 @@ public class Board4Controller {
             return "redirect:member/login";
         }
 
+        String memberClass = memberInfo.getMember_class();
+        String memberType = memberInfo.getMember_type();
+        if (!memberClass.equals("4반") && memberType.equals("수강생")) {
+            return "/main/main";
+        }
+
         String category = "board4";
         model.addAttribute("category", category);
         model.addAttribute("member_id", memberInfo.getMember_id());
@@ -172,6 +190,12 @@ public class Board4Controller {
             return new ModelAndView("redirect:member/login");
         }
 
+        String memberClass = memberInfo.getMember_class();
+        String memberType = memberInfo.getMember_type();
+        if (!memberClass.equals("4반") && memberType.equals("수강생")) {
+            return  new ModelAndView("redirect:/main/main");
+        }
+
         int modifyInt = board4Service.modifyBoard4(map);
         if (modifyInt == 1) {
             modelAndView.setViewName("redirect:/board4/detail/" + board4_no);
@@ -191,6 +215,12 @@ public class Board4Controller {
         if (memberInfo == null) {
             // 로그인이 필요한 경우 리디렉션
             return new ModelAndView("redirect:member/login");
+        }
+
+        String memberClass = memberInfo.getMember_class();
+        String memberType = memberInfo.getMember_type();
+        if (!memberClass.equals("4반") && memberType.equals("수강생")) {
+            return  new ModelAndView("redirect:/main/main");
         }
 
         if(map.isEmpty()){
