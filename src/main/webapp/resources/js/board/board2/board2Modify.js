@@ -2,12 +2,12 @@ document.addEventListener("DOMContentLoaded", function() {
   const saveButton = document.querySelector('#save');
   if (saveButton) {
     saveButton.addEventListener('click', function() {
-      var board1_content = document.querySelector('#board1_content').innerHTML;
+      var board2_content = document.querySelector('#board2_content').innerHTML;
       var hiddenInput = document.createElement('input');
       var form = document.querySelector('form');
       hiddenInput.type = 'hidden';
-      hiddenInput.name = 'board1_content';
-      hiddenInput.value = board1_content;
+      hiddenInput.name = 'board2_content';
+      hiddenInput.value = board2_content;
       form.appendChild(hiddenInput);
     });
   } else {
@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", function() {
   });
 
   const photoInput = document.getElementById('photo-input');
-  const previewContainer = document.querySelector('#board1_content');
+  const previewContainer = document.querySelector('#board2_content');
 
   if (photoInput && previewContainer) {
     photoInput.addEventListener('change', function(event) {
@@ -45,14 +45,14 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 
   $("#save").click(function() {
-      const board1_no = $('#board1_no').val();
-      const board1_title = $('#board1_title').val();
-      const board1_content = $('#board1_content').html();
+      const board2_no = $('#board2_no').val();
+      const board2_title = $('#board2_title').val();
+      const board2_content = $('#board2_content').html();
 
-      if(board1_title === "" || board1_title === null){
+      if(board2_title === "" || board2_title === null){
           alert("제목을 작성해주세요");
           return false;
-      } else if (board1_content === "" || board1_content === null) {
+      } else if (board2_content === "" || board2_content === null) {
           alert("내용을 작성해주세요");
           return false;
       } else{
@@ -64,17 +64,17 @@ document.addEventListener("DOMContentLoaded", function() {
           }
       }
       $.ajax({
-          url: "/board1/modify",
+          url: "/board2/modify",
           type: "POST",
           data: {
-              board1_no: board1_no,
-              board1_title: board1_title,
-              board1_content: board1_content
+              board2_no: board2_no,
+              board2_title: board2_title,
+              board2_content: board2_content
           },
           success: function(response) {
               if (response === "success") {
                   console.log("수정 성공");
-                  window.location.href = "/board1/detail" + board1_no;
+                  window.location.href = "/board2/detail" + board2_no;
               } else {
                   console.log("수정 실패");
               }

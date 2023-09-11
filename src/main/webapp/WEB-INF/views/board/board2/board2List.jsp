@@ -8,7 +8,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
     <link rel="stylesheet" type="text/css" href="../../../../resources/css/board/boardList.css">
-    <script type="text/javascript" src="../../../../resources/js/board/boardList.js"></script>
+    <script type="text/javascript" src="../../../../resources/js/board/board2/board2List.js"></script>
     <style>
         body{
         background-color: rgba(246, 192, 252, 0.2);
@@ -43,7 +43,7 @@
                         <c:otherwise>
                             <c:forEach var="tutor" items="${board2DTOBYTutor}" varStatus="loop" begin="0" end="4">
                                 <input type="radio" name="testimonial" id="t-${loop.index + 1}">
-                                <label class="item"  for="t-${loop.index + 1}">
+                                <label class="item2"  for="t-${loop.index + 1}">
                                     <h2><a href="/board2/detail/${tutor.board2_no}">${tutor.board2_title}</a></h2>
                                     <h3>${tutor.board2_content}</h3>
                                 </label>
@@ -65,7 +65,7 @@
                         <c:forEach var="board2List" items="${board2List}">
                             <div class="box">
                                 <div>
-                                    <button type="button" class="box-button" onclick="location.href='/board2/detail/${board2List.board2_no}'">상세</button>
+                                    <button type="button" class="box-button2" onclick="location.href='/board2/detail/${board2List.board2_no}'">상세</button>
                                 </div>
                                 <div>
                                     <h1>${board2List.board2_title}</h1>

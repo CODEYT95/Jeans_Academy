@@ -14,8 +14,8 @@ $(document).ready(function() {
     /* 모달창 */
     const modal = $("#modal");
     const btnModal = $(".btn-modal");
-    const modalCommentNoInput = modal.find("input[name='comment1_no']");
-    const modalCommentContentInput = modal.find("input[name='comment1_content']");
+    const modalCommentNoInput = modal.find("input[name='comment2_no']");
+    const modalCommentContentInput = modal.find("input[name='comment2_content']");
 
     const closeBtn = modal.find(".close-area");
 
@@ -47,7 +47,7 @@ $(document).ready(function() {
 
     modal.on("click", function(e) {
         if (!$(e.target).closest(".modal-overlay").length) {
-            modal1Off();
+            modalOff();
         }
     });
 
