@@ -10,32 +10,8 @@ pageEncoding="UTF-8"%>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" type="text/css" href="../../../resources/css/mypage/mypage.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.css" rel="stylesheet">
-    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
     <script type="text/javascript" src="../../../resources/js/mypage/mypage.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            document.getElementById('attendance-button').addEventListener('click', function() {
-                // 출석체크 버튼 클릭 시 실행되는 코드
-                var eventDate = document.getElementById('event-date').value;
-                var eventTitle = document.getElementById('event-title').value;
-
-                // 데이터를 서버로 전송하는 AJAX 요청
-               $.ajax({
-    type: "POST",
-    url: "http://localhost:8090/addEvent",
-    data: { key1: "value1", key2: "value2" }, // 실제 데이터로 대체해야 합니다
-    success: function(response) {
-        // 성공한 응답을 여기서 처리합니다
-        console.log("성공:", response);
-    },
-    error: function(xhr, status, error) {
-        // 오류를 여기서 처리합니다
-        console.log("오류:", status, error);
-    }
-});
-            });
-        });
-    </script>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
 </head>
 <body data-member-class="${member_class}" data-category="${category}">
 <%@ include file="/WEB-INF/views/common/header.jsp"%>
@@ -48,7 +24,7 @@ pageEncoding="UTF-8"%>
         </div>
         <div class="mypage-list">
             <div class="outer-gird">
-                <div class="mypage-board1">
+                <div class="/mypage-board1">
                     <div class="b-outer-gird1">
                         <div class="list-boxtitle1">개인정보</div>
                         <div class="b-list1">
@@ -137,6 +113,5 @@ pageEncoding="UTF-8"%>
             </div>
         </div>
     </div>
-</section>
 </body>
 </html>

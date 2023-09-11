@@ -9,7 +9,13 @@
     VALUES (#{mypage_content}, #{mypage_regdate}, #{member_id});
     ]]>
     </insert>
-
+    <!--출석체크-->
+    <insert id="addAttend" parameterType="com.project.jeans.domain.mypage.dto.MyPageDTO">
+        <![CDATA[
+    INSERT INTO attend (member_id, attend_regdate)
+    VALUES (#{member_id}, #{attend_regdate});
+    ]]>
+    </insert>
     <select id="selectEvent" parameterType="String" resultType="com.project.jeans.domain.mypage.dto.MyPageDTO">
         <![CDATA[
     SELECT *

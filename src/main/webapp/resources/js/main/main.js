@@ -8,6 +8,10 @@
                        $(this).find('.icon').append('<div class="post-title">' + title + '</div>');
                    }
                });
+                 var element = document.querySelector('.fc-scroller');
+                 if (element) {
+                   element.style.overflow = 'hidden';
+                 }
            });
     document.addEventListener('DOMContentLoaded', function() {
         const slides = document.querySelectorAll('.slide');

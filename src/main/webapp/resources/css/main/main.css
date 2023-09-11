@@ -841,4 +841,6 @@ a {
 .fc-event-time{
     display: none;
 }
-
+    #calendar,#calendar-container{
+        height: 100%;
+    }

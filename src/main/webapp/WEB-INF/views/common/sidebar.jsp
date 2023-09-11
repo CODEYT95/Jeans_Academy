@@ -9,7 +9,7 @@ pageEncoding="UTF-8"%>
     <meta charset="UTF-8">
     <title></title>
 </head>
-<body data-member-class="${member_class}" data-category="${category}">
+<body data-member-class="${member_class}" data-category="${category}" data-member-type="${member_type}">
 <section class="main">
     <div class="sidebar">
         <ul class="sidebar--items">

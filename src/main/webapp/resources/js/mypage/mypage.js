@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", function() {
     const calendarGrid = document.getElementById("calendar-grid");
     const monthYear = document.getElementById("month-year");
     const prevMonthButton = document.getElementById("prev-month");
@@ -39,26 +39,44 @@ document.addEventListener("DOMContentLoaded", function () {
 
             //------출석체크 기능-------------
             dateCell.addEventListener("click", () => {
-                const isAlreadyAttended = dateCell.classList.contains("attended");
+              const isAlreadyAttended = dateCell.classList.contains("attended");
 
-                if (!isAlreadyAttended) {
-                    attendanceButton.onclick = () => {
-                        dateCell.classList.add("attended");
-                        closeModal();
+              if (!isAlreadyAttended) {
+                attendanceButton.onclick = () => {
+                  const formattedDate = new Date(currentYear, currentMonth, day+1);
 
-                        alert("출석이 완료되었습니다.");
+                  // AJAX 요청 보내기
+                  fetch('/mypage/addEvent', {
+                    method: 'POST',
+                    body: JSON.stringify({ formattedDate }),
+                    headers: {
+                      'Content-Type': 'application/json'
+                    }
+                  })
+                  .then(response => response.json())
+                  .then(data => {
+                    // 응답 처리
+                    console.log(data);
 
-                        attendanceButton.onclick = null; // 이벤트 리스너 해제
-                    };
+                    dateCell.classList.add("attended");
+                    closeModal();
 
-                } else {
-                    alert("이미 출석이 완료되었습니다.");
-                }
+                    alert("출석이 완료되었습니다.");
 
+                    attendanceButton.onclick = null; // 이벤트 리스너 해제
+                  })
+                  .catch(error => {
+                     // 에러 처리
+                     console.error(error);
+                  });
+                };
+              } else {
+                alert("이미 출석이 완료되었습니다.");
+              }
             });
                     calendarGrid.appendChild(dateCell);
-                }
-            }
+        }
+    }
 
     //------출석체크 기능 끝----------
 
@@ -112,7 +130,6 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         }
     });
-
     modal.addEventListener("click", closeOnOutsideClick);
     document.addEventListener("keydown", closeOnEscKey);
     //----------modal창 끝---------------------------------
@@ -131,8 +148,8 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         }
     }
+});
 
-    // 다른 코드 ...
 
     $(document).ready(function () {
         const eventDateInput = document.getElementById("event-date");
@@ -191,4 +208,3 @@ document.addEventListener("DOMContentLoaded", function () {
                 });
             };
     });
-});

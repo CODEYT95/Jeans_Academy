@@ -22,4 +22,7 @@ public interface MyPageDAO {
     //마이페이지 일정 삭제
     int eventDelete(int mypage_no);
 
+    //출석체크
+    int addAttend(MyPageDTO myPageDTO);
+
 }

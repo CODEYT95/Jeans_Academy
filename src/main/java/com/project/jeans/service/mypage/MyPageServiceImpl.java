@@ -44,4 +44,8 @@ public class MyPageServiceImpl implements MyPageService {
         return myPageDAO.eventDelete(mypage_no);
     }
 
+    //출석체크
+    @Override
+    public int addAttend(MyPageDTO myPageDTO){return myPageDAO.addAttend(myPageDTO);}
+
 }

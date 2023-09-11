@@ -15,7 +15,7 @@ pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/views/common/header.jsp"%>
 <%@ include file="/WEB-INF/views/common/sidebar.jsp"%>
     <div class="main--content">
-      <span class="category-label">내용</span>
+      <span class="category-label">공지사항</span>
         <div class="main-container">
           <form method="post" action="/notice_insert">
             <div class="container">

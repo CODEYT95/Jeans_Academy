@@ -10,6 +10,8 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 public class MyPageDTO {
+    private String attend;
+    private Date attend_regdate;
     private int mypage_no;
     private String member_id;
     private Date mypage_regdate;
