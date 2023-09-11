@@ -4,14 +4,14 @@
 <html xmlns:c="http://java.sun.com/JSP/Page" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
-    <title>4반 게시글 목록</title>
+    <title>👖4반 게시글 목록</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
     <link rel="stylesheet" type="text/css" href="../../../../resources/css/board/boardList.css">
     <script type="text/javascript" src="../../../../resources/js/board/boardList.js"></script>
     <style>
         body{
-        background-color: rgba(186, 225, 245, 0.3);
+         background-color : rgba(243, 249, 216, 0.6);
         }
     </style>
 </head>
@@ -25,7 +25,7 @@
         <c:if test="${member_class.equals('4반') || member_type.equals('관리자') || member_type.equals('강사님')}">
             <button type="button" class="button" onclick="location.href='/board4/write'">글쓰기</button>
         </c:if>
-        <div class="title-content"><h1>4반 게시판입니다</h1></div>
+        <div class="title-content"><h1>👖4반 게시판</h1></div>
     </div>
     <div class="slide-container">
         <div class="slider">

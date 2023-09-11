@@ -11,8 +11,8 @@
     <script type="text/javascript" src="../../../../resources/js/board/boardDetail.js"></script>
     <style>
         body{
-         background-color: rgba(186, 225, 245, 0.3);
-         }
+        background-color: rgba(246, 192, 252, 0.2);
+        }
     </style>
 </head>
 <body data-member-class="${member_class}" data-category="${category}">
