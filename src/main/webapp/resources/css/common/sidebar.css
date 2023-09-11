@@ -118,3 +118,7 @@
        background-color: #5073FB;
        color: #fff;
    }
+
+a:hover {
+    text-decoration: none;
+}
