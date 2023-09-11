@@ -36,9 +36,9 @@
             <div class="content-container">
                 <div class="write-content">
                     <span class="content-label">내용</span>
-                    <div class="content-textarea" id="board1_content" name="board1_content" contenteditable="true" required></div>
+                    <div class="content-textarea" id="board1_content" name="board1_content" contenteditable="true"></div>
                     <input type="file" id="photo-input" accept="image/gif, image/jpeg, image/png, image/webp" multiple style="display: none;">
-                    <input type="button" class="content-file" value="사진추가">
+                    <input type="button" class="content-file" value="사진 추가">
                 </div>
             </div>
     </form>

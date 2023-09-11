@@ -1,12 +1,22 @@
 /* 글 작성 여부 확인 */
 $(document).ready(function() {
     $("#save").click(function() {
-        var confirmed = confirm("저장하시겠습니까?");
-        if (confirmed) {
-            $("form").submit();
-            alert("글이 작성되었습니다.");
-        } else {
+
+        const board1_title_check = $('#board1_title').val();
+        const board1_content_check = $('#board1_content').html();
+
+        if(board1_title_check === "" || board1_title_check === null){
+            alert("제목을 작성해주세요");
             return false;
+        } else if (board1_content_check === "" || board1_content_check === null) {
+            alert("내용을 작성해주세요");
+            return false;
+        } else{
+            if (confirm("저장하시겠습니까?")) {
+                $("form").submit();
+            } else {
+                return false;
+            }
         }
     });
 });
