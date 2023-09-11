@@ -3,17 +3,91 @@
 <mapper namespace="com.project.jeans.domain.question.dao.QuestionDAO">
     <!-- 목록조회-->
     <select id="selectQuestionAll" resultType="com.project.jeans.domain.question.dto.QuestionDTO">
-    <![CDATA[
-    SELECT question_no, question_title, question_content,
-           question_regdate, member_name, member_class FROM QUESTION
-           order by question_no desc;
-    ]]>
+        <![CDATA[
+        SELECT q.*, m.member_name, m.member_class
+        FROM question q
+        JOIN member m ON q.member_id = m.member_id
+        ORDER BY q.question_no DESC;
+        ]]>
     </select>
-
+    <!--QnA 글 입력-->
     <insert id="insertQuestion" parameterType="com.project.jeans.domain.question.dto.QuestionDTO">
-    <![CDATA[
-    INSERT INTO question (question_title, question_content, member_name, member_class, question_regdate, question_isshow)
-    VALUES (#{question_title}, #{question_content}, #{member_name} , #{member_class}, now(), 'Y');
-    ]]>
+        <![CDATA[
+        INSERT INTO question (question_title, question_content, member_id)
+        VALUES (#{question_title}, #{question_content}, #{member_id});
+        ]]>
     </insert>
+    <!--QnA 상세보기-->
+    <select id="questionDetail" parameterType="Integer" resultType="com.project.jeans.domain.question.dto.QuestionDTO">
+        <![CDATA[
+        SELECT *
+        FROM question
+        WHERE question_no = #{question_no} AND question_isshow = 'Y';
+        ]]>
+    </select>
+    <!--QnA 댓글 입력-->
+    <insert id="insertQReply" parameterType="com.project.jeans.domain.question.dto.QReplyDTO">
+        INSERT INTO question_comment (question_no, comment_content, member_id)
+        VALUES (#{question_no}, #{comment_content}, #{member_id});
+    </insert>
+    <!--QnA 댓글 목록-->
+    <select id="qreplyDetail" parameterType="Integer" resultType="com.project.jeans.domain.question.dto.QReplyDTO">
+        <![CDATA[
+        SELECT qc.*, m.member_id, m.member_name, m.member_class
+        FROM question_comment qc
+        JOIN member m ON qc.member_id = m.member_id
+        WHERE qc.question_no = #{question_no} AND qc.comment_isshow = 'Y';
+        ]]>
+    </select>
+    <!--최근 작성한 QnA 보류
+    <select id="recentWrite" parameterType="String" resultType="Integer">
+        <![CDATA[
+        SELECT question_no
+        FROM question
+        WHERE member_id = #{member_id}
+        ORDER BY question_regdate DESC
+        LIMIT 1;
+        ]]>
+    </select>
+    -->
+    <!--QnA 댓글 갯수-->
+    <select id="qreplyCount" parameterType="Integer">
+        <![CDATA[
+        SELECT count(*)
+        FROM question_comment
+        WHERE question_no = #{notice} AND comment_isshow = 'Y';
+        ]]>
+    </select>
+    <!--QnA isShow-->
+    <update id="isShowQuestion" parameterType="Integer">
+        <![CDATA[
+        UPDATE question
+        SET question_isshow = 'N'
+        WHERE question_no = #{question_no};
+        ]]>
+    </update>
+    <!--QnA 댓글 isShow-->
+    <update id="isShowQreply" parameterType="Integer">
+        <![CDATA[
+        UPDATE question_comment
+        SET comment_isshow = 'N'
+        WHERE comment_no = #{comment_no};
+        ]]>
+    </update>
+    <!--QnA 수정-->
+    <update id="questionUpdate" parameterType="com.project.jeans.domain.question.dto.QuestionDTO">
+        <![CDATA[
+        UPDATE question
+        SET question_title = #{question_title}, question_content = #{question_content}
+        WHERE question_no = #{question_no};
+        ]]>
+    </update>
+    <!--QnA 댓글 수정-->
+    <update id="qreplyUpdate" parameterType="com.project.jeans.domain.question.dto.QReplyDTO">
+        <![CDATA[
+        UPDATE question_comment
+        SET comment_content = #{comment_content}
+        WHERE comment_no = #{comment_no};
+        ]]>
+    </update>
 </mapper>

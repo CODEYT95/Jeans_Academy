@@ -48,6 +48,7 @@ public class NoticeController {
         return modelAndView;
     }
 
+    //공지사항 상세보기
     @GetMapping("/noticeDetail/{notice_no}")
     public String noticeDetail(@PathVariable("notice_no") int noticeNo, Model model, HttpSession session) {
         MemberDTO memberInfo = loginCheck.getLoginCheckSession(session, model);
@@ -63,7 +64,7 @@ public class NoticeController {
         model.addAttribute("member_type",memberInfo.getMember_type());
         noticeService.noticeCountUp(noticeNo);
         NoticeDTO noticeDetail = noticeService.noticeDetail(noticeNo);
-        if(noticeDetail.getNotice_isshow()==null){
+        if(noticeDetail.getNotice_isshow().equals("N")){
             return "redirect:/noticeList";
         }
         List<NReplyDTO> nreplyDetail = noticeService.nreplyDetail(noticeNo);
@@ -171,7 +172,6 @@ public class NoticeController {
             return "redirect:/login";
         }
         int result = noticeService.isShowNreply(comment_no);
-        System.out.println(result);
         if (result == 1){
             return "success";
         }else{

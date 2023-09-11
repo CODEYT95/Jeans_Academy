@@ -5,21 +5,21 @@ pageEncoding="UTF-8"%>
 <html lang="ko" xmlns:c="http://java.sun.com/JSP/Page">
 <head>
     <meta charset="UTF-8">
-    <title>공지사항</title>
+    <title>QnA</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
-    <script type="text/javascript" src="../../../../resources/js/admin/notice/noticeDetail.js"></script>
+    <script type="text/javascript" src="../../../resources/js/question/questionDetail.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"/>
-    <link rel="stylesheet" type="text/css" href="../../../../resources/css/admin/notice/noticeDetail.css">
+    <link rel="stylesheet" type="text/css" href="../../../resources/css/question/questionDetail.css">
 </head>
 <body data-member-class="${member_class}" data-category="${category}">
 <%@ include file="/WEB-INF/views/common/header.jsp"%>
 <%@ include file="/WEB-INF/views/common/sidebar.jsp"%>
     <div class="main--content">
-        <span class="category-label">공지사항</span>
+        <span class="category-label">QnA</span>
         <div class="main-container">
-            <c:if test="${not empty noticeDetail}">
-            <c:if test="${member_id eq noticeDetail.member_id}">
+            <c:if test="${not empty questionDetail}">
+            <c:if test="${member_id eq questionDetail.member_id}">
             <div class="modal-container">
               <div id="myModal" class="modal">
                 <div class="modal-content">
@@ -34,19 +34,19 @@ pageEncoding="UTF-8"%>
             <button class="delete">삭제</button>
             <button class="edit">수정</button>
             </c:if>
-                <input type="hidden" class="param-member_id" value="${noticeDetail.member_id}">
-                <input type="hidden" class="param-notice_no" value="${noticeDetail.notice_no}">
+                <input type="hidden" class="param-member_id" value="${questionDetail.member_id}">
+                <input type="hidden" class="param-question_no" value="${questionDetail.question_no}">
             <div class="title-container">
                 <div class="write-title">
                     <label>
                         <span>제목</span>
-                        <textarea name="title" readonly="readonly">${noticeDetail.notice_title}</textarea>
+                        <textarea name="title" readonly="readonly">${questionDetail.question_title}</textarea>
                     </label>
                 </div>
 
                     <div class="write-content">
                         <span class="content-label">내용</span>
-                        <div class="content" contenteditable="false" >${noticeDetail.notice_content}</div>
+                        <div class="content" contenteditable="false" >${questionDetail.question_content}</div>
                     </div>
             </div>
             </c:if>
@@ -75,7 +75,7 @@ pageEncoding="UTF-8"%>
                         </div>
                     </div>
                     <ul class="reply-list">
-                        <c:forEach items="${nreplyDetail}" var="reply">
+                        <c:forEach items="${qreplyDetail}" var="reply">
                         <li>
                             <div class="reply-info" data-reply-no="${reply.comment_no}">
                                 <span class="reply-class">${reply.member_class}</span>
