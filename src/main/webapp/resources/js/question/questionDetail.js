@@ -38,30 +38,30 @@ $(document).ready(function() {
             $('#replyDeleteModal').css('visibility', 'hidden');
           });
 
-   //댓글 입력
+   //QnA 댓글 입력
    $("#insert-reply").click(function() {
        // reply-insert 클래스를 가진 입력 필드의 값을 가져옵니다.
        const replyContent = $(".reply-insert").val();
-       const notice_no = $(".param-notice_no").val();
+       const question_no = $(".param-question_no").val();
        // 값이 비어 있지 않은 경우에만 실행합니다.
        if (replyContent.trim() !== "") {
            const memberId = $(".param-member_id").val();
-           const noticeNo = $(".param-notice_no").val();
+           const question_no = $(".param-question_no").val();
             console.log(memberId);
-            console.log(noticeNo);
+            console.log(question_no);
            // 서버로 데이터를 전송합니다.
            $.ajax({
-               url: '/nReply_insert',
+               url: '/question/qReply_insert',
                type: 'POST',
                data: {
-                   'notice_no': noticeNo,
+                   'question_no': question_no,
                    'content': replyContent
                },
                success: function(response) {
                    if (response === 'success') {
                        // 성공적으로 댓글이 등록된 경우
                        console.log("댓글 등록 성공");
-                       window.location.href="/noticeDetail/"+notice_no;
+                       window.location.href=question_no;
                    } else {
                        // 댓글 등록 실패
                        console.log("댓글 등록 실패");
@@ -73,18 +73,18 @@ $(document).ready(function() {
            alert("댓글 내용을 입력해주세요.");
        }
    });
-  //공지사항 isShow 'N'처리
+  //QnA 게시글 isShow 'N'처리
   $("#confirmDelete").click(function() {
-    var noticeNo = $(".param-notice_no").val();
+    var questionNo = $(".param-question_no").val();
     console.log(noticeNo);
     $.ajax({
-      url: "/isShowNotice",
+      url: "/isShowQuestion",
       type: "POST",
-      data: { notice_no: noticeNo },
+      data: { question_no: questionNo },
       success: function(response) {
         if(response==="success"){
             console.log("공지사항 게시글 삭제 성공");
-            window.location.href="/noticeList";
+            window.location.href="/question/list";
         }else{
             console.log("공지사항 게시글 삭제 실패");
         }
@@ -94,18 +94,18 @@ $(document).ready(function() {
       }
     });
   });
-  //댓글 isShow 'N'처리
+  //QnA 댓글 isShow 'N'처리
     $("#replyConfirmDelete").click(function() {
       const comment_no = $(".reply-list").find('.reply-info').data("reply-no");
-      const notice_no = $(".param-notice_no").val();
+      const question_no = $(".param-question_no").val();
       $.ajax({
-        url: "/isShowNreply",
+        url: "/question/isShowQreply",
         type: "POST",
         data: { comment_no: comment_no },
         success: function(response) {
           if(response==="success"){
               console.log("댓글 삭제 성공");
-              window.location.href="/noticeDetail/"+notice_no;
+              window.location.href=question_no;
           }else{
               console.log("댓글 삭제 실패");
           }
@@ -115,17 +115,17 @@ $(document).ready(function() {
         }
       });
     });
-    // 공지사항 수정
+    // QnA 수정
     $(".edit").click(function() {
-      const notice_no = $(".param-notice_no").val();
-      window.location.href = "/noticeUpdate/"+notice_no;
+      const question_no = $(".param-question_no").val();
+      window.location.href = "/question/update/"+question_no;
     });
-    //댓글 수정
+    //QnA 댓글 수정
     $(".reply-edit").click(function() {
       // 댓글 내용 가져오기
       const replyContent = $(this).closest('.reply-info').find('.reply-content').data("reply-content");
       const replyNo = $(this).closest('.reply-info').data("reply-no");
-      const notice_no = $(".param-notice_no").val();
+      const question_no = $(".param-question_no").val();
       $('#insert-reply').css('display', 'none');
       $('#update-reply-cancle').css('display', 'block');
       $('#update-reply').css('display', 'block');
@@ -134,17 +134,17 @@ $(document).ready(function() {
 
       // textarea에 포커스 설정
       $(".reply-insert").focus();
-      //댓글 수정
+      //QnA 댓글 수정
       $("#update-reply").click(function() {
         const replyUpdateContent = $(".reply-insert").val();
         $.ajax({
-            url: "/nreplyUpdate",
+            url: "/question/qreplyUpdate",
             type: "POST",
             data: { comment_no: replyNo, comment_content: replyUpdateContent },
             success: function(response) {
               if(response==="success"){
                   console.log("댓글 수정 성공");
-                  window.location.href="/noticeDetail/"+notice_no;
+                  window.location.href=question_no;
               }else{
                   console.log("댓글 수정 실패");
               }

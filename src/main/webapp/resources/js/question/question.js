@@ -1,28 +1,37 @@
-document.addEventListener("DOMContentLoaded", function () {
-  function updateRelativeTime() {
-      const currentTimestampMillis = Date.now();
+$(document).ready(function() {
+  // 페이지가 로드되면 모든 댓글의 시간을 업데이트합니다.
+  updateAllReplyTimes();
 
-      // 모든 .postdate 엘리먼트에 대해 반복
-      $('.postdate').each(function () {
-          var dateString = $(this).text(); // .postdate 엘리먼트의 텍스트 가져오기
-          var isoTimestamp = new Date(dateString); // ISO 형식의 문자열을 날짜 객체로 변환
-
-          var diff = currentTimestampMillis - isoTimestamp.getTime(); // 현재 시간과 타임스탬프의 차이 계산
-          console.log('Diff (ms):', diff);
-
-          // 상대 시간으로 업데이트
-          $(this).text(relativeTime);
-      });
-  }
+  // 새 댓글이 추가되거나 삭제될 때마다 시간을 업데이트하려면
+  // 해당 이벤트 핸들러에도 updateAllReplyTimes()를 호출하면 됩니다.
 });
-  $(document).ready(function () {
-      // 초기화: 상대 시간 업데이트 함수 실행
-      updateRelativeTime();
 
-      // 1분마다 상대 시간 업데이트 함수 실행
-      setInterval(updateRelativeTime, 60000);
+function updateAllReplyTimes() {
+  $('.postdate').each(function() {
+    const regdate = $(this).text(); // 수정: 현재 요소의 텍스트 값을 가져옵니다.
+    const formattedTime = timeAgo(new Date(regdate));
+    $(this).text(formattedTime);
   });
+}
 
+function timeAgo(time) {
+  const currentTime = new Date();
+  const timeDifference = currentTime - time;
+  const seconds = Math.floor(timeDifference / 1000);
+  const minutes = Math.floor(seconds / 60);
+  const hours = Math.floor(minutes / 60);
+  const days = Math.floor(hours / 24);
+
+  if (seconds < 60) {
+    return "방금 전";
+  } else if (minutes < 60) {
+    return `${minutes}분 전`;
+  } else if (hours < 24) {
+    return `${hours}시간 전`;
+  } else {
+    return `${days}일 전`;
+  }
+}
   // 여기 아래에 검색 기능 코드 추가
   $(document).ready(function () {
       let originalBoxes = $('.box-list .box').clone(); // 처음 로드된 박스들을 복사하여 저장
