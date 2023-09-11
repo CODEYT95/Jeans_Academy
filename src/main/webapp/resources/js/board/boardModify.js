@@ -1,15 +1,3 @@
-$(document).ready(function() {
-    $("#save").click(function() {
-        var confirmed = confirm("저장하시겠습니까?");
-        if (confirmed) {
-            $("form").submit();
-            alert("글이 수정되었습니다.");
-        } else {
-            return false;
-        }
-    });
-});
-
 document.addEventListener("DOMContentLoaded", function() {
   const saveButton = document.querySelector('#save');
   if (saveButton) {
@@ -61,8 +49,6 @@ document.addEventListener("DOMContentLoaded", function() {
       const board1_title = $('#board1_title').val();
       const board1_content = $('#board1_content').html();
 
-      alert(board1_title);
-
       if(board1_title === "" || board1_title === null){
           alert("제목을 작성해주세요");
           return false;
@@ -72,7 +58,7 @@ document.addEventListener("DOMContentLoaded", function() {
       } else{
           if (confirm("저장하시겠습니까?")) {
               $("form").submit();
-              alert("글이 작성되었습니다.");
+              alert("글이 수정되었습니다.");
           } else {
               return false;
           }

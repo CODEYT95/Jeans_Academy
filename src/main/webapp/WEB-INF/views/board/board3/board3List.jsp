@@ -36,33 +36,46 @@
             <input type="radio" name="testimonial" id="t-5">
             <div class="testimonials">
                 <c:if test="${member_class.equals('3반') || member_type.equals('관리자') || member_type.equals('강사님')}">
-                    <c:forEach var="tutor" items="${board3DTOBYTutor}" varStatus="loop" begin="0" end="4">
-                        <input type="radio" name="testimonial" id="t-${loop.index + 1}">
-                        <label class="item"  for="t-${loop.index + 1}">
-                            <h2><a href="/board3/detail/${tutor.board3_no}">${tutor.board3_title}</a></h2>
-                            <h3>${tutor.board3_content}</h3>
-                        </label>
-                    </c:forEach>
+                    <c:choose>
+                        <c:when test="${empty board3DTOBYTutor}">
+                            <h1>공지사항이 없습니다</h1>
+                        </c:when>
+                        <c:otherwise>
+                            <c:forEach var="tutor" items="${board3DTOBYTutor}" varStatus="loop" begin="0" end="4">
+                                <input type="radio" name="testimonial" id="t-${loop.index + 1}">
+                                <label class="item"  for="t-${loop.index + 1}">
+                                    <h2><a href="/board3/detail/${tutor.board3_no}">${tutor.board3_title}</a></h2>
+                                    <h3>${tutor.board3_content}</h3>
+                                </label>
+                            </c:forEach>
+                        </c:otherwise>
+                    </c:choose>
                 </c:if>
             </div>
         </div>
     </div>
     <div class = "box-container">
         <div class="boxes">
-            <c:forEach var="board3List" items="${board3List}">
-                <div class="box">
-                    <div>
-                        <!-- 반이 같을 경우에만 조회가능하도록 처리-->
-                        <c:if test="${member_class.equals('3반') || member_type.equals('관리자') || member_type.equals('강사님')}">
-                            <button type="button" class="box-button" onclick="location.href='/board3/detail/${board3List.board3_no}'">상세</button>
-                        </c:if>
-                    </div>
-                    <div>
-                        <h1>${board3List.board3_title}</h1>
-                        <p>${board3List.board3_content}</p>
-                    </div>
-                </div>
-            </c:forEach>
+            <c:if test="${member_class.equals('3반') || member_type.equals('관리자') || member_type.equals('강사님')}">
+                <c:choose>
+                    <c:when test="${empty board3List}">
+                        <h1>첫 글의 주인공이 되어주세요</h1>
+                    </c:when>
+                    <c:otherwise>
+                        <c:forEach var="board3List" items="${board3List}">
+                            <div class="box">
+                                <div>
+                                    <button type="button" class="box-button" onclick="location.href='/board3/detail/${board3List.board3_no}'">상세</button>
+                                </div>
+                                <div>
+                                    <h1>${board3List.board3_title}</h1>
+                                    <p>${board3List.board3_content}</p>
+                                </div>
+                            </div>
+                        </c:forEach>
+                    </c:otherwise>
+                </c:choose>
+            </c:if>
         </div>
     </div>
 </div>

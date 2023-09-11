@@ -38,13 +38,13 @@
                 <c:if test="${member_class.equals('4반') || member_type.equals('관리자') || member_type.equals('강사님')}">
                     <c:choose>
                         <c:when test="${empty board4DTOBYTutor}">
-                            <h1>첫 글의 주인공이 되어주세요</h1>
+                            <h1>공지사항이 없습니다</h1>
                         </c:when>
                         <c:otherwise>
                             <c:forEach var="tutor" items="${board4DTOBYTutor}" varStatus="loop" begin="0" end="4">
                                     <input type="radio" name="testimonial" id="t-${loop.index + 1}">
                                     <label class="item"  for="t-${loop.index + 1}">
-                                        <h2><a href="/board4/detail4/${tutor.board4_no}">${tutor.board4_title}</a></h2>
+                                        <h2><a href="/board4/detail/${tutor.board4_no}">${tutor.board4_title}</a></h2>
                                         <h3>${tutor.board4_content}</h3>
                                     </label>
                             </c:forEach>
