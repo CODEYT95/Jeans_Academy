@@ -114,8 +114,8 @@ $(document).ready(function(){
                     receiver.innerHTML = "";
                     for (var i = 0; i < response.length; i++) {
                         var option = document.createElement("option");
-                        option.value = response[i].member_id;
-                        option.text = response[i].member_id;
+                        option.value = response[i].member_name;
+                        option.text = response[i].member_name;
                         receiver.appendChild(option);
                     }
                 },
