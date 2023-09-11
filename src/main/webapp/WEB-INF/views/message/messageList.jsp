@@ -70,8 +70,13 @@
 
     <div class="call-content">
         <br/><br/>
-        <h2>안녕하세요! 👖${member_id}님 쪽지함입니다😊</h2>
-        <div id="msgAllList"></div>
+        <h2>안녕하세요! 👖${member_id}님 쪽지함입니다😊<br/></h2>
+        <div id="msgAllList">
+            1. 쪽지를 보내시고 싶으시면 '쪽지 보내기'<br/>
+            2. 보낸 쪽지를 확인하고 싶으시면 '보낸 쪽지함'<br/>
+            3. 받은 쪽지를 확인하고 싶으시면 '받은 쪽지함'<br/>
+            여러분들이 걸어가는 길목마다 행복이라는 꽃들이 한아름 피어나기를☺️
+        </div>
     </div>
 </div>
 </body>
