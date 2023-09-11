@@ -4,7 +4,7 @@
 <html xmlns:c="http://java.sun.com/JSP/Page" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
-    <title>메시지 수신함</title>
+    <title>게시판 수정</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
     <link rel="stylesheet" type="text/css" href="../../../../resources/css/board/boardModify.css">
@@ -50,6 +50,5 @@
             </div>
         </form>
     </div>
-</section>
 </body>
 </html>

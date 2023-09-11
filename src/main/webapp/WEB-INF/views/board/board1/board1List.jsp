@@ -23,7 +23,7 @@
         <div class = "title--container">
             <!-- 같은 반일 경우에만 글쓰기 처리 -->
             <c:if test="${member_class.equals('1반') || member_type.equals('관리자') || member_type.equals('강사님')}">
-            <button type="button" class="button" onclick="location.href='/board1/write'">글쓰기</button>
+                <button type="button" class="button" onclick="location.href='/board1/write'">글쓰기</button>
             </c:if>
             <div class="title-content"><h1>1반 게시판입니다</h1></div>
         </div>
@@ -66,6 +66,5 @@
             </div>
         </div>
     </div>
-</section>
 </body>
 </html>

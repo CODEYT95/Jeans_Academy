@@ -11,7 +11,7 @@
     <script type="text/javascript" src="../../../../resources/js/board/boardList.js"></script>
     <style>
         body{
-         background-color: rgba(166, 245, 162, 0.2);
+        background-color: rgba(186, 225, 245, 0.3);
         }
     </style>
 </head>
@@ -45,13 +45,6 @@
                     </c:forEach>
                 </c:if>
             </div>
-            <div class="dots">
-                <label for="t-1"></label>
-                <label for="t-2"></label>
-                <label for="t-3"></label>
-                <label for="t-4"></label>
-                <label for="t-5"></label>
-            </div>
         </div>
     </div>
     <div class = "box-container">
@@ -73,6 +66,5 @@
         </div>
     </div>
 </div>
-</section>
 </body>
 </html>

@@ -11,7 +11,7 @@
     <script type="text/javascript" src="../../../../resources/js/board/boardList.js"></script>
     <style>
         body{
-        background-color: rgba(246, 192, 252, 0.2);
+        background-color: rgba(186, 225, 245, 0.3);
         }
     </style>
 </head>
@@ -35,44 +35,36 @@
             <input type="radio" name="testimonial" id="t-4">
             <input type="radio" name="testimonial" id="t-5">
             <div class="testimonials">
-                <c:forEach var="tutor" items="${board2DTOBYTutor}" varStatus="loop" begin="0" end="4">
-                    <input type="radio" name="testimonial" id="t-${loop.index + 1}">
-                    <label class="item"  for="t-${loop.index + 1}">
-                        <h2><a href="/board2/detail/${tutor.board2_no}">${tutor.board2_title}</a></h2>
-                        <h3>${tutor.board2_content}</h3>
-                    </label>
-                </c:forEach>
-            </div>
-            <div class="dots">
-                <label for="t-1"></label>
-                <label for="t-2"></label>
-                <label for="t-3"></label>
-                <label for="t-4"></label>
-                <label for="t-5"></label>
+                <c:if test="${member_class.equals('2반') || member_type.equals('관리자') || member_type.equals('강사님')}">
+                    <c:forEach var="tutor" items="${board2DTOBYTutor}" varStatus="loop" begin="0" end="4">
+                        <input type="radio" name="testimonial" id="t-${loop.index + 1}">
+                        <label class="item"  for="t-${loop.index + 1}">
+                            <h2><a href="/board2/detail/${tutor.board2_no}">${tutor.board2_title}</a></h2>
+                            <h3>${tutor.board2_content}</h3>
+                        </label>
+                    </c:forEach>
+                </c:if>
             </div>
         </div>
     </div>
     <div class = "box-container">
         <div class="boxes">
-            <c:if test="${member_class.equals('2반') || member_type.equals('관리자') || member_type.equals('강사님')}">
-                <c:forEach var="board2List" items="${board2List}">
-                    <div class="box">
-                        <div>
-                            <!-- 반이 같을 경우에만 조회가능하도록 처리-->
-                            <c:if test="${member_class.equals('2반') || member_type.equals('관리자') || member_type.equals('강사님')}">
-                                <button type="button" class="box-button" onclick="location.href='/board2/detail/${board2List.board2_no}'">상세</button>
-                            </c:if>
-                        </div>
-                        <div>
-                            <h1>${board2List.board2_title}</h1>
-                            <p>${board2List.board2_content}</p>
-                        </div>
+            <c:forEach var="board2List" items="${board2List}">
+                <div class="box">
+                    <div>
+                        <!-- 반이 같을 경우에만 조회가능하도록 처리-->
+                        <c:if test="${member_class.equals('2반') || member_type.equals('관리자') || member_type.equals('강사님')}">
+                            <button type="button" class="box-button" onclick="location.href='/board2/detail/${board2List.board2_no}'">상세</button>
+                        </c:if>
                     </div>
-                </c:forEach>
-            </c:if>
+                    <div>
+                        <h1>${board2List.board2_title}</h1>
+                        <p>${board2List.board2_content}</p>
+                    </div>
+                </div>
+            </c:forEach>
         </div>
     </div>
 </div>
-</section>
 </body>
 </html>

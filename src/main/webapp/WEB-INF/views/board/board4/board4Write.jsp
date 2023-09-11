@@ -10,7 +10,7 @@
     <script type="text/javascript" src="../../../../resources/js/board/boardWrite.js"></script>
     <style>
         body{
-         background-color: rgba(243, 249, 216, 0.6);
+        background-color: rgba(186, 225, 245, 0.3);
         }
     </style>
 </head>
@@ -18,29 +18,29 @@
 <%@ include file="/WEB-INF/views/common/header.jsp"%>
 <%@ include file="/WEB-INF/views/common/sidebar.jsp"%>
 <div class="main--content">
-    <form action="/board4/write" method="post">
+    <form action="/board4/write" method="post" enctype="multipart/form-data">
         <input type="hidden" name="member_id" value="${member_id}">
-            <div class="head-container">
-                <button type="submit" class="main-ori-button">저장</button>
-                <button type="button" class="main-ori-button" onclick="location.href='/board4/list'">취소/목록</button>
-                <div class="title-container">
-                    <div class="write-title">
-                        <div class="text">글 작성</div>
-                        <label>
-                            <div><span>제목</span></div>
-                            <textarea id="board4_title" name="board4_title" placeholder="제목을 입력해주세요" required></textarea>
-                        </label>
-                    </div>
+        <div class="head-container">
+            <button id="save" class="main-ori-button">저장</button>
+            <button type="button" class="main-ori-button" onclick="location.href='/board4/list'">취소/목록</button>
+            <div class="title-container">
+                <div class="write-title">
+                    <div class="text">글 작성</div>
+                    <label>
+                        <div><span>제목</span></div>
+                        <textarea id="board4_title" name="board4_title" placeholder="제목을 입력해주세요" required></textarea>
+                    </label>
                 </div>
             </div>
-            <div class="content-container">
-                <div class="write-content">
-                    <span class="content-label">내용</span>
-                    <textarea class="content-textarea" contenteditable="true" name="board4_content" placeholder="내용을 입력해주세요" required></textarea>
-                    <br/>
-                    <input type="button" class="content-file" value="사진추가">
-                </div>
+        </div>
+        <div class="content-container">
+            <div class="write-content">
+                <span class="content-label">내용</span>
+                <div class="content-textarea" id="board4_content" name="board4_content" contenteditable="true" required></div>
+                <input type="file" id="photo-input" accept="image/gif, image/jpeg, image/png, image/webp" multiple style="display: none;">
+                <input type="button" class="content-file" value="사진추가">
             </div>
+        </div>
     </form>
 </div>
 </body>
