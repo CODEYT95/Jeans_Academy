@@ -113,12 +113,33 @@
     <!--//////////////////////////////////////////////////////////////////////////////-->
     <!--회원 관리 관련 쿼리문-->
     <!--회원 수정-->
+    <!-- 회원 보이기/안보이기-->
+    <update id="updateMember" parameterType="String">
+        <![CDATA[
+        UPDATE MEMBER SET member_isshow='N'
+        WHERE member_id=#{member_id};
+        ]]>
+    </update>
+    <update id="refreshMember" parameterType="String">
+        <![CDATA[
+        UPDATE MEMBER SET member_isshow='Y'
+        WHERE member_id=#{member_id};
+        ]]>
+    </update>
+
+    <!-- 회원 정보 수정-->
+    <update id="modifyMemberInfo" parameterType="com.project.jeans.domain.member.dto.MemberDTO">
+        <![CDATA[
+    UPDATE MEMBER SET member_name=#{member_name}, member_phone=#{member_phone}, member_class=#{member_class}
+    WHERE member_id=#{member_id};
+    ]]>
+    </update>
 
     <!--회원 완전 삭제 처리-->
-    <delete id="updateMember" parameterType="String">
+    <delete id="deleteMember" parameterType="String">
         <![CDATA[
         DELETE FROM MEMBER
-        WHERE member_id=#[member_id];
+        WHERE member_id=#{member_id};
         ]]>
     </delete>
 
@@ -142,32 +163,46 @@
     <!--//관리자 관련 회원 조회 쿼리문////////////////////////////////////////////////////-->
     <!--검색 기능-->
     <sql id="search">
-        <if test="condition == 'member_id'">
-            WHERE member_id LIKE CONCAT('%','#{keyword}','%')
-        </if>
-        <if test="condition == 'member_name'">
-            WHERE member_name LIKE CONCAT('%','#{keyword}','%')
-        </if>
-        <if test="condition == 'member_type'">
-            WHERE member_type LIKE CONCAT('%','#{keyword}','%')
+        <if test="condition != null and keyword != null">
+            <choose>
+                <when test="condition == 'member_id'">
+                    <![CDATA[ AND member_id LIKE CONCAT('%', #{keyword}, '%') ]]>
+                </when>
+                <when test="condition == 'member_name'">
+                    <![CDATA[ AND member_name LIKE CONCAT('%', #{keyword}, '%') ]]>
+                </when>
+                <when test="condition == 'member_type'">
+                    <![CDATA[ AND member_type LIKE CONCAT('%', #{keyword}, '%') ]]>
+                </when>
+            </choose>
         </if>
     </sql>
 
     <!--현재 회원 조회-->
+    <!-- 현재 회원 조회 및 페이징 및 검색 -->
     <select id="getShowMember" resultType="com.project.jeans.domain.member.dto.MemberDTO">
         <![CDATA[
         SELECT * FROM member WHERE member_isshow='Y'
-        ORDER BY member_type, member_id
-        LIMIT #{page} , #{size}
+        ]]>
+        <include refid="search"/>
+        <![CDATA[
+        ORDER BY member_class,member_type, member_id
+        LIMIT #{page}, #{size}
         ]]>
     </select>
 
+    <!-- 회원 수 조회 -->
     <select id="getShowMemberCount" resultType="Integer">
         <![CDATA[
-        SELECT COUNT(*) FROM member
-        WHERE member_isshow='Y'
+        SELECT COUNT(*) FROM member WHERE member_isshow='Y'
         ]]>
-        <include refid="search" />;
+    </select>
+
+    <select id="getShowMemberCountWithSearch" resultType="Integer">
+        <![CDATA[
+        SELECT COUNT(*) FROM member WHERE member_isshow='Y'
+        ]]>
+        <include refid="search"/>
     </select>
 
     <!--탈퇴 회원 조회-->
@@ -177,12 +212,20 @@
         ]]>
         <include refid="search" />
         <![CDATA[
-        ORDER BY member_type, member_id
-        LIMIT #{offset}, #{limit}
+        ORDER BY member_class,member_type, member_id
+        LIMIT #{page}, #{size}
         ]]>
     </select>
+
     <!--탈퇴 회원 수-->
     <select id="getHiddenMemberCount" resultType="Integer">
+        <![CDATA[
+        SELECT COUNT(*) FROM member
+        WHERE member_isshow='N'
+        ]]>
+    </select>
+
+    <select id="getHiddenMemberCountWithSearch" resultType="Integer">
         <![CDATA[
         SELECT COUNT(*) FROM member
         WHERE member_isshow='N'
@@ -197,8 +240,8 @@
         ]]>
         <include refid="search" />
         <![CDATA[
-        ORDER BY member_type, member_id
-        LIMIT #{offset}, #{limit}
+        ORDER BY member_class,member_type, member_id
+        LIMIT #{page}, #{size}
         ]]>
     </select>
 
@@ -208,6 +251,14 @@
         SELECT COUNT(*) FROM member
         WHERE member_accept='N'
         ]]>
+    </select>
+
+    <select id="getNoAcceptMemberCountWithSearch" resultType="Integer">
+        <![CDATA[
+        SELECT COUNT(*) FROM member
+        WHERE member_accept='N'
+        ]]>
         <include refid="search" />;
     </select>
+
 </mapper>
