@@ -2,12 +2,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap');
 
 * {
-	box-sizing: border-box;
-	font-family: 'Do Hyeon', sans-serif;
+    box-sizing: border-box;
+    font-family: 'Do Hyeon', sans-serif;
 }
 
 input {
-	background-color: #eee;
+    background-color: #eee;
     border: none;
     padding: 12px 15px;
     padding-right: 40px;

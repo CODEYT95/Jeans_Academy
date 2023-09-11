@@ -2,6 +2,7 @@ package com.project.jeans.service.member;
 
 import com.project.jeans.domain.common.paging.dto.PageDTO;
 import com.project.jeans.domain.member.dto.MemberDTO;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.HashMap;
 import java.util.List;
@@ -56,19 +57,33 @@ public interface MemberService {
 
 
     /*관리자 관련-----------------------------------------------------------*/
-    // 요청 처리
-    public int updateAccept(Map<String, Object> map);
-
     //페이징 처리 관련 코드-----------------------------------------------
     //현재 회원 조회
-    List<MemberDTO> getShowMember(int pageNum, int size);
+    List<MemberDTO> getShowMember(@Param("page") int page, @Param("size") int size, @Param("condition") String condition, @Param("keyword") String keyword);
     int getShowMemberCount();
+    int getShowMemberCountWithSearch(String condition, String keyword);
 
     //탈퇴 회원 조회
-    List<MemberDTO> getHiddenMember(PageDTO pageDTO);
-    int getHiddenMemberCount(PageDTO pageDTO);
+    List<MemberDTO> getHiddenMember(@Param("page") int page, @Param("size") int size, @Param("condition") String condition, @Param("keyword") String keyword);
+    int getHiddenMemberCount();
+    int getHiddenMemberCountWithSearch(String condition, String keyword);
 
     //요청 회원 조회
-    List<MemberDTO> getNoAcceptMember(PageDTO pageDTO);
-    int getNoAcceptMemberCount(PageDTO pageDTO);
+    List<MemberDTO> getNoAcceptMember(@Param("page") int page, @Param("size") int size, @Param("condition") String condition, @Param("keyword") String keyword);
+    int getNoAcceptMemberCount();
+    int getNoAcceptMemberCountWithSearch(String condition, String keyword);
+
+    //회원 숨기기
+    int updateMember(String member_id);
+    //회원 보이기
+    int refreshMember(String member_id);
+
+    //회원 정보 수정하기
+    int modifyMemberInfo( MemberDTO memberDTO);
+
+    //회원 완전 삭제
+    int deleteMember(String member_id);
+
+    // 요청 처리
+    public int acceptMember(String member_id);
 }

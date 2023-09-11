@@ -14,11 +14,11 @@ table{
     font-size:20px;
     margin-bottom:20px;
 }
-.modifyBtn i {
-    color: #6b6be8;
+.acceptBtn i {
+    color: #34913f;
     font-size:26px;
 }
-.updateBtn i {
+.cancelBtn i {
     color: red;
     font-size:26px;
 }
@@ -38,22 +38,22 @@ button{
 }
 
 /* 마우스 호버 시 배경색 변경 */
-.updateBtn:hover {
-    background-color: #e74c3c;
+.acceptBtn:hover {
+    background-color: #34913f;
 }
 
 /* 마우스 호버 시 아이콘 색 변경 */
-.updateBtn:hover i {
+.acceptBtn:hover i {
     color: #fff;
 }
 
 /* 마우스 호버 시 배경색 변경 */
-.modifyBtn:hover {
-    background-color: #7171f2;
+.cancelBtn:hover {
+    background-color: red;
 }
 
 /* 마우스 호버 시 아이콘 색 변경 */
-.modifyBtn:hover i {
+.cancelBtn:hover i {
     color: #fff;
 }
 

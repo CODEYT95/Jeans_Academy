@@ -41,6 +41,7 @@ public class MemberServiceImpl implements MemberService{
     @Override
     public String phoneDuplicate(String member_phone) {
         int result = memberDAO.phoneDuplicate(member_phone);
+        System.out.println(result);
         if (result > 0) {
             return "duplicate"; // 전화번호 중복
         } else {
@@ -115,43 +116,79 @@ public class MemberServiceImpl implements MemberService{
     //현재 회원 조회
 
     @Override
-    public List<MemberDTO>getShowMember(int pageNum, int size) {
+    public List<MemberDTO>getShowMember(int pageNum, int size, String condition, String keyword) {
         int offset = (pageNum - 1) * size;
-        return memberDAO.getShowMember(offset, size);
+        return memberDAO.getShowMember(offset, size, condition, keyword);
     }
     //현재 회원 수
     @Override
     public int getShowMemberCount() {
         return memberDAO.getShowMemberCount();
     }
+    @Override
+    public int getShowMemberCountWithSearch(String condition, String keyword) {
+        return memberDAO.getShowMemberCountWithSearch(condition, keyword);
+    }
 
     //탈퇴 회원 조회
     @Override
-    public List<MemberDTO> getHiddenMember(PageDTO pageDTO) {
-        return memberDAO.getHiddenMember(pageDTO);
+    public List<MemberDTO> getHiddenMember(int pageNum, int size, String conditions, String keyword) {
+        int offset = (pageNum-1) * size;
+        return memberDAO.getHiddenMember(offset, size, conditions, keyword);
     }
 
     //탈퇴회원 수
     @Override
-    public int getHiddenMemberCount(PageDTO pageDTO) {
-        return memberDAO.getHiddenMemberCount(pageDTO);
+    public int getHiddenMemberCount() {
+        return memberDAO.getHiddenMemberCount();
+    }
+    @Override
+    public int getHiddenMemberCountWithSearch(String condition, String keyword) {
+        return memberDAO.getHiddenMemberCountWithSearch(condition, keyword);
     }
 
     //회원 가입 요청 회원 조회
     @Override
-    public List<MemberDTO> getNoAcceptMember(PageDTO pageDTO) {
-        return memberDAO.getNoAcceptMember(pageDTO);
+    public List<MemberDTO> getNoAcceptMember(int pageNum, int size, String conditions, String keyword) {
+        int offset = (pageNum-1) * size;
+        return memberDAO.getNoAcceptMember(offset, size, conditions, keyword);
     }
 
     //요청 회원 수
     @Override
-    public int getNoAcceptMemberCount(PageDTO pageDTO) {
-        return memberDAO.getNoAcceptMemberCount(pageDTO);
+    public int getNoAcceptMemberCount() {
+        return memberDAO.getNoAcceptMemberCount();
+    }
+
+    @Override
+    public int getNoAcceptMemberCountWithSearch(String condition, String keyword) {
+        return memberDAO.getNoAcceptMemberCountWithSearch(condition, keyword);
+    }
+
+    //회원 보이기 숨기기
+    public int updateMember(String member_id){
+        return memberDAO.updateMember(member_id);
+    }
+
+    //회원 보이기
+    @Override
+    public int refreshMember(String member_id) {
+        return memberDAO.refreshMember(member_id);
+    }
+
+    //회원 정보 수정하기
+    public int modifyMemberInfo( MemberDTO memberDTO){
+        return memberDAO.modifyMemberInfo( memberDTO);
+    }
+
+    //회원 완전 삭제
+    public int deleteMember(String member_id){
+        return memberDAO.deleteMember(member_id);
     }
 
     //회원 가입 요청 처리
     @Override
-    public int updateAccept(Map<String, Object> map) {
-        return memberDAO.updateAccept(map);
+    public int acceptMember(String member_id) {
+        return memberDAO.acceptMember(member_id);
     }
 }
