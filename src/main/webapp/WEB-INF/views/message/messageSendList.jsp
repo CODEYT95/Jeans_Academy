@@ -36,8 +36,8 @@
                     </td>
                     <div id="modal3-${loop.index}" class="modal-overlay3">
                         <div class="modal-window">
+                            <div class="close-area3"><h2>X</h2></div>
                             <div class="modal-header">
-                                <div class="close-area3"><h2>X</h2></div>
                             </div>
                             <div class="modal-body">
                                 <div class="inputContent"><h3>제목</h3> ${messageSendDTO.message_title}</div>

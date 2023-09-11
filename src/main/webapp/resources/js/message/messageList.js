@@ -114,8 +114,8 @@ $(document).ready(function(){
                     receiver.innerHTML = "";
                     for (var i = 0; i < response.length; i++) {
                         var option = document.createElement("option");
-                        option.value = response[i].member_id;
-                        option.text = response[i].member_id;
+                        option.value = response[i].member_name;
+                        option.text = response[i].member_name;
                         receiver.appendChild(option);
                     }
                 },
@@ -159,12 +159,6 @@ $(document).ready(function() {
 /* 쪽지 작성 */
 $(document).ready(function() {
     $("#write").click(function() {
-        var confirmed = confirm("쪽지를 보내시겠습니까?");
-        if (confirmed) {
-            $("form").submit();
-            alert("쪽지가 발송되었습니다.");
-        } else {
-            return false;
-        }
+        alert("쪽지가 발송되었습니다.");
     });
 });

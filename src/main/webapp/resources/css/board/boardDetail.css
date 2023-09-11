@@ -526,7 +526,7 @@ table {
 /* modal */
 #modal.modal-overlay {
   width: 100%;
-  height: 100vh;
+  height: 100%;
   position: absolute;
   left: 0;
   top: 0;
@@ -535,17 +535,18 @@ table {
   align-items: center;
   justify-content: center;
 }
+
 #modal .modal-window {
   position: relative;
-  width: 50vw;
-  height: 25vw;
-  top: auto;
-  padding: 25px;
+  width: 700px;
+  height: auto;
+  MARGIN-TOP:30PX;
+  padding: 15px;
   background: linear-gradient(180deg,#5164da 5%,#FFFFFE 5%);
   box-shadow: 0 0px 2px 0 rgba( 31, 38, 135, 0.37 );
   border-radius: 15px;
   border: 1px rgba( 255, 255, 255, 0.18 );
-  overflow-y: scroll;
+  overflow-y: auto;
   overflow-x: hidden;
 }
 #modal .title {
@@ -558,6 +559,7 @@ table {
   display: inline;
 }
 #modal .close-area {
+  margin-top: 36px;
   display: inline;
   float: right;
   padding-right: 10px;
@@ -572,6 +574,12 @@ table {
   color: white;
 }
 
+#content{
+    width: 100%;
+    height: 265px;
+    border-radius: 8px;
+    padding-left: 10px;
+}
 
 * {
     scrollbar-width: 0;

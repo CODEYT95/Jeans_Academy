@@ -2,8 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<c:set var="cPath" value="<%=request.getContextPath() %>" />
-<html>
+<html lang="ko"  value="<%=request.getContextPath() %>" xmlns="http://www.w3.org/1999/html"/>
 <head>
     <meta charset="UTF-8">
     <title>메시지 수신함</title>
@@ -51,17 +50,17 @@
                         </select>
                     </div>
                     <div class="modal-body">
-                        <div>
-                            <h2>제목</h2><input type="text" name="message_title" placeholder="제목을 작성해주세요" required/>
+                        <div class="message-title">
+                            <h2>제목</h2><input id="title" type="text" name="message_title" placeholder="제목을 작성해주세요" required/>
                         </div>
-                        <div>
-                            <h2>내용</h2><input type="text" name="message_content" placeholder="내용을 작성해주세요" required/>
+                        <div class="message-content">내용
+                            <textarea id="content" type="text" name="message_content" placeholder="내용을 작성해주세요" required></textarea>
                         </div>
                     </div>
                     <div class="modal-footer">
                         <!-- 보내기 버튼, 취소(목록) 버튼 -->
-                        <button type="submit" id = "write" class="write-button">작성</button>
-                        <button type="button" class="list-button" onclick="location.href='/message/messageList'">목록</button>
+                        <button type="submit" id = "write" class="button">작성</button>
+                        <button type="button" class="button" onclick="location.href='/message/messageList'">목록</button>
                     </div>
                 </form>
             </div>
@@ -71,8 +70,13 @@
 
     <div class="call-content">
         <br/><br/>
-        <h2>안녕하세요! 👖${member_id}님 쪽지함입니다😊</h2>
-        <div id="msgAllList"></div>
+        <h2>안녕하세요! 👖${member_id}님 쪽지함입니다😊<br/></h2>
+        <div id="msgAllList">
+            1. 쪽지를 보내시고 싶으시면 '쪽지 보내기'<br/>
+            2. 보낸 쪽지를 확인하고 싶으시면 '보낸 쪽지함'<br/>
+            3. 받은 쪽지를 확인하고 싶으시면 '받은 쪽지함'<br/>
+            여러분들이 걸어가는 길목마다 행복이라는 꽃들이 한아름 피어나기를☺️
+        </div>
     </div>
 </div>
 </body>

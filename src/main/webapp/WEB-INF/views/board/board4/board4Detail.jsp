@@ -8,14 +8,14 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
     <link rel="stylesheet" type="text/css" href="../../../../resources/css/board/boardDetail.css">
-    <script type="text/javascript" src="../../../../resources/js/board/boardDetail.js"></script>
+    <script type="text/javascript" src="../../../../resources/js/board/board4/board4Detail.js"></script>
     <style>
         body{
          background-color : rgba(243, 249, 216, 0.6);
         }
     </style>
 </head>
-<body data-member-class="${member_class}" data-category="${category}">
+<body data-member-class="${member_class}" data-category="${category}" data-member-type="${member_type}">
 <%@ include file="/WEB-INF/views/common/header.jsp"%>
 <%@ include file="/WEB-INF/views/common/sidebar.jsp"%>
 
@@ -101,7 +101,7 @@
                                                 <input type="hidden" name="comment4_no" value="${comment4DTO.comment4_no}">
                                                 <div id="comment_content" class="form-group">
                                                     <h3>댓글 내용</h3>
-                                                    <input type="text" name="comment4_content" required/>
+                                                    <textarea type="text" id="content" name="comment4_content" required>${comment4DTO.comment4_content}</textarea>
                                                 </div>
                                                 <br/>
                                                 <button type="submit" class="reply-button">수정</button>

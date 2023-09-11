@@ -84,6 +84,7 @@ img {
        height: 100%;
        width: calc(100% - 300px);
        padding: 31px 125px;
+       overflow-y: auto;
        transition: .1s;
        margin-top: 60px;
 }
@@ -274,16 +275,16 @@ a {
     color: #F1D243;
 }
 .icon-9 {
-        color: #585858;
+    color: #585858;
 }
 .icon-10 {
-        color: #00acc1;
+    color: #00acc1;
 }
 .sidebar--items a:hover .icon i {
-        color: white;
+    color: white;
 }
 .sidebar--bottom-items a:hover .icon i {
-        color: white;
+    color: white;
 }
 /* main--content */
 .main--content {
@@ -397,8 +398,8 @@ a {
 }
 
 .messageRec--content, .messageSend--content{
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
     margin: 0;
     padding: 0;
     max-height: 50%;
@@ -406,6 +407,13 @@ a {
     display: flow-root;
 }
 
+#delete {
+height: 30px;
+width: 45px;
+font-size: 15px;
+margin-top: 35px;
+margin-bottom: 5px
+}
 table {
     border: 1px;
     border-collapse: collapse; /* 테두리 겹치는 부분을 병합 */
@@ -461,7 +469,7 @@ th {
 /* modal */
 #modal.modal-overlay, .modal-overlay2, .modal-overlay3  {
   width: 100%;
-  height: 100vh;
+  height: 100%;
   position: absolute;
   left: 0;
   top: 0;
@@ -481,7 +489,7 @@ th {
   box-shadow: 0 0px 2px 0 rgba( 31, 38, 135, 0.37 );
   border-radius: 15px;
   border: 1px rgba( 255, 255, 255, 0.18 );
-  overflow-y: scroll;
+  overflow-y: auto;
   overflow-x: hidden;
 }
 
@@ -513,7 +521,7 @@ th {
 
 .modal-content{
     overflow-x: hidden;
-	overflow-y: scroll;
+	overflow-y: auto;
 	height: 20vh;
 }
 

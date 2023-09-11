@@ -2,13 +2,13 @@
 $(document).ready(function() {
     $("#save").click(function() {
 
-        const board1_title_check = $('#board1_title').val();
-        const board1_content_check = $('#board1_content').html();
+        const board4_title_check = $('#board4_title').val();
+        const board4_content_check = $('#board4_content').html();
 
-        if(board1_title_check === "" || board1_title_check === null){
+        if(board4_title_check === "" || board4_title_check === null){
             alert("제목을 작성해주세요");
             return false;
-        } else if (board1_content_check === "" || board1_content_check === null) {
+        } else if (board4_content_check === "" || board4_content_check === null) {
             alert("내용을 작성해주세요");
             return false;
         } else{
@@ -26,12 +26,12 @@ document.addEventListener("DOMContentLoaded", function() {
   const saveButton = document.querySelector('#save');
   if (saveButton) {
     saveButton.addEventListener('click', function() {
-      var board1_content = document.querySelector('#board1_content').innerHTML;
+      var board4_content = document.querySelector('#board4_content').innerHTML;
       var hiddenInput = document.createElement('input');
       var form = document.querySelector('form');
       hiddenInput.type = 'hidden';
-      hiddenInput.name = 'board1_content';
-      hiddenInput.value = board1_content;
+      hiddenInput.name = 'board4_content';
+      hiddenInput.value = board4_content;
       form.appendChild(hiddenInput);
     });
   } else {
@@ -43,7 +43,7 @@ document.addEventListener("DOMContentLoaded", function() {
   });
 
   const photoInput = document.getElementById('photo-input');
-  const previewContainer = document.querySelector('#board1_content');
+  const previewContainer = document.querySelector('#board4_content');
 
   if (photoInput && previewContainer) {
     photoInput.addEventListener('change', function(event) {

@@ -336,7 +336,7 @@ margin-top: 60px;
     justify-content: center;
 }
 
-.button{
+.button, .button2, .button3, .button4{
   float: right;
   width: 70px;
   height: 33px;
@@ -351,8 +351,23 @@ margin-top: 60px;
   border-top-right-radius: 0px 5px;
   border-bottom-left-radius: 0px 5px;
   border-bottom-right-radius: 30px 25px;
-  background: #5164da ;
   cursor: pointer;
+}
+
+.button{
+  background: #5164da ;
+}
+
+.button2{
+  background: #c75baf ;
+}
+
+.button3{
+  background: #61b88e ;
+}
+
+.button4{
+  background: #ccc762 ;
 }
 
 .button:hover {
@@ -380,14 +395,14 @@ slide--container{
 	perspective: 1000px;
 	overflow: hidden;
 }
-.testimonials .item{
+
+.testimonials .item, .item2, .item3, .item4{
     max-height: 300px;
     height: 300px;
     max-width: 300px;
 	width: 300px;
 	padding: 30px;
 	border-radius: 10px;
-	background: linear-gradient(180deg,#5164da 5%,#FFFFFE 5%); /* slider 내 item 색상  */
 	position: absolute;
 	border:1px black;
 	top: 0;
@@ -399,12 +414,30 @@ slide--container{
 	cursor: pointer;
     overflow: hidden;
 }
-.testimonials .item h2{
+
+.testimonials .item{
+    background: linear-gradient(180deg,#5164da 5%,#FFFFFE 5%); /* slider 내 item 색상  */
+}
+
+.testimonials .item2{
+    background: linear-gradient(180deg,#c75baf 5%,#FFFFFE 5%); /* slider 내 item 색상  */
+}
+
+.testimonials .item3{
+    background: linear-gradient(180deg,#61b88e 5%,#FFFFFE 5%); /* slider 내 item 색상  */
+}
+
+.testimonials .item4{
+    background: linear-gradient(180deg,#ccc762 5%,#FFFFFE 5%); /* slider 내 item 색상  */
+}
+
+.testimonials .item h2, .item2 h2, .item3 h2, .item4 h2{
     font-size: 40px; color: black;
 }
-.testimonial .item p{
+.testimonial .item p, .item2 p, .item3 p, .item4 p{
     font-size: 25px; color: black;
 }
+
 h2{
 white-space: nowrap;
 overflow: hidden;
@@ -413,6 +446,7 @@ word-break: break-word;
 margin-top: -10px;
 margin-bottom: 10px;
 }
+
 h3{
 overflow: hidden;
 text-overflow: ellipsis;
@@ -422,7 +456,9 @@ display: -webkit-box;
 -webkit-box-orient: vertical;
 font-weight: normal;
 height: 187px;
+line-height: 1.3;
 }
+
 /* box */
 .box-container{
     height: auto;
@@ -471,6 +507,40 @@ height: 187px;
   border-bottom-right-radius: 30px 25px;
   background: #5164da ;
   cursor: pointer;
+}
+
+.box-button, .box-button2, .box-button3, .box-button4{
+  float: right;
+  width: 70px;
+  height: 33px;
+  margin-bottom: 10px;
+  margin-top: -10px;
+  margin-left: 5px;
+  border: none;
+  font-size: 15px;
+  font-weight: bold;
+  color: white;
+  border-top-left-radius: 30px 25px;
+  border-top-right-radius: 0px 5px;
+  border-bottom-left-radius: 0px 5px;
+  border-bottom-right-radius: 30px 25px;
+  cursor: pointer;
+}
+
+.box-button{
+  background: #5164da ;
+}
+
+.box-button2{
+  background: #c75baf ;
+}
+
+.box-button3{
+  background: #61b88e ;
+}
+
+.box-button4{
+  background: #ccc762 ;
 }
 
 h1{

@@ -8,14 +8,14 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
     <link rel="stylesheet" type="text/css" href="../../../../resources/css/board/boardModify.css">
-    <script type="text/javascript" src="../../../../resources/js/board/boardModify.js"></script>
+    <script type="text/javascript" src="../../../../resources/js/board/board4/board4Modify.js"></script>
     <style>
         body{
          background-color : rgba(243, 249, 216, 0.6);
         }
     </style>
 </head>
-<body data-member-class="${member_class}" data-category="${category}">
+<body data-member-class="${member_class}" data-category="${category}" data-member-type="${member_type}">
 <%@ include file="/WEB-INF/views/common/header.jsp"%>
 <%@ include file="/WEB-INF/views/common/sidebar.jsp"%>
 
