@@ -28,7 +28,6 @@ public class QuestionController {
 
     @RequestMapping("/list")
     public String questionList(HttpSession session, Model model) {
-        System.out.println("questionList");
         LoginCheckSession loginCheck = new LoginCheckSession(memberService);
         MemberDTO memberInfo = loginCheck.getLoginCheckSession(session, model);
 
@@ -44,7 +43,6 @@ public class QuestionController {
 
         List<QuestionDTO> questionList = questionService.selectQuestionAll();
         model.addAttribute("questionList", questionList);
-        System.out.println(questionList);
         return "question/questionlist";
     }
 
@@ -93,7 +91,6 @@ public class QuestionController {
         questionDTO.setMember_class(memberClass);
 
         int result = questionService.insertQuestion(questionDTO);
-        System.out.println("insert 쿼리 실행 " + result);
 
         if (result > 0) {
             modelAndView.setViewName("redirect:/question/list");

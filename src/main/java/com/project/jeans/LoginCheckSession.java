@@ -3,8 +3,9 @@ package com.project.jeans;
 import com.project.jeans.domain.member.dto.MemberDTO;
 import com.project.jeans.service.member.MemberService;
 import jakarta.servlet.http.HttpSession;
+import org.springframework.stereotype.Component;
 import org.springframework.ui.Model;
-
+@Component
 public class LoginCheckSession {
     private final MemberService memberService;
 

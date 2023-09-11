@@ -64,11 +64,11 @@ public class NoticeServiceImpl implements NoticeService {
 
     //공지사항 수정
     @Override
-    public NoticeDTO noticeUpdate(NoticeDTO noticeDTO){return noticeDAO.noticeUpdate(noticeDTO);}
+    public int noticeUpdate(NoticeDTO noticeDTO){return noticeDAO.noticeUpdate(noticeDTO);}
 
     //댓글 수정
     @Override
-    public NReplyDTO nreplyUpdate(NReplyDTO nReplyDTO){return noticeDAO.nreplyUpdate(nReplyDTO);}
+    public int nreplyUpdate(NReplyDTO nReplyDTO){return noticeDAO.nreplyUpdate(nReplyDTO);}
 
 
 }

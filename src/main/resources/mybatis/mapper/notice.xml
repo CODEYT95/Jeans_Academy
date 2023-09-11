@@ -52,7 +52,7 @@
         <![CDATA[
         SELECT count(*)
         FROM notice_comment
-        WHERE notice_no = #{notice};
+        WHERE notice_no = #{notice} AND comment_isshow = 'Y';
         ]]>
     </select>
     <!--공지사항 INSERT-->
@@ -92,7 +92,7 @@
     <update id="noticeUpdate" parameterType="com.project.jeans.domain.admin.notice.dto.NoticeDTO">
         <![CDATA[
         UPDATE notice
-        SET notice_title = #{notice_title} AND notice_content = #{notice_content}
+        SET notice_title = #{notice_title}, notice_content = #{notice_content}
         WHERE notice_no = #{notice_no};
         ]]>
     </update>

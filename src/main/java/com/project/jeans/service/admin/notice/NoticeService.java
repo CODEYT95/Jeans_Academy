@@ -40,8 +40,8 @@ public interface NoticeService {
     public int isShowNreply(int comment_no);
 
     //공지사항 수정
-    public NoticeDTO noticeUpdate(NoticeDTO noticeDTO);
+    public int noticeUpdate(NoticeDTO noticeDTO);
 
     //댓글 수정
-    public NReplyDTO nreplyUpdate(NReplyDTO nReplyDTO);
+    public int nreplyUpdate(NReplyDTO nReplyDTO);
 }

@@ -52,6 +52,7 @@ pageEncoding="UTF-8"%>
             </c:if>
             <div class="content-container">
                 <input type="button" id="insert-reply" class="insert-reply" value="댓글 등록">
+                <input type="button" id="update-reply-cancle" class="insert-reply" value="수정 취소">
                 <input type="button" id="update-reply" class="insert-reply" value="댓글 수정">
             </div>
             <div class="reply-container">
@@ -65,7 +66,7 @@ pageEncoding="UTF-8"%>
                     <div class="modal--container">
                         <div id="replyDeleteModal">
                             <div class="replyModal-content">
-                                <p>정말 게시글을 삭제하시겠습니까?</p>
+                                <p>댓글을 삭제 하시겠습니까?</p>
                                 <div class="reply-confirm-container">
                                     <button id="replyConfirmDelete">확인</button>
                                     <button id="replyCancelDelete">취소</button>
@@ -79,7 +80,7 @@ pageEncoding="UTF-8"%>
                             <div class="reply-info" data-reply-no="${reply.comment_no}">
                                 <span class="reply-class">${reply.member_class}</span>
                                 <span class="reply-name">${reply.member_name}</span>
-                                <span class="reply-regdate">${reply.comment_regdate}</span>
+                                <span class="reply-regdate" data-reply-regdate="${reply.comment_regdate}">${reply.comment_regdate}</span>
                                 <c:if test="${member_id eq reply.member_id}">
                                 <input type="button" class="reply-edit" value="수정">
                                 <input type="button" class="reply-delete" value="삭제">

@@ -45,10 +45,10 @@ public interface NoticeDAO {
     int isShowNreply(int comment_no);
 
     //공지사항 수정
-    NoticeDTO noticeUpdate(NoticeDTO noticeDTO);
+    int noticeUpdate(NoticeDTO noticeDTO);
 
     //댓글 수정
-    NReplyDTO nreplyUpdate(NReplyDTO nReplyDTO);
+    int nreplyUpdate(NReplyDTO nReplyDTO);
 
     List<NoticeDTO> findNoticeAll();
 }

@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<html lang="ko" xmlns:c="http://java.sun.com/JSP/Page">
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<html lang="ko" xmlns:c="http://java.sun.com/JSP/Page" xmlns:fmt="http://www.w3.org/XML/1998/namespace">
 <head>
     <meta charset="UTF-8">
     <title>공지사항</title>
@@ -32,20 +33,20 @@
                         <h3 class="board-title">제목</h3>
                         <h3 class="board-writer">작성자</h3>
                         <h3 class="board-reg">작성날짜</h3>
-                        <h3 class="board-count">조회수1</h3>
+                        <h3 class="board-count">조회수</h3>
                     </div>
                 </header>
                 <ul>
-                    <c:forEach items="${noticeList}" var="notice">
+                    <c:forEach items="${noticeList}" var="notice" varStatus="status">
                         <li>
-                            <span class="no">${notice.notice_no}</span>
+                            <span class="no">${status.index + 1}</span>
                             <a class="view-link" href="/noticeDetail/${notice.notice_no}">
                                 <span class="title">${notice.notice_title}</span>
                             </a>
                             <div class="writer-container">
                                 <span class="writer">${notice.member_id}</span>
                             </div>
-                            <span class="reg">${notice.notice_regdate}</span>
+                            <span class="reg"><fmt:formatDate value="${notice.notice_regdate}" pattern="yyyy-MM-dd" /></span>
                             <span class="count">${notice.notice_count}</span>
                         </li>
                     </c:forEach>
