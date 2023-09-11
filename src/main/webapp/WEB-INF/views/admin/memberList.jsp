@@ -2,7 +2,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<html lang="ko" xmlns:c="http://java.sun.com/JSP/Page" xmlns:fmt="http://java.sun.com/JSP/Page">
+<html lang="ko" xmlns:c="http://java.sun.com/JSP/Page" xmlns:fmt="http://java.sun.com/JSP/Page"
+      xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -94,29 +95,5 @@
 </div>
 </body>
 </html>
-<script>
-    $(document).ready(function() {
-        $(document).on("click", "#pagination .showPage a", function(e) {
-            e.preventDefault();
-            var value = $(this).attr("data-pageNum");
-            console.log(value);
-            $.ajax({
-                type: "POST",
-                url: "/admin/memberList",
-                data: {
-                    pageNum: value,
-                    countPerPage: $("#showPage").data("countperpage")
-                },
-                success: function(data) {
-                    $("#showTableBody").empty(); // 기존 데이터 삭제
-                    $.each(data.showMembers, function(index, show) {
-                        $("#showTableBody").append(newRow);
-                    });
-                },
-                error: function(error) {
-                    console.error("Error:", error);
-                }
-            });
-        });
-    });
-</script>
+
+

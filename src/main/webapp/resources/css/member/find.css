@@ -75,6 +75,7 @@ button:hover {
 }
 #confirmDelete{
     display: flex;
+    background: #5073FB;
     height: 0px;
     bottom: 10px;
     position: relative;

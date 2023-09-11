@@ -1,5 +1,6 @@
 package com.project.jeans.service.board.board2;
 
+import com.project.jeans.domain.board.board1.dto.Board1DTO;
 import com.project.jeans.domain.board.board2.dto.Board2DTO;
 
 import java.util.List;
@@ -9,8 +10,13 @@ public interface Board2Service {
 
     //반별 게시글 목록 조회
     public List<Board2DTO> getBoard2List();
+
+    //게시판 목록 조회(강사님)
+    public List<Board2DTO> findBoard2ByTutor();
+
     //반별 게시글 목록 5개 조회
     public List<Board2DTO> findBoard2List();
+
     //반별 게시글 상세 조회
     public Board2DTO getBoard2Detail(int board2_no);
 

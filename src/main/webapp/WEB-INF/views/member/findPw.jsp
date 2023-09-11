@@ -26,7 +26,7 @@ pageEncoding="UTF-8"%>
         <span style="font-size:13px;">새로운 비밀번호를 입력해 주세요🙏</span>
         <input type="hidden" id="member_id_hidden" name="member_id" value="">
         <div class="password">
-            <input type="password" id="member_pw" name="member_pw" placeholder="새 비밀번호" minlength="6" maxlength="20">
+            <input type="text" id="member_pw" name="member_pw" placeholder="새 비밀번호" minlength="6" maxlength="20">
             <span class="eye-icon"><ion-icon name="eye-outline"></ion-icon></span>
         </div>
         <div class="passwordCheck">

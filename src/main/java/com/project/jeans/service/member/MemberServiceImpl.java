@@ -115,13 +115,14 @@ public class MemberServiceImpl implements MemberService{
     //현재 회원 조회
 
     @Override
-    public List<MemberDTO> getShowMember(PageDTO pageDTO) {
-        return memberDAO.getShowMember(pageDTO);
+    public List<MemberDTO>getShowMember(int pageNum, int size) {
+        int offset = (pageNum - 1) * size;
+        return memberDAO.getShowMember(offset, size);
     }
     //현재 회원 수
     @Override
-    public int getShowMemberCount(PageDTO pageDTO) {
-        return memberDAO.getShowMemberCount(pageDTO);
+    public int getShowMemberCount() {
+        return memberDAO.getShowMemberCount();
     }
 
     //탈퇴 회원 조회

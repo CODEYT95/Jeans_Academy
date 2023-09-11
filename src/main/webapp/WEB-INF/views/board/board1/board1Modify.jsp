@@ -9,6 +9,11 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
     <link rel="stylesheet" type="text/css" href="../../../../resources/css/board/boardModify.css">
     <script type="text/javascript" src="../../../../resources/js/board/boardModify.js"></script>
+    <style>
+        body{
+        background-color: rgba(186, 225, 245, 0.3);
+        }
+    </style>
 </head>
 <body data-member-class="${member_class}" data-category="${category}">
 <%@ include file="/WEB-INF/views/common/header.jsp"%>
@@ -22,8 +27,9 @@
             <input type="hidden" name="board1_no" value="${board1DTO.board1_no}">
 
             <div class="head-container">
-                <button type="submit" class="main-ori-button">저장</button>
-                <button type="button" class="main-ori-button" onclick="location.href='/board1/detail/${board1DTO.board1_no}'">목록</button>
+                <button id="save" class="main-ori-button">저장</button>
+                <button type="button" class="main-ori-button" onclick="location.href='/board1/list'">목록</button>
+                <button type="button" class="main-ori-button" onclick="location.href='/board1/detail/${board1DTO.board1_no}'">취소</button>
                 <div class="title-container">
                     <div class="write-title">
                         <div class="text">글 수정</div>

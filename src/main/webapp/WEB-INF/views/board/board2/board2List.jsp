@@ -9,6 +9,11 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
     <link rel="stylesheet" type="text/css" href="../../../../resources/css/board/boardList.css">
     <script type="text/javascript" src="../../../../resources/js/board/boardList.js"></script>
+    <style>
+        body{
+        background-color: rgba(246, 192, 252, 0.2);
+        }
+    </style>
 </head>
 <body data-member-class="${member_class}" data-category="${category}">
 <%@ include file="/WEB-INF/views/common/header.jsp"%>
@@ -30,11 +35,11 @@
             <input type="radio" name="testimonial" id="t-4">
             <input type="radio" name="testimonial" id="t-5">
             <div class="testimonials">
-                <c:forEach var="notice" items="${noticeList}" varStatus="loop" begin="0" end="4">
-                    <input type="radio" name="testimonial" id="t-${loop.index + 1}" checked>
+                <c:forEach var="tutor" items="${board2DTOBYTutor}" varStatus="loop" begin="0" end="4">
+                    <input type="radio" name="testimonial" id="t-${loop.index + 1}">
                     <label class="item"  for="t-${loop.index + 1}">
-                        <h2><a href="/noticeDetail/${notice.notice_no}">${notice.notice_title}</a></h2>
-                        <h3>${notice.notice_content}</h3>
+                        <h2><a href="/board2/detail/${tutor.board2_no}">${tutor.board2_title}</a></h2>
+                        <h3>${tutor.board2_content}</h3>
                     </label>
                 </c:forEach>
             </div>
@@ -49,20 +54,22 @@
     </div>
     <div class = "box-container">
         <div class="boxes">
-            <c:forEach var="board2List" items="${board2List}">
-                <div class="box">
-                    <div>
-                        <!-- 반이 같을 경우에만 조회가능하도록 처리-->
-                        <c:if test="${member_class.equals('2반') || member_type.equals('관리자') || member_type.equals('강사님')}">
-                            <button type="button" class="box-button" onclick="location.href='/board2/detail/${board2List.board2_no}'">상세</button>
-                        </c:if>
+            <c:if test="${member_class.equals('2반') || member_type.equals('관리자') || member_type.equals('강사님')}">
+                <c:forEach var="board2List" items="${board2List}">
+                    <div class="box">
+                        <div>
+                            <!-- 반이 같을 경우에만 조회가능하도록 처리-->
+                            <c:if test="${member_class.equals('2반') || member_type.equals('관리자') || member_type.equals('강사님')}">
+                                <button type="button" class="box-button" onclick="location.href='/board2/detail/${board2List.board2_no}'">상세</button>
+                            </c:if>
+                        </div>
+                        <div>
+                            <h1>${board2List.board2_title}</h1>
+                            <p>${board2List.board2_content}</p>
+                        </div>
                     </div>
-                    <div>
-                        <h1>${board2List.board2_title}</h1>
-                        <p>${board2List.board2_content}</p>
-                    </div>
-                </div>
-            </c:forEach>
+                </c:forEach>
+            </c:if>
         </div>
     </div>
 </div>

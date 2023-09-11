@@ -61,8 +61,8 @@ public interface MemberService {
 
     //페이징 처리 관련 코드-----------------------------------------------
     //현재 회원 조회
-    List<MemberDTO> getShowMember(PageDTO pageDTO);
-    int getShowMemberCount(PageDTO pageDTO);
+    List<MemberDTO> getShowMember(int pageNum, int size);
+    int getShowMemberCount();
 
     //탈퇴 회원 조회
     List<MemberDTO> getHiddenMember(PageDTO pageDTO);

@@ -38,4 +38,16 @@
                 }
             });
         });
+
+        $("#member_name, #member_phone").on("keyup", function () {
+            var member_name = $("#member_name").val();
+            var member_phone = $("#member_phone").val();
+            var findIdBtn = $(".findIdBtn");
+
+            if (member_name !== "" && member_phone !== "") {
+                findIdBtn.css("background", "#5073FB");
+            } else {
+                findIdBtn.css("background", "#9497a1");
+            }
+        });
     });

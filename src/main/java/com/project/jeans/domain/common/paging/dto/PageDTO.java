@@ -22,8 +22,4 @@ public class PageDTO {
     private String keyword;
     private String condition;
 
-    public PageDTO() {
-        this.pageNum = 1;
-        this.countPerPage = 2;
     }
-}

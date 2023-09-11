@@ -9,6 +9,11 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
     <link rel="stylesheet" type="text/css" href="../../../../resources/css/board/boardModify.css">
     <script type="text/javascript" src="../../../../resources/js/board/boardModify.js"></script>
+    <style>
+        body{
+         background-color: rgba(166, 245, 162, 0.2);
+        }
+    </style>
 </head>
 <body data-member-class="${member_class}" data-category="${category}">
 <%@ include file="/WEB-INF/views/common/header.jsp"%>

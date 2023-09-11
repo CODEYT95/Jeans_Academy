@@ -16,22 +16,31 @@ public class NoticeServiceImpl implements NoticeService {
     public List<NoticeDTO> selectAll() {
         return noticeDAO.selectAll();
     }
+
     //5개 보기
     @Override
     public List<NoticeDTO> selectFive() {
         return noticeDAO.selectFive();
     }
+
     //공지사항 상세보기
     @Override
     public NoticeDTO noticeDetail(int notice_no){
      return noticeDAO.noticeDetail(notice_no);
     }
+
     //공지사항 댓글
     @Override
-    public NReplyDTO nreplyDetail(int notice_no) { return noticeDAO.nreplyDetail(notice_no);}
+    public List<NReplyDTO> nreplyDetail(int notice_no) { return noticeDAO.nreplyDetail(notice_no);}
+
     //공지사항 댓글 입력
     @Override
     public int insertNReply(NReplyDTO nReplyDTO){return noticeDAO.insertNReply(nReplyDTO);}
+
+    //공지사항 댓글 갯수
+    @Override
+    public int nreplyCount(int notice_no){return  noticeDAO.nreplyCount(notice_no);}
+
     //공지사항 조회수 카운트
     public int noticeCountUp(int notice_no){return noticeDAO.noticeCountUp(notice_no);}
 
@@ -48,5 +57,18 @@ public class NoticeServiceImpl implements NoticeService {
     public int isShowNotice(int notice_no) {
         return noticeDAO.isShowNotice(notice_no);
     }
+
+    //댓글 isShow 'N'으로 바꾸기
+    @Override
+    public int isShowNreply(int comment_no){return  noticeDAO.isShowNreply(comment_no);}
+
+    //공지사항 수정
+    @Override
+    public int noticeUpdate(NoticeDTO noticeDTO){return noticeDAO.noticeUpdate(noticeDTO);}
+
+    //댓글 수정
+    @Override
+    public int nreplyUpdate(NReplyDTO nReplyDTO){return noticeDAO.nreplyUpdate(nReplyDTO);}
+
 
 }

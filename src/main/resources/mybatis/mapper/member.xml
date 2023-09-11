@@ -73,6 +73,7 @@
         SELECT member_pw FROM MEMBER WHERE member_id=#{member_id} AND member_phone=#{member_phone};
         ]]>
     </select>
+
     <!--비밀번호 수정-->
     <update id="updatePw" parameterType="com.project.jeans.domain.member.dto.MemberDTO">
         <![CDATA[
@@ -139,49 +140,74 @@
     </select>
 
     <!--//관리자 관련 회원 조회 쿼리문////////////////////////////////////////////////////-->
+    <!--검색 기능-->
+    <sql id="search">
+        <if test="condition == 'member_id'">
+            WHERE member_id LIKE CONCAT('%','#{keyword}','%')
+        </if>
+        <if test="condition == 'member_name'">
+            WHERE member_name LIKE CONCAT('%','#{keyword}','%')
+        </if>
+        <if test="condition == 'member_type'">
+            WHERE member_type LIKE CONCAT('%','#{keyword}','%')
+        </if>
+    </sql>
+
     <!--현재 회원 조회-->
     <select id="getShowMember" resultType="com.project.jeans.domain.member.dto.MemberDTO">
         <![CDATA[
         SELECT * FROM member WHERE member_isshow='Y'
         ORDER BY member_type, member_id
-        LIMIT #{pageNum} , #{countPerPage};
+        LIMIT #{page} , #{size}
         ]]>
     </select>
 
     <select id="getShowMemberCount" resultType="Integer">
         <![CDATA[
-        SELECT COUNT(*) FROM member WHERE member_isshow='Y';
+        SELECT COUNT(*) FROM member
+        WHERE member_isshow='Y'
         ]]>
+        <include refid="search" />;
     </select>
 
     <!--탈퇴 회원 조회-->
     <select id="getHiddenMember" resultType="com.project.jeans.domain.member.dto.MemberDTO">
         <![CDATA[
         SELECT * FROM member WHERE member_isshow='N'
+        ]]>
+        <include refid="search" />
+        <![CDATA[
         ORDER BY member_type, member_id
-        LIMIT #{pageNum} , #{countPerPage};
+        LIMIT #{offset}, #{limit}
         ]]>
     </select>
     <!--탈퇴 회원 수-->
     <select id="getHiddenMemberCount" resultType="Integer">
         <![CDATA[
-        SELECT COUNT(*) FROM member WHERE member_isshow='N';
+        SELECT COUNT(*) FROM member
+        WHERE member_isshow='N'
         ]]>
+        <include refid="search" />;
     </select>
 
     <!--요청 수강생 조회-->
     <select id="getNoAcceptMember" resultType="com.project.jeans.domain.member.dto.MemberDTO">
         <![CDATA[
         SELECT * FROM member WHERE member_accept='N'
+        ]]>
+        <include refid="search" />
+        <![CDATA[
         ORDER BY member_type, member_id
-        LIMIT #{pageNum} , #{countPerPage};
+        LIMIT #{offset}, #{limit}
         ]]>
     </select>
 
     <!--요청 수강생 수-->
     <select id="getNoAcceptMemberCount" resultType="Integer">
         <![CDATA[
-        SELECT COUNT(*) FROM member WHERE member_accept='N';
+        SELECT COUNT(*) FROM member
+        WHERE member_accept='N'
         ]]>
+        <include refid="search" />;
     </select>
 </mapper>
