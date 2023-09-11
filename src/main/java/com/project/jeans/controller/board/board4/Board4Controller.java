@@ -121,6 +121,16 @@ public class Board4Controller {
             return new ModelAndView("redirect:/member/login");
         }
 
+        if(map.isEmpty()){
+            return new ModelAndView("redirect:/board4/list");
+        }
+        if (map.get("board4_title") == "" || map.get("board4_title") == null){
+            return new ModelAndView("redirect:/board4/list");
+        }
+        if (map.get("board4_content") == "" || map.get("board4_content") == null){
+            return new ModelAndView("redirect:/board4/list");
+        }
+
         int writeInt = board4Service.writeBoard4(map);
         if (writeInt == 1) {
             modelAndView.setViewName("redirect:/board4/list");
@@ -181,6 +191,16 @@ public class Board4Controller {
         if (memberInfo == null) {
             // 로그인이 필요한 경우 리디렉션
             return new ModelAndView("redirect:member/login");
+        }
+
+        if(map.isEmpty()){
+            return new ModelAndView("redirect:/board4/list");
+        }
+        if (map.get("board4_title") == "" || map.get("board4_title") == null){
+            return new ModelAndView("redirect:/board4/list");
+        }
+        if (map.get("board4_content") == "" || map.get("board4_content") == null){
+            return new ModelAndView("redirect:/board4/list");
         }
 
         int deletedBoard4Int = board4Service.deleteBoard4(map);

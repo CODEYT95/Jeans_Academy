@@ -122,6 +122,16 @@ public class Board3Controller {
             return new ModelAndView("redirect:/member/login");
         }
 
+        if(map.isEmpty()){
+            return new ModelAndView("redirect:/board3/list");
+        }
+        if (map.get("board3_title") == "" || map.get("board3_title") == null){
+            return new ModelAndView("redirect:/board3/list");
+        }
+        if (map.get("board3_content") == "" || map.get("board3_content") == null){
+            return new ModelAndView("redirect:/board3/list");
+        }
+
         int writeInt = board3Service.writeBoard3(map);
         if (writeInt == 1) {
             modelAndView.setViewName("redirect:/board3/list");
@@ -161,6 +171,16 @@ public class Board3Controller {
         if (memberInfo == null) {
             // 로그인이 필요한 경우 리디렉션
             return new ModelAndView("redirect:member/login");
+        }
+
+        if(map.isEmpty()){
+            return new ModelAndView("redirect:/board3/list");
+        }
+        if (map.get("board3_title") == "" || map.get("board3_title") == null){
+            return new ModelAndView("redirect:/board3/list");
+        }
+        if (map.get("board3_content") == "" || map.get("board3_content") == null){
+            return new ModelAndView("redirect:/board3/list");
         }
 
         int modifyInt = board3Service.modifyBoard3(map);
