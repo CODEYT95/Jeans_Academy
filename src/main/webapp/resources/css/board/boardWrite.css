@@ -473,3 +473,27 @@ margin-top: 60px;
     background-color: #3b909b;
     transition: all 0.4s ease;
 }
+
+/* 사진 추가 (크기 조절) */
+.content-textarea-file{
+    width: 85px;
+    margin-top: 13px;
+    height: 34px;
+    outline: none;
+    border-radius: 22px;
+    border: none;
+    background-color: #22BBCE;
+    font-weight: bold;
+    font-size: 15px;
+    color: white;
+    cursor: pointer;
+}
+
+.write-content img{
+     position: relative;
+     top: 0;
+     left: 0;
+     max-width: 23%;
+     max-height: 300px;
+     object-fit: cover;
+}

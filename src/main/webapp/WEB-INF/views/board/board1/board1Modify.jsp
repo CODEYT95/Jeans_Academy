@@ -24,7 +24,7 @@
             <input type="hidden" name="member_id" value="${member_id}">
             <input type="hidden" name="member_name" value="${member_name}">
             <input type="hidden" name="member_class" value="${member_class}">
-            <input type="hidden" name="board1_no" value="${board1DTO.board1_no}">
+            <input type="hidden" id="board1_no" name="board1_no" value="${board1DTO.board1_no}">
 
             <div class="head-container">
                 <button id="save" class="main-ori-button">저장</button>
@@ -43,8 +43,9 @@
             <div class="content-container">
                 <div class="write-content">
                     <span class="content-label">내용</span>
-                    <textarea class="content-textarea" contenteditable="true" name="board1_content" placeholder="내용을 입력하세요" required>${board1DTO.board1_content}</textarea>
-                    <input type="button" class="content-file" value="사진수정">
+                    <div class="content-textarea" id="board1_content" name="board1_content" contenteditable="true">${board1DTO.board1_content}</div>
+                    <input type="file" id="photo-input" accept="image/gif, image/jpeg, image/png, image/webp" multiple style="display: none;">
+                    <input type="button" class="content-file" value="사진 수정">
                 </div>
             </div>
         </form>
