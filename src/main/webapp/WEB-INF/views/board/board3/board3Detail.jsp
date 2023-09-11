@@ -101,7 +101,7 @@
                                                 <input type="hidden" name="comment3_no" value="${comment3DTO.comment3_no}">
                                                 <div id="comment_content" class="form-group">
                                                     <h3>댓글 내용</h3>
-                                                    <input type="text" name="comment3_content" required/>
+                                                    <textarea type="text" id="content" name="comment3_content" required>${comment3DTO.comment3_content}</textarea>
                                                 </div>
                                                 <br/>
                                                 <button type="submit" class="reply-button">수정</button>

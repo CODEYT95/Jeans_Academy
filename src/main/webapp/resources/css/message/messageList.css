@@ -183,6 +183,7 @@ th {
     color: white;
     cursor: pointer;
 }
+
 #send_button, #sendMsgList, #recMsgList{
     height: 43px;
     display: initial;
@@ -221,6 +222,7 @@ th {
   overflow-y: auto;
   overflow-x: hidden;
 }
+
 #receiver{
 font-size:15px;
 display:block;
@@ -244,13 +246,14 @@ display:block;
     border-radius: 8px;
     padding-left: 10px;
     }
+
 .modal-header{
-       margin-top: 50px;
-       display: -webkit-box;
-       gap: 20px;
-       margin-left: auto;
-       margin-right: auto;
-    }
+   margin-top: 50px;
+   display: -webkit-box;
+   gap: 20px;
+   margin-left: auto;
+   margin-right: auto;
+}
 
 .member_class{
 height:30px;
@@ -258,7 +261,7 @@ font-size:15px;
 }
 
 #modal .close-area, .close-area2, .close-area3 {
-    margin-top: 36px;
+  margin-top: 36px;
   display: inline;
   float: right;
   padding-right: 10px;
@@ -268,7 +271,7 @@ font-size:15px;
 }
 
 .message-title{
-margin-top:20px;
+    margin-top:20px;
 }
 .message-content{
     FONT-SIZE: 25PX;
@@ -293,7 +296,7 @@ margin-top:20px;
     height: 265px;
     border-radius: 8px;
     padding-left: 10px;
-    }
+}
 
 .inputContent{
     margin-top: 0.3em;
@@ -303,25 +306,23 @@ margin-top:20px;
 }
 
 
-  .message-content {
-            display: flex;
-            flex-direction: column;
-        }
+.message-content {
+        display: flex;
+        flex-direction: column;
+    }
 
 
 .message-content input {
-            vertical-align: top;
-        }
-        .message-content label {
-            order: 1;
-        }
+    vertical-align: top;
+}
+.message-content label {
+    order: 1;
+}
 
-        .message-content input {
-            order: 2;
-            margin-top: 1px; /* 입력란 위 여백 설정 */
-        }
-
-
+.message-content input {
+    order: 2;
+    margin-top: 1px; /* 입력란 위 여백 설정 */
+}
 
 * {
     scrollbar-width: 0;

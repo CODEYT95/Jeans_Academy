@@ -336,7 +336,7 @@ margin-top: 60px;
     justify-content: center;
 }
 
-.button{
+.button, .button2, .button3, .button4{
   float: right;
   width: 70px;
   height: 33px;
@@ -351,8 +351,23 @@ margin-top: 60px;
   border-top-right-radius: 0px 5px;
   border-bottom-left-radius: 0px 5px;
   border-bottom-right-radius: 30px 25px;
-  background: #5164da ;
   cursor: pointer;
+}
+
+.button{
+  background: #5164da ;
+}
+
+.button2{
+  background: #c75baf ;
+}
+
+.button3{
+  background: #61b88e ;
+}
+
+.button4{
+  background: #ccc762 ;
 }
 
 .button:hover {

@@ -54,7 +54,7 @@
                             <h2>제목</h2><input id="title" type="text" name="message_title" placeholder="제목을 작성해주세요" required/>
                         </div>
                         <div class="message-content">내용
-                            <textarea id="content" type="text" name="message_content" placeholder="내용을 작성해주세요" required/></textarea>
+                            <textarea id="content" type="text" name="message_content" placeholder="내용을 작성해주세요" required></textarea>
                         </div>
                     </div>
                     <div class="modal-footer">

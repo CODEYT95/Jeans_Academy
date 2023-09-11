@@ -101,7 +101,7 @@
                                                 <input type="hidden" name="comment4_no" value="${comment4DTO.comment4_no}">
                                                 <div id="comment_content" class="form-group">
                                                     <h3>댓글 내용</h3>
-                                                    <input type="text" name="comment4_content" required/>
+                                                    <textarea type="text" id="content" name="comment4_content" required>${comment4DTO.comment4_content}</textarea>
                                                 </div>
                                                 <br/>
                                                 <button type="submit" class="reply-button">수정</button>
