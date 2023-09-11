@@ -10,6 +10,7 @@ public class NReplyDTO {
     private String comment_content;
     private String comment_regdate;
     private String comment_isshow;
-    private String member_name;
+    private String member_id;
     private String member_class;
+    private String member_name;
 }

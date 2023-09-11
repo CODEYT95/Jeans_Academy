@@ -13,15 +13,15 @@ pageEncoding="UTF-8"%>
 <h1>아이디 찾기</h1>
 <div>
     <form method="post" action="/findId" id="findForm">
-    <input type="text" id="member_name" name="member_name" placeholder="이름을 입력해주세요.">
-    <input type="text" id="member_phone" name="member_phone" maxlength="13" placeholder="전화번호(000-0000-0000)" pattern="[0-9]{3}-[0-9]{4}-[0-9]{4}" >
+        <input type="text" id="member_name" name="member_name" placeholder="이름을 입력해주세요.">
+        <input type="text" id="member_phone" name="member_phone" maxlength="13" placeholder="전화번호(000-0000-0000)" pattern="[0-9]{3}-[0-9]{4}-[0-9]{4}" >
         <div>
-            <button type="submit">찾기</button>
+            <button class="findIdBtn" type="submit">찾기</button>
         </div>
     </form>
 </div>
 <div class="result">
-🔍  <span id="result"></span><br>
+    🔍  <span id="result"></span><br>
 </div>
 <span><a href="/findPw" class="pw">비밀번호 찾기</a></span>
 </body>

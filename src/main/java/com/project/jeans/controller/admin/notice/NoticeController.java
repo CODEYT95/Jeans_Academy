@@ -2,6 +2,7 @@ package com.project.jeans.controller.admin.notice;
 
 import com.project.jeans.LoginCheckSession;
 import com.project.jeans.domain.admin.notice.dao.NoticeDAO;
+import com.project.jeans.domain.admin.notice.dto.NReplyDTO;
 import com.project.jeans.domain.admin.notice.dto.NoticeDTO;
 import com.project.jeans.domain.member.dto.MemberDTO;
 import com.project.jeans.service.admin.notice.NoticeService;
@@ -10,10 +11,7 @@ import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
@@ -24,14 +22,13 @@ public class NoticeController {
     private final NoticeService noticeService;
     private final NoticeDAO noticeDAO;
     private final MemberService memberService;
+    private final LoginCheckSession loginCheck;
 
     //공지사항 조회
     @GetMapping("/noticeList")
     public ModelAndView noticeList(HttpSession session, Model model) {
-        LoginCheckSession loginCheck = new LoginCheckSession(memberService);
         MemberDTO memberInfo = loginCheck.getLoginCheckSession(session, model);
-        System.out.println(memberInfo.getMember_class());
-        if (memberInfo == null) {
+        if (memberInfo==null) {
             // 로그인이 필요한 경우 리디렉션
             return new ModelAndView("redirect:/login");
         }
@@ -51,36 +48,39 @@ public class NoticeController {
         return modelAndView;
     }
 
+    //공지사항 상세보기
     @GetMapping("/noticeDetail/{notice_no}")
     public String noticeDetail(@PathVariable("notice_no") int noticeNo, Model model, HttpSession session) {
-
-        LoginCheckSession loginCheck = new LoginCheckSession(memberService);
         MemberDTO memberInfo = loginCheck.getLoginCheckSession(session, model);
         if (memberInfo == null) {
             // 로그인이 필요한 경우 리디렉션
-            return "/member/login";
+            return "redirect:/login";
         }
         String category = "notice";
         model.addAttribute("category", category);
+        model.addAttribute("member_id",session.getAttribute("member_id"));
         model.addAttribute("member_name",memberInfo.getMember_name());
         model.addAttribute("member_class",memberInfo.getMember_class());
         model.addAttribute("member_type",memberInfo.getMember_type());
-        System.out.println(noticeNo);
         noticeService.noticeCountUp(noticeNo);
         NoticeDTO noticeDetail = noticeService.noticeDetail(noticeNo);
-        NoticeDTO nreplyDetail = noticeService.nreplyDetail(noticeNo);
-
+        if(noticeDetail.getNotice_isshow().equals("N")){
+            return "redirect:/noticeList";
+        }
+        List<NReplyDTO> nreplyDetail = noticeService.nreplyDetail(noticeNo);
+        int replyCount = noticeService.nreplyCount(noticeNo);
         // 공지사항 정보를 모델에 추가합니다.
         model.addAttribute("noticeDetail", noticeDetail);
         model.addAttribute("nreplyDetail",nreplyDetail);
+        model.addAttribute("replyCount",replyCount);
         return "admin/notice/noticeDetail";
     }
 
 
     //공지사항 입력
     @GetMapping("/noticeInsert")
+    @ResponseBody
     public ModelAndView noticeInsert(HttpSession session, Model model) {
-        LoginCheckSession loginCheck = new LoginCheckSession(memberService); // Provide the memberService instance here
         MemberDTO memberInfo = loginCheck.getLoginCheckSession(session, model);
         if (memberInfo == null) {
             // 로그인이 필요한 경우 리디렉션
@@ -96,8 +96,6 @@ public class NoticeController {
     @PostMapping("/notice_insert")
     public String notice_insert(@RequestParam("title") String title, @RequestParam("content") String content,
                                                             HttpSession session, Model model){
-
-        LoginCheckSession loginCheck = new LoginCheckSession(memberService); // Provide the memberService instance here
         MemberDTO memberInfo = loginCheck.getLoginCheckSession(session, model);
         if (memberInfo == null) {
             // 로그인이 필요한 경우 리디렉션
@@ -121,9 +119,122 @@ public class NoticeController {
         }
         return "/notice_insert";
     }
+    //공지사항 댓글 입력
+    @PostMapping("/nReply_insert")
+    @ResponseBody
+    public String notice_insert(@RequestParam("notice_no") int notice_no, @RequestParam("content") String reply_content, HttpSession session, Model model){
+        MemberDTO memberInfo = loginCheck.getLoginCheckSession(session, model);
+        if (memberInfo == null) {
+            // 로그인이 필요한 경우 리디렉션
+            return "redirect:/login";
+        }
+        model.addAttribute("member_name",memberInfo.getMember_name());
+        model.addAttribute("member_class",memberInfo.getMember_class());
+        model.addAttribute("member_type",memberInfo.getMember_type());
 
+        NReplyDTO nReplyDTO = new NReplyDTO();
+        nReplyDTO.setNotice_no(notice_no);
+        nReplyDTO.setComment_content(reply_content);
+        nReplyDTO.setMember_id((String) session.getAttribute("member_id"));
+
+        int response = noticeService.insertNReply(nReplyDTO);
+        if(response == 1){
+            return "success";
+
+        }else {
+            return "fail";
+        }
+    }
     //공지사항 isshow 'N'으로 바꾸기
-    public int isShowNotice(){
-    return 0;
+    @PostMapping("/isShowNotice")
+    @ResponseBody
+    public String isShowNotice(@RequestParam("notice_no") int notice_no, HttpSession session, Model model){
+        MemberDTO memberInfo = loginCheck.getLoginCheckSession(session, model);
+        if (memberInfo == null) {
+            // 로그인이 필요한 경우 리디렉션
+            return "redirect:/login";
+        }
+        int result = noticeService.isShowNotice(notice_no);
+        System.out.println(result);
+        if (result == 1){
+            return "success";
+        }else{
+            return "fail";
+        }
+    }
+    //댓글 isShow 'N'으로 바꾸기
+    @PostMapping("/isShowNreply")
+    @ResponseBody
+    public String isShowNreply(@RequestParam("comment_no") int comment_no, HttpSession session, Model model){
+        MemberDTO memberInfo = loginCheck.getLoginCheckSession(session, model);
+        if (memberInfo == null) {
+            // 로그인이 필요한 경우 리디렉션
+            return "redirect:/login";
+        }
+        int result = noticeService.isShowNreply(comment_no);
+        if (result == 1){
+            return "success";
+        }else{
+            return "fail";
+        }
+    }
+    @PostMapping("/nreplyUpdate")
+    @ResponseBody
+    public String nreplyUpdate(@RequestParam("comment_no") int comment_no,
+                               @RequestParam("comment_content") String comment_content,
+                               HttpSession session, Model model){
+        MemberDTO memberInfo = loginCheck.getLoginCheckSession(session, model);
+        if (memberInfo == null) {
+            // 로그인이 필요한 경우 리디렉션
+            return "redirect:/login";
+        }
+
+        NReplyDTO nReplyDTO = new NReplyDTO();
+        nReplyDTO.setComment_no(comment_no);
+        nReplyDTO.setComment_content(comment_content);
+        System.out.println(nReplyDTO);
+        int result = noticeService.nreplyUpdate(nReplyDTO);
+        System.out.println(result);
+        if (result == 1){
+            return "success";
+        }else{
+            return "fail";
+        }
+    }
+
+    @GetMapping("/noticeUpdate/{notice_no}")
+    public String noticeUpdate(@PathVariable("notice_no") int notice_no, HttpSession session, Model model){
+        MemberDTO memberInfo = loginCheck.getLoginCheckSession(session, model);
+        if (memberInfo == null) {
+            // 로그인이 필요한 경우 리디렉션
+            return "redirect:/login";
+        }
+        NoticeDTO noticeUpdate = noticeService.noticeDetail(notice_no);
+        model.addAttribute("noticeUpdate", noticeUpdate);
+        return "admin/notice/noticeEdit";
+    }
+    @PostMapping("/noticeUpdate")
+    @ResponseBody
+    public String noticeupdate(@RequestParam("notice_no") int notice_no,
+                               @RequestParam("notice_title") String notice_title,
+                               @RequestParam("notice_content") String notice_content,
+                               HttpSession session, Model model){
+        LoginCheckSession loginCheck = new LoginCheckSession(memberService);
+        MemberDTO memberInfo = loginCheck.getLoginCheckSession(session, model);
+        if (memberInfo == null) {
+            // 로그인이 필요한 경우 리디렉션
+            return "redirect:/login";
+        }
+        NoticeDTO noticeDTO = new NoticeDTO();
+        noticeDTO.setNotice_no(notice_no);
+        noticeDTO.setNotice_title(notice_title);
+        noticeDTO.setNotice_content(notice_content);
+
+        int noticeUpdate = noticeService.noticeUpdate(noticeDTO);
+        if(noticeUpdate == 1){
+            return "success";
+        }else{
+            return "fail";
+        }
     }
 }

@@ -89,6 +89,10 @@
     overflow-y: scroll;
     max-width: 100%;
 }
+.content:empty::before {
+  content: "내용을 입력 해주세요.";
+  color: #757575;
+}
 .content:hover{
     background: #F8FBFC;
 }

@@ -17,12 +17,14 @@
                 $("#msgAllList").load("${cPath}/message/sendMsgList");
             });
         });
+
         $(function(){
             $("#recMsgList").click(function(){
                 $("#msgAllList").load("${cPath}/message/recMsgList");
             });
         });
     </script>
+
 </head>
 <body data-member-class="${member_class}" data-category="${category}">
 <%@ include file="/WEB-INF/views/common/header.jsp"%>
@@ -30,14 +32,6 @@
 <div class="main--content" >
     <div class="button-content">
         <button type="button" class="btn-modal" id="send_button">쪽지 보내기</button>
-        <button id="sendMsgList">보낸 쪽지함</button>
-        <button id="recMsgList">받은 쪽지함</button>
-    </div>
-        <div class="call-content">
-            안녕하세요! ${member_id}님. 쪽지함입니다 :)
-            아직 @건 읽지 않으셨습니다.
-            <div id="msgAllList"></div>
-        </div>
         <div id="modal" class="modal-overlay">
             <div class="modal-window">
                 <div class="close-area"><h2>X</h2></div>
@@ -71,6 +65,14 @@
                 </form>
             </div>
         </div>
+        <button id="sendMsgList">보낸 쪽지함</button>
+        <button id="recMsgList">받은 쪽지함</button>
+
+    <div class="call-content">
+        <br/><br/>
+        <h2>안녕하세요! 👖${member_id}님 쪽지함입니다😊</h2>
+        <div id="msgAllList"></div>
+    </div>
 </div>
 </body>
 </html>

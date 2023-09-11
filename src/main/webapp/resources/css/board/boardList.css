@@ -442,7 +442,7 @@ line-height: 1.3;
     padding: 20px;
 }
 .box {
-    height: 26vh;
+    height: 35vh;
     width: 17vw;
     border: 1px white;
     padding: 20px;
@@ -486,9 +486,8 @@ p{
  text-overflow: ellipsis;
  max-height: none;
  display: -webkit-box;
- -webkit-line-clamp: 7;
+ -webkit-line-clamp: 8;
  -webkit-box-orient: vertical;
  font-weight: normal;
- height: 162px;
- line-height: 1.5;
+ height: 160px;
  }
