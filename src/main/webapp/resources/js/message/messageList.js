@@ -161,7 +161,7 @@ $(document).ready(function() {
     $("#write").click(function() {
         var confirmed = confirm("쪽지를 보내시겠습니까?");
         if (confirmed) {
-            $("form").submit();
+            /*$("form").submit();*/
             alert("쪽지가 발송되었습니다.");
         } else {
             return false;
