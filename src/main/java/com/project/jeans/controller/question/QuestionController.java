@@ -37,8 +37,7 @@ public class QuestionController {
         }
         String category = "question";
         model.addAttribute("category", category);
-        model.addAttribute("member_name",memberInfo.getMember_name());
-        model.addAttribute("member_class",memberInfo.getMember_class());
+        model.addAttribute("member_id",memberInfo.getMember_id());
         model.addAttribute("member_type",memberInfo.getMember_type());
 
         List<QuestionDTO> questionList = questionService.selectQuestionAll();
@@ -58,8 +57,7 @@ public class QuestionController {
         }
         String category = "question";
         model.addAttribute("category", category);
-        model.addAttribute("member_name",memberInfo.getMember_name());
-        model.addAttribute("member_class",memberInfo.getMember_class());
+        model.addAttribute("member_id",memberInfo.getMember_id());
         model.addAttribute("member_type",memberInfo.getMember_type());
 
         return "/question/questionWrite";
@@ -68,8 +66,7 @@ public class QuestionController {
     @RequestMapping(value = "/write", method = RequestMethod.POST)
     public ModelAndView insertQuestion(@RequestParam("title") String title,
                                        @RequestParam("content") String content,
-                                       @RequestParam("member_name") String memberName,
-                                       @RequestParam("member_class") String memberClass,
+                                       @RequestParam("member_id") String memberId,
                                        ModelAndView modelAndView, HttpSession session, Model model) {
         LoginCheckSession loginCheck = new LoginCheckSession(memberService);
         MemberDTO memberInfo = loginCheck.getLoginCheckSession(session, model);
@@ -80,15 +77,13 @@ public class QuestionController {
         }
         String category = "question";
         model.addAttribute("category", category);
-        model.addAttribute("member_name",memberInfo.getMember_name());
-        model.addAttribute("member_class",memberInfo.getMember_class());
+        model.addAttribute("member_id",memberInfo.getMember_id());
         model.addAttribute("member_type",memberInfo.getMember_type());
 
         QuestionDTO questionDTO = new QuestionDTO();
         questionDTO.setQuestion_title(title);
         questionDTO.setQuestion_content(content);
-        questionDTO.setMember_name(memberName);
-        questionDTO.setMember_class(memberClass);
+        questionDTO.setMember_id(memberId);
 
         int result = questionService.insertQuestion(questionDTO);
 

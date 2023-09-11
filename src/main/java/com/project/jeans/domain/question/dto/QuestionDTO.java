@@ -11,6 +11,5 @@ public class QuestionDTO {
     private String question_content;
     private Date question_regdate;
     private String question_isshow;
-    private String member_name;
-    private String member_class;
+    private String member_id;
 }

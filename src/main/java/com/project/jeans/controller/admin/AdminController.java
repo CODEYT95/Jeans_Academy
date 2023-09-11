@@ -1,8 +1,6 @@
 package com.project.jeans.controller.admin;
 
 import com.project.jeans.LoginCheckSession;
-import com.project.jeans.domain.common.paging.dto.PageCreate;
-import com.project.jeans.domain.common.paging.dto.PageDTO;
 import com.project.jeans.domain.member.dto.MemberDTO;
 import com.project.jeans.service.member.MemberService;
 import jakarta.servlet.http.HttpSession;
@@ -11,8 +9,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
-import java.util.List;
 
 @Controller
 public class AdminController {
@@ -40,10 +36,8 @@ public class AdminController {
         // 목록 조회
 
         // 각 페이지별 페이징 처리를 위한 PageCreate 객체 생성 및 설정
-        PageCreate pageCreateShow = new PageCreate();
 
         // 각 페이지별 모델에 추가
-        model.addAttribute("pageCreateShow", pageCreateShow);
 
         return "admin/memberList";
     }

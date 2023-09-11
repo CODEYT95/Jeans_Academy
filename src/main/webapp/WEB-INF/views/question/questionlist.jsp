@@ -15,7 +15,7 @@ pageEncoding="UTF-8"%>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
     <script type="text/javascript" src="../../../resources/js/question/question.js"></script>
 </head>
-<body data-member-class="${member_class}" data-category="${category}">
+<body data-category="${category}">
 <%@ include file="/WEB-INF/views/common/header.jsp"%>
 <%@ include file="/WEB-INF/views/common/sidebar.jsp"%>
     <div class="main--content">
@@ -37,11 +37,8 @@ pageEncoding="UTF-8"%>
                         <div class="header-title">
                             <span>${question.question_title}</span>
                         </div>
-                        <div class="header-class">
-                            <span>${question.member_class}</span></br>
-                        </div>
                         <div class="header-name">
-                            <span>${question.member_name}</span></br>
+                            <span>${question.member_id}</span></br>
                         </div>
                         <div class="header-date">
                         <span class="postdate"><fmt:formatDate value="${question.question_regdate}" pattern="yyyy-MM-dd"/></span></br>
