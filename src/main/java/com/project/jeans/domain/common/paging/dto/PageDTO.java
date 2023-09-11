@@ -22,8 +22,8 @@ public class PageDTO {
 
     public PageDTO(int total, int currentPage, int size, List<MemberDTO> memberList){
         this.total=total;		//총게시글수
-        this.currentPage=currentPage; //보고싶은 페이지=>현재 페이지
-        this.memberList=memberList;	//board목록
+        this.currentPage=currentPage; //현재 페이지
+        this.memberList=memberList;
         if(total==0) { //게시글이 존재하지 않는 경우
             totalPages=0;
             startPage=0;
@@ -35,7 +35,7 @@ public class PageDTO {
                 totalPages++;
             }
 
-            int modVal = currentPage%5;	//현재페이지를 5로 나눈 나머지=> 5의 배수 5,10,15~
+            int modVal = currentPage%5;
             startPage=currentPage/5*5+1;
             if(modVal==0)  startPage=startPage-5;
 
