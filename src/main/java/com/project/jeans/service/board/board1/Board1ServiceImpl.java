@@ -21,6 +21,12 @@ public class Board1ServiceImpl implements Board1Service {
         return board1DTOList;
     }
 
+    //게시판 목록 조회(강사님)
+    public List<Board1DTO> findBoard1ByTutor(){
+        List<Board1DTO> board1DTOList = board1DAO.findBoard1ByTutor();
+        return board1DTOList;
+    }
+
     //반별 게시글 4개 조회
     @Override
     public List<Board1DTO> findBoard1List() {

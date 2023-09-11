@@ -1,8 +1,6 @@
 package com.project.jeans.controller.board.board2;
 
 import com.project.jeans.LoginCheckSession;
-import com.project.jeans.domain.admin.notice.dao.NoticeDAO;
-import com.project.jeans.domain.admin.notice.dto.NoticeDTO;
 import com.project.jeans.domain.board.board2.dto.Board2DTO;
 import com.project.jeans.domain.board.board2.dto.Comment2DTO;
 import com.project.jeans.domain.member.dto.MemberDTO;
@@ -26,10 +24,6 @@ public class Board2Controller {
     private final MemberService memberService;
     private final Board2Service board2Service;
     private final Comment2Service comment2Service;
-    private final NoticeDAO noticeService;
-
-    //(주의) 관리자, 작성자만 UD할 수 있도록 수정해야 함!!!
-
 
     //반별 게시판 목록 조회
     @GetMapping("/list")
@@ -40,15 +34,25 @@ public class Board2Controller {
             // 로그인이 필요한 경우 리디렉션
             return "/member/login";
         }
-        model.addAttribute("member_name", memberInfo.getMember_name());
-        model.addAttribute("member_class", memberInfo.getMember_class());
-        model.addAttribute("member_type", memberInfo.getMember_type());
+
+        String memberClass = memberInfo.getMember_class();
+        if (!memberClass.equals("2반") && !memberClass.equals("\uD83D\uDC93")) {
+            // "2반"이 아니고 "\uD83D\uDC93"도 아닌 경우 리디렉션 또는 처리할 내용 추가
+            return "/main/main";
+        }
+
+        String category = "board2";
+        model.addAttribute("category", category);
+        model.addAttribute("member_id", memberInfo.getMember_id());
+        model.addAttribute("member_name",memberInfo.getMember_name());
+        model.addAttribute("member_class",memberInfo.getMember_class());
+        model.addAttribute("member_type",memberInfo.getMember_type());
 
         List<Board2DTO> board2DTOList = board2Service.getBoard2List();
-        List<NoticeDTO> noticeList = noticeService.selectAll();
+        List<Board2DTO> board2DTOBYTutor = board2Service.findBoard2ByTutor();
 
         model.addAttribute("board2List", board2DTOList);
-        model.addAttribute("noticeList", noticeList);
+        model.addAttribute("board2DTOBYTutor", board2DTOBYTutor);
 
         return "/board/board2/board2List";
     }
@@ -60,10 +64,22 @@ public class Board2Controller {
     public String readBoard2(@PathVariable("board2_no") int board2_no, HttpSession session, Model model) {
         LoginCheckSession loginCheck = new LoginCheckSession(memberService);
         MemberDTO memberInfo = loginCheck.getLoginCheckSession(session, model);
-
         if (memberInfo == null) {
             // 로그인이 필요한 경우 리디렉션
             return "/member/login";
+        }
+
+        String category = "board2";
+        model.addAttribute("category", category);
+        model.addAttribute("member_id", memberInfo.getMember_id());
+        model.addAttribute("member_name",memberInfo.getMember_name());
+        model.addAttribute("member_class",memberInfo.getMember_class());
+        model.addAttribute("member_type",memberInfo.getMember_type());
+
+        String memberClass = memberInfo.getMember_class();
+        if (!memberClass.equals("2반") && !memberClass.equals("\uD83D\uDC93")) {
+            // "2반"이 아니고 "\uD83D\uDC93"도 아닌 경우 리디렉션 또는 처리할 내용 추가
+            return "/main/main";
         }
 
         Board2DTO board2DTO = board2Service.getBoard2Detail(board2_no);
@@ -78,12 +94,13 @@ public class Board2Controller {
     public String writeBoard2Form(HttpSession session, Model model) {
         LoginCheckSession loginCheck = new LoginCheckSession(memberService);
         MemberDTO memberInfo = loginCheck.getLoginCheckSession(session, model);
-
         if (memberInfo == null) {
             // 로그인이 필요한 경우 리디렉션
             return "/member/login";
         }
-        System.out.println(memberInfo.getMember_id());
+
+        String category = "board2";
+        model.addAttribute("category", category);
         model.addAttribute("member_id", memberInfo.getMember_id());
         model.addAttribute("member_name", memberInfo.getMember_name());
         model.addAttribute("member_class", memberInfo.getMember_class());
@@ -92,13 +109,11 @@ public class Board2Controller {
         return "/board/board2/board2Write";
     }
 
-    /* member_name, member_class 연동되면 삭제할 예정*/
     //반별 게시글 작성(로직)
     @RequestMapping(value = "/write", method = RequestMethod.POST)
     public ModelAndView writeBoard2(HttpSession session, Model model, ModelAndView modelAndView, @RequestParam Map<String, Object> map) {
         LoginCheckSession loginCheck = new LoginCheckSession(memberService);
         MemberDTO memberInfo = loginCheck.getLoginCheckSession(session, model);
-
         if (memberInfo == null) {
             System.out.println("테스트");
             // 로그인이 필요한 경우 리디렉션
@@ -119,15 +134,17 @@ public class Board2Controller {
     public String modifyBoard1Form(@RequestParam int board2_no, Model model, HttpSession session) {
         LoginCheckSession loginCheck = new LoginCheckSession(memberService);
         MemberDTO memberInfo = loginCheck.getLoginCheckSession(session, model);
-
-        model.addAttribute("member_id", memberInfo.getMember_id());
-        model.addAttribute("member_name", memberInfo.getMember_name());
-        model.addAttribute("member_class", memberInfo.getMember_class());
-        model.addAttribute("member_type", memberInfo.getMember_type());
         if (memberInfo == null) {
             // 로그인이 필요한 경우 리디렉션
             return "redirect:member/login";
         }
+
+        String category = "board2";
+        model.addAttribute("category", category);
+        model.addAttribute("member_id", memberInfo.getMember_id());
+        model.addAttribute("member_name", memberInfo.getMember_name());
+        model.addAttribute("member_class", memberInfo.getMember_class());
+        model.addAttribute("member_type", memberInfo.getMember_type());
 
         Board2DTO board2DTO = board2Service.getBoard2Detail(board2_no);
         model.addAttribute("board2DTO", board2DTO);
@@ -137,10 +154,8 @@ public class Board2Controller {
     //반별 게시글 수정
     @PostMapping("/modify")
     public ModelAndView modifyBoard2(HttpSession session, Model model, ModelAndView modelAndView, @RequestParam int board2_no, @RequestParam Map<String, Object> map) {
-
         LoginCheckSession loginCheck = new LoginCheckSession(memberService);
         MemberDTO memberInfo = loginCheck.getLoginCheckSession(session, model);
-
         if (memberInfo == null) {
             // 로그인이 필요한 경우 리디렉션
             return new ModelAndView("redirect:member/login");
@@ -155,14 +170,12 @@ public class Board2Controller {
         return modelAndView;
     }
 
-
     //반별 게시글 삭제
     @GetMapping("/delete")
     public ModelAndView deleteBoard2(HttpSession session, Model model, ModelAndView modelAndView,
                                      @RequestParam Map<String, Object> map) {
         LoginCheckSession loginCheck = new LoginCheckSession(memberService);
         MemberDTO memberInfo = loginCheck.getLoginCheckSession(session, model);
-
         if (memberInfo == null) {
             // 로그인이 필요한 경우 리디렉션
             return new ModelAndView("redirect:member/login");
@@ -176,5 +189,4 @@ public class Board2Controller {
         }
         return modelAndView;
     }
-
 }

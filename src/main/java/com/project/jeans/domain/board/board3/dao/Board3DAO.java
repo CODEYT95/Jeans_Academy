@@ -1,5 +1,6 @@
 package com.project.jeans.domain.board.board3.dao;
 
+import com.project.jeans.domain.board.board1.dto.Board1DTO;
 import com.project.jeans.domain.board.board3.dto.Board3DTO;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
@@ -11,8 +12,11 @@ import java.util.Map;
 @Mapper
 public interface Board3DAO {
 
-    //게시판 목록 조회
+    //게시판 목록 조회(수강생)
     List<Board3DTO> findBoard3All();
+
+    //게시판 목록 조회(강사님)
+    List<Board3DTO> findBoard3ByTutor();
 
     //게시글 5개 조회
     List<Board3DTO> findBoard3List();

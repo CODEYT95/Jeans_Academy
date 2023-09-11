@@ -87,8 +87,12 @@ tr:nth-child(even) {background-color: #f2f7fb;}
     height:41px;
 }
 
+#pagination{
+    display: flex;
+    justify-content: center;
+}
+
 .pagination-container a {
-    color: black;
     float: left;
     padding: 8px 16px;
     text-decoration: none;
@@ -99,13 +103,7 @@ tr:nth-child(even) {background-color: #f2f7fb;}
     border-radius : 8px;
 }
 
-.showPage ,.acceptPage, .hiddenPage{
-    display: flex;
-    justify-content: center;
-    margin-bottom: 45px;
-}
-
-.currentPage1, .currentPage2, .currentPage3 {
+a.active {
     background: #e156db36;
     border-radius: 8px;
 }

@@ -7,6 +7,7 @@
     <title>찾아오시는 길</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+    <script type="text/javascript" src="../../../resources/js/map/map.js"></script>
 </head>
 <body data-member-class="${member_class}" data-category="${category}">
 <%@ include file="/WEB-INF/views/common/header.jsp"%>
@@ -54,6 +55,7 @@
             map.setDraggable(false);
             }
         </script>
+
     </div>
 
 </body>
