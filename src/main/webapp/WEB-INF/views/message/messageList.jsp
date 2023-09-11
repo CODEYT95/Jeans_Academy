@@ -23,15 +23,6 @@
             });
         });
     </script>
-    <script>
-        var inputElement = document.getElementById("content");
-
-        // 입력 요소에 포커스가 맞추어질 때
-        inputElement.addEventListener("focus", function () {
-            // 입력 커서를 입력란의 맨 위로 이동시킴
-            inputElement.setSelectionRange(10, 20);
-        });
-    </script>
 </head>
 <body data-member-class="${member_class}" data-category="${category}">
 <%@ include file="/WEB-INF/views/common/header.jsp"%>
