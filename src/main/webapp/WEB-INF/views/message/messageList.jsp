@@ -71,7 +71,6 @@
 
     <div class="call-content">
         안녕하세요! ${member_id}님. 쪽지함입니다 :)
-        아직 @건 읽지 않으셨습니다.
         <div id="msgAllList"></div>
     </div>
 </div>
