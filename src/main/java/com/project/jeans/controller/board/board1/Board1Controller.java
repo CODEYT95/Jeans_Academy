@@ -114,13 +114,25 @@ public class Board1Controller {
     public ModelAndView writeBoard1(HttpSession session, Model model, ModelAndView modelAndView, @RequestParam Map<String, Object> map) {
         LoginCheckSession loginCheck = new LoginCheckSession(memberService);
         MemberDTO memberInfo = loginCheck.getLoginCheckSession(session, model);
+
         if (memberInfo == null) {
             System.out.println("테스트");
             // 로그인이 필요한 경우 리디렉션
             return new ModelAndView("redirect:/member/login");
         }
 
+        if(map.isEmpty()){
+            return new ModelAndView("redirect:/board1/list");
+        }
+        if (map.get("board1_title") == "" || map.get("board1_title") == null){
+            return new ModelAndView("redirect:/board1/list");
+        }
+        if (map.get("board1_content") == "" || map.get("board1_content") == null){
+            return new ModelAndView("redirect:/board1/list");
+        }
+
         int writeInt = board1Service.writeBoard1(map);
+
         if (writeInt == 1) {
             modelAndView.setViewName("redirect:/board1/list");
         } else {
@@ -159,6 +171,16 @@ public class Board1Controller {
         if (memberInfo == null) {
             // 로그인이 필요한 경우 리디렉션
             return new ModelAndView("redirect:member/login");
+        }
+
+        if(map.isEmpty()){
+            return new ModelAndView("redirect:/board1/list");
+        }
+        if (map.get("board1_title") == "" || map.get("board1_title") == null){
+            return new ModelAndView("redirect:/board1/list");
+        }
+        if (map.get("board1_content") == "" || map.get("board1_content") == null){
+            return new ModelAndView("redirect:/board1/list");
         }
 
         int modifyInt = board1Service.modifyBoard1(map);

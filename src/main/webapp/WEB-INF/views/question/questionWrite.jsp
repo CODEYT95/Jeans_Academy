@@ -4,7 +4,7 @@ pageEncoding="UTF-8"%>
 <html xmlns:c="http://java.sun.com/JSP/Page">
 <head>
     <meta charset="UTF-8">
-    <title>공지사항</title>
+    <title>QnA</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>

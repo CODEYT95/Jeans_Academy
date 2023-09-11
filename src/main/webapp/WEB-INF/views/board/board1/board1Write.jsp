@@ -18,10 +18,10 @@
 <%@ include file="/WEB-INF/views/common/header.jsp"%>
 <%@ include file="/WEB-INF/views/common/sidebar.jsp"%>
 <div class="main--content">
-    <form action="/board1/write" method="post">
+    <form action="/board1/write" method="post" enctype="multipart/form-data">
         <input type="hidden" name="member_id" value="${member_id}">
             <div class="head-container">
-                <button type="submit" class="main-ori-button">저장</button>
+                <button id="save" class="main-ori-button">저장</button>
                 <button type="button" class="main-ori-button" onclick="location.href='/board1/list'">취소/목록</button>
                 <div class="title-container">
                     <div class="write-title">
@@ -36,9 +36,9 @@
             <div class="content-container">
                 <div class="write-content">
                     <span class="content-label">내용</span>
-                    <textarea class="content-textarea" contenteditable="true" name="board1_content" placeholder="내용을 입력해주세요" required></textarea>
-                    <br/>
-                    <input type="button" class="content-file" value="사진추가">
+                    <div class="content-textarea" id="board1_content" name="board1_content" contenteditable="true"></div>
+                    <input type="file" id="photo-input" accept="image/gif, image/jpeg, image/png, image/webp" multiple style="display: none;">
+                    <input type="button" class="content-file" value="사진 추가">
                 </div>
             </div>
     </form>

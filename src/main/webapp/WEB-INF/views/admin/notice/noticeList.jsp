@@ -50,28 +50,28 @@
                             <span class="count">${notice.notice_count}</span>
                         </li>
                     </c:forEach>
-                    <div class="container">
-                        <button class="button" id="startBtn" disabled>
-                            <i class="fa-solid fa-angles-left"></i>
-                        </button>
-                        <button class="button prevNext" id="prev" disabled>
-                            <i class="fa-solid fa-angle-left"></i>
-                        </button>
-                        <div class="links">
-                            <a href="#" class="link active">1</a>
-                            <a href="#" class="link">2</a>
-                            <a href="#" class="link">3</a>
-                            <a href="#" class="link">4</a>
-                            <a href="#" class="link">5</a>
-                        </div>
-                        <button class="button prevNext" id="next">
-                            <i class="fa-solid fa-angle-right"></i>
-                        </button>
-                        <button class="button" id="endBtn">
-                            <i class="fa-solid fa-angles-right"></i>
-                        </button>
-                    </div>
                 </ul>
+            </div>
+            <div class="container">
+                <button class="button" id="startBtn" disabled>
+                    <i class="fa-solid fa-angles-left"></i>
+                </button>
+                <button class="button prevNext" id="prev" disabled>
+                    <i class="fa-solid fa-angle-left"></i>
+                </button>
+                <div class="links">
+                    <a href="#" class="link active">1</a>
+                    <a href="#" class="link">2</a>
+                    <a href="#" class="link">3</a>
+                    <a href="#" class="link">4</a>
+                    <a href="#" class="link">5</a>
+                </div>
+                <button class="button prevNext" id="next">
+                    <i class="fa-solid fa-angle-right"></i>
+                </button>
+                <button class="button" id="endBtn">
+                    <i class="fa-solid fa-angles-right"></i>
+                </button>
             </div>
         </div>
     </div>

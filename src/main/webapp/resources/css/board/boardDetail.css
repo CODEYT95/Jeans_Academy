@@ -367,6 +367,15 @@ margin-top: 60px;
     height: 100%;
 }
 
+.write-content img{
+     position: relative;
+     top: 0;
+     left: 0;
+     max-width: 23%;
+     max-height: 300px;
+     object-fit: cover;
+}
+
 .content-label{
     border: 1px solid #D9E0E3;
     display: block;
@@ -417,6 +426,7 @@ margin-top: 60px;
     resize: none;
     background-color: white;
     word-break: break-word;
+    background-color: white;
 }
 
 /* reply */

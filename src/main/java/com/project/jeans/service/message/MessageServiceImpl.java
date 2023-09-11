@@ -31,20 +31,21 @@ public class MessageServiceImpl implements MessageService{
     }
 
     /* 메시지 상세 조회 */
-    //   @Override
+    @Override
     public MessageDTO selectMessageDetail(int message_no){
         MessageDTO messageDTO = messageDAO.selectMessageDetail(message_no);
         return messageDTO;
     }
 
     /* 메시지 작성 (수신자 목록) */
+    @Override
     public List<MemberDTO> selectMessageMemList(){
         List<MemberDTO> memberDTO = messageDAO.selectMessageMemList();
         return memberDTO;
     }
 
     /* 메시지 작성(내용)*/
-    //   @Override
+    @Override
     public int insertContentMessage(Map<String,Object> map){
         return messageDAO.insertContentMessage(map);
     }
@@ -78,6 +79,7 @@ public class MessageServiceImpl implements MessageService{
     }
 
     /* 반별 멤버 조회 */
+    @Override
     public List<MemberDTO> selectMemByClass(String member_class){
         List<MemberDTO> memberDTO = messageDAO.selectMemByClass(member_class);
         return memberDTO;

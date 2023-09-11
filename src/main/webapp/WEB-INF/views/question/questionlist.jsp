@@ -8,7 +8,7 @@ pageEncoding="UTF-8"%>
 
 <head>
     <meta charset="UTF-8">
-    <title>메인</title>
+    <title>QnA</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" type="text/css" href="../../../resources/css/question/questionlist.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.css" rel="stylesheet">
@@ -32,6 +32,7 @@ pageEncoding="UTF-8"%>
         </div>
         <div class="box-list">
             <c:forEach items="${questionList}" var="question" varStatus="status">
+                <a class="view-link" href="Detail/${question.question_no}">
                 <div class="box box${(status.index % 4) + 1}">
                     <div class="header-content">
                         <div class="header-title">
@@ -41,7 +42,7 @@ pageEncoding="UTF-8"%>
                             <span>${question.member_id}</span></br>
                         </div>
                         <div class="header-date">
-                        <span class="postdate"><fmt:formatDate value="${question.question_regdate}" pattern="yyyy-MM-dd"/></span></br>
+                        <span class="postdate">${question.question_regdate}</span></br>
 
                     </div>
                     </div>
@@ -52,6 +53,7 @@ pageEncoding="UTF-8"%>
                                 <div style="clear: both;"></div>
                             </c:if>
                         </div>
+                </a>
             </c:forEach>
         </div>
     </div>
