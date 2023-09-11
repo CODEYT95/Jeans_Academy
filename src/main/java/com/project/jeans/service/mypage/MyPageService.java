@@ -14,4 +14,9 @@ public interface MyPageService {
 
     List<MyPageDTO> selectboard (String member_id);
 
+    List<MyPageDTO> selectQA(String member_id);
+
+    //마이페이지 일정 삭제
+    int eventDelete(int mypage_no);
+
 }

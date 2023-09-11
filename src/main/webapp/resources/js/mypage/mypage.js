@@ -38,48 +38,27 @@ document.addEventListener("DOMContentLoaded", function () {
             dateCell.classList.add("date-cell");
 
             //------출석체크 기능-------------
-            // 출석체크 기능 관련 변수
-                    let isAlreadyAttended = false;
+            dateCell.addEventListener("click", () => {
+                const isAlreadyAttended = dateCell.classList.contains("attended");
 
-                    // 출석체크 버튼 클릭 이벤트 설정
-                    attendanceButton.addEventListener("click", () => {
-                        if (!isAlreadyAttended) {
-                            // 출석체크 데이터 준비
-                            const attendanceData = {
-                                date: selectedDate, // 출석체크된 날짜
-                                // 다른 출석체크 데이터 추가
-                            };
+                if (!isAlreadyAttended) {
+                    attendanceButton.onclick = () => {
+                        dateCell.classList.add("attended");
+                        closeModal();
 
-                            // AJAX 요청 보내기
-                            fetch('/mypage/addAttendance', {
-                                method: 'POST', // POST 요청
-                                headers: {
-                                    'Content-Type': 'application/json' // JSON 형식 데이터 전송
-                                },
-                                body: JSON.stringify(attendanceData) // 데이터를 JSON 문자열로 변환하여 보냄
-                            })
-                            .then(response => {
-                                if (response.ok) {
-                                    // 출석체크 성공 시 수행할 작업
-                                    dateCell.classList.add("attended");
-                                    closeModal();
-                                    alert("출석이 완료되었습니다.");
-                                } else {
-                                    // 요청이 실패했을 때 수행할 작업
-                                    alert("출석체크 요청 실패");
-                                }
-                            })
-                            .catch(error => {
-                                // 오류 처리
-                                console.error('오류 발생:', error);
-                            });
-                        } else {
-                            alert("이미 출석이 완료되었습니다.");
-                        }
-                    });
-            calendarGrid.appendChild(dateCell);
-        }
-    }
+                        alert("출석이 완료되었습니다.");
+
+                        attendanceButton.onclick = null; // 이벤트 리스너 해제
+                    };
+
+                } else {
+                    alert("이미 출석이 완료되었습니다.");
+                }
+
+            });
+                    calendarGrid.appendChild(dateCell);
+                }
+            }
 
     //------출석체크 기능 끝----------
 
@@ -168,12 +147,12 @@ document.addEventListener("DOMContentLoaded", function () {
             // AJAX 요청을 보냅니다.
             $.ajax({
                 type: "POST",
-                url: "/event/write", // "write"는 실제로 데이터를 처리하는 서버 엔드포인트 URL입니다.
+                url: "/mypage/write", // "write"는 실제로 데이터를 처리하는 서버 엔드포인트 URL입니다.
                 data: { date: date, title: title }, // 데이터를 객체로 보냅니다.
                 success: function (response) {
                     // 요청이 성공하면 여기에서 추가적인 처리를 수행할 수 있습니다.
                     if (response === "1") {
-                        window.location.href = "/mypage/mypagelist";
+                        window.location.href = "/mypage/list";
                         console.log("일정이 성공적으로 추가되었습니다.");
                     }
                     // 원하는 추가 작업을 수행할 수 있습니다.
@@ -184,5 +163,32 @@ document.addEventListener("DOMContentLoaded", function () {
                 },
             });
         };
+    });
+    $(document).ready(function () {
+            const inputElement = document.querySelector('input[data-mypageno]');
+            const addEventButton = document.querySelector(".delete-event-button");
+
+            addEventButton.onclick = function () {
+                // 입력된 날짜와 제목을 가져옵니다.
+                const mypage_no = inputElement.value;
+                // AJAX 요청을 보냅니다.
+                $.ajax({
+                    type: "POST",
+                    url: "/mypage/delete", // "write"는 실제로 데이터를 처리하는 서버 엔드포인트 URL입니다.
+                    data: { mypage_no: mypage_no}, // 데이터를 객체로 보냅니다.
+                    success: function (response) {
+                        // 요청이 성공하면 여기에서 추가적인 처리를 수행할 수 있습니다.
+                        if (response === "1") {
+                            window.location.href = "/mypage/list";
+                            console.log("일정이 성공적으로 삭제되었습니다.");
+                        }
+                        // 원하는 추가 작업을 수행할 수 있습니다.
+                    },
+                    error: function (xhr, status, error) {
+                        // 요청이 실패한 경우 여기에서 처리할 수 있습니다.
+                        console.error("일정 삭제 실패:", error);
+                    },
+                });
+            };
     });
 });

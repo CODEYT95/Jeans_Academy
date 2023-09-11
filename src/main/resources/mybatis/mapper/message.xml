@@ -8,7 +8,7 @@
         <![CDATA[
         SELECT message_no,message_sender,message_receiver,message_title,message_content,message_date,message_rec_isshow
         FROM message
-        WHERE message_receiver=#{member_id} AND message_rec_isshow='Y'
+        WHERE message_receiver=#{member_id} AND message_rec_isshow  in ('Y','R')
         ORDER BY message_no DESC;
         ]]>
     </select>
@@ -18,7 +18,7 @@
         <![CDATA[
         SELECT message_no,message_sender,message_receiver,message_title,message_content,message_date,message_sen_isshow
         FROM message
-        WHERE message_sender=#{member_id} AND message_sen_isshow='Y'
+        WHERE message_sender=#{member_id} AND message_sen_isshow in ('Y','R')
         ORDER BY message_no DESC;
         ]]>
     </select>
@@ -50,22 +50,22 @@
     </insert>
 
     <!-- 메시지 삭제 (수신함) update-->
-    <delete id="deleteReceiveMessage" parameterType="int">
+    <update id="deleteReceiveMessage" parameterType="int">
         <![CDATA[
         UPDATE message
         SET message_rec_isshow='N'
         WHERE message_no=#{message_no};
         ]]>
-    </delete>
+    </update>
 
     <!-- 메시지 삭제 (발신함) update-->
-    <delete id="deleteSendMessage" parameterType="int">
+    <update id="deleteSendMessage" parameterType="int">
         <![CDATA[
         UPDATE message
         SET message_sen_isshow='N'
         WHERE message_no=#{message_no};
         ]]>
-    </delete>
+    </update>
 
     <!-- 반별 멤버 조회 -->
     <select id="selectMemByClass" parameterType="String" resultType="com.project.jeans.domain.member.dto.MemberDTO">

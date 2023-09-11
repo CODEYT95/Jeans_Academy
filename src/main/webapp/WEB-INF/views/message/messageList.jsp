@@ -70,8 +70,8 @@
         <button id="recMsgList">받은 쪽지함</button>
 
     <div class="call-content">
-        안녕하세요! ${member_id}님. 쪽지함입니다 :)
-        아직 @건 읽지 않으셨습니다.
+        <br/><br/>
+        <h2>안녕하세요! 👖${member_id}님 쪽지함입니다😊</h2>
         <div id="msgAllList"></div>
     </div>
 </div>

@@ -26,10 +26,6 @@ public class MapController {
             return "/member/login";
         }
         String category = "map";
-        model.addAttribute("category", category);
-        model.addAttribute("member_name",memberInfo.getMember_name());
-        model.addAttribute("member_class",memberInfo.getMember_class());
-        model.addAttribute("member_type",memberInfo.getMember_type());
 
         return "/map/map";
     }
