@@ -5,53 +5,64 @@
     <!--    일정 추가     -->
     <insert id="addEvent" parameterType="com.project.jeans.domain.mypage.dto.MyPageDTO">
         <![CDATA[
-        INSERT INTO mypage (mypage_content, mypage_regdate, member_id)
-        VALUES (#{mypage_content}, #{mypage_regdate}, #{member_id});
-        ]]>
+    INSERT INTO mypage (mypage_content, mypage_regdate, member_id)
+    VALUES (#{mypage_content}, #{mypage_regdate}, #{member_id});
+    ]]>
     </insert>
 
     <select id="selectEvent" parameterType="String" resultType="com.project.jeans.domain.mypage.dto.MyPageDTO">
         <![CDATA[
-    SELECT mypage_content, mypage_regdate
+    SELECT *
     FROM mypage
     WHERE member_id = #{member_id};
     ]]>
     </select>
     <!--    일정 추가 끝     -->
 
+    <!--마이페이지 일정 삭제-->
+    <delete id="eventDelete" parameterType="Integer">
+        <![CDATA[
+        DELETE FROM mypage
+        WHERE mypage_no = #{member_no};
+        ]]>
+    </delete>
 
+    <!--각 반 게시판 불러오기-->
     <select id="selectMember" parameterType="String" resultType="com.project.jeans.domain.member.dto.MemberDTO">
         <![CDATA[
-        select member_id, member_pw, member_day, member_phone from member
-        where member_id=#{member_id};
-        ]]>
+    select member_id, member_class, member_day, member_phone from member
+    where member_id=#{member_id};
+    ]]>
     </select>
+    <!--각 반 게시판 불러오기 끝-->
+<!--내가 작성한 글-->
 
     <select id="selectboard" parameterType="String" resultType="com.project.jeans.domain.mypage.dto.MyPageDTO">
         <![CDATA[
     SELECT
-        b1.board1_no,
-        b2.board2_no,
-        b3.board3_no,
-        b4.board4_no,
-        b1.board1_title,
-        b2.board2_title,
-        b3.board3_title,
-        b4.board4_title
+    b1.board1_no,
+    b2.board2_no,
+    b3.board3_no,
+    b4.board4_no,
+    b1.board1_title,
+    b2.board2_title,
+    b3.board3_title,
+    b4.board4_title
     FROM
-        member m
+    member m
     LEFT JOIN
-        board1 b1 ON m.member_id = b1.member_id
+    board1 b1 ON m.member_id = b1.member_id
     LEFT JOIN
-        board2 b2 ON m.member_id = b2.member_id
+    board2 b2 ON m.member_id = b2.member_id
     LEFT JOIN
-        board3 b3 ON m.member_id = b3.member_id
+    board3 b3 ON m.member_id = b3.member_id
     LEFT JOIN
-        board4 b4 ON m.member_id = b4.member_id
+    board4 b4 ON m.member_id = b4.member_id
     WHERE
-        m.member_id = #{member_id}
+    m.member_id = #{member_id}
     LIMIT 4;
     ]]>
     </select>
+    <!--내가 작성한 글-->
 
 </mapper>

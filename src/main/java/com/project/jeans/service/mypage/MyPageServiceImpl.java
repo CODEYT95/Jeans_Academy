@@ -33,6 +33,15 @@ public class MyPageServiceImpl implements MyPageService {
     public List<MyPageDTO> selectboard(String member_id) {
         return myPageDAO.selectboard(member_id);
     }
+    @Override
+    public List<MyPageDTO> selectQA(String member_id) {
+        return myPageDAO.selectboard(member_id);
+    }
 
+    //마이페이지 일정 삭제
+    @Override
+    public int eventDelete(int mypage_no) {
+        return myPageDAO.eventDelete(mypage_no);
+    }
 
 }

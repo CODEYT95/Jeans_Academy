@@ -458,7 +458,7 @@ font-weight: bolder;
     width:200px;
 }
 .date-cell.attended {
-background-color: lightblue;
+background-color: #5073FB;
 color: white;
 }
 
@@ -483,33 +483,83 @@ margin-top:15px;
 }
 .c-title{
     display: flex;
-    height: 30px;
-    justify-content: center;
-    margin-top:20px;
+    margin-top: 14px;
+    margin-left: auto;
+    margin-right: auto;
+    height: 40px;
+    border-bottom: 1px solid;
+    width: 100%;
+    gap: 20px;
+    text-align:center;
+    }
+.event-item{
+display:grid;
+border-bottom:1px solid;
 }
 #event-date {
-  margin-right: 10px; /* 오른쪽 간격 설정 */
+  margin-right: 10px;
+  height: 30px;
+ margin-left:20px
 }
 
 #event-title {
-  margin-left: 10px; /* 왼쪽 간격 설정 */
+  margin-left: 0px;
+  height: 30px;
 }
 #add-event-button{
   margin-left: 10px;
 }
-.event-list {
-    margin-top: 20px;
-    padding:
+.event-list::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    border-radius: 10px;
+    background-color: #F5F5F5;
+    }
+    .event-list::-webkit-scrollbar
+    {
+    width: 10px;
+    background-color: #F5F5F5;
+    }
+    .event-list::-webkit-scrollbar-thumb
+    {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+    background-color: #c4d4eb;
+    }
+    .event-list{
+    margin-top: 10px;
     background-color: ;
-    width: 90%;
+    width: 100%;
     max-height: 189px;
     overflow-y: auto;
-    /* display: table-column-group; */
-    margin-left: 14px;
+    margin-left: auto;
+    margin-right: auto;
     border-radius: 6px;
+
 }
 .event-list h3 {
     margin-top: 1px;
+}
+.delete-button{
+display:flex;
+justify-content:flex-end;
+height:30px;
+margin-bottom:4px;
+}
+.add-event-button{
+    background-color: #5073FB;
+    border: 1px solid;
+    color: white;
+    width: 70px;
+    font-size: 15px;
+    height:30px;
+}
+.delete-event-button{
+    background-color:#e36a6a;
+    border: 1px solid;
+    color: white;
+    width: 70px;
+    font-size: 15px;
+    margin-right:12px;
 }
 
 h3{
@@ -519,12 +569,10 @@ height:40px;
 border-bottom: 1px solid black;
 }
 
-h4{
-  background-color:white;
-  border-radius: 4px;
-  margin-bottom:10px;
-  height:auto;
-}
 .list-id, .list-pw, .list-day, .list-phon{
 border-bottom:1px solid;
+}
+spanevent{
+margin-left: 6px;
+font-size: 20px;
 }

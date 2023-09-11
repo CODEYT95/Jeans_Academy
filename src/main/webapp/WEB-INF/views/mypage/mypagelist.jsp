@@ -57,8 +57,8 @@ pageEncoding="UTF-8"%>
                                     <span>${member.member_id}</span></p>
                             </div>
                             <div class="list-pw">
-                                <p><strong>PW:</strong>
-                                    <span>${member.member_pw}</span></p>
+                                <p><strong>반 번호:</strong>
+                                    <span>${member.member_class}</span></p>
                             </div>
                             <div class="list-day">
                                 <p><strong>Day:</strong><span><fmt:formatDate value="${member.member_day}" pattern="yyyy-MM-dd"/></span></p>
@@ -82,8 +82,6 @@ pageEncoding="UTF-8"%>
                                         <a href="/board4/detail/${writeList.board4_no}" class="class1">${writeList.board4_title}</a>
                                     </div>
                                 </c:forEach>
-
-
                             </div>
                     </div>
                 </div>
@@ -119,15 +117,20 @@ pageEncoding="UTF-8"%>
                         </div>
                         <!-- 일정 목록 추가 -->
                         <div class="event-list">
-                            <h4>일정 목록</h4>
-                            <ul>
+                            <div class="event-title">
+                                <ul>
                                 <c:forEach items="${eventList}" var="eventList">
+                                    <input type="hidden" data-mypageno="${eventList.mypage_no}" value="${eventList.mypage_no}">
                                     <div class="event-item">
-                                        <span>Content: ${eventList.mypage_content}</span>
-                                        <span>Date: <fmt:formatDate value="${eventList.mypage_regdate}" pattern="yyyy-MM-dd"/></span>
+                                    <spandate>날짜: <fmt:formatDate value="${eventList.mypage_regdate}" pattern="yyyy-MM-dd"/></spandate>
+                                        <spanevent>: ${eventList.mypage_content}</spanevent>
+                                        <div class="delete-button">
+                                        <button class="delete-event-button" data-event-id="${eventList.member_id}">일정 삭제</button>
+                                    </div>
                                     </div>
                                 </c:forEach>
                             </ul>
+                            </div>
                         </div>
                     </div>
                 </div>

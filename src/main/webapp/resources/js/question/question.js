@@ -10,23 +10,6 @@ document.addEventListener("DOMContentLoaded", function () {
           var diff = currentTimestampMillis - isoTimestamp.getTime(); // 현재 시간과 타임스탬프의 차이 계산
           console.log('Diff (ms):', diff);
 
-          // 차이를 초, 분, 시간, 일로 계산
-          var seconds = Math.floor(diff / 1000);
-          var minutes = Math.floor(seconds / 60);
-          var hours = Math.floor(minutes / 60);
-          var days = Math.floor(hours / 24);
-
-          var relativeTime;
-          if (days > 0) {
-              relativeTime = days + '일 전';
-          } else if (hours > 0) {
-              relativeTime = hours + '시간 전';
-          } else if (minutes > 0) {
-              relativeTime = minutes + '분 전';
-          } else {
-              relativeTime = '방금 전';
-          }
-
           // 상대 시간으로 업데이트
           $(this).text(relativeTime);
       });

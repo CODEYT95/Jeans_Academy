@@ -94,5 +94,29 @@
 </div>
 </body>
 </html>
-
-
+<script>
+    $(document).ready(function() {
+        $(document).on("click", "#pagination .showPage a", function(e) {
+            e.preventDefault();
+            var value = $(this).attr("data-pageNum");
+            console.log(value);
+            $.ajax({
+                type: "POST",
+                url: "/admin/memberList",
+                data: {
+                    pageNum: value,
+                    countPerPage: $("#showPage").data("countperpage")
+                },
+                success: function(data) {
+                    $("#showTableBody").empty(); // 기존 데이터 삭제
+                    $.each(data.showMembers, function(index, show) {
+                        $("#showTableBody").append(newRow);
+                    });
+                },
+                error: function(error) {
+                    console.error("Error:", error);
+                }
+            });
+        });
+    });
+</script>
