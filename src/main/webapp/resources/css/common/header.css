@@ -157,19 +157,20 @@
         display:contents;
     }
 
-a:hover {
-    text-decoration: none;
-}
-
-    a:active {
-        color: inherit ;
-        text-decoration: none ;
+    a:hover {
+        text-decoration: none;
     }
 
      a:link {
          color: black;
          text-decoration: none;
      }
+
+    a:active {
+        color: inherit ;
+        text-decoration: none ;
+    }
+
 
      a:hover {
          color: black;

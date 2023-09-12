@@ -306,7 +306,7 @@
            height: 48px;
            overflow: hidden;
            line-height: 30px;
-           font-size: 15px;
+           font-size: 20px;
            border-radius: 30px;
            box-shadow: 4px 7px 10px -14px;
            border: 1px solid #D9E0E3;
@@ -349,6 +349,7 @@
        .content{
            min-height: 45vh;
            max-height: 10px;
+           font-size:17px;
            border-radius: 30px;
            border-top-left-radius: 1px;
            box-shadow: 8px 9px 14px -18px;
