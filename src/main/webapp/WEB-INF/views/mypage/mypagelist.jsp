@@ -24,7 +24,7 @@ pageEncoding="UTF-8"%>
         </div>
         <div class="mypage-list">
             <div class="outer-gird">
-                <div class="/mypage-board1">
+                <div class="mypage-board1">
                     <div class="b-outer-gird1">
                         <div class="list-boxtitle1">개인정보</div>
                         <div class="b-list1">

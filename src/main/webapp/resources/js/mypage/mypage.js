@@ -39,45 +39,26 @@ document.addEventListener("DOMContentLoaded", function () {
 
             //------출석체크 기능-------------
             dateCell.addEventListener("click", () => {
-              const isAlreadyAttended = dateCell.classList.contains("attended");
+                const isAlreadyAttended = dateCell.classList.contains("attended");
 
-              if (!isAlreadyAttended) {
-                attendanceButton.onclick = () => {
-                  const formattedDate = new Date(currentYear, currentMonth, day+1);
+                if (!isAlreadyAttended) {
+                    attendanceButton.onclick = () => {
+                        dateCell.classList.add("attended");
+                        closeModal();
 
-                  // AJAX 요청 보내기
-                  fetch('/mypage/addEvent', {
-                    method: 'POST',
-                    body: JSON.stringify({ formattedDate }),
-                    headers: {
-                      'Content-Type': 'application/json'
-                    }
-                  })
-                  .then(response => response.json())
-                  .then(data => {
-                    // 응답 처리
-                    console.log(data);
+                        alert("출석이 완료되었습니다.");
 
-                    dateCell.classList.add("attended");
-                    closeModal();
+                        attendanceButton.onclick = null; // 이벤트 리스너 해제
+                    };
 
-                    alert("출석이 완료되었습니다.");
+                } else {
+                    alert("이미 출석이 완료되었습니다.");
+                }
 
-                    attendanceButton.onclick = null; // 이벤트 리스너 해제
-                  })
-                  .catch(error => {
-                     // 에러 처리
-                     console.error(error);
-                  });
-                };
-              } else {
-                alert("이미 출석이 완료되었습니다.");
-              }
             });
                     calendarGrid.appendChild(dateCell);
-        }
-    }
-        renderCalendar();
+                }
+            }
 
     //------출석체크 기능 끝----------
 
