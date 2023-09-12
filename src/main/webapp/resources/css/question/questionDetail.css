@@ -407,3 +407,9 @@
            align-items: center;
            justify-content: space-around;
         }
+
+        span.member-name{
+            position: absolute;
+            right: 160px;
+            font-size: 17px;
+        }
