@@ -1,4 +1,9 @@
+*{
+    font-family: 'Do Hyeon';
+}
+
 .main-container{
+    font-family: 'Do Hyeon';
     height: auto;
     border: 1px solid #D9E0E3;
     margin-bottom: 10px;
@@ -9,22 +14,26 @@
     display: flow-root;
 }
 .title-container{
+    font-family: 'Do Hyeon';
     padding: 30px;
     padding-top: 4px;
     padding-bottom: 47px;
 }
 
 .write-title{
+    font-family: 'Do Hyeon';
     margin-top: 18px;
     margin-bottom: 10px;
     width: 100%;
 }
 .write-title span{
+    font-family: 'Do Hyeon';
     font-size: x-large;
     font-weight: bold;
 }
 
 .write-title textarea{
+    font-family: 'Do Hyeon';
     width: 100%;
     padding: 9px;
     padding-left: 18px;

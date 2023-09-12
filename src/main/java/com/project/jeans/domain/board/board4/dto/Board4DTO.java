@@ -8,9 +8,6 @@ import lombok.ToString;
 import java.sql.Timestamp;
 
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
-@ToString
 public class Board4DTO {
 
     private int board4_no;
