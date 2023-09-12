@@ -7,8 +7,6 @@ import lombok.NoArgsConstructor;
 import java.sql.Timestamp;
 
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
 public class Board2DTO {
 
     private int board2_no;

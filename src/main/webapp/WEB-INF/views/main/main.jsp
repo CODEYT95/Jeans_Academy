@@ -77,7 +77,7 @@ pageEncoding="UTF-8"%>
                                     <a href="/notice/list">
                                         <div class="content">
                                             <ul class="post-list" data-class="notice-1">
-                                                <div class="icon">🌏<a href="/noticeDetail/0">◇이벤트 안내> 이벤트 기간은 09.08~09.08 </a></div>
+                                                <div class="icon">🌏<a href="/noticeDetail/1" style="color:white;">◇이벤트 안내</a></div>
                                             </ul>
                                         </div>
                                     </a>
@@ -89,7 +89,7 @@ pageEncoding="UTF-8"%>
                                     <a href="/notice/list">
                                     <div class="content">
                                         <ul class="post-list" data-class="notice-2">
-                                        <div class="icon">🚀<a href="/noticeDetail/2">◇학원생활</a></div>
+                                        <div class="icon">🚀<a href="/noticeDetail/2" style="color:white;">◇학원생활</a></div>
                                         </ul>
                                     </div>
                                     </a>
@@ -101,7 +101,7 @@ pageEncoding="UTF-8"%>
                                     <a href="/notice/list">
                                         <div class="content">
                                             <ul class="post-list" data-class="notice-3">
-                                            <div class="icon">🍧<a href="/noticeDetail/3">◇공지사항3</a></div>
+                                            <div class="icon">🍧<a href="/noticeDetail/3" style="color:white;">◇공지사항</a></div>
                                             </ul>
                                         </div>
                                     </a>
@@ -113,7 +113,7 @@ pageEncoding="UTF-8"%>
                                     <a href="/notice/list">
                                         <div class="content">
                                             <ul class="post-list" data-class="notice-4">
-                                            <div class="icon">🛸<a href="/noticeDetail/4">◇전체 공지</a></div>
+                                            <div class="icon">🛸<a href="/noticeDetail/4" style="color:white;">◇공지사항</a></div>
                                             </ul>
                                         </div>
                                     </a>
@@ -124,7 +124,7 @@ pageEncoding="UTF-8"%>
                                 <li style="--cardColor:	#00ACC1">
                                     <a href="/notice/list">
                                         <div class="content">
-                                            <div class="icon">🐧<a href="/noticeDetail/5">◇학원 사이트</a></div>
+                                            <div class="icon">🐧<a href="/noticeDetail/5" style="color:white;">◇학원 사이트</a></div>
                                         </div>
                                     </a>
                                 </li>
