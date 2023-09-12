@@ -4,6 +4,7 @@ import com.project.jeans.domain.admin.notice.dao.NoticeDAO;
 import com.project.jeans.domain.admin.notice.dto.NReplyDTO;
 import com.project.jeans.domain.admin.notice.dto.NoticeDTO;
 import lombok.RequiredArgsConstructor;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -23,6 +24,15 @@ public class NoticeServiceImpl implements NoticeService {
         return noticeDAO.selectFive();
     }
 
+    //공지사항 페이징 목록
+    @Override
+    public List<NoticeDTO>getShowNotice(int page, int size){
+        int offset = (page - 1) * size;
+        return noticeDAO.getShowNotice(offset,size);
+    }
+    //공지사항 총 갯수
+    @Override
+    public int noticeCount(){return noticeDAO.noticeCount();}
     //공지사항 상세보기
     @Override
     public NoticeDTO noticeDetail(int notice_no){

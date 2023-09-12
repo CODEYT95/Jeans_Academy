@@ -16,6 +16,13 @@
     VALUES (#{member_id}, #{attend_regdate});
     ]]>
     </insert>
+    <!--출석체크 불러오기-->
+    <select id="loadAttend" parameterType="com.project.jeans.domain.mypage.dto.MyPageDTO">
+    <![CDATA[
+    INSERT INTO attend (member_id, attend_regdate)
+    VALUES (#{member_id}, #{attend_regdate});
+    ]]>
+    </select>
     <select id="selectEvent" parameterType="String" resultType="com.project.jeans.domain.mypage.dto.MyPageDTO">
         <![CDATA[
     SELECT *

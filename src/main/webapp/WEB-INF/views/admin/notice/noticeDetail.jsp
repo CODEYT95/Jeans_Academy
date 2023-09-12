@@ -92,7 +92,6 @@ pageEncoding="UTF-8"%>
                     </ul>
                 </div>
             </div>
-            <input type="text">
         </div>
     </div>
 </body>

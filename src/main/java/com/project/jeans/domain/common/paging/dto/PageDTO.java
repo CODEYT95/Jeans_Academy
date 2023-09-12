@@ -1,5 +1,6 @@
 package com.project.jeans.domain.common.paging.dto;
 
+import com.project.jeans.domain.admin.notice.dto.NoticeDTO;
 import com.project.jeans.domain.member.dto.MemberDTO;
 import lombok.Getter;
 import lombok.Setter;

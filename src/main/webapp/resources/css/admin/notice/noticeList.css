@@ -82,7 +82,17 @@
                 padding: 10px;
             }
         }
-
+        table{
+            padding: 18px;
+            overflow-y: scroll;
+            margin-top: 10px;
+            border: 1px solid #D9E0E3;
+            border-top-left-radius: 30px;
+            border-bottom-left-radius: 30px;
+            border-top-right-radius: 10px;
+            border-bottom-right-radius: 10px;
+            box-shadow: 6px 7px 10px 1px #b9b9b947;
+        }
         .notice-body{
             width: 100%;
             padding-left: 30px;
@@ -100,71 +110,12 @@
             height: auto;
             margin-top: 34px;
         }
-
-        .subject-line{
-            width: 100%;
-            height: 53vh;
-            overflow-y: scroll;
-            margin-top: 10px;
-            border: 1px solid #D9E0E3;
-            border-top-left-radius: 30px;
-            border-bottom-left-radius: 30px;
-            border-top-right-radius: 10px;
-            border-bottom-right-radius: 10px;
-            box-shadow: 6px 7px 10px 1px #b9b9b947;
-        }
-
-        .line{
-            width: 100%;
-            right: 40px;
-            height: 43px;
-            background-color: #E5E5E5;
-        }
-        .board-no{
-            position: relative;
-            width: 7%;
-            text-align: center;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            display: -webkit-box;
-            -webkit-line-clamp: 1;
-            -webkit-box-orient: vertical;
-        }
-        .board-title{
-            width: 36%;
-            text-align: center;
-        }
-        .board-writer{
-            position: relative;
-            width: 8%;
-            text-align: center;
-        }
-        .board-reg{
-            position: relative;
-            text-align: center;
-            width: 15%;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            display: -webkit-box;
-            -webkit-line-clamp: 1;
-            -webkit-box-orient: vertical;
-        }
-        .board-count{
-            position: relative;
-            width: 10%;
-            text-align: center;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            display: -webkit-box;
-            -webkit-line-clamp: 1;
-            -webkit-box-orient: vertical;
-        }
         .showTable{
             display: flex;
             line-height: 41px;
-            justify-content: space-around;
+            width: 100%;
             justify-items: center;
-            align-items: flex-start;
+            flex-direction: column;
         }
         .showTable ul{
             width: 100%;
@@ -177,7 +128,8 @@
             justify-content: space-around;
             justify-items: center;
             align-items: center;
-            border-bottom: 1px solid gray;
+            width: 30px;
+            height: 30px;
         }
         .writer-container{
             display: flex;
@@ -234,21 +186,24 @@
             width: 10%;
             text-align: center;
         }
-        .container,
-        .button,
-        .links,
-        .link {
+
+        .pagingNum,
+        .linkBtn,
+        .linkBtn a {
             display: flex;
             align-items: center;
             justify-content: center;
         }
-        .container {
+        .pagination-container {
             padding: 20px;
             border-radius: 8px;
-            column-gap: 12px;
+            column-gap: 20px;
+            display: flex;
             background: #fff;
+            justify-content: center;
         }
-        .button {
+        .linkBtn,
+        .linkBtn a  {
             border: none;
         }
         .button i {
@@ -258,8 +213,8 @@
             color: #b3b3b3;
             pointer-events: none;
         }
-        .button,
-        .link {
+        .linkBtn,
+        .linkBtn a {
             height: 45px;
             width: 45px;
             font-size: 20px;
@@ -268,19 +223,19 @@
             border-radius: 6px;
             cursor: pointer;
         }
-        .links {
+        .linkBtn {
             column-gap: 12px;
         }
-        .link {
+        .linkBtn a {
             font-weight: 500;
             text-decoration: none;
         }
         .button:hover,
-        .link:hover {
+        .linkBtn a:hover {
             color: #fff;
             background: #4070f4;
         }
-        .link.active {
+        .linkBtn a.active {
             color: #fff;
             background: #4070f4;
         }
@@ -332,4 +287,33 @@
         {
             border-radius: 10px;
             background-color: #c4d4eb;
+        }
+
+        th, td {
+          text-align: center;
+          padding: 2px;
+          border-radius: 10px;
+        }
+        tr{
+            border-bottom: 1px solid black;
+        }
+        #writer{
+            display: flex;
+            justify-content: center;
+        }
+        thead{
+            background: #cadef7;
+        }
+        @media screen and (max-width: 1024px)
+        table {
+            min-width: 100%;
+        }
+
+        .currentPage {
+            background: #e156db36;
+            border-radius: 8px;
+        }
+
+        a {
+            color: black;
         }

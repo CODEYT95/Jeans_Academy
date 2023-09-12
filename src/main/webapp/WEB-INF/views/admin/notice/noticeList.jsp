@@ -12,6 +12,12 @@
     <link rel="stylesheet" type="text/css" href="../../../../resources/css/admin/notice/noticeList.css">
     <script type="text/javascript" src="../../../../resources/js/admin/notice/noticeList.js"></script>
 
+    <style>
+        @media screen and (max-width: 1024px)
+        table {
+        min-width: 100%;
+        }
+    </style>
 </head>
 <body data-member-class="${member_class}" data-category="${category}">
 <%@ include file="/WEB-INF/views/common/header.jsp"%>
@@ -26,52 +32,64 @@
                     <button>글쓰기</button>
                 </a>
             </c:if>
-            <div class="subject-line">
-                <header class="line">
-                    <div class="subject-name">
-                        <h3 class="board-no">번호</h3>
-                        <h3 class="board-title">제목</h3>
-                        <h3 class="board-writer">작성자</h3>
-                        <h3 class="board-reg">작성날짜</h3>
-                        <h3 class="board-count">조회수</h3>
-                    </div>
-                </header>
-                <ul>
-                    <c:forEach items="${noticeList}" var="notice" varStatus="status">
-                        <li>
-                            <span class="no">${status.index + 1}</span>
-                            <a class="view-link" href="/noticeDetail/${notice.notice_no}">
-                                <span class="title">${notice.notice_title}</span>
-                            </a>
-                            <div class="writer-container">
-                                <span class="writer">${notice.member_id}</span>
+
+            <div class="showTable">
+                <table>
+                    <thead>
+                    <tr>
+                        <th>번호</th>
+                        <th>제목</th>
+                        <th>작성자</th>
+                        <th>작성날짜</th>
+                        <th>조회수</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <c:choose>
+                        <c:when test="${not empty noticePaging.noticeList}">
+                            <c:forEach items="${noticePaging.noticeList}" var="show" >
+                                <tr>
+                                    <td>${show.notice_no}</td>
+                                    <td data-field="notice_title"><a href="/noticeDetail/${show.notice_no}">${show.notice_title}</a></td>
+                                    <td data-field="member_id" id="writer"><span>${show.member_id}</span></td>
+                                    <td><fmt:formatDate value="${show.notice_regdate}" pattern="yyyy-MM-dd" /></td>
+                                    <td  data-field="notice_count">${show.notice_count}</td>
+                                </tr>
+                            </c:forEach>
+                        </c:when>
+                        <c:otherwise>
+                            <tr>
+                                <td colspan="8">공지사항이 없습니다.</td>
+                            </tr>
+                        </c:otherwise>
+                    </c:choose>
+                    </tbody>
+                </table>
+                <div class="pagination">
+                    <div class="paging">
+                        <div class="text-center clearfix">
+                            <div class="pagingNum">
+                                <ul class="pagination-container" id="pagination">
+                                    <c:if test="${noticePaging.startPage > 5}">
+                                        <li class="page-item">
+                                            <a class="page-link" href="<c:url value='/noticeList'/>?page=${noticePaging.startPage - 1}"><i class="fa-solid fa-angle-left"></i></a>
+                                        </li>
+                                    </c:if>
+                                    <c:forEach begin="${noticePaging.startPage}" end="${noticePaging.endPage}" step="1" var="pageNum">
+                                        <li id = "linkBtn" class="page-item ${currentPage == pageNum ? 'active-page' : ''}">
+                                            <a class="page-link" href="<c:url value='/noticeList'/>?page=${pageNum}">${pageNum}</a>
+                                        </li>
+                                    </c:forEach>
+                                    <c:if test="${noticePaging.endPage < noticePaging.totalPages}">
+                                        <li class="page-item">
+                                            <a class="page-link" href="<c:url value='/noticeList'/>?page=${noticePaging.startPage + 5}"><i class="fa-solid fa-angle-right"></i></a>
+                                        </li>
+                                    </c:if>
+                                </ul>
                             </div>
-                            <span class="reg"><fmt:formatDate value="${notice.notice_regdate}" pattern="yyyy-MM-dd" /></span>
-                            <span class="count">${notice.notice_count}</span>
-                        </li>
-                    </c:forEach>
-                </ul>
-            </div>
-            <div class="container">
-                <button class="button" id="startBtn" disabled>
-                    <i class="fa-solid fa-angles-left"></i>
-                </button>
-                <button class="button prevNext" id="prev" disabled>
-                    <i class="fa-solid fa-angle-left"></i>
-                </button>
-                <div class="links">
-                    <a href="#" class="link active">1</a>
-                    <a href="#" class="link">2</a>
-                    <a href="#" class="link">3</a>
-                    <a href="#" class="link">4</a>
-                    <a href="#" class="link">5</a>
+                        </div>
+                    </div>
                 </div>
-                <button class="button prevNext" id="next">
-                    <i class="fa-solid fa-angle-right"></i>
-                </button>
-                <button class="button" id="endBtn">
-                    <i class="fa-solid fa-angles-right"></i>
-                </button>
             </div>
         </div>
     </div>
