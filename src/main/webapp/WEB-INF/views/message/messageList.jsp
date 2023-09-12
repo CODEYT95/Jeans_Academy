@@ -34,7 +34,7 @@
             <div class="modal-window">
                 <div class="close-area"><h2>X</h2></div>
                 <form action="/message/send" method="post" id="aaa">
-                    <input type="hidden" value="${member_id}" name="member_id">
+                    <input type="hidden" value="${member_name}" name="member_name">
                     <div class="modal-header">
                         <!-- 수신자 작성(수신자 불러오기) -->
                         <select id="member_class" class="member_class" name="member_class">

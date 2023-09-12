@@ -13,18 +13,23 @@
 </head>
 <body>
 <body data-member-class="${member_class}" data-category="${category}">
-    <div class="messageSend--content">
-        <form action="/message/deleteSendMsg" method="get">
-            <button type="delete-button" id="delete" class="delete-button" onclick="return checkData()">삭제</button>
-            <table>
-                <thead>
-                <tr>
-                    <th>제목</th>
-                    <th>받은 사람</th>
-                    <th>날짜</th>
-                </tr>
-                </thead>
-                <tbody>
+<div class="messageSend--content">
+    <form action="/message/deleteSendMsg" method="get">
+        <button type="delete-button" id="delete" class="delete-button" onclick="return checkData()">삭제</button>
+        <table>
+            <thead>
+            <tr>
+                <th>제목</th>
+                <th>받은 사람</th>
+                <th>날짜</th>
+            </tr>
+            </thead>
+            <tbody>
+            <c:choose>
+                <c:when test="${empty messageSendDTO}">
+                    <h1>보낸 쪽지가 없습니다</h1>
+                </c:when>
+                <c:otherwise>
                 <c:forEach var="messageSendDTO" items="${messageSendDTO}" varStatus="loop" begin="0">
                     <tr>
                         <td class="col-1">
@@ -54,9 +59,11 @@
                         <td class="col-3"><fmt:formatDate value="${messageSendDTO.message_date}" pattern="yyyy-MM-dd HH:mm"/></td>
                     </tr>
                 </c:forEach>
-                </tbody>
-            </table>
-        </form>
-    </div>
+                </c:otherwise>
+            </c:choose>
+            </tbody>
+        </table>
+    </form>
+</div>
 </body>
 </html>
