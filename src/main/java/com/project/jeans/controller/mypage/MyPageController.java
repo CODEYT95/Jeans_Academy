@@ -138,30 +138,4 @@ public class MyPageController {
 
         return requestBody;
     }
-    @GetMapping(value = "/loadEvent", produces = "application/json")
-    @ResponseBody
-    public ResponseEntity<String> loadAttend(HttpSession session, Model model) throws ParseException {
-        System.out.println("컨트롤러 진입");
-        String member_id = (String) session.getAttribute("member_id");
-        LoginCheckSession loginCheck = new LoginCheckSession(memberService);
-        MemberDTO memberInfo = loginCheck.getLoginCheckSession(session, model);
-
-        // myPageService.loadAttend(member_id)에서 MypageDTO 객체를 가져온다고 가정
-        MyPageDTO mypageDTO = myPageService.loadAttend(member_id);
-
-        System.out.println(mypageDTO);
-
-        // ObjectMapper를 사용하여 MypageDTO 객체를 JSON 문자열로 변환
-        ObjectMapper objectMapper = new ObjectMapper();
-        try {
-            String json = objectMapper.writeValueAsString(mypageDTO);
-
-            // HTTP 응답으로 JSON 문자열을 반환
-            return ResponseEntity.ok(json);
-        } catch (JsonProcessingException e) {
-            // JSON 변환 중에 오류 발생 시 처리
-            e.printStackTrace();
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("{\"error\": \"JSON 변환 오류\"}");
-        }
-    }
 }

@@ -68,7 +68,7 @@
                                     </div>
                                     <div>
                                         <h1>${board1List.board1_title}</h1>
-                                        <p>${board1List.board1_content}</p>
+                                        <div class="content" contenteditable="false">${board1List.board1_content}</div>
                                     </div>
                                 </div>
                             </c:forEach>
@@ -79,4 +79,5 @@
         </div>
     </div>
 </body>
+
 </html>

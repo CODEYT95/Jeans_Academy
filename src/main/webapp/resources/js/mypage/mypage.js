@@ -18,22 +18,6 @@ document.addEventListener("DOMContentLoaded", function() {
     let selectedDate = null;
 
     //--------------캘린더-------------------------
-     function loadAttendance() {
-            fetch('/mypage/loadEvent', {
-                method: 'GET',
-                headers: {
-                  'Content-Type': 'application/json'
-                }
-            })
-            .then(response => response.json())
-            .then(data => {
-                markedDates = data.attendanceDates; // 예: ["2023-9-12", "2023-9-13"]
-                renderCalendar();
-            })
-            .catch(error => {
-                console.error(error);
-            });
-        }
     function renderCalendar() {
         const firstDayOfMonth = new Date(currentYear, currentMonth, 1).getDay();
         const lastDayOfMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
@@ -94,7 +78,6 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     }
         renderCalendar();
-        loadAttendance();
 
     //------출석체크 기능 끝----------
 
