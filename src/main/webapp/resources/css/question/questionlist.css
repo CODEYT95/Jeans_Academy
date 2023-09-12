@@ -319,10 +319,12 @@ background-color: #395cdd;
     height: 100%;
 }
 
+ a {
+     color: black;
+     text-decoration: none;
+ }
 
- /* Start https://www.cursors-4u.com */
-        * {cursor: url(https://cur.cursors-4u.net/cursors/cur-10/cur959.cur), auto !important;}
-        /* End https://www.cursors-4u.com */
+ * {cursor: url(https://cur.cursors-4u.net/cursors/cur-10/cur959.cur), auto !important;}
 
 
 

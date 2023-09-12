@@ -20,7 +20,7 @@
       }
       .play-board {
             width: 100%;
-            height: 43vmin;
+            height: 83%;
         display: grid;
         background: #212837;
         grid-template: repeat(30, 1fr) / repeat(30, 1fr);
