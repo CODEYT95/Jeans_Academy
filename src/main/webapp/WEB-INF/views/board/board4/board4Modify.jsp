@@ -33,7 +33,7 @@
                     <div class="text">글 수정</div>
                     <label>
                         <div><span>제목</span></div>
-                        <textarea id="board4_title" name="board4_title" placeholder="제목을 입력하세요" required>${board4DTO.board4_title}</textarea>
+                        <textarea id="board4_title" name="board4_title" placeholder="제목을 입력하세요" maxlength="20" required>${board4DTO.board4_title}</textarea>
                     </label>
                 </div>
             </div>
