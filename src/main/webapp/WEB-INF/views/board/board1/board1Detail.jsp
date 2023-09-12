@@ -3,8 +3,8 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <html xmlns:c="http://java.sun.com/JSP/Page">
 <head>
-    <meta charset="UTF-8">z
-    <title>메시지 수신함</title>
+    <meta charset="UTF-8">
+    <title>👖1반 게시글 상세 페이지</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
     <link rel="stylesheet" type="text/css" href="../../../../resources/css/board/boardDetail.css">

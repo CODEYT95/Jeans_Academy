@@ -3,8 +3,8 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <html xmlns:c="http://java.sun.com/JSP/Page">
 <head>
-    <meta charset="UTF-8">z
-    <title>메시지 수신함</title>
+    <meta charset="UTF-8">
+    <title>👖4반 게시글 상세 페이지</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
     <link rel="stylesheet" type="text/css" href="../../../../resources/css/board/boardDetail.css">
@@ -32,10 +32,10 @@
                 <!-- 본인이 작성한 게시물만 수정 가능 처리 -->
                 <input type="hidden" name="board4_no" value="${board4DTO.board4_no}"/>
                 <c:if test="${member_id == board4DTO.member_id}">
-                    <button type="submit" class="main-ori-button">수정</button>
+                    <button type="submit" class="main-ori-button4">수정</button>
                 </c:if>
             </form>
-            <button type="button" class="main-ori-button" onclick="location.href='/board4/list'">목록</button>
+            <button type="button" class="main-ori-button4" onclick="location.href='/board4/list'">목록</button>
         </div>
         <div class="write-title">
             <label>
