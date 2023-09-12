@@ -5,7 +5,7 @@
 <html lang="ko"  value="<%=request.getContextPath() %>" xmlns="http://www.w3.org/1999/html"/>
 <head>
     <meta charset="UTF-8">
-    <title>👖쪽지 보내기</title>
+    <title>메시지 수신함</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
     <link rel="stylesheet" type="text/css" href="../../../resources/css/message/messageList.css">
@@ -67,7 +67,7 @@
         <button id="recMsgList">받은 쪽지함</button>
         <div class="call-content">
             <br/><br/>
-            <h2>안녕하세요! 👖${member_id}님 쪽지함입니다😊<br/></h2>
+            <h2>안녕하세요! 👖${member_name}님 쪽지함입니다😊<br/></h2>
             <div id="msgAllList">
                 1. 쪽지를 보내시고 싶으시면 '쪽지 보내기'<br/>
                 2. 보낸 쪽지를 확인하고 싶으시면 '보낸 쪽지함'<br/>
