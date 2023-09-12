@@ -36,7 +36,9 @@ pageEncoding="UTF-8"%>
                 <div class="box box${(status.index % 4) + 1}">
                     <div class="header-content">
                         <div class="header-title">
+                            <div class="header-title custom-cursor">
                             <span>${question.question_title}</span>
+                        </div>
                         </div>
                         <div class="header-class">
                             <span>${question.member_class}</span></br>
