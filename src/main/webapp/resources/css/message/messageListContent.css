@@ -446,7 +446,7 @@ th {
    width: 15%;
 }
 
-.buttoss{
+.button{
     float: right;
     width: 85px;
     margin-top: 13px;
@@ -481,10 +481,10 @@ th {
 
 #modal .modal-window, .modal-window, .modal-window {
   position: relative;
-  width: 50vw;
-  height: 40vw;
+  width: 700px;
+  height: auto;
   top: auto;
-  padding: 42px;
+  padding: 15px;
   background: linear-gradient(180deg,#5164da 5%,#FFFFFE 5%);
   box-shadow: 0 0px 2px 0 rgba( 31, 38, 135, 0.37 );
   border-radius: 15px;

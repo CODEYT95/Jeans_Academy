@@ -106,7 +106,7 @@ public class QuestionController {
             // 로그인이 필요한 경우 리디렉션
             return "redirect:/login";
         }
-        String category = "QnA";
+        String category = "question";
         model.addAttribute("category", category);
         model.addAttribute("member_id",session.getAttribute("member_id"));
         model.addAttribute("member_name",memberInfo.getMember_name());
