@@ -14,5 +14,6 @@ public class Board1DTO {
     private String board1_isshow;
     private String member_id;
     private String member_name;
+    private String member_type;
 
 }

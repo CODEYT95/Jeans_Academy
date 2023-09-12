@@ -39,7 +39,7 @@
     <!-- 반별 게시글 상세 조회 -->
     <select id="findBoard2ByNo" resultType="com.project.jeans.domain.board.board2.dto.Board2DTO">
         <![CDATA[
-        SELECT b.board2_no, b.board2_title, b.board2_content, b.board2_regdate, b.board2_isshow, b.member_id, m.member_name
+        SELECT b.board2_no, b.board2_title, b.board2_content, b.board2_regdate, b.board2_isshow, b.member_id, m.member_name, m.member_type
         FROM board2 AS b
         JOIN member AS m ON b.member_id = m.member_id
         WHERE board2_no=#{board2_no}
