@@ -18,14 +18,12 @@
 <body data-member-class="${member_class}" data-category="${category}" data-member-type="${member_type}">
 <%@ include file="/WEB-INF/views/common/header.jsp"%>
 <%@ include file="/WEB-INF/views/common/sidebar.jsp"%>
-
 <div class="main--content">
     <form action="/board3/modify" method="post">
         <input type="hidden" name="member_id" value="${member_id}">
         <input type="hidden" name="member_name" value="${member_name}">
         <input type="hidden" name="member_class" value="${member_class}">
         <input type="hidden" id="board3_no" name="board3_no" value="${board3DTO.board3_no}">
-
         <div class="head-container">
             <button id="save" class="main-ori-button">저장</button>
             <button type="button" class="main-ori-button" onclick="location.href='/board3/list'">목록</button>

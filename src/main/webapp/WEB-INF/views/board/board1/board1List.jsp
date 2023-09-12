@@ -18,7 +18,6 @@
 <body data-member-class="${member_class}" data-category="${category}" data-member-type="${member_type}">
 <%@ include file="/WEB-INF/views/common/header.jsp"%>
 <%@ include file="/WEB-INF/views/common/sidebar.jsp"%>
-
     <div class="main--content">
         <div class = "title--container">
             <!-- 같은 반일 경우에만 글쓰기 처리 -->
@@ -35,7 +34,7 @@
                 <input type="radio" name="testimonial" id="t-4">
                 <input type="radio" name="testimonial" id="t-5">
                 <div class="testimonials">
-                    <c:if test="${member_class.equals('1반') || member_type.equals('관리자') || member_type.equals('강사님')}">
+                    <c:if test="${member_class.equals('1반') && member_type.equals('수강생') || member_type.equals('관리자') || member_type.equals('강사님')}">
                         <c:choose>
                             <c:when test="${empty board1DTOBYTutor}">
                                 <h1>공지사항이 없습니다</h1>
@@ -56,7 +55,7 @@
         </div>
         <div class = "box-container">
             <div class="boxes">
-                <c:if test="${member_class.equals('1반') || member_type.equals('관리자') || member_type.equals('강사님')}">
+                <c:if test="${member_class.equals('1반') && member_type.equals('수강생') || member_type.equals('관리자') || member_type.equals('강사님')}">
                     <c:choose>
                         <c:when test="${empty board1List}">
                             <h1>첫 글의 주인공이 되어주세요</h1>

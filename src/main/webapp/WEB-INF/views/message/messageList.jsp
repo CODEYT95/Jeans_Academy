@@ -10,7 +10,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
     <link rel="stylesheet" type="text/css" href="../../../resources/css/message/messageList.css">
     <script type="text/javascript" src="../../../resources/js/message/messageList.js"></script>
-
     <script>
         $(function(){
             $("#sendMsgList").click(function(){
@@ -24,7 +23,6 @@
             });
         });
     </script>
-
 </head>
 <body data-member-class="${member_class}" data-category="${category}">
 <%@ include file="/WEB-INF/views/common/header.jsp"%>
@@ -67,17 +65,16 @@
         </div>
         <button id="sendMsgList">보낸 쪽지함</button>
         <button id="recMsgList">받은 쪽지함</button>
-
-    <div class="call-content">
-        <br/><br/>
-        <h2>안녕하세요! 👖${member_id}님 쪽지함입니다😊<br/></h2>
-        <div id="msgAllList">
-            1. 쪽지를 보내시고 싶으시면 '쪽지 보내기'<br/>
-            2. 보낸 쪽지를 확인하고 싶으시면 '보낸 쪽지함'<br/>
-            3. 받은 쪽지를 확인하고 싶으시면 '받은 쪽지함'<br/>
-            여러분들이 걸어가는 길목마다 행복이라는 꽃들이 한아름 피어나기를☺️
+        <div class="call-content">
+            <br/><br/>
+            <h2>안녕하세요! 👖${member_id}님 쪽지함입니다😊<br/></h2>
+            <div id="msgAllList">
+                1. 쪽지를 보내시고 싶으시면 '쪽지 보내기'<br/>
+                2. 보낸 쪽지를 확인하고 싶으시면 '보낸 쪽지함'<br/>
+                3. 받은 쪽지를 확인하고 싶으시면 '받은 쪽지함'<br/>
+                여러분들이 걸어가는 길목마다 행복이라는 꽃들이 한아름 피어나기를☺️
+            </div>
         </div>
     </div>
-</div>
 </body>
 </html>

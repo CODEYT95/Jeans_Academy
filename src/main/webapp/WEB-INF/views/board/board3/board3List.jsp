@@ -22,7 +22,7 @@
 <div class="main--content">
     <div class = "title--container">
         <!-- 같은 반일 경우에만 글쓰기 처리 -->
-        <c:if test="${member_class.equals('3반') || member_type.equals('관리자') || member_type.equals('강사님')}">
+        <c:if test="${member_class.equals('3반') && member_type.equals('수강생') || member_type.equals('관리자') || member_type.equals('강사님')}">
             <button type="button" class="button3" onclick="location.href='/board3/write'">글쓰기</button>
         </c:if>
         <div class="title-content"><h1>👖3반 게시판</h1></div>
@@ -35,7 +35,7 @@
             <input type="radio" name="testimonial" id="t-4">
             <input type="radio" name="testimonial" id="t-5">
             <div class="testimonials">
-                <c:if test="${member_class.equals('3반') || member_type.equals('관리자') || member_type.equals('강사님')}">
+                <c:if test="${member_class.equals('3반') && member_type.equals('수강생') || member_type.equals('관리자') || member_type.equals('강사님')}">
                     <c:choose>
                         <c:when test="${empty board3DTOBYTutor}">
                             <h1>공지사항이 없습니다</h1>
