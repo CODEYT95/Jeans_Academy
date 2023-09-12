@@ -9,7 +9,8 @@
         SELECT b.*, m.member_name, m.member_type
         FROM board2 b
         INNER JOIN member m ON b.member_id = m.member_id
-        WHERE m.member_type = '수강생';
+        WHERE m.member_type = '수강생'
+        ORDER BY b.board2_no DESC;
         ]]>
     </select>
     <!-- 반별 게시글 상세 조회 (강사님) -->
@@ -18,7 +19,8 @@
         SELECT b.*, m.member_name, m.member_type
         FROM board2 b
         INNER JOIN member m ON b.member_id = m.member_id
-        WHERE m.member_type = '관리자' OR m.member_type='강사님';
+        WHERE m.member_type = '관리자' OR m.member_type='강사님'
+        ORDER BY b.board2_no DESC;
         ]]>
     </select>
     <!-- 반별 게시판 목록 5개조회 -->
