@@ -5,7 +5,12 @@
     <!-- 댓글 목록 조회 -->
     <select id="getComment3List" parameterType="int" resultType="com.project.jeans.domain.board.board3.dto.Comment3DTO">
         <![CDATA[
-        SELECT comment3_no, board3_no, comment3_content, comment3_regdate, comment3_isshow, member_id FROM comment3 WHERE board3_no=${board3_no} AND comment3_isshow='Y' ORDER BY comment3_no DESC
+        SELECT c.comment3_no, c.board3_no, c.comment3_content, c.comment3_regdate, c.comment3_isshow, c.member_id, m.member_name
+        FROM comment3AS c
+        JOIN member AS m ON c.member_id = m.member_id
+        WHERE c.board3_no = ${board1_no}
+        AND c.comment3_isshow = 'Y'
+        ORDER BY c.comment3_no DESC
         ]]>
     </select>
     <!-- 댓글 작성 -->

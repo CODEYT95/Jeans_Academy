@@ -15,5 +15,5 @@ public class Board2DTO {
     private Timestamp board2_regdate;
     private String board2_isshow;
     private String member_id;
-
+    private String member_name;
 }
