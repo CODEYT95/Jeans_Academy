@@ -306,7 +306,7 @@ display: flow-root;
     background-color: white;
 }
 
-.main-ori-button{
+.main-ori-button, .main-ori-button2, .main-ori-button3, .main-ori-button4{
     float: right;
     width: 70px;
     height: 33px;
@@ -324,6 +324,22 @@ display: flow-root;
     border-bottom-right-radius: 30px 25px;
     background: #5164da ;
     cursor: pointer;
+}
+
+.main-ori-button{
+    background: #5164da ;
+}
+
+.main-ori-button2{
+    background: #c75baf ;
+}
+
+.main-ori-button3{
+    background: #61b88e ;
+}
+
+.main-ori-button4{
+    background: #ccc762 ;
 }
 
 .title-container{

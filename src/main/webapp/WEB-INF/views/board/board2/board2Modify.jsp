@@ -26,8 +26,8 @@
         <input type="hidden" id="board2_no" name="board2_no" value="${board2DTO.board2_no}">
         <div class="head-container">
             <button id="save" class="main-ori-button">저장</button>
-            <button type="button" class="main-ori-button" onclick="location.href='/board2/list'">목록</button>
-            <button type="button" class="main-ori-button" onclick="location.href='/board2/detail/${board2DTO.board2_no}'">취소</button>
+            <button type="button" class="main-ori-button2" onclick="location.href='/board2/list'">목록</button>
+            <button type="button" class="main-ori-button2" onclick="location.href='/board2/detail/${board2DTO.board2_no}'">취소</button>
             <div class="title-container">
                 <div class="write-title">
                     <div class="text">글 수정</div>

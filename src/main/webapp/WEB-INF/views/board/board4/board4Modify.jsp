@@ -25,9 +25,9 @@
         <input type="hidden" name="member_class" value="${member_class}">
         <input type="hidden" id="board4_no" name="board4_no" value="${board4DTO.board4_no}">
         <div class="head-container">
-            <button id="save" class="main-ori-button">저장</button>
-            <button type="button" class="main-ori-button" onclick="location.href='/board4/list'">목록</button>
-            <button type="button" class="main-ori-button" onclick="location.href='/board4/detail/${board4DTO.board4_no}'">취소</button>
+            <button id="save" class="main-ori-button4">저장</button>
+            <button type="button" class="main-ori-button4" onclick="location.href='/board4/list'">목록</button>
+            <button type="button" class="main-ori-button4" onclick="location.href='/board4/detail/${board4DTO.board4_no}'">취소</button>
             <div class="title-container">
                 <div class="write-title">
                     <div class="text">글 수정</div>
