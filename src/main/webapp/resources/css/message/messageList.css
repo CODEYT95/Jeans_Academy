@@ -198,15 +198,15 @@ th {
 
 /* modal */
 #modal.modal-overlay, .modal-overlay2, .modal-overlay3  {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  left: 0;
-  top: 0;
-  display: none;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    left: 185px;
+    top: 0;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 #modal .modal-window, .modal-window, .modal-window {
