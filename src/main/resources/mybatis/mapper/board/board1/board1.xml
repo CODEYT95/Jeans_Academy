@@ -11,13 +11,13 @@
         WHERE board1_isshow='Y' ORDER BY board1_no DESC
         ]]>
     </select>
-    <!-- 반별 게시판 목록 5개조회 -->
+    <!-- 반별 게시판 목록 4개조회 -->
     <select id="findBoard1List" resultType="com.project.jeans.domain.board.board1.dto.Board1DTO" parameterType="Integer">
         <![CDATA[
         SELECT board1_no, board1_title, board1_content, board1_regdate, board1_isshow, member_id
         FROM board1
         WHERE board1_isshow='Y' ORDER BY board1_no DESC
-        LIMIT 5;
+        LIMIT 4;
         ]]>
     </select>
     <!-- 반별 게시글 상세 조회 -->

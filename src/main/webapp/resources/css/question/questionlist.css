@@ -328,6 +328,12 @@ white-space: nowrap;  /* 텍스트를 한 줄로 표시 */
 overflow: hidden;     /* 넘치는 텍스트를 숨김 */
 text-overflow: ellipsis;  /* 넘치는 텍스트를 ...으로 표시 */
 }
+
+/* 커서 효과 스타일을 정의하는 CSS */
+.custom-cursor {
+    cursor: help; /* 여기서 help 커서 스타일을 사용하도록 지정합니다. 필요에 따라 다른 스타일을 사용할 수 있습니다. */
+}
+
 .header-name{
 height: max-content;
 width:max-content;
@@ -482,6 +488,12 @@ font-size: 24px;
 .scroll-to-top a:hover {
 background-color: #395cdd;
 }
+
+
+
+ /* Start https://www.cursors-4u.com */
+        * {cursor: url(https://cur.cursors-4u.net/cursors/cur-10/cur959.cur), auto !important;}
+        /* End https://www.cursors-4u.com */
 
 
 

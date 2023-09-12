@@ -101,7 +101,7 @@ pageEncoding="UTF-8"%>
                                     <a href="/notice/list">
                                         <div class="content">
                                             <ul class="post-list" data-class="notice-3">
-                                            <div class="icon">🍧<a href="/noticeDetail/3">◇공지사항3</a></div>
+                                            <div class="icon">🍧<a href="/noticeDetail/4">◇자료</a></div>
                                             </ul>
                                         </div>
                                     </a>
@@ -113,7 +113,7 @@ pageEncoding="UTF-8"%>
                                     <a href="/notice/list">
                                         <div class="content">
                                             <ul class="post-list" data-class="notice-4">
-                                            <div class="icon">🛸<a href="/noticeDetail/4">◇전체 공지</a></div>
+                                            <div class="icon">🛸<a href="/noticeDetail/3">◇전체 공지</a></div>
                                             </ul>
                                         </div>
                                     </a>
@@ -195,6 +195,7 @@ pageEncoding="UTF-8"%>
                             <div id='calendar'></div>
                         </div>
                     </div>
+
 
                     <div class="game-container">
                         <div class="wrapper">
