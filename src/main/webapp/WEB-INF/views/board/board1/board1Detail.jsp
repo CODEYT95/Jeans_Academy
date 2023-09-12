@@ -18,12 +18,9 @@
 <body data-member-class="${member_class}" data-category="${category}" data-member-type="${member_type}">
 <%@ include file="/WEB-INF/views/common/header.jsp"%>
 <%@ include file="/WEB-INF/views/common/sidebar.jsp"%>
-
     <div class="main--content">
-
         <div class="head-container">
             <div class="button-container">
-
                 <form action="/board1/delete" method="get">
                     <!-- 본인이 작성한 게시물만 삭제 가능 처리 -->
                     <input type="hidden" name="board1_no" value="${board1DTO.board1_no}"/>
@@ -40,27 +37,20 @@
                 </form>
                 <button type="button" class="main-ori-button" onclick="location.href='/board1/list'">목록</button>
             </div>
-
-
-
             <div class="write-title">
                 <label>
                     <h2>제목</h2>
                     <h4>by ${board1DTO.member_id}</h4>
                     <textarea name="board1_title" readonly>${board1DTO.board1_title}</textarea>
                 </label>
-
             </div>
         </div>
-
-
         <div class="content-container">
             <div class="write-content">
                 <span class="content-label">내용</span>
-                <p class="content-textarea" readonly>${board1DTO.board1_content}</p>
+                <div class="content-textarea" readonly>${board1DTO.board1_content}</div>
             </div>
         </div>
-
         <div class="reply-container">
             <div>
                 <form action="/comment1/write" method="post">
