@@ -40,7 +40,7 @@
             <div class="write-title">
                 <label>
                     <h2>제목</h2>
-                    <h4>by ${board1DTO.member_id}</h4>
+                    <h4>by ${board1DTO.member_name}</h4>
                     <textarea name="board1_title" readonly>${board1DTO.board1_title}</textarea>
                 </label>
             </div>
@@ -68,7 +68,7 @@
                         <li>
                             <table>
                                 <td class="col-1"><c:out value="${comment1DTO.comment1_content}"/></td>
-                                <td class="col-2"><c:out value="${comment1DTO.member_id}"/></td>
+                                <td class="col-2"><c:out value="${comment1DTO.member_name}"/></td>
                                 <td class="col-3"><fmt:formatDate value="${comment1DTO.comment1_regdate}" pattern="yyyy-MM-dd HH:mm"/></td>
                                 <label class="item">
                                     <!-- 댓글 작성자만 댓글 수정 가능 -->

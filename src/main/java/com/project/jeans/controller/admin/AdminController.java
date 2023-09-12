@@ -40,6 +40,9 @@ public class AdminController {
         model.addAttribute("member_class", memberInfo.getMember_class());
         model.addAttribute("member_type", memberInfo.getMember_type());
 
+        Integer noAcceptMemberCount = memberService.getNoAcceptMemberCount();
+        model.addAttribute("noAcceptMemberCount", noAcceptMemberCount);
+
 
         if (keyword != null && condition != null) {
             model.addAttribute("keyword", keyword);
@@ -139,6 +142,8 @@ public class AdminController {
         model.addAttribute("member_class", memberInfo.getMember_class());
         model.addAttribute("member_type", memberInfo.getMember_type());
 
+        Integer noAcceptMemberCount = memberService.getNoAcceptMemberCount();
+        model.addAttribute("noAcceptMemberCount", noAcceptMemberCount);
 
         if (keyword != null && condition != null) {
             model.addAttribute("keyword", keyword);
@@ -197,6 +202,8 @@ public class AdminController {
         model.addAttribute("member_class", memberInfo.getMember_class());
         model.addAttribute("member_type", memberInfo.getMember_type());
 
+        Integer noAcceptMemberCount = memberService.getNoAcceptMemberCount();
+        model.addAttribute("noAcceptMemberCount", noAcceptMemberCount);
 
         if (keyword != null && condition != null) {
             model.addAttribute("keyword", keyword);

@@ -45,6 +45,7 @@
                                     <label class="item4"  for="t-${loop.index + 1}">
                                         <h2><a href="/board4/detail/${tutor.board4_no}">${tutor.board4_title}</a></h2>
                                         <h3>${tutor.board4_content}</h3>
+                                        <span class="writer">by ${tutor.member_name}</span>
                                     </label>
                             </c:forEach>
                         </c:otherwise>
