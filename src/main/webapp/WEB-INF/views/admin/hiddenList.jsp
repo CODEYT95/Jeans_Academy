@@ -12,6 +12,10 @@
     <script type="text/javascript" src="../../../resources/js/admin/hiddenList.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.css" rel="stylesheet">
     <style>
+        thead {
+            background: #cbd2f4;
+        }
+        tr:nth-child(even) {background-color: #f3f5ff;}
     </style>
 </head>
 <body data-member-class="${member_class}">
