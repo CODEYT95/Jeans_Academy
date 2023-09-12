@@ -1,5 +1,7 @@
 package com.project.jeans.controller.mypage;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.project.jeans.LoginCheckSession;
 import com.project.jeans.domain.member.dto.MemberDTO;
 import com.project.jeans.domain.mypage.dto.MyPageDTO;
@@ -8,6 +10,8 @@ import com.project.jeans.service.mypage.MyPageService;
 import jakarta.servlet.http.HttpSession;
 import jakarta.websocket.Session;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -113,7 +117,7 @@ public class MyPageController {
         MemberDTO memberInfo = loginCheck.getLoginCheckSession(session, model);
         String formattedDate = (String) requestBody.get("formattedDate");
 
-// ISO 8601 형식의 문자열을 Date 객체로 변환
+        // ISO 8601 형식의 문자열을 Date 객체로 변환
         SimpleDateFormat isoFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
         Date date = isoFormat.parse(formattedDate);
 
@@ -133,5 +137,31 @@ public class MyPageController {
         }
 
         return requestBody;
+    }
+    @GetMapping(value = "/loadEvent", produces = "application/json")
+    @ResponseBody
+    public ResponseEntity<String> loadAttend(HttpSession session, Model model) throws ParseException {
+        System.out.println("컨트롤러 진입");
+        String member_id = (String) session.getAttribute("member_id");
+        LoginCheckSession loginCheck = new LoginCheckSession(memberService);
+        MemberDTO memberInfo = loginCheck.getLoginCheckSession(session, model);
+
+        // myPageService.loadAttend(member_id)에서 MypageDTO 객체를 가져온다고 가정
+        MyPageDTO mypageDTO = myPageService.loadAttend(member_id);
+
+        System.out.println(mypageDTO);
+
+        // ObjectMapper를 사용하여 MypageDTO 객체를 JSON 문자열로 변환
+        ObjectMapper objectMapper = new ObjectMapper();
+        try {
+            String json = objectMapper.writeValueAsString(mypageDTO);
+
+            // HTTP 응답으로 JSON 문자열을 반환
+            return ResponseEntity.ok(json);
+        } catch (JsonProcessingException e) {
+            // JSON 변환 중에 오류 발생 시 처리
+            e.printStackTrace();
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("{\"error\": \"JSON 변환 오류\"}");
+        }
     }
 }

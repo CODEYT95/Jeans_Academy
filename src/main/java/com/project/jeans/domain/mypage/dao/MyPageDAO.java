@@ -25,4 +25,6 @@ public interface MyPageDAO {
     //출석체크
     int addAttend(MyPageDTO myPageDTO);
 
+    //출석체크 불러오기
+    MyPageDTO loadAttend(String member_id);
 }

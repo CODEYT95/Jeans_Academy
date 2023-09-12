@@ -19,6 +19,22 @@
         LIMIT 5;
         ]]>
     </select>
+    <!-- 공지사항 페이징 -->
+    <select id="getShowNotice" resultType="com.project.jeans.domain.admin.notice.dto.NoticeDTO">
+        <![CDATA[
+        SELECT * FROM notice WHERE notice_isshow='Y'
+        ORDER BY notice_regdate
+        LIMIT #{page}, #{size}
+        ]]>
+    </select>
+    <!-- 공지사항 게시글 수 조회 -->
+    <select id="noticeCount" resultType="Integer">
+        <![CDATA[
+        SELECT COUNT(*)
+        FROM notice
+        WHERE notice_isshow='Y';
+        ]]>
+    </select>
     <!--공지사항 상세보기-->
     <select id="noticeDetail" parameterType="Integer" resultType="com.project.jeans.domain.admin.notice.dto.NoticeDTO">
         <![CDATA[

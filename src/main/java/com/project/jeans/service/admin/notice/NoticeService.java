@@ -2,6 +2,7 @@ package com.project.jeans.service.admin.notice;
 
 import com.project.jeans.domain.admin.notice.dto.NReplyDTO;
 import com.project.jeans.domain.admin.notice.dto.NoticeDTO;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -11,7 +12,10 @@ public interface NoticeService {
 
     //공지사항 5개
     public List<NoticeDTO> selectFive();
-
+    //공지사항 페이징 목록
+    public List<NoticeDTO>getShowNotice(@Param("page") int page, @Param("size") int size);
+    //공지사항 총 갯수
+    public int noticeCount();
     //공지사항 상세보기
     public NoticeDTO noticeDetail(int notice_no);
 

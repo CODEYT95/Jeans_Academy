@@ -48,4 +48,8 @@ public class MyPageServiceImpl implements MyPageService {
     @Override
     public int addAttend(MyPageDTO myPageDTO){return myPageDAO.addAttend(myPageDTO);}
 
+    //출석체크 불러오기
+    @Override
+    public MyPageDTO loadAttend(String member_id){return myPageDAO.loadAttend(member_id);}
+
 }

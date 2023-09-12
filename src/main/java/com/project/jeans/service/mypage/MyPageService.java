@@ -21,4 +21,7 @@ public interface MyPageService {
 
     //출석체크
     public int addAttend(MyPageDTO myPageDTO);
+
+    //출석체크 불러오기
+    public MyPageDTO loadAttend(String member_id);
 }

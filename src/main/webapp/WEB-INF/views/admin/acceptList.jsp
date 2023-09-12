@@ -21,7 +21,7 @@
     <div class="main-container">
         <div class="button-wrap">
             <a href="/admin/memberList"><button class="showMembers">현재 회원</button></a>
-            <a href="/admin/acceptList"><button class="acceptMembers" style="background : #5073FB;">요청 회원</button></a>
+            <a href="/admin/acceptList"><button class="acceptMembers" style="background : #5073FB;">요청 회원<span class="notification">0</span></button></a>
             <a href="/admin/hiddenList"><button class="hideMembers">탈퇴 회원</button></a>
         </div>
         <form action="/admin/acceptList" method="get">

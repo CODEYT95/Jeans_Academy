@@ -4,6 +4,7 @@ import com.project.jeans.LoginCheckSession;
 import com.project.jeans.domain.admin.notice.dao.NoticeDAO;
 import com.project.jeans.domain.admin.notice.dto.NReplyDTO;
 import com.project.jeans.domain.admin.notice.dto.NoticeDTO;
+import com.project.jeans.domain.common.paging.dto.NoticePagingDTO;
 import com.project.jeans.domain.member.dto.MemberDTO;
 import com.project.jeans.service.admin.notice.NoticeService;
 import com.project.jeans.service.member.MemberService;
@@ -26,7 +27,9 @@ public class NoticeController {
 
     //공지사항 조회
     @GetMapping("/noticeList")
-    public ModelAndView noticeList(HttpSession session, Model model) {
+    public ModelAndView noticeList(@RequestParam(value = "page", defaultValue = "1") int page,
+                                   @RequestParam(value = "size", defaultValue = "1") int size,
+                                   HttpSession session, Model model) {
         MemberDTO memberInfo = loginCheck.getLoginCheckSession(session, model);
         if (memberInfo==null) {
             // 로그인이 필요한 경우 리디렉션
@@ -38,13 +41,17 @@ public class NoticeController {
         model.addAttribute("member_class",memberInfo.getMember_class());
         model.addAttribute("member_type",memberInfo.getMember_type());
         System.out.println(memberInfo.getMember_class());
-        model.addAttribute("member_name", memberInfo.getMember_name());
-        model.addAttribute("member_class", memberInfo.getMember_class());
-        List<NoticeDTO> noticeList = noticeService.selectAll();
 
         ModelAndView modelAndView = new ModelAndView("admin/notice/noticeList"); // JSP 파일명(user.jsp)
-        modelAndView.addObject("noticeList", noticeList); // "noticeList"라는 이름으로 데이터 전달
 
+        int totalMemberCount = noticeService.noticeCount();
+        int totalPages = (int) Math.ceil((double) totalMemberCount / size);
+        page = Math.min(Math.max(1, page), totalPages);
+
+        List<NoticeDTO> noticeList = noticeService.getShowNotice(page,size);
+
+        NoticePagingDTO noticePaging = new NoticePagingDTO(totalMemberCount, page, size, noticeList);
+        model.addAttribute("noticePaging", noticePaging);
         return modelAndView;
     }
 
