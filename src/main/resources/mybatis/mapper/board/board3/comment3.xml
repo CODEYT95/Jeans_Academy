@@ -6,7 +6,7 @@
     <select id="getComment3List" parameterType="int" resultType="com.project.jeans.domain.board.board3.dto.Comment3DTO">
         <![CDATA[
         SELECT c.comment3_no, c.board3_no, c.comment3_content, c.comment3_regdate, c.comment3_isshow, c.member_id, m.member_name
-        FROM comment3AS c
+        FROM comment3 AS c
         JOIN member AS m ON c.member_id = m.member_id
         WHERE c.board3_no = ${board1_no}
         AND c.comment3_isshow = 'Y'

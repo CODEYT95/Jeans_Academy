@@ -22,9 +22,12 @@
     <!-- 공지사항 페이징 -->
     <select id="getShowNotice" resultType="com.project.jeans.domain.admin.notice.dto.NoticeDTO">
         <![CDATA[
-        SELECT * FROM notice WHERE notice_isshow='Y'
-        ORDER BY notice_regdate
-        LIMIT #{page}, #{size}
+        SELECT n.*, m.member_name
+        FROM notice n
+        INNER JOIN member m ON n.member_id = m.member_id
+        WHERE n.notice_isshow = 'Y'
+        ORDER BY n.notice_regdate
+        LIMIT #{page}, #{size};
         ]]>
     </select>
     <!-- 공지사항 게시글 수 조회 -->
