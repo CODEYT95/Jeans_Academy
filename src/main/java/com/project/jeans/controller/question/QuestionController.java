@@ -1,8 +1,6 @@
 package com.project.jeans.controller.question;
 
 import com.project.jeans.LoginCheckSession;
-import com.project.jeans.domain.admin.notice.dto.NReplyDTO;
-import com.project.jeans.domain.admin.notice.dto.NoticeDTO;
 import com.project.jeans.domain.member.dto.MemberDTO;
 import com.project.jeans.domain.question.dto.QReplyDTO;
 import com.project.jeans.domain.question.dto.QuestionDTO;
@@ -156,7 +154,7 @@ public class QuestionController {
     //QnA isshow 'N'으로 바꾸기
     @PostMapping("/isShowQuestion")
     @ResponseBody
-    public String isShowQuestion(@RequestParam("notice_no") int question_no, HttpSession session, Model model){
+    public String isShowQuestion(@RequestParam("question_no") int question_no, HttpSession session, Model model){
         MemberDTO memberInfo = loginCheck.getLoginCheckSession(session, model);
         if (memberInfo == null) {
             // 로그인이 필요한 경우 리디렉션
