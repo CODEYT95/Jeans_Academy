@@ -19,7 +19,7 @@ pageEncoding="UTF-8"%>
         <span class="category-label">QnA</span>
         <div class="main-container">
             <c:if test="${not empty questionDetail}">
-            <c:if test="${member_id eq questionDetail.member_id}">
+                <c:if test="${member_id eq questionDetail.member_id || member_class eq '💓'}">
             <div class="modal-container">
               <div id="myModal" class="modal">
                 <div class="modal-content">
