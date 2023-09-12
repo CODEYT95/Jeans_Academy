@@ -7,7 +7,8 @@
     <select id="findBoard3All" resultType="com.project.jeans.domain.board.board3.dto.Board3DTO">
         <![CDATA[
         SELECT b.board3_no as board3_no, b.board3_title as board3_title, b.board3_content as board3_content,
-                b.board3_regdate as board3_regdate, b.board3_isshow as board3_isshow, b.member_id as member_id, member_name
+                b.board3_regdate as board3_regdate, b.board3_isshow as board3_isshow, b.member_id as member_id,
+                m.member_name as member_name
         FROM board3 as b INNER JOIN member as m
         ON b.member_id = m.member_id
         WHERE b.board3_isshow='Y' AND m.member_type = '수강생'
@@ -19,7 +20,8 @@
     <select id="findBoard3ByTutor" resultType="com.project.jeans.domain.board.board3.dto.Board3DTO">
         <![CDATA[
         SELECT b.board3_no as board3_no, b.board3_title as board3_title, b.board3_content as board3_content,
-                b.board3_regdate as board3_regdate, b.board3_isshow as board3_isshow, b.member_id as member_id, member_name
+                b.board3_regdate as board3_regdate, b.board3_isshow as board3_isshow, b.member_id as member_id,
+                m.member_name as member_name
         FROM board3 as b INNER JOIN member as m
         ON b.member_id = m.member_id
         WHERE b.board3_isshow='Y' AND m.member_type in ('강사님', '관리자')
