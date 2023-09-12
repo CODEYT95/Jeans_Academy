@@ -42,7 +42,7 @@
                                     <div class="inputContent"><h3>제목</h3> ${messageSendDTO.message_title}</div>
                                     <div class="inputContent"><h3>받은 사람</h3> ${messageSendDTO.message_receiver}</div>
                                     <div class="inputContent"><h3>보낸 사람</h3>${messageSendDTO.message_sender}</div>
-                                    <div class="inputContent"><h3>날짜</h3> ${messageSendDTO.message_date}</div>
+                                    <div class="inputContent"><h3>날짜</h3><fmt:formatDate value="${messageSendDTO.message_date}" pattern="yyyy-MM-dd HH:mm"/></div>
                                     <h3>내용</h3>
                                     <div class="modal-content">${messageSendDTO.message_content}</div>
                                 </div>
