@@ -8,7 +8,7 @@
         <![CDATA[
         SELECT message_no,message_sender,message_receiver,message_title,message_content,message_date,message_rec_isshow
         FROM message
-        WHERE message_receiver=#{member_id} AND message_rec_isshow  in ('Y','R')
+        WHERE message_receiver=#{member_name} AND message_rec_isshow  in ('Y','R')
         ORDER BY message_no DESC;
         ]]>
     </select>

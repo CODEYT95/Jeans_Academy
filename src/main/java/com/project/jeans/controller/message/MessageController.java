@@ -88,7 +88,7 @@ public class MessageController {
         model.addAttribute("member_class",memberInfo.getMember_class());
         model.addAttribute("member_type",memberInfo.getMember_type());
 
-        List<MessageDTO> messageRecDTO = messageService.selectReceiveMessage(memberInfo.getMember_id());
+        List<MessageDTO> messageRecDTO = messageService.selectReceiveMessage(memberInfo.getMember_name());
         model.addAttribute("messageRecDTO",messageRecDTO);
         List<MemberDTO> messageMemberDTO = messageService.selectMessageMemList();
         model.addAttribute("messageMemberDTO",messageMemberDTO);
