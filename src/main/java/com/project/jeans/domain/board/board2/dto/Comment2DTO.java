@@ -18,4 +18,5 @@ public class Comment2DTO {
     private int comment2_no;
     private Timestamp comment2_regdate;
     private String member_id;
+    private String member_name;
 }

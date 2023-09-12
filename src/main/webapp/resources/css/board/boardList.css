@@ -561,3 +561,10 @@ p{
  font-weight: normal;
  height: 160px;
  }
+
+ .writer {
+    z-index: 99999;
+    display: flex;
+    position: relative;
+    right: 20px;
+ }
