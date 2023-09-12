@@ -27,7 +27,8 @@
         <![CDATA[
     SELECT *
     FROM mypage
-    WHERE member_id = #{member_id};
+    WHERE member_id = #{member_id}
+    ORDER BY mypage_regdate ASC;
     ]]>
     </select>
     <!--    일정 추가 끝     -->

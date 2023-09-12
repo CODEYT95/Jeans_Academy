@@ -15,5 +15,5 @@ public class NoticeDTO {
     private String member_id;
     private String notice_isshow;
     private int notice_count;
-
+    private String member_name;
 }

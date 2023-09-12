@@ -51,7 +51,7 @@
                                 <tr>
                                     <td>${show.notice_no}</td>
                                     <td data-field="notice_title"><a href="/noticeDetail/${show.notice_no}">${show.notice_title}</a></td>
-                                    <td data-field="member_id" id="writer"><span>${show.member_id}</span></td>
+                                    <td data-field="member_id" id="writer"><span>${show.member_name}</span></td>
                                     <td><fmt:formatDate value="${show.notice_regdate}" pattern="yyyy-MM-dd" /></td>
                                     <td  data-field="notice_count">${show.notice_count}</td>
                                 </tr>

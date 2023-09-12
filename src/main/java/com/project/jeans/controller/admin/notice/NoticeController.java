@@ -28,7 +28,7 @@ public class NoticeController {
     //공지사항 조회
     @GetMapping("/noticeList")
     public ModelAndView noticeList(@RequestParam(value = "page", defaultValue = "1") int page,
-                                   @RequestParam(value = "size", defaultValue = "1") int size,
+                                   @RequestParam(value = "size", defaultValue = "2") int size,
                                    HttpSession session, Model model) {
         MemberDTO memberInfo = loginCheck.getLoginCheckSession(session, model);
         if (memberInfo==null) {
@@ -47,6 +47,7 @@ public class NoticeController {
         int totalMemberCount = noticeService.noticeCount();
         int totalPages = (int) Math.ceil((double) totalMemberCount / size);
         page = Math.min(Math.max(1, page), totalPages);
+        model.addAttribute("currentPage", page);
 
         List<NoticeDTO> noticeList = noticeService.getShowNotice(page,size);
 

@@ -187,13 +187,6 @@
             text-align: center;
         }
 
-        .pagingNum,
-        .linkBtn,
-        .linkBtn a {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
         .pagination-container {
             padding: 20px;
             border-radius: 8px;
@@ -202,6 +195,12 @@
             background: #fff;
             justify-content: center;
         }
+
+        .active-page {
+            background: #e156db36;
+            border-radius: 8px;
+        }
+
         .linkBtn,
         .linkBtn a  {
             border: none;

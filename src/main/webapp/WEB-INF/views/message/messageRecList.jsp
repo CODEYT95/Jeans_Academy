@@ -5,7 +5,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>받은 쪽지함</title>
+    <title>👖받은 쪽지함</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
     <link rel="stylesheet" type="text/css" href="../../../resources/css/message/messageListContent.css">
@@ -42,7 +42,7 @@
                                     <div class="inputContent"><h3>제목</h3> ${messageRecDTO.message_title}</div>
                                     <div class="inputContent"><h3>보낸 사람</h3> ${messageRecDTO.message_sender}</div>
                                     <div class="inputContent"><h3>받은 사람</h3>${messageRecDTO.message_receiver}</div>
-                                    <div class="inputContent"><h3>날짜</h3> ${messageRecDTO.message_date}</div>
+                                    <div class="inputContent"><h3>날짜</h3> <fmt:formatDate value="${messageRecDTO.message_date}" pattern="yyyy-MM-dd HH:mm"/></div>
                                     <h3>내용</h3>
                                     <div class="modal-content">${messageRecDTO.message_content}</div>
                                 </div>

@@ -76,9 +76,8 @@ $(document).ready(function() {
   //QnA 게시글 isShow 'N'처리
   $("#confirmDelete").click(function() {
     var questionNo = $(".param-question_no").val();
-    console.log(noticeNo);
     $.ajax({
-      url: "/isShowQuestion",
+      url: "/question/isShowQuestion",
       type: "POST",
       data: { question_no: questionNo },
       success: function(response) {

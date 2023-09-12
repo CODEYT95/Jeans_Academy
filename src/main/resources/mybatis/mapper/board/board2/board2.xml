@@ -7,7 +7,8 @@
     <select id="findBoard2All" resultType="com.project.jeans.domain.board.board2.dto.Board2DTO">
         <![CDATA[
         SELECT b.board2_no as board2_no, b.board2_title as board2_title, b.board2_content as board2_content,
-                b.board2_regdate as board2_regdate, b.board2_isshow as board2_isshow, b.member_id as member_id
+                b.board2_regdate as board2_regdate, b.board2_isshow as board2_isshow, b.member_id as member_id,
+                m.member_name as member_name
         FROM board2 as b INNER JOIN member as m
         ON b.member_id = m.member_id
         WHERE b.board2_isshow='Y' AND m.member_type = '수강생'
@@ -19,7 +20,8 @@
     <select id="findBoard2ByTutor" resultType="com.project.jeans.domain.board.board2.dto.Board2DTO">
         <![CDATA[
         SELECT b.board2_no as board2_no, b.board2_title as board2_title, b.board2_content as board2_content,
-                b.board2_regdate as board2_regdate, b.board2_isshow as board2_isshow, b.member_id as member_id
+                b.board2_regdate as board2_regdate, b.board2_isshow as board2_isshow, b.member_id as member_id,
+                m.member_name as member_name
         FROM board2 as b INNER JOIN member as m
         ON b.member_id = m.member_id
         WHERE b.board2_isshow='Y' AND m.member_type in ('강사님', '관리자')
@@ -39,8 +41,9 @@
     <!-- 반별 게시글 상세 조회 -->
     <select id="findBoard2ByNo" resultType="com.project.jeans.domain.board.board2.dto.Board2DTO">
         <![CDATA[
-        SELECT board2_no, board2_title, board2_content, board2_regdate, board2_isshow, member_id
-        FROM board2
+        SELECT b.board2_no, b.board2_title, b.board2_content, b.board2_regdate, b.board2_isshow, b.member_id, m.member_name, m.member_type
+        FROM board2 AS b
+        JOIN member AS m ON b.member_id = m.member_id
         WHERE board2_no=#{board2_no}
         ]]>
     </select>

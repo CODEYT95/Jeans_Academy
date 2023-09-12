@@ -12,6 +12,10 @@
     <script type="text/javascript" src="../../../resources/js/admin/hiddenList.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.css" rel="stylesheet">
     <style>
+        thead {
+            background: #cbd2f4;
+        }
+        tr:nth-child(even) {background-color: #f3f5ff;}
     </style>
 </head>
 <body data-member-class="${member_class}">
@@ -21,7 +25,14 @@
     <div class="main-container">
         <div class="button-wrap">
             <a href="/admin/memberList"><button class="showMembers">현재 회원</button></a>
-            <a href="/admin/acceptList"><button class="acceptMembers">요청 회원<span class="notification">0</span></button></a>
+            <a href="/admin/acceptList">
+                <button class="acceptMembers">
+                    요청 회원
+                    <c:if test="${noAcceptMemberCount > 0}">
+                        <span class="notification">${noAcceptMemberCount}</span>
+                    </c:if>
+                </button>
+            </a>
             <a href="/admin/hiddenList"><button class="hideMembers" style="background : #5073FB;">탈퇴 회원</button></a>
         </div>
         <form action="/admin/hiddenList" method="get">
