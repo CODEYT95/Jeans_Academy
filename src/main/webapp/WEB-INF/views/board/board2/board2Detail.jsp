@@ -24,7 +24,8 @@
             <form action="/board2/delete" method="get">
                 <!-- 본인이 작성한 게시물만 삭제 가능 처리 -->
                 <input type="hidden" name="board2_no" value="${board2DTO.board2_no}"/>
-                <c:if test="${member_id == board2DTO.member_id || member_type.equals('관리자')}">
+                <c:if test="${(member_id == board2DTO.member_id || member_type.equals('관리자')) || (member_type.equals('강사님')
+                                        && member_class.equals('2반') && !(board2DTO.member_type.equals('관리자')))}">
                     <button id="delete" class="main-del-button">삭제</button>
                 </c:if>
             </form>

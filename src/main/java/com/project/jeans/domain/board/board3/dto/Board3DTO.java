@@ -17,4 +17,5 @@ public class Board3DTO {
     private String board3_isshow;
     private String member_id;
     private String member_name;
+    private String member_type;
 }
