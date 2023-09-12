@@ -72,7 +72,7 @@
         <![CDATA[
         SELECT member_name, member_class
         FROM member
-        WHERE member_class = #{member_class}
+        WHERE member_class = #{member_class} AND member_accept = 'Y' AND member_isshow = 'Y'
         ]]>
     </select>
     
