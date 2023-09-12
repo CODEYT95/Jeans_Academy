@@ -9,7 +9,7 @@
         SELECT b.*, m.member_name, m.member_type
         FROM board1 b
         INNER JOIN member m ON b.member_id = m.member_id
-        WHERE m.member_type = '수강생'
+        WHERE m.member_type = '수강생' AND b.board1_isshow = 'Y'
         ORDER BY b.board1_no DESC;
         ]]>
     </select>
@@ -19,7 +19,7 @@
         SELECT b.*, m.member_name, m.member_type
         FROM board1 b
         INNER JOIN member m ON b.member_id = m.member_id
-        WHERE m.member_type = '관리자' OR m.member_type='강사님'
+        WHERE b.board1_isshow = 'Y' and m.member_type in ('관리자','강사님')
         ORDER BY b.board1_no DESC;
         ]]>
     </select>
