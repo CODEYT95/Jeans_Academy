@@ -135,6 +135,7 @@ justify-content: space-between;
 display: flex;
 }
 
+
 .header-title{
 margin-left: auto;
 margin-right: auto;
@@ -188,7 +189,7 @@ margin-top: 18px;
 margin-right: auto;
 display: inline-block;
 font-size: 22px;
-max-width: 200px;
+width: auto;
 margin-left: 14px;
 white-space: nowrap;
 overflow: hidden;
@@ -304,6 +305,11 @@ font-size: 24px;
 .scroll-to-top a:hover {
 background-color: #395cdd;
 }
-
+.box img{
+    object-fit: cover;
+    border-radius: 8px;
+    width: 100%;
+    height: 100%;
+}
 
 

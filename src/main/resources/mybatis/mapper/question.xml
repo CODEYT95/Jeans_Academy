@@ -7,6 +7,7 @@
         SELECT q.*, m.member_name, m.member_class
         FROM question q
         JOIN member m ON q.member_id = m.member_id
+        WHERE q.question_isshow = 'Y'
         ORDER BY q.question_no DESC;
         ]]>
     </select>
