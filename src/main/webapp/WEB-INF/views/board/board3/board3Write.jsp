@@ -28,7 +28,7 @@
                     <div class="text">글 작성</div>
                     <label>
                         <div><span>제목</span></div>
-                        <textarea id="board3_title" name="board3_title" placeholder="제목을 입력해주세요" required></textarea>
+                        <textarea id="board3_title" name="board3_title" placeholder="제목을 입력해주세요" maxlength="20" required></textarea>
                     </label>
                 </div>
             </div>

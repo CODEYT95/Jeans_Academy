@@ -415,7 +415,7 @@ margin-top: 60px;
     height: 80%;
     width: 100%;
     padding: 9px;
-    overflow: hidden;
+    overflow: scroll;
     line-height: 30px;
     font-size: 15px;
     border-radius: 30px;

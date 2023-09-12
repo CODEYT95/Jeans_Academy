@@ -48,7 +48,7 @@
     <div class="content-container">
         <div class="write-content">
             <span class="content-label">내용</span>
-            <p class="content-textarea" readonly>${board2DTO.board2_content}</p>
+            <div class="content-textarea" readonly>${board2DTO.board2_content}</div>
         </div>
     </div>
     <div class="reply-container">
