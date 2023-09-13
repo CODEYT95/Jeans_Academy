@@ -40,6 +40,7 @@ pageEncoding="UTF-8"%>
                 <div class="write-title">
                     <label>
                         <span>제목</span>
+                        <span class="member-name">${questionDetail.member_class} ${questionDetail.member_name}</span>
                         <textarea name="title" readonly="readonly">${questionDetail.question_title}</textarea>
                     </label>
                 </div>

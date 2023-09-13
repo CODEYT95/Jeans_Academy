@@ -32,7 +32,7 @@
             height: 48px;
             overflow: hidden;
             line-height: 30px;
-            font-size: 15px;
+            font-size: 20px;
             border-radius: 30px;
             box-shadow: 4px 7px 10px -14px;
             border: 1px solid #D9E0E3;
@@ -85,6 +85,7 @@
         }
 
         .content{
+            font-size:19px;
             max-height: 56vh;
             border-radius: 30px;
             border-top-left-radius: 1px;
@@ -195,7 +196,7 @@
             margin-bottom: 10px;
             outline: none;
             resize: none;
-            font-size: 16px;
+            font-size: 17px;
         }
         .reply-insert::-webkit-scrollbar-track
         {
@@ -230,7 +231,7 @@
         }
         .reply-content-container p{
             width: 100%;
-            font-size: 14px;
+            font-size: 17px;
             height: 30px;
             margin-left: 9px;
         }
@@ -291,6 +292,7 @@
         }
         .reply-name{
             font-weight: bold;
+            font-size:19px;
         }
         .reply-regdate{
             margin-left: 10px;

@@ -21,9 +21,10 @@
     <!--QnA 상세보기-->
     <select id="questionDetail" parameterType="Integer" resultType="com.project.jeans.domain.question.dto.QuestionDTO">
         <![CDATA[
-        SELECT *
-        FROM question
-        WHERE question_no = #{question_no} AND question_isshow = 'Y';
+        SELECT q.*, m.member_name, m.member_class
+        FROM question q
+        INNER JOIN member m ON q.member_id = m.member_id
+        WHERE q.question_no = #{question_no} AND q.question_isshow = 'Y';
         ]]>
     </select>
     <!--QnA 댓글 입력-->
