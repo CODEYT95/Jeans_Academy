@@ -8,14 +8,19 @@ $(document).ready(function() {
 
 function updateAllReplyTimes() {
   $('.postdate').each(function() {
-    const regdate = $(this).text(); // 수정: 현재 요소의 텍스트 값을 가져옵니다.
-    const formattedTime = timeAgo(new Date(regdate));
+    const regdateString = $(this).text(); // '2023-09-12 21:02:38.0'
+    const regdate = new Date(regdateString);
+    const regdateUTC = new Date(regdate.toUTCString()); // UTC로 변환
+
+    const currentTime = new Date();
+    const currentTimeUTC = new Date(currentTime.toUTCString()); // UTC로 변환
+
+    const formattedTime = timeAgo(regdateUTC, currentTimeUTC);
     $(this).text(formattedTime);
   });
 }
 
-function timeAgo(time) {
-  const currentTime = new Date();
+function timeAgo(time, currentTime) {
   const timeDifference = currentTime - time;
   const seconds = Math.floor(timeDifference / 1000);
   const minutes = Math.floor(seconds / 60);
@@ -32,6 +37,7 @@ function timeAgo(time) {
     return `${days}일 전`;
   }
 }
+
   // 여기 아래에 검색 기능 코드 추가
   $(document).ready(function () {
       let originalBoxes = $('.box-list .box').clone(); // 처음 로드된 박스들을 복사하여 저장

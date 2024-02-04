@@ -45,7 +45,6 @@
                                     <label class="item"  for="t-${loop.index + 1}">
                                         <h2><a href="/board1/detail/${tutor.board1_no}">${tutor.board1_title}</a></h2>
                                         <h3>${tutor.board1_content}</h3>
-                                        <span class="writer">by ${tutor.member_name}</span>
                                     </label>
                                 </c:forEach>
                             </c:otherwise>
@@ -69,19 +68,7 @@
                                     </div>
                                     <div>
                                         <h1>${board1List.board1_title}</h1>
-                                        <c:set var="contentWithImages">${board1List.board1_content}</c:set>
-                                        <c:choose>
-                                            <c:when test="${not empty contentWithImages}">
-                                                <picture>
-                                                    <c:import url="${pageContext.request.contextPath}/your-image-processing-servlet?src=${contentWithImages}" />
-                                                </picture>
-                                            </c:when>
-                                            <c:otherwise>
-                                                <!-- 이미지가 없는 경우에는 아무것도 표시하지 않음 -->
-                                            </c:otherwise>
-                                        </c:choose>
                                         <p>${board1List.board1_content}</p>
-                                        <span class="student">by ${board1List.member_name}</span>
                                     </div>
                                 </div>
                             </c:forEach>

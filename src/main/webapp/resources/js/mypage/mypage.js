@@ -147,12 +147,12 @@ document.addEventListener("DOMContentLoaded", function () {
             // AJAX 요청을 보냅니다.
             $.ajax({
                 type: "POST",
-                url: "/mypage/write", // "write"는 실제로 데이터를 처리하는 서버 엔드포인트 URL입니다.
+                url: "/event/write", // "write"는 실제로 데이터를 처리하는 서버 엔드포인트 URL입니다.
                 data: { date: date, title: title }, // 데이터를 객체로 보냅니다.
                 success: function (response) {
                     // 요청이 성공하면 여기에서 추가적인 처리를 수행할 수 있습니다.
                     if (response === "1") {
-                        window.location.href = "/mypage/list";
+                        window.location.href = "/mypage/mypagelist";
                         console.log("일정이 성공적으로 추가되었습니다.");
                     }
                     // 원하는 추가 작업을 수행할 수 있습니다.
@@ -191,4 +191,3 @@ document.addEventListener("DOMContentLoaded", function () {
                 });
             };
     });
-});
