@@ -26,7 +26,7 @@
 
 ### 📌 기술
 - HTML5, CSS3, JavaScript, Ajax, jQuery
-- Java, JSP, Apache Tomcat
-- MySQL
+- Java, JSP, Spring Boot
+- MySQL, Lombok, Gradle
 
 ### 📌 MovieMate -[자세히 보기](https://yuntae.notion.site/MovieMate-7177aa21148643f98b6c8ced1ca6ba30)
