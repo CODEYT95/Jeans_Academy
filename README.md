@@ -1,6 +1,6 @@
 # 중앙인재기술개발원 2차 프로젝트(Jeans)
 
-<p align="center"><img src="https://www.notion.so/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F919089e2-ea1d-4aee-a82c-bcc7b08f6289%2F39e501f9-ec13-4d2f-8405-b740aa6f3019%2F%25EC%258A%25A4%25ED%2581%25AC%25EB%25A6%25B0%25EC%2583%25B7_2023-09-18_150957.png?table=block&id=7177aa21-1486-43f9-8b6c-8ced1ca6ba30&spaceId=919089e2-ea1d-4aee-a82c-bcc7b08f6289&width=2000&userId=8e26c7bd-f6ab-4d8d-ae3a-a85fc0fa7c3e&cache=v2" height="200px" width="300px"></p>
+<p align="center"><img src="https://www.notion.so/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F919089e2-ea1d-4aee-a82c-bcc7b08f6289%2F4f81f3a4-a14d-4c22-a2aa-4f4da88c0d48%2F%25EC%258A%25A4%25ED%2581%25AC%25EB%25A6%25B0%25EC%2583%25B7_2023-09-18_150632.png?table=block&id=753067b4-5bf7-4ce2-aa9c-cd61e95ab143&spaceId=919089e2-ea1d-4aee-a82c-bcc7b08f6289&width=2000&userId=8e26c7bd-f6ab-4d8d-ae3a-a85fc0fa7c3e&cache=v2" height="200px" width="300px"></p>
 
 ### ✈️ 소개
 
