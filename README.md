@@ -29,4 +29,4 @@
 - Java, JSP, Spring Boot
 - MySQL, Lombok, Gradle
 
-### 📌 MovieMate -[자세히 보기](https://yuntae.notion.site/MovieMate-7177aa21148643f98b6c8ced1ca6ba30)
+### 📌 Jeans-[자세히 보기](https://yuntae.notion.site/Jeans-Academy-753067b45bf74ce2aa9ccd61e95ab143)
